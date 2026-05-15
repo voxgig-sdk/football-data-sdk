@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "area": {
+      "AREA00": {
+        "child_area": [],
+        "country_code": "s47",
+        "flag": "s48",
+        "id": "AREA00",
+        "name": "s4a",
+        "parent_area": "s4b",
+        "parent_area_id": "PARENT_AREA01"
+      },
+      "AREA01": {
+        "child_area": [],
+        "country_code": "s8d",
+        "flag": "s8e",
+        "id": "AREA01",
+        "name": "s90",
+        "parent_area": "s91",
+        "parent_area_id": "PARENT_AREA01"
+      },
+      "AREA02": {
+        "child_area": [],
+        "country_code": "sd3",
+        "flag": "sd4",
+        "id": "AREA02",
+        "name": "sd6",
+        "parent_area": "sd7",
+        "parent_area_id": "PARENT_AREA01"
+      }
+    }
+  },
+  "new": {
+    "area": {
+      "area_ref01": {
+        "child_area": [],
+        "country_code": "s119",
+        "flag": "s11a",
+        "name": "s11c",
+        "parent_area": "s11d",
+        "parent_area_id": "PARENT_AREA01"
+      }
+    }
+  }
+}

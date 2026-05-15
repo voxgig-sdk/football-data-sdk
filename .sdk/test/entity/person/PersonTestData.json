@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "person": {
+      "PERSON00": {
+        "away_team": {},
+        "competition": {},
+        "date_of_birth": "sca",
+        "first_name": "scb",
+        "group": "scc",
+        "home_team": {},
+        "id": "PERSON00",
+        "last_name": "scf",
+        "last_updated": "sd0",
+        "matchday": "sd1",
+        "name": "sd2",
+        "nationality": "sd3",
+        "position": "sd4",
+        "score": {},
+        "season": {},
+        "section": "sd7",
+        "shirt_number": "sd8",
+        "stage": "sd9",
+        "status": "sda",
+        "utc_date": "sdb"
+      },
+      "PERSON01": {
+        "away_team": {},
+        "competition": {},
+        "date_of_birth": "s192",
+        "first_name": "s193",
+        "group": "s194",
+        "home_team": {},
+        "id": "PERSON01",
+        "last_name": "s197",
+        "last_updated": "s198",
+        "matchday": "s199",
+        "name": "s19a",
+        "nationality": "s19b",
+        "position": "s19c",
+        "score": {},
+        "season": {},
+        "section": "s19f",
+        "shirt_number": "s1a0",
+        "stage": "s1a1",
+        "status": "s1a2",
+        "utc_date": "s1a3"
+      },
+      "PERSON02": {
+        "away_team": {},
+        "competition": {},
+        "date_of_birth": "s25a",
+        "first_name": "s25b",
+        "group": "s25c",
+        "home_team": {},
+        "id": "PERSON02",
+        "last_name": "s25f",
+        "last_updated": "s260",
+        "matchday": "s261",
+        "name": "s262",
+        "nationality": "s263",
+        "position": "s264",
+        "score": {},
+        "season": {},
+        "section": "s267",
+        "shirt_number": "s268",
+        "stage": "s269",
+        "status": "s26a",
+        "utc_date": "s26b"
+      }
+    }
+  },
+  "new": {
+    "person": {
+      "person_ref01": {
+        "away_team": {},
+        "competition": {},
+        "date_of_birth": "s322",
+        "first_name": "s323",
+        "group": "s324",
+        "home_team": {},
+        "last_name": "s327",
+        "last_updated": "s328",
+        "matchday": "s329",
+        "name": "s32a",
+        "nationality": "s32b",
+        "position": "s32c",
+        "score": {},
+        "season": {},
+        "section": "s32f",
+        "shirt_number": "s330",
+        "stage": "s331",
+        "status": "s332",
+        "utc_date": "s333"
+      }
+    }
+  }
+}

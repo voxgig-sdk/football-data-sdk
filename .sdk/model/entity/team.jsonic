@@ -1,0 +1,304 @@
+# Entity: team
+
+main: kit: entity: team: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "address"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "area"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "away_team"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "club_color"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "coach"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "competition"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "crest"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "founded"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "group"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "home_team"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "last_updated"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "matchday"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "running_competition"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "score"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "season"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "short_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "squad"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "staff"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "stage"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tla"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "utc_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "venue"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "website"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "team"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "date_from"
+                orig: "date_from"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "date_to"
+                orig: "date_to"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "season"
+                orig: "season"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "status"
+                orig: "status"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "venue"
+                orig: "venue"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/teams/{id}/matches"
+          parts: [
+            "teams"
+            "{id}"
+            "matches"
+          ]
+          select: {
+            "$action": "match"
+            exist: [
+              "date_from"
+              "date_to"
+              "id"
+              "limit"
+              "season"
+              "status"
+              "venue"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/teams"
+          parts: [
+            "teams"
+          ]
+          select: {
+            exist: [
+              "limit"
+              "offset"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/teams/{id}"
+          parts: [
+            "teams"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

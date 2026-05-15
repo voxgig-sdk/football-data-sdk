@@ -1,0 +1,1876 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Football Data API",
+    "description": "The Football Data API provides comprehensive access to football (soccer) statistics and information. It includes data on areas, competitions, teams, matches, standings, scorers, and players. Perfect for building sports apps or platforms.",
+    "version": "4.0.0",
+    "contact": {
+      "url": "https://www.football-data.org"
+    },
+    "termsOfService": "https://www.football-data.org"
+  },
+  "servers": [
+    {
+      "url": "http://api.football-data.org/v4",
+      "description": "Football Data API v4 Server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/areas": {
+      "get": {
+        "summary": "List all available areas",
+        "description": "Returns a list of all available areas including countries and regions.",
+        "operationId": "getAreas",
+        "tags": [
+          "Areas"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of areas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "description": "Total number of areas"
+                    },
+                    "filters": {
+                      "type": "object",
+                      "description": "Applied filters"
+                    },
+                    "areas": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Area"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/areas/{id}": {
+      "get": {
+        "summary": "Get a specific area",
+        "description": "Returns detailed information about a specific area by ID, including child areas.",
+        "operationId": "getAreaById",
+        "tags": [
+          "Areas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the area to retrieve",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with area details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AreaDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Area not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/competitions": {
+      "get": {
+        "summary": "List all competitions",
+        "description": "Returns a list of all available football competitions.",
+        "operationId": "getCompetitions",
+        "tags": [
+          "Competitions"
+        ],
+        "parameters": [
+          {
+            "name": "areas",
+            "in": "query",
+            "description": "Filter by area IDs (comma-separated)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of competitions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "filters": {
+                      "type": "object"
+                    },
+                    "competitions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Competition"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/competitions/{id}": {
+      "get": {
+        "summary": "Get a specific competition",
+        "description": "Returns detailed information about a specific competition.",
+        "operationId": "getCompetitionById",
+        "tags": [
+          "Competitions"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID or code of the competition",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with competition details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Competition"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Competition not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/competitions/{id}/teams": {
+      "get": {
+        "summary": "List teams in a competition",
+        "description": "Returns all teams participating in a specific competition.",
+        "operationId": "getCompetitionTeams",
+        "tags": [
+          "Competitions",
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID or code of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "description": "Filter by season year",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with teams",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "filters": {
+                      "type": "object"
+                    },
+                    "competition": {
+                      "$ref": "#/components/schemas/Competition"
+                    },
+                    "season": {
+                      "$ref": "#/components/schemas/Season"
+                    },
+                    "teams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Team"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Competition not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/competitions/{id}/standings": {
+      "get": {
+        "summary": "Get competition standings",
+        "description": "Returns the current standings/table for a competition.",
+        "operationId": "getCompetitionStandings",
+        "tags": [
+          "Competitions",
+          "Standings"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID or code of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "description": "Filter by season year",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "matchday",
+            "in": "query",
+            "description": "Filter by matchday",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with standings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "object"
+                    },
+                    "competition": {
+                      "$ref": "#/components/schemas/Competition"
+                    },
+                    "season": {
+                      "$ref": "#/components/schemas/Season"
+                    },
+                    "standings": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Standing"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Competition not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/competitions/{id}/matches": {
+      "get": {
+        "summary": "List matches in a competition",
+        "description": "Returns all matches for a specific competition.",
+        "operationId": "getCompetitionMatches",
+        "tags": [
+          "Competitions",
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID or code of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "description": "Filter by season year",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "matchday",
+            "in": "query",
+            "description": "Filter by matchday",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by match status (SCHEDULED, LIVE, IN_PLAY, PAUSED, FINISHED, POSTPONED, SUSPENDED, CANCELLED)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SCHEDULED",
+                "LIVE",
+                "IN_PLAY",
+                "PAUSED",
+                "FINISHED",
+                "POSTPONED",
+                "SUSPENDED",
+                "CANCELLED"
+              ]
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "description": "Filter matches from this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "description": "Filter matches until this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "object"
+                    },
+                    "resultSet": {
+                      "type": "object",
+                      "properties": {
+                        "count": {
+                          "type": "integer"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "played": {
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    "competition": {
+                      "$ref": "#/components/schemas/Competition"
+                    },
+                    "matches": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Match"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Competition not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/competitions/{id}/scorers": {
+      "get": {
+        "summary": "Get top scorers in a competition",
+        "description": "Returns the top scorers for a specific competition.",
+        "operationId": "getCompetitionScorers",
+        "tags": [
+          "Competitions",
+          "Scorers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID or code of the competition",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "description": "Filter by season year",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of scorers returned",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with top scorers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "filters": {
+                      "type": "object"
+                    },
+                    "competition": {
+                      "$ref": "#/components/schemas/Competition"
+                    },
+                    "season": {
+                      "$ref": "#/components/schemas/Season"
+                    },
+                    "scorers": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Scorer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Competition not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/teams": {
+      "get": {
+        "summary": "List all teams",
+        "description": "Returns a list of all available teams.",
+        "operationId": "getTeams",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of teams returned",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset for pagination",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of teams",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    },
+                    "filters": {
+                      "type": "object"
+                    },
+                    "teams": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Team"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/teams/{id}": {
+      "get": {
+        "summary": "Get a specific team",
+        "description": "Returns detailed information about a specific team.",
+        "operationId": "getTeamById",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the team",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with team details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TeamDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Team not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/teams/{id}/matches": {
+      "get": {
+        "summary": "List matches for a team",
+        "description": "Returns all matches for a specific team.",
+        "operationId": "getTeamMatches",
+        "tags": [
+          "Teams",
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the team",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "description": "Filter by season year",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by match status",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "description": "Filter matches from this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "description": "Filter matches until this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "venue",
+            "in": "query",
+            "description": "Filter by venue (HOME or AWAY)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "HOME",
+                "AWAY"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of matches returned",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "object"
+                    },
+                    "resultSet": {
+                      "type": "object"
+                    },
+                    "matches": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Match"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Team not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/matches": {
+      "get": {
+        "summary": "List all matches",
+        "description": "Returns a list of matches across all competitions.",
+        "operationId": "getMatches",
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "competitions",
+            "in": "query",
+            "description": "Filter by competition IDs (comma-separated)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by match status",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "description": "Filter matches from this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "description": "Filter matches until this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "object"
+                    },
+                    "resultSet": {
+                      "type": "object"
+                    },
+                    "matches": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Match"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/matches/{id}": {
+      "get": {
+        "summary": "Get a specific match",
+        "description": "Returns detailed information about a specific match.",
+        "operationId": "getMatchById",
+        "tags": [
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the match",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with match details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MatchDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Match not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/persons/{id}": {
+      "get": {
+        "summary": "Get a specific person/player",
+        "description": "Returns detailed information about a specific player or person.",
+        "operationId": "getPersonById",
+        "tags": [
+          "Persons"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the person",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with person details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Person not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    },
+    "/persons/{id}/matches": {
+      "get": {
+        "summary": "List matches for a person",
+        "description": "Returns all matches for a specific person/player.",
+        "operationId": "getPersonMatches",
+        "tags": [
+          "Persons",
+          "Matches"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the person",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "competitions",
+            "in": "query",
+            "description": "Filter by competition IDs (comma-separated)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Filter by match status",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "description": "Filter matches from this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "description": "Filter matches until this date (YYYY-MM-DD)",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of matches returned",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with matches",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "object"
+                    },
+                    "resultSet": {
+                      "type": "object"
+                    },
+                    "person": {
+                      "$ref": "#/components/schemas/Person"
+                    },
+                    "matches": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Match"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Person not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Auth-Token",
+        "description": "API key for authentication. Obtain from https://www.football-data.org"
+      }
+    },
+    "schemas": {
+      "Area": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the area"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the area"
+          },
+          "countryCode": {
+            "type": "string",
+            "description": "ISO country code",
+            "nullable": true
+          },
+          "flag": {
+            "type": "string",
+            "description": "URL to the area's flag image",
+            "nullable": true
+          },
+          "parentAreaId": {
+            "type": "integer",
+            "description": "ID of the parent area",
+            "nullable": true
+          },
+          "parentArea": {
+            "type": "string",
+            "description": "Name of the parent area",
+            "nullable": true
+          }
+        }
+      },
+      "AreaDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Area"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "childAreas": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Area"
+                },
+                "description": "List of child areas"
+              }
+            }
+          }
+        ]
+      },
+      "Competition": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the competition"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the competition"
+          },
+          "code": {
+            "type": "string",
+            "description": "Short code for the competition",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of competition (LEAGUE, CUP, etc.)"
+          },
+          "emblem": {
+            "type": "string",
+            "description": "URL to the competition's emblem",
+            "nullable": true
+          },
+          "currentSeason": {
+            "$ref": "#/components/schemas/Season"
+          },
+          "area": {
+            "$ref": "#/components/schemas/Area"
+          },
+          "numberOfAvailableSeasons": {
+            "type": "integer",
+            "description": "Number of seasons available"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      },
+      "Season": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the season"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Season start date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Season end date"
+          },
+          "currentMatchday": {
+            "type": "integer",
+            "description": "Current matchday number",
+            "nullable": true
+          },
+          "winner": {
+            "type": "object",
+            "description": "Winner of the season",
+            "nullable": true
+          }
+        }
+      },
+      "Team": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the team"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the team"
+          },
+          "shortName": {
+            "type": "string",
+            "description": "Short name of the team"
+          },
+          "tla": {
+            "type": "string",
+            "description": "Three-letter abbreviation"
+          },
+          "crest": {
+            "type": "string",
+            "description": "URL to the team's crest image",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "description": "Team address"
+          },
+          "website": {
+            "type": "string",
+            "description": "Team website URL",
+            "nullable": true
+          },
+          "founded": {
+            "type": "integer",
+            "description": "Year the team was founded",
+            "nullable": true
+          },
+          "clubColors": {
+            "type": "string",
+            "description": "Team colors"
+          },
+          "venue": {
+            "type": "string",
+            "description": "Home stadium name"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      },
+      "TeamDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Team"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "area": {
+                "$ref": "#/components/schemas/Area"
+              },
+              "runningCompetitions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Competition"
+                },
+                "description": "Competitions the team is currently participating in"
+              },
+              "coach": {
+                "$ref": "#/components/schemas/Person"
+              },
+              "squad": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Person"
+                },
+                "description": "Team squad members"
+              },
+              "staff": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Person"
+                },
+                "description": "Team staff members"
+              }
+            }
+          }
+        ]
+      },
+      "Match": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the match"
+          },
+          "utcDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Match date and time in UTC"
+          },
+          "status": {
+            "type": "string",
+            "description": "Match status",
+            "enum": [
+              "SCHEDULED",
+              "LIVE",
+              "IN_PLAY",
+              "PAUSED",
+              "FINISHED",
+              "POSTPONED",
+              "SUSPENDED",
+              "CANCELLED"
+            ]
+          },
+          "matchday": {
+            "type": "integer",
+            "description": "Matchday number",
+            "nullable": true
+          },
+          "stage": {
+            "type": "string",
+            "description": "Match stage"
+          },
+          "group": {
+            "type": "string",
+            "description": "Group identifier",
+            "nullable": true
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "homeTeam": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "shortName": {
+                "type": "string"
+              },
+              "tla": {
+                "type": "string"
+              },
+              "crest": {
+                "type": "string"
+              }
+            }
+          },
+          "awayTeam": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "shortName": {
+                "type": "string"
+              },
+              "tla": {
+                "type": "string"
+              },
+              "crest": {
+                "type": "string"
+              }
+            }
+          },
+          "score": {
+            "type": "object",
+            "properties": {
+              "winner": {
+                "type": "string",
+                "nullable": true,
+                "enum": [
+                  "HOME_TEAM",
+                  "AWAY_TEAM",
+                  "DRAW"
+                ]
+              },
+              "duration": {
+                "type": "string",
+                "enum": [
+                  "REGULAR",
+                  "EXTRA_TIME",
+                  "PENALTY_SHOOTOUT"
+                ]
+              },
+              "fullTime": {
+                "type": "object",
+                "properties": {
+                  "home": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "away": {
+                    "type": "integer",
+                    "nullable": true
+                  }
+                }
+              },
+              "halfTime": {
+                "type": "object",
+                "properties": {
+                  "home": {
+                    "type": "integer",
+                    "nullable": true
+                  },
+                  "away": {
+                    "type": "integer",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          },
+          "competition": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "emblem": {
+                "type": "string"
+              }
+            }
+          },
+          "season": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "startDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "endDate": {
+                "type": "string",
+                "format": "date"
+              },
+              "currentMatchday": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "MatchDetail": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Match"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "area": {
+                "$ref": "#/components/schemas/Area"
+              },
+              "referees": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "nationality": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "venue": {
+                "type": "string",
+                "description": "Stadium name"
+              },
+              "odds": {
+                "type": "object",
+                "description": "Match odds",
+                "nullable": true
+              },
+              "goals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "minute": {
+                      "type": "integer"
+                    },
+                    "extraTime": {
+                      "type": "integer",
+                      "nullable": true
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "team": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "scorer": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "assist": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "bookings": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "minute": {
+                      "type": "integer"
+                    },
+                    "team": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "player": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "card": {
+                      "type": "string",
+                      "enum": [
+                        "YELLOW_CARD",
+                        "RED_CARD"
+                      ]
+                    }
+                  }
+                }
+              },
+              "substitutions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "minute": {
+                      "type": "integer"
+                    },
+                    "team": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "playerOut": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "playerIn": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "Standing": {
+        "type": "object",
+        "properties": {
+          "stage": {
+            "type": "string",
+            "description": "Stage of the competition"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of standing (TOTAL, HOME, AWAY)"
+          },
+          "group": {
+            "type": "string",
+            "description": "Group identifier",
+            "nullable": true
+          },
+          "table": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "position": {
+                  "type": "integer",
+                  "description": "Position in the table"
+                },
+                "team": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "shortName": {
+                      "type": "string"
+                    },
+                    "tla": {
+                      "type": "string"
+                    },
+                    "crest": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "playedGames": {
+                  "type": "integer",
+                  "description": "Number of games played"
+                },
+                "form": {
+                  "type": "string",
+                  "description": "Recent form (e.g., W,W,L,D,W)",
+                  "nullable": true
+                },
+                "won": {
+                  "type": "integer",
+                  "description": "Games won"
+                },
+                "draw": {
+                  "type": "integer",
+                  "description": "Games drawn"
+                },
+                "lost": {
+                  "type": "integer",
+                  "description": "Games lost"
+                },
+                "points": {
+                  "type": "integer",
+                  "description": "Total points"
+                },
+                "goalsFor": {
+                  "type": "integer",
+                  "description": "Goals scored"
+                },
+                "goalsAgainst": {
+                  "type": "integer",
+                  "description": "Goals conceded"
+                },
+                "goalDifference": {
+                  "type": "integer",
+                  "description": "Goal difference"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Scorer": {
+        "type": "object",
+        "properties": {
+          "player": {
+            "$ref": "#/components/schemas/Person"
+          },
+          "team": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "shortName": {
+                "type": "string"
+              },
+              "tla": {
+                "type": "string"
+              },
+              "crest": {
+                "type": "string"
+              }
+            }
+          },
+          "goals": {
+            "type": "integer",
+            "description": "Number of goals scored"
+          },
+          "assists": {
+            "type": "integer",
+            "description": "Number of assists",
+            "nullable": true
+          },
+          "penalties": {
+            "type": "integer",
+            "description": "Number of penalty goals",
+            "nullable": true
+          }
+        }
+      },
+      "Person": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the person"
+          },
+          "name": {
+            "type": "string",
+            "description": "Full name of the person"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name",
+            "nullable": true
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of birth",
+            "nullable": true
+          },
+          "nationality": {
+            "type": "string",
+            "description": "Nationality",
+            "nullable": true
+          },
+          "section": {
+            "type": "string",
+            "description": "Section (e.g., Offence, Defence, Midfield, Goalkeeper)",
+            "nullable": true
+          },
+          "position": {
+            "type": "string",
+            "description": "Playing position",
+            "nullable": true
+          },
+          "shirtNumber": {
+            "type": "integer",
+            "description": "Shirt number",
+            "nullable": true
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Areas",
+      "description": "Operations related to geographical areas and countries"
+    },
+    {
+      "name": "Competitions",
+      "description": "Operations related to football competitions and leagues"
+    },
+    {
+      "name": "Teams",
+      "description": "Operations related to football teams and clubs"
+    },
+    {
+      "name": "Matches",
+      "description": "Operations related to football matches and fixtures"
+    },
+    {
+      "name": "Standings",
+      "description": "Operations related to competition standings and tables"
+    },
+    {
+      "name": "Scorers",
+      "description": "Operations related to top scorers and goal statistics"
+    },
+    {
+      "name": "Persons",
+      "description": "Operations related to players, coaches, and staff"
+    }
+  ]
+}

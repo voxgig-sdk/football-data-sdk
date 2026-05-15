@@ -1,0 +1,79 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 5
+  metrics: count: path: 15
+  metrics: count: method: 15
+
+  entity: area: {
+    path: "/areas": {
+      op: list: method: *GET
+    }
+    path: "/areas/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: competition: {
+    path: "/competitions": {
+      op: list: method: *GET
+    }
+    path: "/competitions/{id}": {
+      op: load: method: *GET
+    }
+    path: "/competitions/{id}/matches": {
+      action: "match": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.competition`")|top
+    }
+    path: "/competitions/{id}/scorers": {
+      action: "scorer": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.competition`")|top
+    }
+    path: "/competitions/{id}/standings": {
+      action: "standing": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.competition`")|top
+    }
+    path: "/competitions/{id}/teams": {
+      action: "team": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.competition`")|top
+    }
+  }
+
+  entity: match: {
+    path: "/matches": {
+      op: list: method: *GET
+    }
+    path: "/matches/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: person: {
+    path: "/persons/{id}": {
+      op: load: method: *GET
+    }
+    path: "/persons/{id}/matches": {
+      action: "match": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.person`")|top
+    }
+  }
+
+  entity: team: {
+    path: "/teams": {
+      op: list: method: *GET
+    }
+    path: "/teams/{id}": {
+      op: load: method: *GET
+    }
+    path: "/teams/{id}/matches": {
+      action: "match": {}
+      op: list: method: *GET
+    }
+  }
+
+}

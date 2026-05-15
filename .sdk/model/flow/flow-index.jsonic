@@ -1,0 +1,7 @@
+# Flows
+
+@"BasicAreaFlow.jsonic"
+@"BasicCompetitionFlow.jsonic"
+@"BasicMatchFlow.jsonic"
+@"BasicPersonFlow.jsonic"
+@"BasicTeamFlow.jsonic"

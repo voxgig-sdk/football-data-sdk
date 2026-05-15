@@ -1,0 +1,460 @@
+# Entity: competition
+
+main: kit: entity: competition: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "address"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "area"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "assist"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "away_team"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "club_color"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "competition"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "crest"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "current_season"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "emblem"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "founded"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "goal"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "group"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "home_team"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "last_updated"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "matchday"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "number_of_available_season"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "penalty"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "player"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "score"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "season"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "short_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "stage"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "table"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "team"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tla"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "utc_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "venue"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "website"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "competition"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "date_from"
+                orig: "date_from"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "date_to"
+                orig: "date_to"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "matchday"
+                orig: "matchday"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "season"
+                orig: "season"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "status"
+                orig: "status"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/competitions/{id}/matches"
+          parts: [
+            "competitions"
+            "{id}"
+            "matches"
+          ]
+          select: {
+            "$action": "match"
+            exist: [
+              "date_from"
+              "date_to"
+              "id"
+              "matchday"
+              "season"
+              "status"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "season"
+                orig: "season"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/competitions/{id}/scorers"
+          parts: [
+            "competitions"
+            "{id}"
+            "scorers"
+          ]
+          select: {
+            "$action": "scorer"
+            exist: [
+              "id"
+              "limit"
+              "season"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "matchday"
+                orig: "matchday"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "season"
+                orig: "season"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/competitions/{id}/standings"
+          parts: [
+            "competitions"
+            "{id}"
+            "standings"
+          ]
+          select: {
+            "$action": "standing"
+            exist: [
+              "id"
+              "matchday"
+              "season"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "season"
+                orig: "season"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/competitions/{id}/teams"
+          parts: [
+            "competitions"
+            "{id}"
+            "teams"
+          ]
+          select: {
+            "$action": "team"
+            exist: [
+              "id"
+              "season"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "area"
+                orig: "area"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/competitions"
+          parts: [
+            "competitions"
+          ]
+          select: {
+            exist: [
+              "area"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/competitions/{id}"
+          parts: [
+            "competitions"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
