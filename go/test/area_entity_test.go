@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/football-data-sdk"
-	"github.com/voxgig-sdk/football-data-sdk/core"
+	sdk "github.com/voxgig-sdk/football-data-sdk/go"
+	"github.com/voxgig-sdk/football-data-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/football-data-sdk/go/utility/struct"
 )
 
 func TestAreaEntity(t *testing.T) {
