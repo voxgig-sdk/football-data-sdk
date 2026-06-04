@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "http://api.football-data.org/v4",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },

@@ -143,14 +143,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FOOTBALLDATA_TEST_COMPETITION_ENTID': {},
     'FOOTBALLDATA_TEST_LIVE': 'FALSE',
-    'FOOTBALLDATA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FOOTBALLDATA_TEST_LIVE
 
   if (live) {
     const client = new FootballDataSDK({
-      apikey: env.FOOTBALLDATA_APIKEY,
     })
 
     let idmap: any = env['FOOTBALLDATA_TEST_COMPETITION_ENTID']

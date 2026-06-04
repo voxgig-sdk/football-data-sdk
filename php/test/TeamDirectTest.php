@@ -137,14 +137,12 @@ function team_direct_setup($mockres)
     $env = Runner::env_override([
         "FOOTBALLDATA_TEST_TEAM_ENTID" => [],
         "FOOTBALLDATA_TEST_LIVE" => "FALSE",
-        "FOOTBALLDATA_APIKEY" => "NONE",
     ]);
 
     $live = $env["FOOTBALLDATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["FOOTBALLDATA_APIKEY"],
         ];
         $client = new FootballDataSDK($merged_opts);
         return [

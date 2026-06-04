@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'FOOTBALL_DATA_TEST_AREA_ENTID': idmap,
     'FOOTBALL_DATA_TEST_LIVE': 'FALSE',
     'FOOTBALL_DATA_TEST_EXPLAIN': 'FALSE',
-    'FOOTBALL_DATA_APIKEY': 'NONE',
   })
 
   idmap = env['FOOTBALL_DATA_TEST_AREA_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new FootballDataSDK(merge([
       {
-        apikey: env.FOOTBALL_DATA_APIKEY,
       },
       extra
     ]))

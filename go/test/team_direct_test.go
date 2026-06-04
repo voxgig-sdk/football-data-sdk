@@ -228,14 +228,12 @@ func teamDirectSetup(mockres any) *teamDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FOOTBALLDATA_TEST_TEAM_ENTID": map[string]any{},
 		"FOOTBALLDATA_TEST_LIVE":    "FALSE",
-		"FOOTBALLDATA_APIKEY":       "NONE",
 	})
 
 	live := env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["FOOTBALLDATA_APIKEY"],
 		}
 		client := sdk.NewFootballDataSDK(mergedOpts)
 

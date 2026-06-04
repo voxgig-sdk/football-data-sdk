@@ -93,7 +93,6 @@ def area_basic_setup(extra)
     "FOOTBALLDATA_TEST_AREA_ENTID" => idmap,
     "FOOTBALLDATA_TEST_LIVE" => "FALSE",
     "FOOTBALLDATA_TEST_EXPLAIN" => "FALSE",
-    "FOOTBALLDATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +104,6 @@ def area_basic_setup(extra)
   if env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FOOTBALLDATA_APIKEY"],
       },
       extra || {},
     ])
