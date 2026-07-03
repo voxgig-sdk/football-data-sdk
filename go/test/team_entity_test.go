@@ -135,6 +135,7 @@ func teamBasicSetup(extra map[string]any) *entityTestSetup {
 		"FOOTBALLDATA_TEST_TEAM_ENTID": idmap,
 		"FOOTBALLDATA_TEST_LIVE":      "FALSE",
 		"FOOTBALLDATA_TEST_EXPLAIN":   "FALSE",
+		"FOOTBALLDATA_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["FOOTBALLDATA_TEST_TEAM_ENTID"])
@@ -145,6 +146,7 @@ func teamBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["FOOTBALLDATA_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["FOOTBALLDATA_APIKEY"],
 			},
 			extra,
 		})

@@ -186,7 +186,7 @@ main: kit: entity: person: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.person`"
           }
         }
       ]

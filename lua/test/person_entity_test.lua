@@ -102,6 +102,7 @@ function person_basic_setup(extra)
     ["FOOTBALLDATA_TEST_PERSON_ENTID"] = idmap,
     ["FOOTBALLDATA_TEST_LIVE"] = "FALSE",
     ["FOOTBALLDATA_TEST_EXPLAIN"] = "FALSE",
+    ["FOOTBALLDATA_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -113,6 +114,7 @@ function person_basic_setup(extra)
   if env["FOOTBALLDATA_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["FOOTBALLDATA_APIKEY"],
       },
       extra or {},
     })

@@ -17,34 +17,7 @@ main: {
       termsOfService: "https://www.football-data.org"
       title: "Football Data API"
       version: "4.0.0"
-      tagline: "RESTful football (soccer) data covering competitions, teams, matches, standings, scorers, and players"
-      homepage: "https://www.football-data.org/"
-      docs_url: "https://www.football-data.org/documentation/quickstart"
-      license_short: "Free tier available with registration; consult football-data.org terms for attribution and commercial use."
-      license_md: `- Free tier requires a free account and an \`X-Auth-Token\` API key obtained from football-data.org.
-- Paid tiers exist for higher rate limits, broader competition coverage, and commercial use.
-- Consult the [football-data.org terms](https://www.football-data.org/terms) for attribution and redistribution rules.`
-      about_md: `[football-data.org](https://www.football-data.org/) is a RESTful football (soccer) data API maintained by Daniel Freitag. It exposes competitions, teams, matches, standings, scorers, and player data through a single versioned REST surface (currently v4, released May 2022).
-
-What you get from the API:
-
-- Areas: continents and countries with hierarchical parent/child relationships.
-- Competitions: leagues and tournaments such as the Premier League, La Liga, Bundesliga, Champions League, World Cup, etc.
-- Teams: club details, squads, and coaching staff.
-- Matches: fixtures, live scores, and results across competitions and seasons.
-- Standings: league tables including home/away splits where available.
-- Scorers: top goalscorer rankings per competition.
-- Persons: individual player and staff profiles.
-
-Operational notes: the free tier requires registering for an \`X-Auth-Token\` API key passed as an HTTP header. Rate limits and the set of accessible competitions depend on the subscription tier. The v4 base URL is \`http://api.football-data.org/v4\`.`
-      entity_desc: {
-        area: "Geographic region (continent or country) used to group competitions and teams; typically served under `/v4/areas`."
-        competition: "A league or tournament such as the Premier League or Champions League, with seasons, standings, scorers, and matches; typically served under `/v4/competitions`."
-        match: "A single fixture with schedule, status, score, and lineups, accessible per competition, per team, or globally; typically served under `/v4/matches`."
-        person: "A player, coach, or other individual associated with teams and matches; typically served under `/v4/persons`."
-        team: "A club or national side with squad, staff, and fixtures; typically served under `/v4/teams`."
-      }
-      auth: false
     }
   }
 }
+

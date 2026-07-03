@@ -1,24 +1,8 @@
 # FootballData SDK
 
-RESTful football (soccer) data covering competitions, teams, matches, standings, scorers, and players
+Football Data API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Football Data API
-
-[football-data.org](https://www.football-data.org/) is a RESTful football (soccer) data API maintained by Daniel Freitag. It exposes competitions, teams, matches, standings, scorers, and player data through a single versioned REST surface (currently v4, released May 2022).
-
-What you get from the API:
-
-- Areas: continents and countries with hierarchical parent/child relationships.
-- Competitions: leagues and tournaments such as the Premier League, La Liga, Bundesliga, Champions League, World Cup, etc.
-- Teams: club details, squads, and coaching staff.
-- Matches: fixtures, live scores, and results across competitions and seasons.
-- Standings: league tables including home/away splits where available.
-- Scorers: top goalscorer rankings per competition.
-- Persons: individual player and staff profiles.
-
-Operational notes: the free tier requires registering for an `X-Auth-Token` API key passed as an HTTP header. Rate limits and the set of accessible competitions depend on the subscription tier. The v4 base URL is `http://api.football-data.org/v4`.
 
 ## Try it
 
@@ -52,29 +36,31 @@ gem install football-data-sdk
 luarocks install football-data-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FootballDataSDK } from 'football-data'
 
-const client = new FootballDataSDK({})
+const client = new FootballDataSDK({
+  apikey: process.env.FOOTBALL-DATA_APIKEY,
+})
 
 // List all areas
 const areas = await client.Area().list()
+console.log(areas.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -104,11 +90,11 @@ The API exposes 5 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Area** | Geographic region (continent or country) used to group competitions and teams; typically served under `/v4/areas`. | `/areas` |
-| **Competition** | A league or tournament such as the Premier League or Champions League, with seasons, standings, scorers, and matches; typically served under `/v4/competitions`. | `/competitions/{id}/matches` |
-| **Match** | A single fixture with schedule, status, score, and lineups, accessible per competition, per team, or globally; typically served under `/v4/matches`. | `/matches` |
-| **Person** | A player, coach, or other individual associated with teams and matches; typically served under `/v4/persons`. | `/persons/{id}/matches` |
-| **Team** | A club or national side with squad, staff, and fixtures; typically served under `/v4/teams`. | `/teams/{id}/matches` |
+| **Area** |  | `/areas` |
+| **Competition** |  | `/competitions/{id}/matches` |
+| **Match** |  | `/matches` |
+| **Person** |  | `/persons/{id}/matches` |
+| **Team** |  | `/teams/{id}/matches` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -118,17 +104,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from footballdata_sdk import FootballDataSDK
 
-client = FootballDataSDK({})
+client = FootballDataSDK({
+    "apikey": os.environ.get("FOOTBALL-DATA_APIKEY"),
+})
 
 # List all areas
-areas, err = client.Area(None).list(None, None)
+areas, err = client.Area().list()
+print(areas)
 
 # Load a specific area
-area, err = client.Area(None).load(
-    {"id": "example_id"}, None
-)
+area, err = client.Area().load({"id": "example_id"})
+print(area)
 ```
 
 ### PHP
@@ -137,15 +126,17 @@ area, err = client.Area(None).load(
 <?php
 require_once 'footballdata_sdk.php';
 
-$client = new FootballDataSDK([]);
+$client = new FootballDataSDK([
+    "apikey" => getenv("FOOTBALL-DATA_APIKEY"),
+]);
 
 // List all areas
-[$areas, $err] = $client->Area(null)->list(null, null);
+[$areas, $err] = $client->Area()->list();
+print_r($areas);
 
 // Load a specific area
-[$area, $err] = $client->Area(null)->load(
-    ["id" => "example_id"], null
-);
+[$area, $err] = $client->Area()->load(["id" => "example_id"]);
+print_r($area);
 ```
 
 ### Golang
@@ -153,10 +144,13 @@ $client = new FootballDataSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/football-data-sdk/go"
 
-client := sdk.NewFootballDataSDK(map[string]any{})
+client := sdk.NewFootballDataSDK(map[string]any{
+    "apikey": os.Getenv("FOOTBALL-DATA_APIKEY"),
+})
 
 // List all areas
 areas, err := client.Area(nil).List(nil, nil)
+fmt.Println(areas)
 ```
 
 ### Ruby
@@ -164,15 +158,17 @@ areas, err := client.Area(nil).List(nil, nil)
 ```ruby
 require_relative "FootballData_sdk"
 
-client = FootballDataSDK.new({})
+client = FootballDataSDK.new({
+  "apikey" => ENV["FOOTBALL-DATA_APIKEY"],
+})
 
 # List all areas
-areas, err = client.Area(nil).list(nil, nil)
+areas, err = client.Area().list
+puts areas
 
 # Load a specific area
-area, err = client.Area(nil).load(
-  { "id" => "example_id" }, nil
-)
+area, err = client.Area().load({ "id" => "example_id" })
+puts area
 ```
 
 ### Lua
@@ -180,15 +176,17 @@ area, err = client.Area(nil).load(
 ```lua
 local sdk = require("football-data_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FOOTBALL-DATA_APIKEY"),
+})
 
 -- List all areas
-local areas, err = client:Area(nil):list(nil, nil)
+local areas, err = client:Area():list()
+print(areas)
 
 -- Load a specific area
-local area, err = client:Area(nil):load(
-  { id = "example_id" }, nil
-)
+local area, err = client:Area():load({ id = "example_id" })
+print(area)
 ```
 
 ## Unit testing in offline mode
@@ -207,25 +205,21 @@ const result = await client.Area().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FootballDataSDK.test(None, None)
-result, err = client.Area(None).load(
-    {"id": "test01"}, None
-)
+client = FootballDataSDK.test()
+result, err = client.Area().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FootballDataSDK::test(null, null);
-[$result, $err] = $client->Area(null)->load(
-    ["id" => "test01"], null
-);
+$client = FootballDataSDK::test();
+[$result, $err] = $client->Area()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Area(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -234,19 +228,15 @@ result, err := client.Area(nil).Load(
 ### Ruby
 
 ```ruby
-client = FootballDataSDK.test(nil, nil)
-result, err = client.Area(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FootballDataSDK.test
+result, err = client.Area().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Area(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Area():load({ id = "test01" })
 ```
 
 ## How it works
@@ -350,15 +340,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Football Data API
-
-- Upstream: [https://www.football-data.org/](https://www.football-data.org/)
-- API docs: [https://www.football-data.org/documentation/quickstart](https://www.football-data.org/documentation/quickstart)
-
-- Free tier requires a free account and an `X-Auth-Token` API key obtained from football-data.org.
-- Paid tiers exist for higher rate limits, broader competition coverage, and commercial use.
-- Consult the [football-data.org terms](https://www.football-data.org/terms) for attribution and redistribution rules.
 
 ---
 

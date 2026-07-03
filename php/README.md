@@ -1,6 +1,11 @@
 # FootballData PHP SDK
 
-The PHP SDK for the FootballData API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the FootballData API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'footballdata_sdk.php';
 
-$client = new FootballDataSDK([]);
+$client = new FootballDataSDK([
+    "apikey" => getenv("FOOTBALL-DATA_APIKEY"),
+]);
 ```
 
 ### 2. List areas
 
 ```php
-[$result, $err] = $client->Area(null)->list(null, null);
+[$result, $err] = $client->Area()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -40,7 +47,7 @@ if (is_array($result)) {
 ### 3. Load a area
 
 ```php
-[$result, $err] = $client->Area(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Area()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = FootballDataSDK::test(null, null);
+$client = FootballDataSDK::test();
 
-[$result, $err] = $client->FootballData(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->FootballData()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 FOOTBALL-DATA_TEST_LIVE=TRUE
+FOOTBALL-DATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
