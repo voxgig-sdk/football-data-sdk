@@ -10,7 +10,7 @@ The PHP SDK for the FootballData API — an entity-oriented client using PHP con
 
 ## Install
 ```bash
-composer require voxgig/football-data-sdk
+composer require voxgig-sdk/football-data
 ```
 
 

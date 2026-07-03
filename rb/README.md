@@ -10,13 +10,13 @@ The Ruby SDK for the FootballData API — an entity-oriented client using idioma
 
 ## Install
 ```bash
-gem install football-data-sdk
+gem install voxgig-sdk-football-data
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "football-data-sdk"
+gem "voxgig-sdk-football-data"
 ```
 
 Then run:

@@ -8,12 +8,14 @@ source = {
   dir = "football-data-sdk/lua"
 }
 description = {
-  summary = "FootballData SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Football Data public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/football-data-sdk",
+  issues_url = "https://github.com/voxgig-sdk/football-data-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "football-data" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

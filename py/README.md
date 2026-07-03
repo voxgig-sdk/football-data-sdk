@@ -10,7 +10,7 @@ The Python SDK for the FootballData API — an entity-oriented client following 
 
 ## Install
 ```bash
-pip install football-data-sdk
+pip install voxgig-sdk-football-data
 ```
 
 Or install from source:

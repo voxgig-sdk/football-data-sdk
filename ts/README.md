@@ -10,7 +10,7 @@ The TypeScript SDK for the FootballData API — a type-safe, entity-oriented cli
 
 ## Install
 ```bash
-npm install football-data
+npm install @voxgig-sdk/football-data
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The Lua SDK for the FootballData API — an entity-oriented client using Lua con
 
 ## Install
 ```bash
-luarocks install football-data-sdk
+luarocks install voxgig-sdk-football-data
 ```
 
 If the module is not yet published, add the source directory to
