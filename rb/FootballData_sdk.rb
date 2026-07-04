@@ -208,65 +208,35 @@ class FootballDataSDK
   end
 
 
-  # Idiomatic facade: client.area.list / client.area.load({ "id" => ... })
-  def area
-    require_relative 'entity/area_entity'
-    @area ||= AreaEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.area instead.
+  # Canonical facade: client.Area.list / client.Area.load({ "id" => ... })
   def Area(data = nil)
     require_relative 'entity/area_entity'
     AreaEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.competition.list / client.competition.load({ "id" => ... })
-  def competition
-    require_relative 'entity/competition_entity'
-    @competition ||= CompetitionEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.competition instead.
+  # Canonical facade: client.Competition.list / client.Competition.load({ "id" => ... })
   def Competition(data = nil)
     require_relative 'entity/competition_entity'
     CompetitionEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.match.list / client.match.load({ "id" => ... })
-  def match
-    require_relative 'entity/match_entity'
-    @match ||= MatchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.match instead.
+  # Canonical facade: client.Match.list / client.Match.load({ "id" => ... })
   def Match(data = nil)
     require_relative 'entity/match_entity'
     MatchEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.person.list / client.person.load({ "id" => ... })
-  def person
-    require_relative 'entity/person_entity'
-    @person ||= PersonEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.person instead.
+  # Canonical facade: client.Person.list / client.Person.load({ "id" => ... })
   def Person(data = nil)
     require_relative 'entity/person_entity'
     PersonEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.team.list / client.team.load({ "id" => ... })
-  def team
-    require_relative 'entity/team_entity'
-    @team ||= TeamEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.team instead.
+  # Canonical facade: client.Team.list / client.Team.load({ "id" => ... })
   def Team(data = nil)
     require_relative 'entity/team_entity'
     TeamEntity.new(self, data)

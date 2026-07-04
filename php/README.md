@@ -31,18 +31,16 @@ $client = new FootballDataSDK([
 ]);
 ```
 
-### 2. List areas
+### 2. List area records
 
 ```php
 try {
-    $result = $client->area()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Area records — iterate directly.
+    $areas = $client->Area()->list();
+    foreach ($areas as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -51,9 +49,10 @@ try {
 
 ```php
 try {
-    $result = $client->area()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Area record (throws on error).
+    $area = $client->Area()->load(["id" => "example_id"]);
+    print_r($area);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -99,13 +98,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = FootballDataSDK::test();
+$client = FootballDataSDK::test([
+    "entity" => ["area" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->area()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$area = $client->Area()->load(["id" => "test01"]);
+print_r($area);
 ```
 
 ### Use a custom fetch function
@@ -186,7 +189,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `Area` | `($data): AreaEntity` | Create a Area entity instance. |
+| `Area` | `($data): AreaEntity` | Create an Area entity instance. |
 | `Competition` | `($data): CompetitionEntity` | Create a Competition entity instance. |
 | `Match` | `($data): MatchEntity` | Create a Match entity instance. |
 | `Person` | `($data): PersonEntity` | Create a Person entity instance. |
@@ -387,7 +390,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.area`
+Create an instance: `$area = $client->Area();`
 
 #### Operations
 
@@ -410,20 +413,22 @@ Create an instance: `const area = client.area`
 
 #### Example: Load
 
-```ts
-const area = await client.area.load({ id: 'area_id' })
+```php
+// load() returns the bare Area record (throws on error).
+$area = $client->Area()->load(["id" => "area_id"]);
 ```
 
 #### Example: List
 
-```ts
-const areas = await client.area.list()
+```php
+// list() returns an array of Area records (throws on error).
+$areas = $client->Area()->list();
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.competition`
+Create an instance: `$competition = $client->Competition();`
 
 #### Operations
 
@@ -472,20 +477,22 @@ Create an instance: `const competition = client.competition`
 
 #### Example: Load
 
-```ts
-const competition = await client.competition.load({ id: 'competition_id' })
+```php
+// load() returns the bare Competition record (throws on error).
+$competition = $client->Competition()->load(["id" => "competition_id"]);
 ```
 
 #### Example: List
 
-```ts
-const competitions = await client.competition.list()
+```php
+// list() returns an array of Competition records (throws on error).
+$competitions = $client->Competition()->list();
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.match`
+Create an instance: `$match = $client->Match();`
 
 #### Operations
 
@@ -520,20 +527,22 @@ Create an instance: `const match = client.match`
 
 #### Example: Load
 
-```ts
-const match = await client.match.load({ id: 'match_id' })
+```php
+// load() returns the bare Match record (throws on error).
+$match = $client->Match()->load(["id" => "match_id"]);
 ```
 
 #### Example: List
 
-```ts
-const matchs = await client.match.list()
+```php
+// list() returns an array of Match records (throws on error).
+$matchs = $client->Match()->list();
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `$person = $client->Person();`
 
 #### Operations
 
@@ -569,20 +578,22 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```php
+// load() returns the bare Person record (throws on error).
+$person = $client->Person()->load(["id" => "person_id"]);
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```php
+// list() returns an array of Person records (throws on error).
+$persons = $client->Person()->list();
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.team`
+Create an instance: `$team = $client->Team();`
 
 #### Operations
 
@@ -624,14 +635,16 @@ Create an instance: `const team = client.team`
 
 #### Example: Load
 
-```ts
-const team = await client.team.load({ id: 'team_id' })
+```php
+// load() returns the bare Team record (throws on error).
+$team = $client->Team()->load(["id" => "team_id"]);
 ```
 
 #### Example: List
 
-```ts
-const teams = await client.team.list()
+```php
+// list() returns an array of Team records (throws on error).
+$teams = $client->Team()->list();
 ```
 
 
@@ -706,7 +719,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$area = $client->area();
+$area = $client->Area();
 $area->load(["id" => "example_id"]);
 
 // $area->dataGet() now returns the loaded area data

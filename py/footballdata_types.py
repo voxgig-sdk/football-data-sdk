@@ -4,208 +4,197 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Area:
-    child_area: Optional[list] = None
-    country_code: Optional[str] = None
-    flag: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    parent_area: Optional[str] = None
-    parent_area_id: Optional[int] = None
+class Area(TypedDict, total=False):
+    child_area: list
+    country_code: str
+    flag: str
+    id: int
+    name: str
+    parent_area: str
+    parent_area_id: int
 
 
-@dataclass
-class AreaLoadMatch:
+class AreaLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class AreaListMatch:
-    child_area: Optional[list] = None
-    country_code: Optional[str] = None
-    flag: Optional[str] = None
-    id: Optional[int] = None
-    name: Optional[str] = None
-    parent_area: Optional[str] = None
-    parent_area_id: Optional[int] = None
+class AreaListMatch(TypedDict, total=False):
+    child_area: list
+    country_code: str
+    flag: str
+    id: int
+    name: str
+    parent_area: str
+    parent_area_id: int
 
 
-@dataclass
-class Competition:
-    address: Optional[str] = None
-    area: Optional[dict] = None
-    assist: Optional[int] = None
-    away_team: Optional[dict] = None
-    club_color: Optional[str] = None
-    code: Optional[str] = None
-    competition: Optional[dict] = None
-    crest: Optional[str] = None
-    current_season: Optional[dict] = None
-    emblem: Optional[str] = None
-    founded: Optional[int] = None
-    goal: Optional[int] = None
-    group: Optional[str] = None
-    home_team: Optional[dict] = None
-    id: Optional[int] = None
-    last_updated: Optional[str] = None
-    matchday: Optional[int] = None
-    name: Optional[str] = None
-    number_of_available_season: Optional[int] = None
-    penalty: Optional[int] = None
-    player: Optional[dict] = None
-    score: Optional[dict] = None
-    season: Optional[dict] = None
-    short_name: Optional[str] = None
-    stage: Optional[str] = None
-    status: Optional[str] = None
-    table: Optional[list] = None
-    team: Optional[dict] = None
-    tla: Optional[str] = None
-    type: Optional[str] = None
-    utc_date: Optional[str] = None
-    venue: Optional[str] = None
-    website: Optional[str] = None
+class Competition(TypedDict, total=False):
+    address: str
+    area: dict
+    assist: int
+    away_team: dict
+    club_color: str
+    code: str
+    competition: dict
+    crest: str
+    current_season: dict
+    emblem: str
+    founded: int
+    goal: int
+    group: str
+    home_team: dict
+    id: int
+    last_updated: str
+    matchday: int
+    name: str
+    number_of_available_season: int
+    penalty: int
+    player: dict
+    score: dict
+    season: dict
+    short_name: str
+    stage: str
+    status: str
+    table: list
+    team: dict
+    tla: str
+    type: str
+    utc_date: str
+    venue: str
+    website: str
 
 
-@dataclass
-class CompetitionLoadMatch:
+class CompetitionLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class CompetitionListMatch:
+class CompetitionListMatch(TypedDict):
     id: str
 
 
-@dataclass
-class Match:
-    area: Optional[dict] = None
-    away_team: Optional[dict] = None
-    booking: Optional[list] = None
-    competition: Optional[dict] = None
-    goal: Optional[list] = None
-    group: Optional[str] = None
-    home_team: Optional[dict] = None
-    id: Optional[int] = None
-    last_updated: Optional[str] = None
-    matchday: Optional[int] = None
-    odd: Optional[dict] = None
-    referee: Optional[list] = None
-    score: Optional[dict] = None
-    season: Optional[dict] = None
-    stage: Optional[str] = None
-    status: Optional[str] = None
-    substitution: Optional[list] = None
-    utc_date: Optional[str] = None
-    venue: Optional[str] = None
+class Match(TypedDict, total=False):
+    area: dict
+    away_team: dict
+    booking: list
+    competition: dict
+    goal: list
+    group: str
+    home_team: dict
+    id: int
+    last_updated: str
+    matchday: int
+    odd: dict
+    referee: list
+    score: dict
+    season: dict
+    stage: str
+    status: str
+    substitution: list
+    utc_date: str
+    venue: str
 
 
-@dataclass
-class MatchLoadMatch:
+class MatchLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class MatchListMatch:
-    area: Optional[dict] = None
-    away_team: Optional[dict] = None
-    booking: Optional[list] = None
-    competition: Optional[dict] = None
-    goal: Optional[list] = None
-    group: Optional[str] = None
-    home_team: Optional[dict] = None
-    id: Optional[int] = None
-    last_updated: Optional[str] = None
-    matchday: Optional[int] = None
-    odd: Optional[dict] = None
-    referee: Optional[list] = None
-    score: Optional[dict] = None
-    season: Optional[dict] = None
-    stage: Optional[str] = None
-    status: Optional[str] = None
-    substitution: Optional[list] = None
-    utc_date: Optional[str] = None
-    venue: Optional[str] = None
+class MatchListMatch(TypedDict, total=False):
+    area: dict
+    away_team: dict
+    booking: list
+    competition: dict
+    goal: list
+    group: str
+    home_team: dict
+    id: int
+    last_updated: str
+    matchday: int
+    odd: dict
+    referee: list
+    score: dict
+    season: dict
+    stage: str
+    status: str
+    substitution: list
+    utc_date: str
+    venue: str
 
 
-@dataclass
-class Person:
-    away_team: Optional[dict] = None
-    competition: Optional[dict] = None
-    date_of_birth: Optional[str] = None
-    first_name: Optional[str] = None
-    group: Optional[str] = None
-    home_team: Optional[dict] = None
-    id: Optional[int] = None
-    last_name: Optional[str] = None
-    last_updated: Optional[str] = None
-    matchday: Optional[int] = None
-    name: Optional[str] = None
-    nationality: Optional[str] = None
-    position: Optional[str] = None
-    score: Optional[dict] = None
-    season: Optional[dict] = None
-    section: Optional[str] = None
-    shirt_number: Optional[int] = None
-    stage: Optional[str] = None
-    status: Optional[str] = None
-    utc_date: Optional[str] = None
+class Person(TypedDict, total=False):
+    away_team: dict
+    competition: dict
+    date_of_birth: str
+    first_name: str
+    group: str
+    home_team: dict
+    id: int
+    last_name: str
+    last_updated: str
+    matchday: int
+    name: str
+    nationality: str
+    position: str
+    score: dict
+    season: dict
+    section: str
+    shirt_number: int
+    stage: str
+    status: str
+    utc_date: str
 
 
-@dataclass
-class PersonLoadMatch:
+class PersonLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class PersonListMatch:
+class PersonListMatch(TypedDict):
     id: int
 
 
-@dataclass
-class Team:
-    address: Optional[str] = None
-    area: Optional[dict] = None
-    away_team: Optional[dict] = None
-    club_color: Optional[str] = None
-    coach: Optional[dict] = None
-    competition: Optional[dict] = None
-    crest: Optional[str] = None
-    founded: Optional[int] = None
-    group: Optional[str] = None
-    home_team: Optional[dict] = None
-    id: Optional[int] = None
-    last_updated: Optional[str] = None
-    matchday: Optional[int] = None
-    name: Optional[str] = None
-    running_competition: Optional[list] = None
-    score: Optional[dict] = None
-    season: Optional[dict] = None
-    short_name: Optional[str] = None
-    squad: Optional[list] = None
-    staff: Optional[list] = None
-    stage: Optional[str] = None
-    status: Optional[str] = None
-    tla: Optional[str] = None
-    utc_date: Optional[str] = None
-    venue: Optional[str] = None
-    website: Optional[str] = None
+class Team(TypedDict, total=False):
+    address: str
+    area: dict
+    away_team: dict
+    club_color: str
+    coach: dict
+    competition: dict
+    crest: str
+    founded: int
+    group: str
+    home_team: dict
+    id: int
+    last_updated: str
+    matchday: int
+    name: str
+    running_competition: list
+    score: dict
+    season: dict
+    short_name: str
+    squad: list
+    staff: list
+    stage: str
+    status: str
+    tla: str
+    utc_date: str
+    venue: str
+    website: str
 
 
-@dataclass
-class TeamLoadMatch:
+class TeamLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class TeamListMatch:
+class TeamListMatch(TypedDict):
     id: int
-

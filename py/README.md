@@ -34,24 +34,28 @@ client = FootballDataSDK({
 })
 ```
 
-### 2. List areas
+### 2. List area records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.area.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    areas = client.Area().list({})
+    for area in areas:
+        print(area)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load an area
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.area.load({"id": "example_id"})
-    print(result)
+    area = client.Area().load({"id": "example_id"})
+    print(area)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -99,8 +103,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FootballDataSDK.test()
 
-result = client.area.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+area = client.Area().load({"id": "test01"})
+# area contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -178,7 +183,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Area` | `(data) -> AreaEntity` | Create a Area entity instance. |
+| `Area` | `(data) -> AreaEntity` | Create an Area entity instance. |
 | `Competition` | `(data) -> CompetitionEntity` | Create a Competition entity instance. |
 | `Match` | `(data) -> MatchEntity` | Create a Match entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
@@ -379,7 +384,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.area`
+Create an instance: `area = client.Area()`
 
 #### Operations
 
@@ -402,20 +407,20 @@ Create an instance: `const area = client.area`
 
 #### Example: Load
 
-```ts
-const area = await client.area.load({ id: 'area_id' })
+```python
+area = client.Area().load({"id": "area_id"})
 ```
 
 #### Example: List
 
-```ts
-const areas = await client.area.list()
+```python
+areas = client.Area().list({})
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.competition`
+Create an instance: `competition = client.Competition()`
 
 #### Operations
 
@@ -464,20 +469,20 @@ Create an instance: `const competition = client.competition`
 
 #### Example: Load
 
-```ts
-const competition = await client.competition.load({ id: 'competition_id' })
+```python
+competition = client.Competition().load({"id": "competition_id"})
 ```
 
 #### Example: List
 
-```ts
-const competitions = await client.competition.list()
+```python
+competitions = client.Competition().list({})
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.match`
+Create an instance: `match = client.Match()`
 
 #### Operations
 
@@ -512,20 +517,20 @@ Create an instance: `const match = client.match`
 
 #### Example: Load
 
-```ts
-const match = await client.match.load({ id: 'match_id' })
+```python
+match = client.Match().load({"id": "match_id"})
 ```
 
 #### Example: List
 
-```ts
-const matchs = await client.match.list()
+```python
+matchs = client.Match().list({})
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `person = client.Person()`
 
 #### Operations
 
@@ -561,20 +566,20 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```python
+person = client.Person().load({"id": "person_id"})
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```python
+persons = client.Person().list({})
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.team`
+Create an instance: `team = client.Team()`
 
 #### Operations
 
@@ -616,14 +621,14 @@ Create an instance: `const team = client.team`
 
 #### Example: Load
 
-```ts
-const team = await client.team.load({ id: 'team_id' })
+```python
+team = client.Team().load({"id": "team_id"})
 ```
 
 #### Example: List
 
-```ts
-const teams = await client.team.list()
+```python
+teams = client.Team().list({})
 ```
 
 
@@ -697,7 +702,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-area = client.area
+area = client.Area()
 area.load({"id": "example_id"})
 
 # area.data_get() now returns the loaded area data

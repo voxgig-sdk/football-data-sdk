@@ -33,26 +33,26 @@ local client = sdk.new({
 })
 ```
 
-### 2. List areas
+### 2. List area records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:area():list()
+local areas, err = client:Area():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(areas) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load an area
 
 ```lua
-local result, err = client:area():load({ id = "example_id" })
+local area, err = client:Area():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(area)
 ```
 
 
@@ -98,8 +98,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:area():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Area():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -179,7 +179,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Area` | `(data) -> AreaEntity` | Create a Area entity instance. |
+| `Area` | `(data) -> AreaEntity` | Create an Area entity instance. |
 | `Competition` | `(data) -> CompetitionEntity` | Create a Competition entity instance. |
 | `Match` | `(data) -> MatchEntity` | Create a Match entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
@@ -205,17 +205,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local area, err = client:Area():load({ id = "example_id" })
+    if err then error(err) end
+    -- area is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -376,7 +381,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.area`
+Create an instance: `local area = client:Area(nil)`
 
 #### Operations
 
@@ -399,20 +404,20 @@ Create an instance: `const area = client.area`
 
 #### Example: Load
 
-```ts
-const area = await client.area.load({ id: 'area_id' })
+```lua
+local area, err = client:Area():load({ id = "area_id" })
 ```
 
 #### Example: List
 
-```ts
-const areas = await client.area.list()
+```lua
+local areas, err = client:Area():list()
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.competition`
+Create an instance: `local competition = client:Competition(nil)`
 
 #### Operations
 
@@ -461,20 +466,20 @@ Create an instance: `const competition = client.competition`
 
 #### Example: Load
 
-```ts
-const competition = await client.competition.load({ id: 'competition_id' })
+```lua
+local competition, err = client:Competition():load({ id = "competition_id" })
 ```
 
 #### Example: List
 
-```ts
-const competitions = await client.competition.list()
+```lua
+local competitions, err = client:Competition():list()
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.match`
+Create an instance: `local match = client:Match(nil)`
 
 #### Operations
 
@@ -509,20 +514,20 @@ Create an instance: `const match = client.match`
 
 #### Example: Load
 
-```ts
-const match = await client.match.load({ id: 'match_id' })
+```lua
+local match, err = client:Match():load({ id = "match_id" })
 ```
 
 #### Example: List
 
-```ts
-const matchs = await client.match.list()
+```lua
+local matchs, err = client:Match():list()
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `local person = client:Person(nil)`
 
 #### Operations
 
@@ -558,20 +563,20 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```lua
+local person, err = client:Person():load({ id = "person_id" })
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```lua
+local persons, err = client:Person():list()
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.team`
+Create an instance: `local team = client:Team(nil)`
 
 #### Operations
 
@@ -613,14 +618,14 @@ Create an instance: `const team = client.team`
 
 #### Example: Load
 
-```ts
-const team = await client.team.load({ id: 'team_id' })
+```lua
+local team, err = client:Team():load({ id = "team_id" })
 ```
 
 #### Example: List
 
-```ts
-const teams = await client.team.list()
+```lua
+local teams, err = client:Team():list()
 ```
 
 
@@ -695,7 +700,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local area = client:area()
+local area = client:Area()
 area:load({ id = "example_id" })
 
 -- area:data_get() now returns the loaded area data

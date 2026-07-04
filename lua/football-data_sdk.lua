@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:area():list() / client:area():load({ id = ... })
-function FootballDataSDK:area(data)
+-- Idiomatic facade: client:Area():list() / client:Area():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FootballDataSDK:Area(data)
   local EntityMod = require("entity.area_entity")
   if data == nil then
     if self._area == nil then
@@ -256,15 +257,10 @@ function FootballDataSDK:area(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:area() instead.
-function FootballDataSDK:Area(data)
-  local EntityMod = require("entity.area_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:competition():list() / client:competition():load({ id = ... })
-function FootballDataSDK:competition(data)
+-- Idiomatic facade: client:Competition():list() / client:Competition():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FootballDataSDK:Competition(data)
   local EntityMod = require("entity.competition_entity")
   if data == nil then
     if self._competition == nil then
@@ -275,15 +271,10 @@ function FootballDataSDK:competition(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:competition() instead.
-function FootballDataSDK:Competition(data)
-  local EntityMod = require("entity.competition_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:match():list() / client:match():load({ id = ... })
-function FootballDataSDK:match(data)
+-- Idiomatic facade: client:Match():list() / client:Match():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FootballDataSDK:Match(data)
   local EntityMod = require("entity.match_entity")
   if data == nil then
     if self._match == nil then
@@ -294,15 +285,10 @@ function FootballDataSDK:match(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:match() instead.
-function FootballDataSDK:Match(data)
-  local EntityMod = require("entity.match_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:person():list() / client:person():load({ id = ... })
-function FootballDataSDK:person(data)
+-- Idiomatic facade: client:Person():list() / client:Person():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FootballDataSDK:Person(data)
   local EntityMod = require("entity.person_entity")
   if data == nil then
     if self._person == nil then
@@ -313,15 +299,10 @@ function FootballDataSDK:person(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:person() instead.
-function FootballDataSDK:Person(data)
-  local EntityMod = require("entity.person_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:team():list() / client:team():load({ id = ... })
-function FootballDataSDK:team(data)
+-- Idiomatic facade: client:Team():list() / client:Team():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FootballDataSDK:Team(data)
   local EntityMod = require("entity.team_entity")
   if data == nil then
     if self._team == nil then
@@ -329,12 +310,6 @@ function FootballDataSDK:team(data)
     end
     return self._team
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:team() instead.
-function FootballDataSDK:Team(data)
-  local EntityMod = require("entity.team_entity")
   return EntityMod.new(self, data)
 end
 

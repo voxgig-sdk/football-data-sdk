@@ -97,7 +97,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AreaEntity
 
 ```python
-area = client.area
+area = client.Area()
 ```
 
 ### Fields
@@ -119,7 +119,9 @@ area = client.area
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.area.list({})
+results = client.Area().list({})
+for area in results:
+    print(area)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -127,7 +129,7 @@ results = client.area.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.area.load({"id": "area_id"})
+result = client.Area().load({"id": "area_id"})
 ```
 
 ### Common Methods
@@ -162,7 +164,7 @@ Return the entity name.
 ## CompetitionEntity
 
 ```python
-competition = client.competition
+competition = client.Competition()
 ```
 
 ### Fields
@@ -210,7 +212,9 @@ competition = client.competition
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.competition.list({})
+results = client.Competition().list({})
+for competition in results:
+    print(competition)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -218,7 +222,7 @@ results = client.competition.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.competition.load({"id": "competition_id"})
+result = client.Competition().load({"id": "competition_id"})
 ```
 
 ### Common Methods
@@ -253,7 +257,7 @@ Return the entity name.
 ## MatchEntity
 
 ```python
-match = client.match
+match = client.Match()
 ```
 
 ### Fields
@@ -287,7 +291,9 @@ match = client.match
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.match.list({})
+results = client.Match().list({})
+for match in results:
+    print(match)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -295,7 +301,7 @@ results = client.match.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.match.load({"id": "match_id"})
+result = client.Match().load({"id": "match_id"})
 ```
 
 ### Common Methods
@@ -330,7 +336,7 @@ Return the entity name.
 ## PersonEntity
 
 ```python
-person = client.person
+person = client.Person()
 ```
 
 ### Fields
@@ -365,7 +371,9 @@ person = client.person
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.person.list({})
+results = client.Person().list({})
+for person in results:
+    print(person)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -373,7 +381,7 @@ results = client.person.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.person.load({"id": "person_id"})
+result = client.Person().load({"id": "person_id"})
 ```
 
 ### Common Methods
@@ -408,7 +416,7 @@ Return the entity name.
 ## TeamEntity
 
 ```python
-team = client.team
+team = client.Team()
 ```
 
 ### Fields
@@ -449,7 +457,9 @@ team = client.team
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.team.list({})
+results = client.Team().list({})
+for team in results:
+    print(team)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -457,7 +467,7 @@ results = client.team.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.team.load({"id": "team_id"})
+result = client.Team().load({"id": "team_id"})
 ```
 
 ### Common Methods

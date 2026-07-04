@@ -30,25 +30,28 @@ const client = new FootballDataSDK({
 })
 ```
 
-### 2. List areas
+### 2. List area records
+
+`list()` resolves to an array of Area objects — iterate it directly:
 
 ```ts
-const result = await client.area.list()
+const areas = await client.Area().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const area of areas) {
+  console.log(area)
 }
 ```
 
 ### 3. Load an area
 
-```ts
-const result = await client.area.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const area = await client.Area().load({ id: 'example_id' })
+  console.log(area)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -66,6 +69,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -94,9 +100,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FootballDataSDK.test()
 
-const result = await client.area.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const area = await client.Area().load({ id: 'test01' })
+// area is a bare entity populated with mock response data
+console.log(area)
 ```
 
 You can also use the instance method:
@@ -111,7 +117,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.area
+const entity = client.Area()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -193,7 +199,7 @@ new FootballDataSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `Area(data?)` | `AreaEntity` | Create a Area entity instance. |
+| `Area(data?)` | `AreaEntity` | Create an Area entity instance. |
 | `Competition(data?)` | `CompetitionEntity` | Create a Competition entity instance. |
 | `Match(data?)` | `MatchEntity` | Create a Match entity instance. |
 | `Person(data?)` | `PersonEntity` | Create a Person entity instance. |
@@ -214,29 +220,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): FootballDataSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -425,7 +432,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.area`
+Create an instance: `const area = client.Area()`
 
 #### Operations
 
@@ -449,19 +456,19 @@ Create an instance: `const area = client.area`
 #### Example: Load
 
 ```ts
-const area = await client.area.load({ id: 'area_id' })
+const area = await client.Area().load({ id: 'area_id' })
 ```
 
 #### Example: List
 
 ```ts
-const areas = await client.area.list()
+const areas = await client.Area().list()
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.competition`
+Create an instance: `const competition = client.Competition()`
 
 #### Operations
 
@@ -511,19 +518,19 @@ Create an instance: `const competition = client.competition`
 #### Example: Load
 
 ```ts
-const competition = await client.competition.load({ id: 'competition_id' })
+const competition = await client.Competition().load({ id: 'competition_id' })
 ```
 
 #### Example: List
 
 ```ts
-const competitions = await client.competition.list()
+const competitions = await client.Competition().list()
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.match`
+Create an instance: `const match = client.Match()`
 
 #### Operations
 
@@ -559,19 +566,19 @@ Create an instance: `const match = client.match`
 #### Example: Load
 
 ```ts
-const match = await client.match.load({ id: 'match_id' })
+const match = await client.Match().load({ id: 'match_id' })
 ```
 
 #### Example: List
 
 ```ts
-const matchs = await client.match.list()
+const matchs = await client.Match().list()
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `const person = client.Person()`
 
 #### Operations
 
@@ -608,19 +615,19 @@ Create an instance: `const person = client.person`
 #### Example: Load
 
 ```ts
-const person = await client.person.load({ id: 'person_id' })
+const person = await client.Person().load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.person.list()
+const persons = await client.Person().list()
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.team`
+Create an instance: `const team = client.Team()`
 
 #### Operations
 
@@ -663,13 +670,13 @@ Create an instance: `const team = client.team`
 #### Example: Load
 
 ```ts
-const team = await client.team.load({ id: 'team_id' })
+const team = await client.Team().load({ id: 'team_id' })
 ```
 
 #### Example: List
 
 ```ts
-const teams = await client.team.list()
+const teams = await client.Team().list()
 ```
 
 
@@ -740,7 +747,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const area = client.area
+const area = client.Area()
 await area.load({ id: "example_id" })
 
 // area.data() now returns the loaded area data

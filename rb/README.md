@@ -30,16 +30,14 @@ client = FootballDataSDK.new({
 })
 ```
 
-### 2. List areas
+### 2. List area records
 
 ```ruby
 begin
-  result = client.area.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Area records — iterate directly.
+  areas = client.Area.list
+  areas.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -50,8 +48,9 @@ end
 
 ```ruby
 begin
-  result = client.area.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Area record (raises on error).
+  area = client.Area.load({ "id" => "example_id" })
+  puts area
 rescue => err
   warn "load failed: #{err}"
 end
@@ -98,13 +97,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FootballDataSDK.test
+client = FootballDataSDK.test({
+  "entity" => { "area" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.area.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+area = client.Area.load({ "id" => "test01" })
+puts area
 ```
 
 ### Use a custom fetch function
@@ -182,7 +185,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Area` | `(data) -> AreaEntity` | Create a Area entity instance. |
+| `Area` | `(data) -> AreaEntity` | Create an Area entity instance. |
 | `Competition` | `(data) -> CompetitionEntity` | Create a Competition entity instance. |
 | `Match` | `(data) -> MatchEntity` | Create a Match entity instance. |
 | `Person` | `(data) -> PersonEntity` | Create a Person entity instance. |
@@ -382,7 +385,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.area`
+Create an instance: `area = client.Area`
 
 #### Operations
 
@@ -405,20 +408,22 @@ Create an instance: `const area = client.area`
 
 #### Example: Load
 
-```ts
-const area = await client.area.load({ id: 'area_id' })
+```ruby
+# load returns the bare Area record (raises on error).
+area = client.Area.load({ "id" => "area_id" })
 ```
 
 #### Example: List
 
-```ts
-const areas = await client.area.list()
+```ruby
+# list returns an Array of Area records (raises on error).
+areas = client.Area.list
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.competition`
+Create an instance: `competition = client.Competition`
 
 #### Operations
 
@@ -467,20 +472,22 @@ Create an instance: `const competition = client.competition`
 
 #### Example: Load
 
-```ts
-const competition = await client.competition.load({ id: 'competition_id' })
+```ruby
+# load returns the bare Competition record (raises on error).
+competition = client.Competition.load({ "id" => "competition_id" })
 ```
 
 #### Example: List
 
-```ts
-const competitions = await client.competition.list()
+```ruby
+# list returns an Array of Competition records (raises on error).
+competitions = client.Competition.list
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.match`
+Create an instance: `match = client.Match`
 
 #### Operations
 
@@ -515,20 +522,22 @@ Create an instance: `const match = client.match`
 
 #### Example: Load
 
-```ts
-const match = await client.match.load({ id: 'match_id' })
+```ruby
+# load returns the bare Match record (raises on error).
+match = client.Match.load({ "id" => "match_id" })
 ```
 
 #### Example: List
 
-```ts
-const matchs = await client.match.list()
+```ruby
+# list returns an Array of Match records (raises on error).
+matchs = client.Match.list
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.person`
+Create an instance: `person = client.Person`
 
 #### Operations
 
@@ -564,20 +573,22 @@ Create an instance: `const person = client.person`
 
 #### Example: Load
 
-```ts
-const person = await client.person.load({ id: 'person_id' })
+```ruby
+# load returns the bare Person record (raises on error).
+person = client.Person.load({ "id" => "person_id" })
 ```
 
 #### Example: List
 
-```ts
-const persons = await client.person.list()
+```ruby
+# list returns an Array of Person records (raises on error).
+persons = client.Person.list
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.team`
+Create an instance: `team = client.Team`
 
 #### Operations
 
@@ -619,14 +630,16 @@ Create an instance: `const team = client.team`
 
 #### Example: Load
 
-```ts
-const team = await client.team.load({ id: 'team_id' })
+```ruby
+# load returns the bare Team record (raises on error).
+team = client.Team.load({ "id" => "team_id" })
 ```
 
 #### Example: List
 
-```ts
-const teams = await client.team.list()
+```ruby
+# list returns an Array of Team records (raises on error).
+teams = client.Team.list
 ```
 
 
@@ -701,7 +714,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-area = client.area
+area = client.Area
 area.load({ "id" => "example_id" })
 
 # area.data_get now returns the loaded area data

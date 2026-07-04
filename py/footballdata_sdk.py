@@ -220,89 +220,39 @@ class FootballDataSDK:
         }
 
 
-    @property
-    def area(self):
-        """Idiomatic facade: client.area.list() / client.area.load({"id": ...})."""
-        from entity.area_entity import AreaEntity
-        cached = getattr(self, "_area", None)
-        if cached is None:
-            cached = AreaEntity(self, None)
-            self._area = cached
-        return cached
-
-    def Area(self, data=None):
-        # Deprecated: use client.area instead.
+    def Area(self, data=None) -> "AreaEntity":
+        """Entity factory: client.Area().list({}) / client.Area().load({"id": ...})."""
         from entity.area_entity import AreaEntity
         return AreaEntity(self, data)
 
 
-    @property
-    def competition(self):
-        """Idiomatic facade: client.competition.list() / client.competition.load({"id": ...})."""
-        from entity.competition_entity import CompetitionEntity
-        cached = getattr(self, "_competition", None)
-        if cached is None:
-            cached = CompetitionEntity(self, None)
-            self._competition = cached
-        return cached
-
-    def Competition(self, data=None):
-        # Deprecated: use client.competition instead.
+    def Competition(self, data=None) -> "CompetitionEntity":
+        """Entity factory: client.Competition().list({}) / client.Competition().load({"id": ...})."""
         from entity.competition_entity import CompetitionEntity
         return CompetitionEntity(self, data)
 
 
-    @property
-    def match(self):
-        """Idiomatic facade: client.match.list() / client.match.load({"id": ...})."""
-        from entity.match_entity import MatchEntity
-        cached = getattr(self, "_match", None)
-        if cached is None:
-            cached = MatchEntity(self, None)
-            self._match = cached
-        return cached
-
-    def Match(self, data=None):
-        # Deprecated: use client.match instead.
+    def Match(self, data=None) -> "MatchEntity":
+        """Entity factory: client.Match().list({}) / client.Match().load({"id": ...})."""
         from entity.match_entity import MatchEntity
         return MatchEntity(self, data)
 
 
-    @property
-    def person(self):
-        """Idiomatic facade: client.person.list() / client.person.load({"id": ...})."""
-        from entity.person_entity import PersonEntity
-        cached = getattr(self, "_person", None)
-        if cached is None:
-            cached = PersonEntity(self, None)
-            self._person = cached
-        return cached
-
-    def Person(self, data=None):
-        # Deprecated: use client.person instead.
+    def Person(self, data=None) -> "PersonEntity":
+        """Entity factory: client.Person().list({}) / client.Person().load({"id": ...})."""
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
-    @property
-    def team(self):
-        """Idiomatic facade: client.team.list() / client.team.load({"id": ...})."""
-        from entity.team_entity import TeamEntity
-        cached = getattr(self, "_team", None)
-        if cached is None:
-            cached = TeamEntity(self, None)
-            self._team = cached
-        return cached
-
-    def Team(self, data=None):
-        # Deprecated: use client.team instead.
+    def Team(self, data=None) -> "TeamEntity":
+        """Entity factory: client.Team().list({}) / client.Team().load({"id": ...})."""
         from entity.team_entity import TeamEntity
         return TeamEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "FootballDataSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -322,3 +272,13 @@ class FootballDataSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.area_entity import AreaEntity
+    from entity.competition_entity import CompetitionEntity
+    from entity.match_entity import MatchEntity
+    from entity.person_entity import PersonEntity
+    from entity.team_entity import TeamEntity
