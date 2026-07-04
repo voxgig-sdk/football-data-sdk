@@ -55,6 +55,9 @@ class CompetitionEntity
         return new CompetitionEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Competition|array $args Competition data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class CompetitionEntity
         }
     }
 
+    /**
+     * @return Competition|array The current Competition data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Competition fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class CompetitionEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Competition fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class CompetitionEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Competition.
+     *
+     * @param CompetitionLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed CompetitionLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Competition|array The loaded Competition as an assoc-array at the
+     *   SDK boundary; throws FootballDataError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class CompetitionEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Competition items matching the given filter.
+     *
+     * @param CompetitionListMatch|array|null $reqmatch Match filter (any subset
+     *   of Competition fields) as an assoc-array; CompetitionListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Competition[]|array A list of Competition items as assoc-arrays at
+     *   the SDK boundary; throws FootballDataError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class CompetitionEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

@@ -50,16 +50,14 @@ class MatchEntityTest extends TestCase
         $match_ref01_ent = $client->Match(null);
         $match_ref01_match = [];
 
-        [$match_ref01_list_result, $err] = $match_ref01_ent->list($match_ref01_match, null);
-        $this->assertNull($err);
+        $match_ref01_list_result = $match_ref01_ent->list($match_ref01_match, null);
         $this->assertIsArray($match_ref01_list_result);
 
         // LOAD
         $match_ref01_match_dt0 = [
             "id" => $match_ref01_data["id"],
         ];
-        [$match_ref01_data_dt0_loaded, $err] = $match_ref01_ent->load($match_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $match_ref01_data_dt0_loaded = $match_ref01_ent->load($match_ref01_match_dt0, null);
         $match_ref01_data_dt0_load_result = Helpers::to_map($match_ref01_data_dt0_loaded);
         $this->assertNotNull($match_ref01_data_dt0_load_result);
         $this->assertEquals($match_ref01_data_dt0_load_result["id"], $match_ref01_data["id"]);

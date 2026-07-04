@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Match,
+  MatchLoadMatch,
+  MatchListMatch,
+} from '../FootballDataTypes'
 
 // TODO: needs Entity superclass
-class MatchEntity extends FootballDataEntityBase {
+class MatchEntity extends FootballDataEntityBase<Match> {
 
   constructor(client: FootballDataSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class MatchEntity extends FootballDataEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MatchLoadMatch, ctrl?: Control): Promise<Match> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class MatchEntity extends FootballDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Match> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: MatchListMatch, ctrl?: Control): Promise<Match[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class MatchEntity extends FootballDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Match[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

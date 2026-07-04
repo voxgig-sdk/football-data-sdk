@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CompetitionLoadMatch
+---@param ctrl? table
+---@return Competition
+---@return string? err
 function CompetitionEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch CompetitionListMatch
+---@param ctrl? table
+---@return Competition[]
+---@return string? err
 function CompetitionEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

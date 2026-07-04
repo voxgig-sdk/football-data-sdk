@@ -245,26 +245,41 @@ func (sdk *FootballDataSDK) Direct(fetchargs map[string]any) (map[string]any, er
 }
 
 
+// Area returns a Area entity bound to this client.
+// Idiomatic usage: client.Area(nil).List(nil, nil) or
+// client.Area(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FootballDataSDK) Area(data map[string]any) FootballDataEntity {
 	return NewAreaEntityFunc(sdk, data)
 }
 
 
+// Competition returns a Competition entity bound to this client.
+// Idiomatic usage: client.Competition(nil).List(nil, nil) or
+// client.Competition(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FootballDataSDK) Competition(data map[string]any) FootballDataEntity {
 	return NewCompetitionEntityFunc(sdk, data)
 }
 
 
+// Match returns a Match entity bound to this client.
+// Idiomatic usage: client.Match(nil).List(nil, nil) or
+// client.Match(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FootballDataSDK) Match(data map[string]any) FootballDataEntity {
 	return NewMatchEntityFunc(sdk, data)
 }
 
 
+// Person returns a Person entity bound to this client.
+// Idiomatic usage: client.Person(nil).List(nil, nil) or
+// client.Person(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FootballDataSDK) Person(data map[string]any) FootballDataEntity {
 	return NewPersonEntityFunc(sdk, data)
 }
 
 
+// Team returns a Team entity bound to this client.
+// Idiomatic usage: client.Team(nil).List(nil, nil) or
+// client.Team(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FootballDataSDK) Team(data map[string]any) FootballDataEntity {
 	return NewTeamEntityFunc(sdk, data)
 }

@@ -50,16 +50,14 @@ class TestTeamEntity:
         team_ref01_ent = client.Team(None)
         team_ref01_match = {}
 
-        team_ref01_list_result, err = team_ref01_ent.list(team_ref01_match, None)
-        assert err is None
+        team_ref01_list_result = team_ref01_ent.list(team_ref01_match, None)
         assert isinstance(team_ref01_list_result, list)
 
         # LOAD
         team_ref01_match_dt0 = {
             "id": team_ref01_data["id"],
         }
-        team_ref01_data_dt0_loaded, err = team_ref01_ent.load(team_ref01_match_dt0, None)
-        assert err is None
+        team_ref01_data_dt0_loaded = team_ref01_ent.load(team_ref01_match_dt0, None)
         team_ref01_data_dt0_load_result = helpers.to_map(team_ref01_data_dt0_loaded)
         assert team_ref01_data_dt0_load_result is not None
         assert team_ref01_data_dt0_load_result["id"] == team_ref01_data["id"]

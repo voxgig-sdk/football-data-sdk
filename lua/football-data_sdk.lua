@@ -244,30 +244,95 @@ end
 
 
 
+-- Idiomatic facade: client:area():list() / client:area():load({ id = ... })
+function FootballDataSDK:area(data)
+  local EntityMod = require("entity.area_entity")
+  if data == nil then
+    if self._area == nil then
+      self._area = EntityMod.new(self, nil)
+    end
+    return self._area
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:area() instead.
 function FootballDataSDK:Area(data)
   local EntityMod = require("entity.area_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:competition():list() / client:competition():load({ id = ... })
+function FootballDataSDK:competition(data)
+  local EntityMod = require("entity.competition_entity")
+  if data == nil then
+    if self._competition == nil then
+      self._competition = EntityMod.new(self, nil)
+    end
+    return self._competition
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:competition() instead.
 function FootballDataSDK:Competition(data)
   local EntityMod = require("entity.competition_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:match():list() / client:match():load({ id = ... })
+function FootballDataSDK:match(data)
+  local EntityMod = require("entity.match_entity")
+  if data == nil then
+    if self._match == nil then
+      self._match = EntityMod.new(self, nil)
+    end
+    return self._match
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:match() instead.
 function FootballDataSDK:Match(data)
   local EntityMod = require("entity.match_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:person():list() / client:person():load({ id = ... })
+function FootballDataSDK:person(data)
+  local EntityMod = require("entity.person_entity")
+  if data == nil then
+    if self._person == nil then
+      self._person = EntityMod.new(self, nil)
+    end
+    return self._person
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:person() instead.
 function FootballDataSDK:Person(data)
   local EntityMod = require("entity.person_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:team():list() / client:team():load({ id = ... })
+function FootballDataSDK:team(data)
+  local EntityMod = require("entity.team_entity")
+  if data == nil then
+    if self._team == nil then
+      self._team = EntityMod.new(self, nil)
+    end
+    return self._team
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:team() instead.
 function FootballDataSDK:Team(data)
   local EntityMod = require("entity.team_entity")
   return EntityMod.new(self, data)

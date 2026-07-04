@@ -43,16 +43,14 @@ class CompetitionEntityTest < Minitest::Test
     competition_ref01_ent = client.Competition(nil)
     competition_ref01_match = {}
 
-    competition_ref01_list_result, err = competition_ref01_ent.list(competition_ref01_match, nil)
-    assert_nil err
+    competition_ref01_list_result = competition_ref01_ent.list(competition_ref01_match, nil)
     assert competition_ref01_list_result.is_a?(Array)
 
     # LOAD
     competition_ref01_match_dt0 = {
       "id" => competition_ref01_data["id"],
     }
-    competition_ref01_data_dt0_loaded, err = competition_ref01_ent.load(competition_ref01_match_dt0, nil)
-    assert_nil err
+    competition_ref01_data_dt0_loaded = competition_ref01_ent.load(competition_ref01_match_dt0, nil)
     competition_ref01_data_dt0_load_result = Helpers.to_map(competition_ref01_data_dt0_loaded)
     assert !competition_ref01_data_dt0_load_result.nil?
     assert_equal competition_ref01_data_dt0_load_result["id"], competition_ref01_data["id"]

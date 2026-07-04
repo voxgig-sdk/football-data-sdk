@@ -43,16 +43,14 @@ class MatchEntityTest < Minitest::Test
     match_ref01_ent = client.Match(nil)
     match_ref01_match = {}
 
-    match_ref01_list_result, err = match_ref01_ent.list(match_ref01_match, nil)
-    assert_nil err
+    match_ref01_list_result = match_ref01_ent.list(match_ref01_match, nil)
     assert match_ref01_list_result.is_a?(Array)
 
     # LOAD
     match_ref01_match_dt0 = {
       "id" => match_ref01_data["id"],
     }
-    match_ref01_data_dt0_loaded, err = match_ref01_ent.load(match_ref01_match_dt0, nil)
-    assert_nil err
+    match_ref01_data_dt0_loaded = match_ref01_ent.load(match_ref01_match_dt0, nil)
     match_ref01_data_dt0_load_result = Helpers.to_map(match_ref01_data_dt0_loaded)
     assert !match_ref01_data_dt0_load_result.nil?
     assert_equal match_ref01_data_dt0_load_result["id"], match_ref01_data["id"]

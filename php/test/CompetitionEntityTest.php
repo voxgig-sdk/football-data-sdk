@@ -50,16 +50,14 @@ class CompetitionEntityTest extends TestCase
         $competition_ref01_ent = $client->Competition(null);
         $competition_ref01_match = [];
 
-        [$competition_ref01_list_result, $err] = $competition_ref01_ent->list($competition_ref01_match, null);
-        $this->assertNull($err);
+        $competition_ref01_list_result = $competition_ref01_ent->list($competition_ref01_match, null);
         $this->assertIsArray($competition_ref01_list_result);
 
         // LOAD
         $competition_ref01_match_dt0 = [
             "id" => $competition_ref01_data["id"],
         ];
-        [$competition_ref01_data_dt0_loaded, $err] = $competition_ref01_ent->load($competition_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $competition_ref01_data_dt0_loaded = $competition_ref01_ent->load($competition_ref01_match_dt0, null);
         $competition_ref01_data_dt0_load_result = Helpers::to_map($competition_ref01_data_dt0_loaded);
         $this->assertNotNull($competition_ref01_data_dt0_load_result);
         $this->assertEquals($competition_ref01_data_dt0_load_result["id"], $competition_ref01_data["id"]);

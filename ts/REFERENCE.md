@@ -158,7 +158,7 @@ Alias for `FootballDataSDK.test()`.
 ## AreaEntity
 
 ```ts
-const area = client.Area()
+const area = client.area
 ```
 
 ### Fields
@@ -180,7 +180,7 @@ const area = client.Area()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Area().list()
+const results = await client.area.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -188,7 +188,7 @@ const results = await client.Area().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Area().load({ id: 'area_id' })
+const result = await client.area.load({ id: 'area_id' })
 ```
 
 ### Common Methods
@@ -222,7 +222,7 @@ Return a copy of the entity options.
 ## CompetitionEntity
 
 ```ts
-const competition = client.Competition()
+const competition = client.competition
 ```
 
 ### Fields
@@ -270,7 +270,7 @@ const competition = client.Competition()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Competition().list()
+const results = await client.competition.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -278,7 +278,7 @@ const results = await client.Competition().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Competition().load({ id: 'competition_id' })
+const result = await client.competition.load({ id: 'competition_id' })
 ```
 
 ### Common Methods
@@ -312,7 +312,7 @@ Return a copy of the entity options.
 ## MatchEntity
 
 ```ts
-const match = client.Match()
+const match = client.match
 ```
 
 ### Fields
@@ -346,7 +346,7 @@ const match = client.Match()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Match().list()
+const results = await client.match.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -354,7 +354,7 @@ const results = await client.Match().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Match().load({ id: 'match_id' })
+const result = await client.match.load({ id: 'match_id' })
 ```
 
 ### Common Methods
@@ -388,7 +388,7 @@ Return a copy of the entity options.
 ## PersonEntity
 
 ```ts
-const person = client.Person()
+const person = client.person
 ```
 
 ### Fields
@@ -423,7 +423,7 @@ const person = client.Person()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Person().list()
+const results = await client.person.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -431,7 +431,7 @@ const results = await client.Person().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Person().load({ id: 'person_id' })
+const result = await client.person.load({ id: 'person_id' })
 ```
 
 ### Common Methods
@@ -465,7 +465,7 @@ Return a copy of the entity options.
 ## TeamEntity
 
 ```ts
-const team = client.Team()
+const team = client.team
 ```
 
 ### Fields
@@ -506,7 +506,7 @@ const team = client.Team()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Team().list()
+const results = await client.team.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -514,7 +514,7 @@ const results = await client.Team().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Team().load({ id: 'team_id' })
+const result = await client.team.load({ id: 'team_id' })
 ```
 
 ### Common Methods

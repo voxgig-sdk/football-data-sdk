@@ -43,16 +43,14 @@ class TeamEntityTest < Minitest::Test
     team_ref01_ent = client.Team(nil)
     team_ref01_match = {}
 
-    team_ref01_list_result, err = team_ref01_ent.list(team_ref01_match, nil)
-    assert_nil err
+    team_ref01_list_result = team_ref01_ent.list(team_ref01_match, nil)
     assert team_ref01_list_result.is_a?(Array)
 
     # LOAD
     team_ref01_match_dt0 = {
       "id" => team_ref01_data["id"],
     }
-    team_ref01_data_dt0_loaded, err = team_ref01_ent.load(team_ref01_match_dt0, nil)
-    assert_nil err
+    team_ref01_data_dt0_loaded = team_ref01_ent.load(team_ref01_match_dt0, nil)
     team_ref01_data_dt0_load_result = Helpers.to_map(team_ref01_data_dt0_loaded)
     assert !team_ref01_data_dt0_load_result.nil?
     assert_equal team_ref01_data_dt0_load_result["id"], team_ref01_data["id"]

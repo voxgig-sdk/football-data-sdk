@@ -6,6 +6,8 @@ import { MatchEntity } from './entity/MatchEntity'
 import { PersonEntity } from './entity/PersonEntity'
 import { TeamEntity } from './entity/TeamEntity'
 
+export type * from './FootballDataTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -206,30 +208,70 @@ class FootballDataSDK {
 
 
 
+  _area?: AreaEntity
+
+  // Idiomatic facade: `client.area.list()` / `client.area.load({ id })`.
+  get area(): AreaEntity {
+    return (this._area ??= new AreaEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.area` instead. */
   Area(data?: any) {
     const self = this
     return new AreaEntity(self,data)
   }
 
 
+  _competition?: CompetitionEntity
+
+  // Idiomatic facade: `client.competition.list()` / `client.competition.load({ id })`.
+  get competition(): CompetitionEntity {
+    return (this._competition ??= new CompetitionEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.competition` instead. */
   Competition(data?: any) {
     const self = this
     return new CompetitionEntity(self,data)
   }
 
 
+  _match?: MatchEntity
+
+  // Idiomatic facade: `client.match.list()` / `client.match.load({ id })`.
+  get match(): MatchEntity {
+    return (this._match ??= new MatchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.match` instead. */
   Match(data?: any) {
     const self = this
     return new MatchEntity(self,data)
   }
 
 
+  _person?: PersonEntity
+
+  // Idiomatic facade: `client.person.list()` / `client.person.load({ id })`.
+  get person(): PersonEntity {
+    return (this._person ??= new PersonEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.person` instead. */
   Person(data?: any) {
     const self = this
     return new PersonEntity(self,data)
   }
 
 
+  _team?: TeamEntity
+
+  // Idiomatic facade: `client.team.list()` / `client.team.load({ id })`.
+  get team(): TeamEntity {
+    return (this._team ??= new TeamEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.team` instead. */
   Team(data?: any) {
     const self = this
     return new TeamEntity(self,data)

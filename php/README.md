@@ -9,9 +9,10 @@ The PHP SDK for the FootballData API — an entity-oriented client using PHP con
 
 
 ## Install
-```bash
-composer require voxgig-sdk/football-data
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/football-data-sdk/releases](https://github.com/voxgig-sdk/football-data-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,30 +27,35 @@ loading a specific record.
 require_once 'footballdata_sdk.php';
 
 $client = new FootballDataSDK([
-    "apikey" => getenv("FOOTBALL-DATA_APIKEY"),
+    "apikey" => getenv("FOOTBALL_DATA_APIKEY"),
 ]);
 ```
 
 ### 2. List areas
 
 ```php
-[$result, $err] = $client->Area()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->area()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
-### 3. Load a area
+### 3. Load an area
 
 ```php
-[$result, $err] = $client->Area()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->area()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +66,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +104,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = FootballDataSDK::test();
 
-[$result, $err] = $client->FootballData()->load(["id" => "test01"]);
+$result = $client->area()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +138,8 @@ $client = new FootballDataSDK([
 Create a `.env.local` file at the project root:
 
 ```
-FOOTBALL-DATA_TEST_LIVE=TRUE
-FOOTBALL-DATA_APIKEY=<your-key>
+FOOTBALL_DATA_TEST_LIVE=TRUE
+FOOTBALL_DATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -203,8 +212,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -374,7 +387,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.Area()`
+Create an instance: `const area = client.area`
 
 #### Operations
 
@@ -398,19 +411,19 @@ Create an instance: `const area = client.Area()`
 #### Example: Load
 
 ```ts
-const area = await client.Area().load({ id: 'area_id' })
+const area = await client.area.load({ id: 'area_id' })
 ```
 
 #### Example: List
 
 ```ts
-const areas = await client.Area().list()
+const areas = await client.area.list()
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.Competition()`
+Create an instance: `const competition = client.competition`
 
 #### Operations
 
@@ -460,19 +473,19 @@ Create an instance: `const competition = client.Competition()`
 #### Example: Load
 
 ```ts
-const competition = await client.Competition().load({ id: 'competition_id' })
+const competition = await client.competition.load({ id: 'competition_id' })
 ```
 
 #### Example: List
 
 ```ts
-const competitions = await client.Competition().list()
+const competitions = await client.competition.list()
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.Match()`
+Create an instance: `const match = client.match`
 
 #### Operations
 
@@ -508,19 +521,19 @@ Create an instance: `const match = client.Match()`
 #### Example: Load
 
 ```ts
-const match = await client.Match().load({ id: 'match_id' })
+const match = await client.match.load({ id: 'match_id' })
 ```
 
 #### Example: List
 
 ```ts
-const matchs = await client.Match().list()
+const matchs = await client.match.list()
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -557,19 +570,19 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.person.list()
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.Team()`
+Create an instance: `const team = client.team`
 
 #### Operations
 
@@ -612,13 +625,13 @@ Create an instance: `const team = client.Team()`
 #### Example: Load
 
 ```ts
-const team = await client.Team().load({ id: 'team_id' })
+const team = await client.team.load({ id: 'team_id' })
 ```
 
 #### Example: List
 
 ```ts
-const teams = await client.Team().list()
+const teams = await client.team.list()
 ```
 
 
@@ -693,11 +706,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$area = $client->area();
+$area->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $area->dataGet() now returns the loaded area data
+// $area->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

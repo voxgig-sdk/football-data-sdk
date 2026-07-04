@@ -50,16 +50,14 @@ class TestCompetitionEntity:
         competition_ref01_ent = client.Competition(None)
         competition_ref01_match = {}
 
-        competition_ref01_list_result, err = competition_ref01_ent.list(competition_ref01_match, None)
-        assert err is None
+        competition_ref01_list_result = competition_ref01_ent.list(competition_ref01_match, None)
         assert isinstance(competition_ref01_list_result, list)
 
         # LOAD
         competition_ref01_match_dt0 = {
             "id": competition_ref01_data["id"],
         }
-        competition_ref01_data_dt0_loaded, err = competition_ref01_ent.load(competition_ref01_match_dt0, None)
-        assert err is None
+        competition_ref01_data_dt0_loaded = competition_ref01_ent.load(competition_ref01_match_dt0, None)
         competition_ref01_data_dt0_load_result = helpers.to_map(competition_ref01_data_dt0_loaded)
         assert competition_ref01_data_dt0_load_result is not None
         assert competition_ref01_data_dt0_load_result["id"] == competition_ref01_data["id"]

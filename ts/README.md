@@ -9,9 +9,12 @@ The TypeScript SDK for the FootballData API — a type-safe, entity-oriented cli
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/football-data
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/football-data-sdk/releases](https://github.com/voxgig-sdk/football-data-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FootballDataSDK } from 'football-data'
+import { FootballDataSDK } from '@voxgig-sdk/football-data'
 
 const client = new FootballDataSDK({
-  apikey: process.env.FOOTBALL-DATA_APIKEY,
+  apikey: process.env.FOOTBALL_DATA_APIKEY,
 })
 ```
 
 ### 2. List areas
 
 ```ts
-const result = await client.Area().list()
+const result = await client.area.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -39,10 +42,10 @@ if (result.ok) {
 }
 ```
 
-### 3. Load a area
+### 3. Load an area
 
 ```ts
-const result = await client.Area().load({ id: 'example_id' })
+const result = await client.area.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +94,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FootballDataSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.area.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -108,7 +111,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.area
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -145,8 +148,8 @@ const client = new FootballDataSDK({
 Create a `.env.local` file at the project root:
 
 ```
-FOOTBALL-DATA_TEST_LIVE=TRUE
-FOOTBALL-DATA_APIKEY=<your-key>
+FOOTBALL_DATA_TEST_LIVE=TRUE
+FOOTBALL_DATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -422,7 +425,7 @@ API path: `/teams/{id}/matches`
 
 ### Area
 
-Create an instance: `const area = client.Area()`
+Create an instance: `const area = client.area`
 
 #### Operations
 
@@ -446,19 +449,19 @@ Create an instance: `const area = client.Area()`
 #### Example: Load
 
 ```ts
-const area = await client.Area().load({ id: 'area_id' })
+const area = await client.area.load({ id: 'area_id' })
 ```
 
 #### Example: List
 
 ```ts
-const areas = await client.Area().list()
+const areas = await client.area.list()
 ```
 
 
 ### Competition
 
-Create an instance: `const competition = client.Competition()`
+Create an instance: `const competition = client.competition`
 
 #### Operations
 
@@ -508,19 +511,19 @@ Create an instance: `const competition = client.Competition()`
 #### Example: Load
 
 ```ts
-const competition = await client.Competition().load({ id: 'competition_id' })
+const competition = await client.competition.load({ id: 'competition_id' })
 ```
 
 #### Example: List
 
 ```ts
-const competitions = await client.Competition().list()
+const competitions = await client.competition.list()
 ```
 
 
 ### Match
 
-Create an instance: `const match = client.Match()`
+Create an instance: `const match = client.match`
 
 #### Operations
 
@@ -556,19 +559,19 @@ Create an instance: `const match = client.Match()`
 #### Example: Load
 
 ```ts
-const match = await client.Match().load({ id: 'match_id' })
+const match = await client.match.load({ id: 'match_id' })
 ```
 
 #### Example: List
 
 ```ts
-const matchs = await client.Match().list()
+const matchs = await client.match.list()
 ```
 
 
 ### Person
 
-Create an instance: `const person = client.Person()`
+Create an instance: `const person = client.person`
 
 #### Operations
 
@@ -605,19 +608,19 @@ Create an instance: `const person = client.Person()`
 #### Example: Load
 
 ```ts
-const person = await client.Person().load({ id: 'person_id' })
+const person = await client.person.load({ id: 'person_id' })
 ```
 
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.person.list()
 ```
 
 
 ### Team
 
-Create an instance: `const team = client.Team()`
+Create an instance: `const team = client.team`
 
 #### Operations
 
@@ -660,13 +663,13 @@ Create an instance: `const team = client.Team()`
 #### Example: Load
 
 ```ts
-const team = await client.Team().load({ id: 'team_id' })
+const team = await client.team.load({ id: 'team_id' })
 ```
 
 #### Example: List
 
 ```ts
-const teams = await client.Team().list()
+const teams = await client.team.list()
 ```
 
 
@@ -727,7 +730,7 @@ football-data/
 Import the SDK from the package root:
 
 ```ts
-import { FootballDataSDK } from 'football-data'
+import { FootballDataSDK } from '@voxgig-sdk/football-data'
 ```
 
 ### Entity state
@@ -737,11 +740,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const area = client.area
+await area.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// area.data() now returns the loaded area data
+// area.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

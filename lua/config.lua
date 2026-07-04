@@ -120,6 +120,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -399,6 +400,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -479,6 +481,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -533,6 +536,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -586,6 +590,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -667,6 +672,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -912,6 +918,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1100,6 +1107,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1187,6 +1195,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -1417,6 +1426,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                   ["query"] = {
@@ -1552,6 +1562,7 @@ local function make_config()
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },

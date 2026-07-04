@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MatchLoadMatch
+---@param ctrl? table
+---@return Match
+---@return string? err
 function MatchEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch MatchListMatch
+---@param ctrl? table
+---@return Match[]
+---@return string? err
 function MatchEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

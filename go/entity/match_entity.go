@@ -85,6 +85,27 @@ func (e *MatchEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Match; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *MatchEntity) DataTyped(data ...Match) Match {
+	if len(data) > 0 {
+		return typedFrom[Match](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Match](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Match (all fields
+// optional at the wire level).
+func (e *MatchEntity) MatchTyped(match ...Match) Match {
+	if len(match) > 0 {
+		return typedFrom[Match](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Match](e.Match())
+}
+
 
 func (e *MatchEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *MatchEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, e
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// MatchLoadMatch and returns an Match. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *MatchEntity) LoadTyped(reqmatch MatchLoadMatch, ctrl map[string]any) (Match, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Match{}, err
+	}
+	return typedFrom[Match](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *MatchEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, e
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// MatchListMatch and returns []Match. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *MatchEntity) ListTyped(reqmatch MatchListMatch, ctrl map[string]any) ([]Match, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Match](res), nil
 }
 
 
