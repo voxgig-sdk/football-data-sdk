@@ -19,6 +19,13 @@
 ---@field id number
 
 ---@class AreaListMatch
+---@field child_area? table
+---@field country_code? string
+---@field flag? string
+---@field id? number
+---@field name? string
+---@field parent_area? string
+---@field parent_area_id? number
 
 ---@class Competition
 ---@field address? string
@@ -86,6 +93,25 @@
 ---@field id number
 
 ---@class MatchListMatch
+---@field area? table
+---@field away_team? table
+---@field booking? table
+---@field competition? table
+---@field goal? table
+---@field group? string
+---@field home_team? table
+---@field id? number
+---@field last_updated? string
+---@field matchday? number
+---@field odd? table
+---@field referee? table
+---@field score? table
+---@field season? table
+---@field stage? string
+---@field status? string
+---@field substitution? table
+---@field utc_date? string
+---@field venue? string
 
 ---@class Person
 ---@field away_team? table

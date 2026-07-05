@@ -221,31 +221,31 @@ class FootballDataSDK:
 
 
     def Area(self, data=None) -> "AreaEntity":
-        """Entity factory: client.Area().list({}) / client.Area().load({"id": ...})."""
+        """Entity factory: client.Area().list() / client.Area().load({"id": ...})."""
         from entity.area_entity import AreaEntity
         return AreaEntity(self, data)
 
 
     def Competition(self, data=None) -> "CompetitionEntity":
-        """Entity factory: client.Competition().list({}) / client.Competition().load({"id": ...})."""
+        """Entity factory: client.Competition().list() / client.Competition().load({"id": ...})."""
         from entity.competition_entity import CompetitionEntity
         return CompetitionEntity(self, data)
 
 
     def Match(self, data=None) -> "MatchEntity":
-        """Entity factory: client.Match().list({}) / client.Match().load({"id": ...})."""
+        """Entity factory: client.Match().list() / client.Match().load({"id": ...})."""
         from entity.match_entity import MatchEntity
         return MatchEntity(self, data)
 
 
     def Person(self, data=None) -> "PersonEntity":
-        """Entity factory: client.Person().list({}) / client.Person().load({"id": ...})."""
+        """Entity factory: client.Person().list() / client.Person().load({"id": ...})."""
         from entity.person_entity import PersonEntity
         return PersonEntity(self, data)
 
 
     def Team(self, data=None) -> "TeamEntity":
-        """Entity factory: client.Team().list({}) / client.Team().load({"id": ...})."""
+        """Entity factory: client.Team().list() / client.Team().load({"id": ...})."""
         from entity.team_entity import TeamEntity
         return TeamEntity(self, data)
 

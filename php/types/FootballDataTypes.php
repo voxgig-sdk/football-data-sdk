@@ -30,7 +30,7 @@ class AreaLoadMatch
     public int $id;
 }
 
-/** Match filter for Area#list (any subset of Area fields). */
+/** Request payload for Area#list. */
 class AreaListMatch
 {
     public ?array $child_area = null;
@@ -122,7 +122,7 @@ class MatchLoadMatch
     public int $id;
 }
 
-/** Match filter for Match#list (any subset of Match fields). */
+/** Request payload for Match#list. */
 class MatchListMatch
 {
     public ?array $area = null;

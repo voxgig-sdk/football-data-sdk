@@ -50,7 +50,7 @@ AreaLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Area#list (any subset of Area fields).
+# Request payload for Area#list.
 #
 # @!attribute [rw] child_area
 #   @return [Array, nil]
@@ -328,7 +328,7 @@ MatchLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Match#list (any subset of Match fields).
+# Request payload for Match#list.
 #
 # @!attribute [rw] area
 #   @return [Hash, nil]

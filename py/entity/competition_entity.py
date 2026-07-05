@@ -65,8 +65,13 @@ class CompetitionEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: CompetitionLoadMatch, ctrl=None) -> Competition:
+    def load(self, reqmatch=None, ctrl=None) -> Competition:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Competition().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class CompetitionEntity:
 
 
     
-    def list(self, reqmatch: CompetitionListMatch, ctrl=None) -> list[Competition]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Competition]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Competition().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

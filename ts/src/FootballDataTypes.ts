@@ -19,7 +19,15 @@ export interface AreaLoadMatch {
   id: number
 }
 
-export type AreaListMatch = Partial<Area>
+export interface AreaListMatch {
+  child_area?: any[]
+  country_code?: string
+  flag?: string
+  id?: number
+  name?: string
+  parent_area?: string
+  parent_area_id?: number
+}
 
 export interface Competition {
   address?: string
@@ -91,7 +99,27 @@ export interface MatchLoadMatch {
   id: number
 }
 
-export type MatchListMatch = Partial<Match>
+export interface MatchListMatch {
+  area?: Record<string, any>
+  away_team?: Record<string, any>
+  booking?: any[]
+  competition?: Record<string, any>
+  goal?: any[]
+  group?: string
+  home_team?: Record<string, any>
+  id?: number
+  last_updated?: string
+  matchday?: number
+  odd?: Record<string, any>
+  referee?: any[]
+  score?: Record<string, any>
+  season?: Record<string, any>
+  stage?: string
+  status?: string
+  substitution?: any[]
+  utc_date?: string
+  venue?: string
+}
 
 export interface Person {
   away_team?: Record<string, any>

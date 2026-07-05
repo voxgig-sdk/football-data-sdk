@@ -4,6 +4,8 @@
 
 The Golang SDK for the FootballData API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Area(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -61,12 +63,41 @@ func main() {
     }
 
     // Load a single area — the value is the loaded record.
-    area, err := client.Area(nil).Load(map[string]any{"id": "example_id"}, nil)
+    area, err := client.Area(nil).Load(map[string]any{"id": 1}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(area)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+areas, err := client.Area(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = areas
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -116,13 +147,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-area, err := client.Area(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+area, err := client.Area(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(area) // the loaded mock data
+fmt.Println(area) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -215,9 +246,6 @@ All entities implement the `FootballDataEntity` interface.
 | --- | --- | --- |
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -230,16 +258,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    area, err := client.Area(nil).Load(map[string]any{"id": "example_id"}, nil)
+    area, err := client.Area(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // area is the loaded record
+    // area is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -416,13 +444,13 @@ Create an instance: `area := client.Area(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | ``$ARRAY`` |  |
-| `country_code` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_area` | ``$STRING`` |  |
-| `parent_area_id` | ``$INTEGER`` |  |
+| `child_area` | `[]any` |  |
+| `country_code` | `string` |  |
+| `flag` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `parent_area` | `string` |  |
+| `parent_area_id` | `int` |  |
 
 #### Example: Load
 
@@ -460,39 +488,39 @@ Create an instance: `competition := client.Competition(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `assist` | ``$INTEGER`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `current_season` | ``$OBJECT`` |  |
-| `emblem` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `goal` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `number_of_available_season` | ``$INTEGER`` |  |
-| `penalty` | ``$INTEGER`` |  |
-| `player` | ``$OBJECT`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `table` | ``$ARRAY`` |  |
-| `team` | ``$OBJECT`` |  |
-| `tla` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `string` |  |
+| `area` | `map[string]any` |  |
+| `assist` | `int` |  |
+| `away_team` | `map[string]any` |  |
+| `club_color` | `string` |  |
+| `code` | `string` |  |
+| `competition` | `map[string]any` |  |
+| `crest` | `string` |  |
+| `current_season` | `map[string]any` |  |
+| `emblem` | `string` |  |
+| `founded` | `int` |  |
+| `goal` | `int` |  |
+| `group` | `string` |  |
+| `home_team` | `map[string]any` |  |
+| `id` | `int` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `name` | `string` |  |
+| `number_of_available_season` | `int` |  |
+| `penalty` | `int` |  |
+| `player` | `map[string]any` |  |
+| `score` | `map[string]any` |  |
+| `season` | `map[string]any` |  |
+| `short_name` | `string` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `table` | `[]any` |  |
+| `team` | `map[string]any` |  |
+| `tla` | `string` |  |
+| `type` | `string` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -530,25 +558,25 @@ Create an instance: `match := client.Match(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `booking` | ``$ARRAY`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `goal` | ``$ARRAY`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `odd` | ``$OBJECT`` |  |
-| `referee` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `substitution` | ``$ARRAY`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
+| `area` | `map[string]any` |  |
+| `away_team` | `map[string]any` |  |
+| `booking` | `[]any` |  |
+| `competition` | `map[string]any` |  |
+| `goal` | `[]any` |  |
+| `group` | `string` |  |
+| `home_team` | `map[string]any` |  |
+| `id` | `int` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `odd` | `map[string]any` |  |
+| `referee` | `[]any` |  |
+| `score` | `map[string]any` |  |
+| `season` | `map[string]any` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `substitution` | `[]any` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
 
 #### Example: Load
 
@@ -586,26 +614,26 @@ Create an instance: `person := client.Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `date_of_birth` | ``$STRING`` |  |
-| `first_name` | ``$STRING`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_name` | ``$STRING`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `nationality` | ``$STRING`` |  |
-| `position` | ``$STRING`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `section` | ``$STRING`` |  |
-| `shirt_number` | ``$INTEGER`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
+| `away_team` | `map[string]any` |  |
+| `competition` | `map[string]any` |  |
+| `date_of_birth` | `string` |  |
+| `first_name` | `string` |  |
+| `group` | `string` |  |
+| `home_team` | `map[string]any` |  |
+| `id` | `int` |  |
+| `last_name` | `string` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `name` | `string` |  |
+| `nationality` | `string` |  |
+| `position` | `string` |  |
+| `score` | `map[string]any` |  |
+| `season` | `map[string]any` |  |
+| `section` | `string` |  |
+| `shirt_number` | `int` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `utc_date` | `string` |  |
 
 #### Example: Load
 
@@ -643,32 +671,32 @@ Create an instance: `team := client.Team(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `coach` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `running_competition` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `squad` | ``$ARRAY`` |  |
-| `staff` | ``$ARRAY`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `tla` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `string` |  |
+| `area` | `map[string]any` |  |
+| `away_team` | `map[string]any` |  |
+| `club_color` | `string` |  |
+| `coach` | `map[string]any` |  |
+| `competition` | `map[string]any` |  |
+| `crest` | `string` |  |
+| `founded` | `int` |  |
+| `group` | `string` |  |
+| `home_team` | `map[string]any` |  |
+| `id` | `int` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `name` | `string` |  |
+| `running_competition` | `[]any` |  |
+| `score` | `map[string]any` |  |
+| `season` | `map[string]any` |  |
+| `short_name` | `string` |  |
+| `squad` | `[]any` |  |
+| `staff` | `[]any` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `tla` | `string` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -691,12 +719,16 @@ fmt.Println(teams) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -713,9 +745,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -756,14 +788,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 area := client.Area(nil)
-area.Load(map[string]any{"id": "example_id"}, nil)
+area.List(nil, nil)
 
-// area.Data() now returns the loaded area data
+// area.Data() now returns the area data from the last list
 // area.Match() returns the last match criteria
 ```
 

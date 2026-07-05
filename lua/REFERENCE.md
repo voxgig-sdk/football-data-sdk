@@ -107,13 +107,13 @@ local area = client:Area(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | ``$ARRAY`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_area` | ``$STRING`` | No |  |
-| `parent_area_id` | ``$INTEGER`` | No |  |
+| `child_area` | `table` | No |  |
+| `country_code` | `string` | No |  |
+| `flag` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `parent_area` | `string` | No |  |
+| `parent_area_id` | `number` | No |  |
 
 ### Operations
 
@@ -173,39 +173,39 @@ local competition = client:Competition(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `assist` | ``$INTEGER`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `current_season` | ``$OBJECT`` | No |  |
-| `emblem` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `goal` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number_of_available_season` | ``$INTEGER`` | No |  |
-| `penalty` | ``$INTEGER`` | No |  |
-| `player` | ``$OBJECT`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `table` | ``$ARRAY`` | No |  |
-| `team` | ``$OBJECT`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `string` | No |  |
+| `area` | `table` | No |  |
+| `assist` | `number` | No |  |
+| `away_team` | `table` | No |  |
+| `club_color` | `string` | No |  |
+| `code` | `string` | No |  |
+| `competition` | `table` | No |  |
+| `crest` | `string` | No |  |
+| `current_season` | `table` | No |  |
+| `emblem` | `string` | No |  |
+| `founded` | `number` | No |  |
+| `goal` | `number` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `table` | No |  |
+| `id` | `number` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `number` | No |  |
+| `name` | `string` | No |  |
+| `number_of_available_season` | `number` | No |  |
+| `penalty` | `number` | No |  |
+| `player` | `table` | No |  |
+| `score` | `table` | No |  |
+| `season` | `table` | No |  |
+| `short_name` | `string` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `table` | `table` | No |  |
+| `team` | `table` | No |  |
+| `tla` | `string` | No |  |
+| `type` | `string` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
@@ -265,25 +265,25 @@ local match = client:Match(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `booking` | ``$ARRAY`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `goal` | ``$ARRAY`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `odd` | ``$OBJECT`` | No |  |
-| `referee` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `substitution` | ``$ARRAY`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
+| `area` | `table` | No |  |
+| `away_team` | `table` | No |  |
+| `booking` | `table` | No |  |
+| `competition` | `table` | No |  |
+| `goal` | `table` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `table` | No |  |
+| `id` | `number` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `number` | No |  |
+| `odd` | `table` | No |  |
+| `referee` | `table` | No |  |
+| `score` | `table` | No |  |
+| `season` | `table` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `substitution` | `table` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
 
 ### Operations
 
@@ -343,26 +343,26 @@ local person = client:Person(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `date_of_birth` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `nationality` | ``$STRING`` | No |  |
-| `position` | ``$STRING`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `section` | ``$STRING`` | No |  |
-| `shirt_number` | ``$INTEGER`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
+| `away_team` | `table` | No |  |
+| `competition` | `table` | No |  |
+| `date_of_birth` | `string` | No |  |
+| `first_name` | `string` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `table` | No |  |
+| `id` | `number` | No |  |
+| `last_name` | `string` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `number` | No |  |
+| `name` | `string` | No |  |
+| `nationality` | `string` | No |  |
+| `position` | `string` | No |  |
+| `score` | `table` | No |  |
+| `season` | `table` | No |  |
+| `section` | `string` | No |  |
+| `shirt_number` | `number` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `utc_date` | `string` | No |  |
 
 ### Operations
 
@@ -422,32 +422,32 @@ local team = client:Team(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `coach` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `running_competition` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `squad` | ``$ARRAY`` | No |  |
-| `staff` | ``$ARRAY`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `string` | No |  |
+| `area` | `table` | No |  |
+| `away_team` | `table` | No |  |
+| `club_color` | `string` | No |  |
+| `coach` | `table` | No |  |
+| `competition` | `table` | No |  |
+| `crest` | `string` | No |  |
+| `founded` | `number` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `table` | No |  |
+| `id` | `number` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `number` | No |  |
+| `name` | `string` | No |  |
+| `running_competition` | `table` | No |  |
+| `score` | `table` | No |  |
+| `season` | `table` | No |  |
+| `short_name` | `string` | No |  |
+| `squad` | `table` | No |  |
+| `staff` | `table` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `tla` | `string` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 

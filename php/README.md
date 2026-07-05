@@ -4,6 +4,8 @@
 
 The PHP SDK for the FootballData API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Area()` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +40,7 @@ try {
     // list() returns an array of Area records — iterate directly.
     $areas = $client->Area()->list();
     foreach ($areas as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["child_area"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -54,6 +56,37 @@ try {
     print_r($area);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $areas = $client->Area()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -77,7 +110,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -106,8 +142,8 @@ $client = FootballDataSDK::test([
     "entity" => ["area" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$area = $client->Area()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$area = $client->Area()->list();
 print_r($area);
 ```
 
@@ -202,10 +238,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -403,13 +436,13 @@ Create an instance: `$area = $client->Area();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | ``$ARRAY`` |  |
-| `country_code` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_area` | ``$STRING`` |  |
-| `parent_area_id` | ``$INTEGER`` |  |
+| `child_area` | `array` |  |
+| `country_code` | `string` |  |
+| `flag` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `parent_area` | `string` |  |
+| `parent_area_id` | `int` |  |
 
 #### Example: Load
 
@@ -441,39 +474,39 @@ Create an instance: `$competition = $client->Competition();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `assist` | ``$INTEGER`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `current_season` | ``$OBJECT`` |  |
-| `emblem` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `goal` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `number_of_available_season` | ``$INTEGER`` |  |
-| `penalty` | ``$INTEGER`` |  |
-| `player` | ``$OBJECT`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `table` | ``$ARRAY`` |  |
-| `team` | ``$OBJECT`` |  |
-| `tla` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `string` |  |
+| `area` | `array` |  |
+| `assist` | `int` |  |
+| `away_team` | `array` |  |
+| `club_color` | `string` |  |
+| `code` | `string` |  |
+| `competition` | `array` |  |
+| `crest` | `string` |  |
+| `current_season` | `array` |  |
+| `emblem` | `string` |  |
+| `founded` | `int` |  |
+| `goal` | `int` |  |
+| `group` | `string` |  |
+| `home_team` | `array` |  |
+| `id` | `int` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `name` | `string` |  |
+| `number_of_available_season` | `int` |  |
+| `penalty` | `int` |  |
+| `player` | `array` |  |
+| `score` | `array` |  |
+| `season` | `array` |  |
+| `short_name` | `string` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `table` | `array` |  |
+| `team` | `array` |  |
+| `tla` | `string` |  |
+| `type` | `string` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -505,25 +538,25 @@ Create an instance: `$match = $client->Match();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `booking` | ``$ARRAY`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `goal` | ``$ARRAY`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `odd` | ``$OBJECT`` |  |
-| `referee` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `substitution` | ``$ARRAY`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
+| `area` | `array` |  |
+| `away_team` | `array` |  |
+| `booking` | `array` |  |
+| `competition` | `array` |  |
+| `goal` | `array` |  |
+| `group` | `string` |  |
+| `home_team` | `array` |  |
+| `id` | `int` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `odd` | `array` |  |
+| `referee` | `array` |  |
+| `score` | `array` |  |
+| `season` | `array` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `substitution` | `array` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
 
 #### Example: Load
 
@@ -555,26 +588,26 @@ Create an instance: `$person = $client->Person();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `date_of_birth` | ``$STRING`` |  |
-| `first_name` | ``$STRING`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_name` | ``$STRING`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `nationality` | ``$STRING`` |  |
-| `position` | ``$STRING`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `section` | ``$STRING`` |  |
-| `shirt_number` | ``$INTEGER`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
+| `away_team` | `array` |  |
+| `competition` | `array` |  |
+| `date_of_birth` | `string` |  |
+| `first_name` | `string` |  |
+| `group` | `string` |  |
+| `home_team` | `array` |  |
+| `id` | `int` |  |
+| `last_name` | `string` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `name` | `string` |  |
+| `nationality` | `string` |  |
+| `position` | `string` |  |
+| `score` | `array` |  |
+| `season` | `array` |  |
+| `section` | `string` |  |
+| `shirt_number` | `int` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `utc_date` | `string` |  |
 
 #### Example: Load
 
@@ -606,32 +639,32 @@ Create an instance: `$team = $client->Team();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `coach` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `running_competition` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `squad` | ``$ARRAY`` |  |
-| `staff` | ``$ARRAY`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `tla` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `string` |  |
+| `area` | `array` |  |
+| `away_team` | `array` |  |
+| `club_color` | `string` |  |
+| `coach` | `array` |  |
+| `competition` | `array` |  |
+| `crest` | `string` |  |
+| `founded` | `int` |  |
+| `group` | `string` |  |
+| `home_team` | `array` |  |
+| `id` | `int` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `int` |  |
+| `name` | `string` |  |
+| `running_competition` | `array` |  |
+| `score` | `array` |  |
+| `season` | `array` |  |
+| `short_name` | `string` |  |
+| `squad` | `array` |  |
+| `staff` | `array` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `tla` | `string` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -648,12 +681,16 @@ $teams = $client->Team()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -670,8 +707,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -715,15 +753,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $area = $client->Area();
-$area->load(["id" => "example_id"]);
+$area->list();
 
-// $area->dataGet() now returns the loaded area data
-// $area->matchGet() returns the last match criteria
+// $area->data_get() now returns the area data from the last list
+// $area->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

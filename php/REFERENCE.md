@@ -8,7 +8,7 @@ Complete API reference for the FootballData PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/football-data_sdk.php';
+require_once __DIR__ . '/footballdata_sdk.php';
 
 $client = new FootballDataSDK($options);
 ```
@@ -62,11 +62,11 @@ Create a new `PersonEntity` instance. Pass `null` for no initial data.
 
 Create a new `TeamEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): FootballDataUtility`
 
 Return a copy of the SDK utility object.
 
@@ -109,22 +109,22 @@ $area = $client->Area();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | ``$ARRAY`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_area` | ``$STRING`` | No |  |
-| `parent_area_id` | ``$INTEGER`` | No |  |
+| `child_area` | `array` | No |  |
+| `country_code` | `string` | No |  |
+| `flag` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `parent_area` | `string` | No |  |
+| `parent_area_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Area()->list([]);
+$results = $client->Area()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -137,19 +137,19 @@ $result = $client->Area()->load(["id" => "area_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -158,7 +158,7 @@ Set the entity match criteria.
 Create a new `AreaEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -175,48 +175,48 @@ $competition = $client->Competition();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `assist` | ``$INTEGER`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `current_season` | ``$OBJECT`` | No |  |
-| `emblem` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `goal` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number_of_available_season` | ``$INTEGER`` | No |  |
-| `penalty` | ``$INTEGER`` | No |  |
-| `player` | ``$OBJECT`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `table` | ``$ARRAY`` | No |  |
-| `team` | ``$OBJECT`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `string` | No |  |
+| `area` | `array` | No |  |
+| `assist` | `int` | No |  |
+| `away_team` | `array` | No |  |
+| `club_color` | `string` | No |  |
+| `code` | `string` | No |  |
+| `competition` | `array` | No |  |
+| `crest` | `string` | No |  |
+| `current_season` | `array` | No |  |
+| `emblem` | `string` | No |  |
+| `founded` | `int` | No |  |
+| `goal` | `int` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `array` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `string` | No |  |
+| `number_of_available_season` | `int` | No |  |
+| `penalty` | `int` | No |  |
+| `player` | `array` | No |  |
+| `score` | `array` | No |  |
+| `season` | `array` | No |  |
+| `short_name` | `string` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `table` | `array` | No |  |
+| `team` | `array` | No |  |
+| `tla` | `string` | No |  |
+| `type` | `string` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Competition()->list([]);
+$results = $client->Competition()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -229,19 +229,19 @@ $result = $client->Competition()->load(["id" => "competition_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -250,7 +250,7 @@ Set the entity match criteria.
 Create a new `CompetitionEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -267,34 +267,34 @@ $match = $client->Match();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `booking` | ``$ARRAY`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `goal` | ``$ARRAY`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `odd` | ``$OBJECT`` | No |  |
-| `referee` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `substitution` | ``$ARRAY`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
+| `area` | `array` | No |  |
+| `away_team` | `array` | No |  |
+| `booking` | `array` | No |  |
+| `competition` | `array` | No |  |
+| `goal` | `array` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `array` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `odd` | `array` | No |  |
+| `referee` | `array` | No |  |
+| `score` | `array` | No |  |
+| `season` | `array` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `substitution` | `array` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Match()->list([]);
+$results = $client->Match()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -307,19 +307,19 @@ $result = $client->Match()->load(["id" => "match_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -328,7 +328,7 @@ Set the entity match criteria.
 Create a new `MatchEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -345,35 +345,35 @@ $person = $client->Person();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `date_of_birth` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `nationality` | ``$STRING`` | No |  |
-| `position` | ``$STRING`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `section` | ``$STRING`` | No |  |
-| `shirt_number` | ``$INTEGER`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
+| `away_team` | `array` | No |  |
+| `competition` | `array` | No |  |
+| `date_of_birth` | `string` | No |  |
+| `first_name` | `string` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `array` | No |  |
+| `id` | `int` | No |  |
+| `last_name` | `string` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `string` | No |  |
+| `nationality` | `string` | No |  |
+| `position` | `string` | No |  |
+| `score` | `array` | No |  |
+| `season` | `array` | No |  |
+| `section` | `string` | No |  |
+| `shirt_number` | `int` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `utc_date` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Person()->list([]);
+$results = $client->Person()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -386,19 +386,19 @@ $result = $client->Person()->load(["id" => "person_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -407,7 +407,7 @@ Set the entity match criteria.
 Create a new `PersonEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -424,41 +424,41 @@ $team = $client->Team();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `coach` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `running_competition` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `squad` | ``$ARRAY`` | No |  |
-| `staff` | ``$ARRAY`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `string` | No |  |
+| `area` | `array` | No |  |
+| `away_team` | `array` | No |  |
+| `club_color` | `string` | No |  |
+| `coach` | `array` | No |  |
+| `competition` | `array` | No |  |
+| `crest` | `string` | No |  |
+| `founded` | `int` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `array` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `string` | No |  |
+| `running_competition` | `array` | No |  |
+| `score` | `array` | No |  |
+| `season` | `array` | No |  |
+| `short_name` | `string` | No |  |
+| `squad` | `array` | No |  |
+| `staff` | `array` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `tla` | `string` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Team()->list([]);
+$results = $client->Team()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -471,19 +471,19 @@ $result = $client->Team()->load(["id" => "team_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -492,7 +492,7 @@ Set the entity match criteria.
 Create a new `TeamEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

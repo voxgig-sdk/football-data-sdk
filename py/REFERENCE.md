@@ -8,7 +8,7 @@ Complete API reference for the FootballData Python SDK.
 ### Constructor
 
 ```python
-from football-data_sdk import FootballDataSDK
+from footballdata_sdk import FootballDataSDK
 
 client = FootballDataSDK(options)
 ```
@@ -104,22 +104,22 @@ area = client.Area()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | ``$ARRAY`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_area` | ``$STRING`` | No |  |
-| `parent_area_id` | ``$INTEGER`` | No |  |
+| `child_area` | `list` | No |  |
+| `country_code` | `str` | No |  |
+| `flag` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `parent_area` | `str` | No |  |
+| `parent_area_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Area().list({})
+results = client.Area().list()
 for area in results:
     print(area)
 ```
@@ -171,48 +171,48 @@ competition = client.Competition()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `assist` | ``$INTEGER`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `current_season` | ``$OBJECT`` | No |  |
-| `emblem` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `goal` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number_of_available_season` | ``$INTEGER`` | No |  |
-| `penalty` | ``$INTEGER`` | No |  |
-| `player` | ``$OBJECT`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `table` | ``$ARRAY`` | No |  |
-| `team` | ``$OBJECT`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `str` | No |  |
+| `area` | `dict` | No |  |
+| `assist` | `int` | No |  |
+| `away_team` | `dict` | No |  |
+| `club_color` | `str` | No |  |
+| `code` | `str` | No |  |
+| `competition` | `dict` | No |  |
+| `crest` | `str` | No |  |
+| `current_season` | `dict` | No |  |
+| `emblem` | `str` | No |  |
+| `founded` | `int` | No |  |
+| `goal` | `int` | No |  |
+| `group` | `str` | No |  |
+| `home_team` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `str` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `str` | No |  |
+| `number_of_available_season` | `int` | No |  |
+| `penalty` | `int` | No |  |
+| `player` | `dict` | No |  |
+| `score` | `dict` | No |  |
+| `season` | `dict` | No |  |
+| `short_name` | `str` | No |  |
+| `stage` | `str` | No |  |
+| `status` | `str` | No |  |
+| `table` | `list` | No |  |
+| `team` | `dict` | No |  |
+| `tla` | `str` | No |  |
+| `type` | `str` | No |  |
+| `utc_date` | `str` | No |  |
+| `venue` | `str` | No |  |
+| `website` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Competition().list({})
+results = client.Competition().list()
 for competition in results:
     print(competition)
 ```
@@ -264,34 +264,34 @@ match = client.Match()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `booking` | ``$ARRAY`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `goal` | ``$ARRAY`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `odd` | ``$OBJECT`` | No |  |
-| `referee` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `substitution` | ``$ARRAY`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
+| `area` | `dict` | No |  |
+| `away_team` | `dict` | No |  |
+| `booking` | `list` | No |  |
+| `competition` | `dict` | No |  |
+| `goal` | `list` | No |  |
+| `group` | `str` | No |  |
+| `home_team` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `str` | No |  |
+| `matchday` | `int` | No |  |
+| `odd` | `dict` | No |  |
+| `referee` | `list` | No |  |
+| `score` | `dict` | No |  |
+| `season` | `dict` | No |  |
+| `stage` | `str` | No |  |
+| `status` | `str` | No |  |
+| `substitution` | `list` | No |  |
+| `utc_date` | `str` | No |  |
+| `venue` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Match().list({})
+results = client.Match().list()
 for match in results:
     print(match)
 ```
@@ -343,35 +343,35 @@ person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `date_of_birth` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `nationality` | ``$STRING`` | No |  |
-| `position` | ``$STRING`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `section` | ``$STRING`` | No |  |
-| `shirt_number` | ``$INTEGER`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
+| `away_team` | `dict` | No |  |
+| `competition` | `dict` | No |  |
+| `date_of_birth` | `str` | No |  |
+| `first_name` | `str` | No |  |
+| `group` | `str` | No |  |
+| `home_team` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `last_name` | `str` | No |  |
+| `last_updated` | `str` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `str` | No |  |
+| `nationality` | `str` | No |  |
+| `position` | `str` | No |  |
+| `score` | `dict` | No |  |
+| `season` | `dict` | No |  |
+| `section` | `str` | No |  |
+| `shirt_number` | `int` | No |  |
+| `stage` | `str` | No |  |
+| `status` | `str` | No |  |
+| `utc_date` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Person().list({})
+results = client.Person().list()
 for person in results:
     print(person)
 ```
@@ -423,41 +423,41 @@ team = client.Team()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `coach` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `running_competition` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `squad` | ``$ARRAY`` | No |  |
-| `staff` | ``$ARRAY`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `str` | No |  |
+| `area` | `dict` | No |  |
+| `away_team` | `dict` | No |  |
+| `club_color` | `str` | No |  |
+| `coach` | `dict` | No |  |
+| `competition` | `dict` | No |  |
+| `crest` | `str` | No |  |
+| `founded` | `int` | No |  |
+| `group` | `str` | No |  |
+| `home_team` | `dict` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `str` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `str` | No |  |
+| `running_competition` | `list` | No |  |
+| `score` | `dict` | No |  |
+| `season` | `dict` | No |  |
+| `short_name` | `str` | No |  |
+| `squad` | `list` | No |  |
+| `staff` | `list` | No |  |
+| `stage` | `str` | No |  |
+| `status` | `str` | No |  |
+| `tla` | `str` | No |  |
+| `utc_date` | `str` | No |  |
+| `venue` | `str` | No |  |
+| `website` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Team().list({})
+results = client.Team().list()
 for team in results:
     print(team)
 ```

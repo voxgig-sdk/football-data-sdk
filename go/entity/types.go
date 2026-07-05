@@ -24,8 +24,7 @@ type AreaLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// AreaListMatch mirrors the area fields as an all-optional match
-// filter (Go analog of Partial<Area>).
+// AreaListMatch is the typed request payload for Area.ListTyped.
 type AreaListMatch struct {
 	ChildArea *[]any `json:"child_area,omitempty"`
 	CountryCode *string `json:"country_code,omitempty"`
@@ -111,8 +110,7 @@ type MatchLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// MatchListMatch mirrors the match fields as an all-optional match
-// filter (Go analog of Partial<Match>).
+// MatchListMatch is the typed request payload for Match.ListTyped.
 type MatchListMatch struct {
 	Area *map[string]any `json:"area,omitempty"`
 	AwayTeam *map[string]any `json:"away_team,omitempty"`

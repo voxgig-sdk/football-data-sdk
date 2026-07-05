@@ -4,6 +4,8 @@
 
 The Lua SDK for the FootballData API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Area()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -43,7 +45,7 @@ local areas, err = client:Area():list()
 if err then error(err) end
 
 for _, item in ipairs(areas) do
-  print(item["id"], item["name"])
+  print(item["id"], item["country_code"])
 end
 ```
 
@@ -53,6 +55,28 @@ end
 local area, err = client:Area():load({ id = "example_id" })
 if err then error(err) end
 print(area)
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local areas, err = client:Area():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -98,8 +122,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Area():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Area():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -193,9 +217,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -210,7 +231,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -394,13 +415,13 @@ Create an instance: `local area = client:Area(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | ``$ARRAY`` |  |
-| `country_code` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_area` | ``$STRING`` |  |
-| `parent_area_id` | ``$INTEGER`` |  |
+| `child_area` | `table` |  |
+| `country_code` | `string` |  |
+| `flag` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `parent_area` | `string` |  |
+| `parent_area_id` | `number` |  |
 
 #### Example: Load
 
@@ -430,39 +451,39 @@ Create an instance: `local competition = client:Competition(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `assist` | ``$INTEGER`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `current_season` | ``$OBJECT`` |  |
-| `emblem` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `goal` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `number_of_available_season` | ``$INTEGER`` |  |
-| `penalty` | ``$INTEGER`` |  |
-| `player` | ``$OBJECT`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `table` | ``$ARRAY`` |  |
-| `team` | ``$OBJECT`` |  |
-| `tla` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `string` |  |
+| `area` | `table` |  |
+| `assist` | `number` |  |
+| `away_team` | `table` |  |
+| `club_color` | `string` |  |
+| `code` | `string` |  |
+| `competition` | `table` |  |
+| `crest` | `string` |  |
+| `current_season` | `table` |  |
+| `emblem` | `string` |  |
+| `founded` | `number` |  |
+| `goal` | `number` |  |
+| `group` | `string` |  |
+| `home_team` | `table` |  |
+| `id` | `number` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `number` |  |
+| `name` | `string` |  |
+| `number_of_available_season` | `number` |  |
+| `penalty` | `number` |  |
+| `player` | `table` |  |
+| `score` | `table` |  |
+| `season` | `table` |  |
+| `short_name` | `string` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `table` | `table` |  |
+| `team` | `table` |  |
+| `tla` | `string` |  |
+| `type` | `string` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -492,25 +513,25 @@ Create an instance: `local match = client:Match(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `booking` | ``$ARRAY`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `goal` | ``$ARRAY`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `odd` | ``$OBJECT`` |  |
-| `referee` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `substitution` | ``$ARRAY`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
+| `area` | `table` |  |
+| `away_team` | `table` |  |
+| `booking` | `table` |  |
+| `competition` | `table` |  |
+| `goal` | `table` |  |
+| `group` | `string` |  |
+| `home_team` | `table` |  |
+| `id` | `number` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `number` |  |
+| `odd` | `table` |  |
+| `referee` | `table` |  |
+| `score` | `table` |  |
+| `season` | `table` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `substitution` | `table` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
 
 #### Example: Load
 
@@ -540,26 +561,26 @@ Create an instance: `local person = client:Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `date_of_birth` | ``$STRING`` |  |
-| `first_name` | ``$STRING`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_name` | ``$STRING`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `nationality` | ``$STRING`` |  |
-| `position` | ``$STRING`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `section` | ``$STRING`` |  |
-| `shirt_number` | ``$INTEGER`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
+| `away_team` | `table` |  |
+| `competition` | `table` |  |
+| `date_of_birth` | `string` |  |
+| `first_name` | `string` |  |
+| `group` | `string` |  |
+| `home_team` | `table` |  |
+| `id` | `number` |  |
+| `last_name` | `string` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `number` |  |
+| `name` | `string` |  |
+| `nationality` | `string` |  |
+| `position` | `string` |  |
+| `score` | `table` |  |
+| `season` | `table` |  |
+| `section` | `string` |  |
+| `shirt_number` | `number` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `utc_date` | `string` |  |
 
 #### Example: Load
 
@@ -589,32 +610,32 @@ Create an instance: `local team = client:Team(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `coach` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `running_competition` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `squad` | ``$ARRAY`` |  |
-| `staff` | ``$ARRAY`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `tla` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `string` |  |
+| `area` | `table` |  |
+| `away_team` | `table` |  |
+| `club_color` | `string` |  |
+| `coach` | `table` |  |
+| `competition` | `table` |  |
+| `crest` | `string` |  |
+| `founded` | `number` |  |
+| `group` | `string` |  |
+| `home_team` | `table` |  |
+| `id` | `number` |  |
+| `last_updated` | `string` |  |
+| `matchday` | `number` |  |
+| `name` | `string` |  |
+| `running_competition` | `table` |  |
+| `score` | `table` |  |
+| `season` | `table` |  |
+| `short_name` | `string` |  |
+| `squad` | `table` |  |
+| `staff` | `table` |  |
+| `stage` | `string` |  |
+| `status` | `string` |  |
+| `tla` | `string` |  |
+| `utc_date` | `string` |  |
+| `venue` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -629,12 +650,16 @@ local teams, err = client:Team():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -651,8 +676,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -696,14 +722,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local area = client:Area()
-area:load({ id = "example_id" })
+area:list()
 
--- area:data_get() now returns the loaded area data
+-- area:data_get() now returns the area data from the last list
 -- area:match_get() returns the last match criteria
 ```
 

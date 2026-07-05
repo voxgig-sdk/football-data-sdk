@@ -4,6 +4,11 @@
 
 The Python SDK for the FootballData API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Area()` — each
+carrying a small, uniform set of operations (`list`, `load`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -41,7 +46,7 @@ error — iterate it directly.
 
 ```python
 try:
-    areas = client.Area().list({})
+    areas = client.Area().list()
     for area in areas:
         print(area)
 except Exception as err:
@@ -58,6 +63,34 @@ try:
     print(area)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    areas = client.Area().list()
+    print(areas)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -78,7 +111,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -104,7 +140,7 @@ Create a mock client for unit testing — no server required:
 client = FootballDataSDK.test()
 
 # Entity ops return the bare record and raise on error.
-area = client.Area().load({"id": "test01"})
+area = client.Area().list()
 # area contains the mock response record
 ```
 
@@ -197,9 +233,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -390,20 +423,20 @@ Create an instance: `area = client.Area()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | ``$ARRAY`` |  |
-| `country_code` | ``$STRING`` |  |
-| `flag` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_area` | ``$STRING`` |  |
-| `parent_area_id` | ``$INTEGER`` |  |
+| `child_area` | `list` |  |
+| `country_code` | `str` |  |
+| `flag` | `str` |  |
+| `id` | `int` |  |
+| `name` | `str` |  |
+| `parent_area` | `str` |  |
+| `parent_area_id` | `int` |  |
 
 #### Example: Load
 
@@ -414,7 +447,7 @@ area = client.Area().load({"id": "area_id"})
 #### Example: List
 
 ```python
-areas = client.Area().list({})
+areas = client.Area().list()
 ```
 
 
@@ -426,46 +459,46 @@ Create an instance: `competition = client.Competition()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `assist` | ``$INTEGER`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `code` | ``$STRING`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `current_season` | ``$OBJECT`` |  |
-| `emblem` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `goal` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `number_of_available_season` | ``$INTEGER`` |  |
-| `penalty` | ``$INTEGER`` |  |
-| `player` | ``$OBJECT`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `table` | ``$ARRAY`` |  |
-| `team` | ``$OBJECT`` |  |
-| `tla` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `str` |  |
+| `area` | `dict` |  |
+| `assist` | `int` |  |
+| `away_team` | `dict` |  |
+| `club_color` | `str` |  |
+| `code` | `str` |  |
+| `competition` | `dict` |  |
+| `crest` | `str` |  |
+| `current_season` | `dict` |  |
+| `emblem` | `str` |  |
+| `founded` | `int` |  |
+| `goal` | `int` |  |
+| `group` | `str` |  |
+| `home_team` | `dict` |  |
+| `id` | `int` |  |
+| `last_updated` | `str` |  |
+| `matchday` | `int` |  |
+| `name` | `str` |  |
+| `number_of_available_season` | `int` |  |
+| `penalty` | `int` |  |
+| `player` | `dict` |  |
+| `score` | `dict` |  |
+| `season` | `dict` |  |
+| `short_name` | `str` |  |
+| `stage` | `str` |  |
+| `status` | `str` |  |
+| `table` | `list` |  |
+| `team` | `dict` |  |
+| `tla` | `str` |  |
+| `type` | `str` |  |
+| `utc_date` | `str` |  |
+| `venue` | `str` |  |
+| `website` | `str` |  |
 
 #### Example: Load
 
@@ -476,7 +509,7 @@ competition = client.Competition().load({"id": "competition_id"})
 #### Example: List
 
 ```python
-competitions = client.Competition().list({})
+competitions = client.Competition().list()
 ```
 
 
@@ -488,32 +521,32 @@ Create an instance: `match = client.Match()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `booking` | ``$ARRAY`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `goal` | ``$ARRAY`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `odd` | ``$OBJECT`` |  |
-| `referee` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `substitution` | ``$ARRAY`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
+| `area` | `dict` |  |
+| `away_team` | `dict` |  |
+| `booking` | `list` |  |
+| `competition` | `dict` |  |
+| `goal` | `list` |  |
+| `group` | `str` |  |
+| `home_team` | `dict` |  |
+| `id` | `int` |  |
+| `last_updated` | `str` |  |
+| `matchday` | `int` |  |
+| `odd` | `dict` |  |
+| `referee` | `list` |  |
+| `score` | `dict` |  |
+| `season` | `dict` |  |
+| `stage` | `str` |  |
+| `status` | `str` |  |
+| `substitution` | `list` |  |
+| `utc_date` | `str` |  |
+| `venue` | `str` |  |
 
 #### Example: Load
 
@@ -524,7 +557,7 @@ match = client.Match().load({"id": "match_id"})
 #### Example: List
 
 ```python
-matchs = client.Match().list({})
+matchs = client.Match().list()
 ```
 
 
@@ -536,33 +569,33 @@ Create an instance: `person = client.Person()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `date_of_birth` | ``$STRING`` |  |
-| `first_name` | ``$STRING`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_name` | ``$STRING`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `nationality` | ``$STRING`` |  |
-| `position` | ``$STRING`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `section` | ``$STRING`` |  |
-| `shirt_number` | ``$INTEGER`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
+| `away_team` | `dict` |  |
+| `competition` | `dict` |  |
+| `date_of_birth` | `str` |  |
+| `first_name` | `str` |  |
+| `group` | `str` |  |
+| `home_team` | `dict` |  |
+| `id` | `int` |  |
+| `last_name` | `str` |  |
+| `last_updated` | `str` |  |
+| `matchday` | `int` |  |
+| `name` | `str` |  |
+| `nationality` | `str` |  |
+| `position` | `str` |  |
+| `score` | `dict` |  |
+| `season` | `dict` |  |
+| `section` | `str` |  |
+| `shirt_number` | `int` |  |
+| `stage` | `str` |  |
+| `status` | `str` |  |
+| `utc_date` | `str` |  |
 
 #### Example: Load
 
@@ -573,7 +606,7 @@ person = client.Person().load({"id": "person_id"})
 #### Example: List
 
 ```python
-persons = client.Person().list({})
+persons = client.Person().list()
 ```
 
 
@@ -585,39 +618,39 @@ Create an instance: `team = client.Team()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$STRING`` |  |
-| `area` | ``$OBJECT`` |  |
-| `away_team` | ``$OBJECT`` |  |
-| `club_color` | ``$STRING`` |  |
-| `coach` | ``$OBJECT`` |  |
-| `competition` | ``$OBJECT`` |  |
-| `crest` | ``$STRING`` |  |
-| `founded` | ``$INTEGER`` |  |
-| `group` | ``$STRING`` |  |
-| `home_team` | ``$OBJECT`` |  |
-| `id` | ``$INTEGER`` |  |
-| `last_updated` | ``$STRING`` |  |
-| `matchday` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `running_competition` | ``$ARRAY`` |  |
-| `score` | ``$OBJECT`` |  |
-| `season` | ``$OBJECT`` |  |
-| `short_name` | ``$STRING`` |  |
-| `squad` | ``$ARRAY`` |  |
-| `staff` | ``$ARRAY`` |  |
-| `stage` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `tla` | ``$STRING`` |  |
-| `utc_date` | ``$STRING`` |  |
-| `venue` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `str` |  |
+| `area` | `dict` |  |
+| `away_team` | `dict` |  |
+| `club_color` | `str` |  |
+| `coach` | `dict` |  |
+| `competition` | `dict` |  |
+| `crest` | `str` |  |
+| `founded` | `int` |  |
+| `group` | `str` |  |
+| `home_team` | `dict` |  |
+| `id` | `int` |  |
+| `last_updated` | `str` |  |
+| `matchday` | `int` |  |
+| `name` | `str` |  |
+| `running_competition` | `list` |  |
+| `score` | `dict` |  |
+| `season` | `dict` |  |
+| `short_name` | `str` |  |
+| `squad` | `list` |  |
+| `staff` | `list` |  |
+| `stage` | `str` |  |
+| `status` | `str` |  |
+| `tla` | `str` |  |
+| `utc_date` | `str` |  |
+| `venue` | `str` |  |
+| `website` | `str` |  |
 
 #### Example: Load
 
@@ -628,16 +661,20 @@ team = client.Team().load({"id": "team_id"})
 #### Example: List
 
 ```python
-teams = client.Team().list({})
+teams = client.Team().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -654,8 +691,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -698,14 +736,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 area = client.Area()
-area.load({"id": "example_id"})
+area.list()
 
-# area.data_get() now returns the loaded area data
+# area.data_get() now returns the area data from the last list
 # area.match_get() returns the last match criteria
 ```
 

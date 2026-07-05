@@ -114,13 +114,13 @@ area := client.Area(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | ``$ARRAY`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `flag` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_area` | ``$STRING`` | No |  |
-| `parent_area_id` | ``$INTEGER`` | No |  |
+| `child_area` | `[]any` | No |  |
+| `country_code` | `string` | No |  |
+| `flag` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `parent_area` | `string` | No |  |
+| `parent_area_id` | `int` | No |  |
 
 ### Operations
 
@@ -174,39 +174,39 @@ competition := client.Competition(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `assist` | ``$INTEGER`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `code` | ``$STRING`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `current_season` | ``$OBJECT`` | No |  |
-| `emblem` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `goal` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number_of_available_season` | ``$INTEGER`` | No |  |
-| `penalty` | ``$INTEGER`` | No |  |
-| `player` | ``$OBJECT`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `table` | ``$ARRAY`` | No |  |
-| `team` | ``$OBJECT`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `string` | No |  |
+| `area` | `map[string]any` | No |  |
+| `assist` | `int` | No |  |
+| `away_team` | `map[string]any` | No |  |
+| `club_color` | `string` | No |  |
+| `code` | `string` | No |  |
+| `competition` | `map[string]any` | No |  |
+| `crest` | `string` | No |  |
+| `current_season` | `map[string]any` | No |  |
+| `emblem` | `string` | No |  |
+| `founded` | `int` | No |  |
+| `goal` | `int` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `string` | No |  |
+| `number_of_available_season` | `int` | No |  |
+| `penalty` | `int` | No |  |
+| `player` | `map[string]any` | No |  |
+| `score` | `map[string]any` | No |  |
+| `season` | `map[string]any` | No |  |
+| `short_name` | `string` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `table` | `[]any` | No |  |
+| `team` | `map[string]any` | No |  |
+| `tla` | `string` | No |  |
+| `type` | `string` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
@@ -260,25 +260,25 @@ match := client.Match(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `booking` | ``$ARRAY`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `goal` | ``$ARRAY`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `odd` | ``$OBJECT`` | No |  |
-| `referee` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `substitution` | ``$ARRAY`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
+| `area` | `map[string]any` | No |  |
+| `away_team` | `map[string]any` | No |  |
+| `booking` | `[]any` | No |  |
+| `competition` | `map[string]any` | No |  |
+| `goal` | `[]any` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `odd` | `map[string]any` | No |  |
+| `referee` | `[]any` | No |  |
+| `score` | `map[string]any` | No |  |
+| `season` | `map[string]any` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `substitution` | `[]any` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
 
 ### Operations
 
@@ -332,26 +332,26 @@ person := client.Person(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `date_of_birth` | ``$STRING`` | No |  |
-| `first_name` | ``$STRING`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_name` | ``$STRING`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `nationality` | ``$STRING`` | No |  |
-| `position` | ``$STRING`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `section` | ``$STRING`` | No |  |
-| `shirt_number` | ``$INTEGER`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
+| `away_team` | `map[string]any` | No |  |
+| `competition` | `map[string]any` | No |  |
+| `date_of_birth` | `string` | No |  |
+| `first_name` | `string` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `last_name` | `string` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `string` | No |  |
+| `nationality` | `string` | No |  |
+| `position` | `string` | No |  |
+| `score` | `map[string]any` | No |  |
+| `season` | `map[string]any` | No |  |
+| `section` | `string` | No |  |
+| `shirt_number` | `int` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `utc_date` | `string` | No |  |
 
 ### Operations
 
@@ -405,32 +405,32 @@ team := client.Team(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$STRING`` | No |  |
-| `area` | ``$OBJECT`` | No |  |
-| `away_team` | ``$OBJECT`` | No |  |
-| `club_color` | ``$STRING`` | No |  |
-| `coach` | ``$OBJECT`` | No |  |
-| `competition` | ``$OBJECT`` | No |  |
-| `crest` | ``$STRING`` | No |  |
-| `founded` | ``$INTEGER`` | No |  |
-| `group` | ``$STRING`` | No |  |
-| `home_team` | ``$OBJECT`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `last_updated` | ``$STRING`` | No |  |
-| `matchday` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `running_competition` | ``$ARRAY`` | No |  |
-| `score` | ``$OBJECT`` | No |  |
-| `season` | ``$OBJECT`` | No |  |
-| `short_name` | ``$STRING`` | No |  |
-| `squad` | ``$ARRAY`` | No |  |
-| `staff` | ``$ARRAY`` | No |  |
-| `stage` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `tla` | ``$STRING`` | No |  |
-| `utc_date` | ``$STRING`` | No |  |
-| `venue` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `string` | No |  |
+| `area` | `map[string]any` | No |  |
+| `away_team` | `map[string]any` | No |  |
+| `club_color` | `string` | No |  |
+| `coach` | `map[string]any` | No |  |
+| `competition` | `map[string]any` | No |  |
+| `crest` | `string` | No |  |
+| `founded` | `int` | No |  |
+| `group` | `string` | No |  |
+| `home_team` | `map[string]any` | No |  |
+| `id` | `int` | No |  |
+| `last_updated` | `string` | No |  |
+| `matchday` | `int` | No |  |
+| `name` | `string` | No |  |
+| `running_competition` | `[]any` | No |  |
+| `score` | `map[string]any` | No |  |
+| `season` | `map[string]any` | No |  |
+| `short_name` | `string` | No |  |
+| `squad` | `[]any` | No |  |
+| `staff` | `[]any` | No |  |
+| `stage` | `string` | No |  |
+| `status` | `string` | No |  |
+| `tla` | `string` | No |  |
+| `utc_date` | `string` | No |  |
+| `venue` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
