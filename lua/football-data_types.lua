@@ -66,7 +66,39 @@
 ---@field id string
 
 ---@class CompetitionListMatch
----@field id string
+---@field address? string
+---@field area? table
+---@field assist? number
+---@field away_team? table
+---@field club_color? string
+---@field code? string
+---@field competition? table
+---@field crest? string
+---@field current_season? table
+---@field emblem? string
+---@field founded? number
+---@field goal? number
+---@field group? string
+---@field home_team? table
+---@field id? number
+---@field last_updated? string
+---@field matchday? number
+---@field name? string
+---@field number_of_available_season? number
+---@field penalty? number
+---@field player? table
+---@field score? table
+---@field season? table
+---@field short_name? string
+---@field stage? string
+---@field status? string
+---@field table? table
+---@field team? table
+---@field tla? string
+---@field type? string
+---@field utc_date? string
+---@field venue? string
+---@field website? string
 
 ---@class Match
 ---@field area? table
@@ -173,7 +205,32 @@
 ---@field id number
 
 ---@class TeamListMatch
----@field id number
+---@field address? string
+---@field area? table
+---@field away_team? table
+---@field club_color? string
+---@field coach? table
+---@field competition? table
+---@field crest? string
+---@field founded? number
+---@field group? string
+---@field home_team? table
+---@field id? number
+---@field last_updated? string
+---@field matchday? number
+---@field name? string
+---@field running_competition? table
+---@field score? table
+---@field season? table
+---@field short_name? string
+---@field squad? table
+---@field staff? table
+---@field stage? string
+---@field status? string
+---@field tla? string
+---@field utc_date? string
+---@field venue? string
+---@field website? string
 
 local M = {}
 

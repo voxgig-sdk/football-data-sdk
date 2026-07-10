@@ -8,16 +8,23 @@ main: {
         url: "https://www.football-data.org"
       }
       description: "The Football Data API provides comprehensive access to football (soccer) statistics and information. It includes data on areas, competitions, teams, matches, standings, scorers, and players. Perfect for building sports apps or platforms."
+      security: {
+        in: "header"
+        name: "X-Auth-Token"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Football Data API v4 Server"
           url: "http://api.football-data.org/v4"
         }
       ]
+      summary: "The Football Data API provides comprehensive access to football (soccer) statistics and information."
       termsOfService: "https://www.football-data.org"
       title: "Football Data API"
       version: "4.0.0"
+      website: "http://football-data.org"
     }
   }
-}
-

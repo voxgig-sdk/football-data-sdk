@@ -70,7 +70,39 @@ export interface CompetitionLoadMatch {
 }
 
 export interface CompetitionListMatch {
-  id: string
+  address?: string
+  area?: Record<string, any>
+  assist?: number
+  away_team?: Record<string, any>
+  club_color?: string
+  code?: string
+  competition?: Record<string, any>
+  crest?: string
+  current_season?: Record<string, any>
+  emblem?: string
+  founded?: number
+  goal?: number
+  group?: string
+  home_team?: Record<string, any>
+  id?: number
+  last_updated?: string
+  matchday?: number
+  name?: string
+  number_of_available_season?: number
+  penalty?: number
+  player?: Record<string, any>
+  score?: Record<string, any>
+  season?: Record<string, any>
+  short_name?: string
+  stage?: string
+  status?: string
+  table?: any[]
+  team?: Record<string, any>
+  tla?: string
+  type?: string
+  utc_date?: string
+  venue?: string
+  website?: string
 }
 
 export interface Match {
@@ -186,6 +218,31 @@ export interface TeamLoadMatch {
 }
 
 export interface TeamListMatch {
-  id: number
+  address?: string
+  area?: Record<string, any>
+  away_team?: Record<string, any>
+  club_color?: string
+  coach?: Record<string, any>
+  competition?: Record<string, any>
+  crest?: string
+  founded?: number
+  group?: string
+  home_team?: Record<string, any>
+  id?: number
+  last_updated?: string
+  matchday?: number
+  name?: string
+  running_competition?: any[]
+  score?: Record<string, any>
+  season?: Record<string, any>
+  short_name?: string
+  squad?: any[]
+  staff?: any[]
+  stage?: string
+  status?: string
+  tla?: string
+  utc_date?: string
+  venue?: string
+  website?: string
 }
 

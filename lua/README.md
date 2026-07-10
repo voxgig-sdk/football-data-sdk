@@ -52,7 +52,7 @@ end
 ### 3. Load an area
 
 ```lua
-local area, err = client:Area():load({ id = "example_id" })
+local area, err = client:Area():load({ id = 1 })
 if err then error(err) end
 print(area)
 ```
@@ -426,7 +426,7 @@ Create an instance: `local area = client:Area(nil)`
 #### Example: Load
 
 ```lua
-local area, err = client:Area():load({ id = "area_id" })
+local area, err = client:Area():load({ id = 1 })
 ```
 
 #### Example: List
@@ -536,7 +536,7 @@ Create an instance: `local match = client:Match(nil)`
 #### Example: Load
 
 ```lua
-local match, err = client:Match():load({ id = "match_id" })
+local match, err = client:Match():load({ id = 1 })
 ```
 
 #### Example: List
@@ -585,7 +585,7 @@ Create an instance: `local person = client:Person(nil)`
 #### Example: Load
 
 ```lua
-local person, err = client:Person():load({ id = "person_id" })
+local person, err = client:Person():load({ id = 1 })
 ```
 
 #### Example: List
@@ -640,7 +640,7 @@ Create an instance: `local team = client:Team(nil)`
 #### Example: Load
 
 ```lua
-local team, err = client:Team():load({ id = "team_id" })
+local team, err = client:Team():load({ id = 1 })
 ```
 
 #### Example: List

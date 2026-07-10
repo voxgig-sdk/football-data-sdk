@@ -80,8 +80,40 @@ class CompetitionLoadMatch(TypedDict):
     id: str
 
 
-class CompetitionListMatch(TypedDict):
-    id: str
+class CompetitionListMatch(TypedDict, total=False):
+    address: str
+    area: dict
+    assist: int
+    away_team: dict
+    club_color: str
+    code: str
+    competition: dict
+    crest: str
+    current_season: dict
+    emblem: str
+    founded: int
+    goal: int
+    group: str
+    home_team: dict
+    id: int
+    last_updated: str
+    matchday: int
+    name: str
+    number_of_available_season: int
+    penalty: int
+    player: dict
+    score: dict
+    season: dict
+    short_name: str
+    stage: str
+    status: str
+    table: list
+    team: dict
+    tla: str
+    type: str
+    utc_date: str
+    venue: str
+    website: str
 
 
 class Match(TypedDict, total=False):
@@ -196,5 +228,30 @@ class TeamLoadMatch(TypedDict):
     id: int
 
 
-class TeamListMatch(TypedDict):
+class TeamListMatch(TypedDict, total=False):
+    address: str
+    area: dict
+    away_team: dict
+    club_color: str
+    coach: dict
+    competition: dict
+    crest: str
+    founded: int
+    group: str
+    home_team: dict
     id: int
+    last_updated: str
+    matchday: int
+    name: str
+    running_competition: list
+    score: dict
+    season: dict
+    short_name: str
+    squad: list
+    staff: list
+    stage: str
+    status: str
+    tla: str
+    utc_date: str
+    venue: str
+    website: str

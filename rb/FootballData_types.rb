@@ -231,10 +231,138 @@ CompetitionLoadMatch = Struct.new(
 
 # Request payload for Competition#list.
 #
+# @!attribute [rw] address
+#   @return [String, nil]
+#
+# @!attribute [rw] area
+#   @return [Hash, nil]
+#
+# @!attribute [rw] assist
+#   @return [Integer, nil]
+#
+# @!attribute [rw] away_team
+#   @return [Hash, nil]
+#
+# @!attribute [rw] club_color
+#   @return [String, nil]
+#
+# @!attribute [rw] code
+#   @return [String, nil]
+#
+# @!attribute [rw] competition
+#   @return [Hash, nil]
+#
+# @!attribute [rw] crest
+#   @return [String, nil]
+#
+# @!attribute [rw] current_season
+#   @return [Hash, nil]
+#
+# @!attribute [rw] emblem
+#   @return [String, nil]
+#
+# @!attribute [rw] founded
+#   @return [Integer, nil]
+#
+# @!attribute [rw] goal
+#   @return [Integer, nil]
+#
+# @!attribute [rw] group
+#   @return [String, nil]
+#
+# @!attribute [rw] home_team
+#   @return [Hash, nil]
+#
 # @!attribute [rw] id
-#   @return [String]
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_updated
+#   @return [String, nil]
+#
+# @!attribute [rw] matchday
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] number_of_available_season
+#   @return [Integer, nil]
+#
+# @!attribute [rw] penalty
+#   @return [Integer, nil]
+#
+# @!attribute [rw] player
+#   @return [Hash, nil]
+#
+# @!attribute [rw] score
+#   @return [Hash, nil]
+#
+# @!attribute [rw] season
+#   @return [Hash, nil]
+#
+# @!attribute [rw] short_name
+#   @return [String, nil]
+#
+# @!attribute [rw] stage
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] table
+#   @return [Array, nil]
+#
+# @!attribute [rw] team
+#   @return [Hash, nil]
+#
+# @!attribute [rw] tla
+#   @return [String, nil]
+#
+# @!attribute [rw] type
+#   @return [String, nil]
+#
+# @!attribute [rw] utc_date
+#   @return [String, nil]
+#
+# @!attribute [rw] venue
+#   @return [String, nil]
+#
+# @!attribute [rw] website
+#   @return [String, nil]
 CompetitionListMatch = Struct.new(
+  :address,
+  :area,
+  :assist,
+  :away_team,
+  :club_color,
+  :code,
+  :competition,
+  :crest,
+  :current_season,
+  :emblem,
+  :founded,
+  :goal,
+  :group,
+  :home_team,
   :id,
+  :last_updated,
+  :matchday,
+  :name,
+  :number_of_available_season,
+  :penalty,
+  :player,
+  :score,
+  :season,
+  :short_name,
+  :stage,
+  :status,
+  :table,
+  :team,
+  :tla,
+  :type,
+  :utc_date,
+  :venue,
+  :website,
   keyword_init: true
 )
 
@@ -632,10 +760,110 @@ TeamLoadMatch = Struct.new(
 
 # Request payload for Team#list.
 #
+# @!attribute [rw] address
+#   @return [String, nil]
+#
+# @!attribute [rw] area
+#   @return [Hash, nil]
+#
+# @!attribute [rw] away_team
+#   @return [Hash, nil]
+#
+# @!attribute [rw] club_color
+#   @return [String, nil]
+#
+# @!attribute [rw] coach
+#   @return [Hash, nil]
+#
+# @!attribute [rw] competition
+#   @return [Hash, nil]
+#
+# @!attribute [rw] crest
+#   @return [String, nil]
+#
+# @!attribute [rw] founded
+#   @return [Integer, nil]
+#
+# @!attribute [rw] group
+#   @return [String, nil]
+#
+# @!attribute [rw] home_team
+#   @return [Hash, nil]
+#
 # @!attribute [rw] id
-#   @return [Integer]
+#   @return [Integer, nil]
+#
+# @!attribute [rw] last_updated
+#   @return [String, nil]
+#
+# @!attribute [rw] matchday
+#   @return [Integer, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] running_competition
+#   @return [Array, nil]
+#
+# @!attribute [rw] score
+#   @return [Hash, nil]
+#
+# @!attribute [rw] season
+#   @return [Hash, nil]
+#
+# @!attribute [rw] short_name
+#   @return [String, nil]
+#
+# @!attribute [rw] squad
+#   @return [Array, nil]
+#
+# @!attribute [rw] staff
+#   @return [Array, nil]
+#
+# @!attribute [rw] stage
+#   @return [String, nil]
+#
+# @!attribute [rw] status
+#   @return [String, nil]
+#
+# @!attribute [rw] tla
+#   @return [String, nil]
+#
+# @!attribute [rw] utc_date
+#   @return [String, nil]
+#
+# @!attribute [rw] venue
+#   @return [String, nil]
+#
+# @!attribute [rw] website
+#   @return [String, nil]
 TeamListMatch = Struct.new(
+  :address,
+  :area,
+  :away_team,
+  :club_color,
+  :coach,
+  :competition,
+  :crest,
+  :founded,
+  :group,
+  :home_team,
   :id,
+  :last_updated,
+  :matchday,
+  :name,
+  :running_competition,
+  :score,
+  :season,
+  :short_name,
+  :squad,
+  :staff,
+  :stage,
+  :status,
+  :tla,
+  :utc_date,
+  :venue,
+  :website,
   keyword_init: true
 )
 

@@ -52,7 +52,7 @@ try {
 ```php
 try {
     // load() returns the bare Area record (throws on error).
-    $area = $client->Area()->load(["id" => "example_id"]);
+    $area = $client->Area()->load(["id" => 1]);
     print_r($area);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -448,7 +448,7 @@ Create an instance: `$area = $client->Area();`
 
 ```php
 // load() returns the bare Area record (throws on error).
-$area = $client->Area()->load(["id" => "area_id"]);
+$area = $client->Area()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -562,7 +562,7 @@ Create an instance: `$match = $client->Match();`
 
 ```php
 // load() returns the bare Match record (throws on error).
-$match = $client->Match()->load(["id" => "match_id"]);
+$match = $client->Match()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -613,7 +613,7 @@ Create an instance: `$person = $client->Person();`
 
 ```php
 // load() returns the bare Person record (throws on error).
-$person = $client->Person()->load(["id" => "person_id"]);
+$person = $client->Person()->load(["id" => 1]);
 ```
 
 #### Example: List
@@ -670,7 +670,7 @@ Create an instance: `$team = $client->Team();`
 
 ```php
 // load() returns the bare Team record (throws on error).
-$team = $client->Team()->load(["id" => "team_id"]);
+$team = $client->Team()->load(["id" => 1]);
 ```
 
 #### Example: List

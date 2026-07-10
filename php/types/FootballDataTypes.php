@@ -89,7 +89,39 @@ class CompetitionLoadMatch
 /** Request payload for Competition#list. */
 class CompetitionListMatch
 {
-    public string $id;
+    public ?string $address = null;
+    public ?array $area = null;
+    public ?int $assist = null;
+    public ?array $away_team = null;
+    public ?string $club_color = null;
+    public ?string $code = null;
+    public ?array $competition = null;
+    public ?string $crest = null;
+    public ?array $current_season = null;
+    public ?string $emblem = null;
+    public ?int $founded = null;
+    public ?int $goal = null;
+    public ?string $group = null;
+    public ?array $home_team = null;
+    public ?int $id = null;
+    public ?string $last_updated = null;
+    public ?int $matchday = null;
+    public ?string $name = null;
+    public ?int $number_of_available_season = null;
+    public ?int $penalty = null;
+    public ?array $player = null;
+    public ?array $score = null;
+    public ?array $season = null;
+    public ?string $short_name = null;
+    public ?string $stage = null;
+    public ?string $status = null;
+    public ?array $table = null;
+    public ?array $team = null;
+    public ?string $tla = null;
+    public ?string $type = null;
+    public ?string $utc_date = null;
+    public ?string $venue = null;
+    public ?string $website = null;
 }
 
 /** Match entity data model. */
@@ -223,6 +255,31 @@ class TeamLoadMatch
 /** Request payload for Team#list. */
 class TeamListMatch
 {
-    public int $id;
+    public ?string $address = null;
+    public ?array $area = null;
+    public ?array $away_team = null;
+    public ?string $club_color = null;
+    public ?array $coach = null;
+    public ?array $competition = null;
+    public ?string $crest = null;
+    public ?int $founded = null;
+    public ?string $group = null;
+    public ?array $home_team = null;
+    public ?int $id = null;
+    public ?string $last_updated = null;
+    public ?int $matchday = null;
+    public ?string $name = null;
+    public ?array $running_competition = null;
+    public ?array $score = null;
+    public ?array $season = null;
+    public ?string $short_name = null;
+    public ?array $squad = null;
+    public ?array $staff = null;
+    public ?string $stage = null;
+    public ?string $status = null;
+    public ?string $tla = null;
+    public ?string $utc_date = null;
+    public ?string $venue = null;
+    public ?string $website = null;
 }
 

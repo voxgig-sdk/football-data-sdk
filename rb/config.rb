@@ -16,7 +16,7 @@ module FootballDataConfig
       "options" => {
         "base" => "http://api.football-data.org/v4",
         "auth" => {
-          "prefix" => "Bearer",
+          "prefix" => "",
         },
         "headers" => {
           "content-type" => "application/json",
@@ -401,7 +401,6 @@ module FootballDataConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -482,7 +481,6 @@ module FootballDataConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -537,7 +535,6 @@ module FootballDataConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -591,7 +588,6 @@ module FootballDataConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -1427,7 +1423,6 @@ module FootballDataConfig
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [

@@ -1,0 +1,7 @@
+# Entity Models
+
+@"area.aontu"
+@"competition.aontu"
+@"match.aontu"
+@"person.aontu"
+@"team.aontu"

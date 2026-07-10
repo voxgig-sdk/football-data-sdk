@@ -59,7 +59,7 @@ except Exception as err:
 
 ```python
 try:
-    area = client.Area().load({"id": "example_id"})
+    area = client.Area().load({"id": 1})
     print(area)
 except Exception as err:
     print(f"load failed: {err}")
@@ -441,7 +441,7 @@ Create an instance: `area = client.Area()`
 #### Example: Load
 
 ```python
-area = client.Area().load({"id": "area_id"})
+area = client.Area().load({"id": 1})
 ```
 
 #### Example: List
@@ -551,7 +551,7 @@ Create an instance: `match = client.Match()`
 #### Example: Load
 
 ```python
-match = client.Match().load({"id": "match_id"})
+match = client.Match().load({"id": 1})
 ```
 
 #### Example: List
@@ -600,7 +600,7 @@ Create an instance: `person = client.Person()`
 #### Example: Load
 
 ```python
-person = client.Person().load({"id": "person_id"})
+person = client.Person().load({"id": 1})
 ```
 
 #### Example: List
@@ -655,7 +655,7 @@ Create an instance: `team = client.Team()`
 #### Example: Load
 
 ```python
-team = client.Team().load({"id": "team_id"})
+team = client.Team().load({"id": 1})
 ```
 
 #### Example: List

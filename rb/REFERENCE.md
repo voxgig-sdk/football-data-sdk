@@ -133,7 +133,7 @@ results = client.Area.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Area.load({ "id" => "area_id" })
+result = client.Area.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ results = client.Match.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Match.load({ "id" => "match_id" })
+result = client.Match.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -382,7 +382,7 @@ results = client.Person.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Person.load({ "id" => "person_id" })
+result = client.Person.load({ "id" => 1 })
 ```
 
 ### Common Methods
@@ -467,7 +467,7 @@ results = client.Team.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Team.load({ "id" => "team_id" })
+result = client.Team.load({ "id" => 1 })
 ```
 
 ### Common Methods

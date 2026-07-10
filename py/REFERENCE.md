@@ -129,7 +129,7 @@ for area in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Area().load({"id": "area_id"})
+result = client.Area().load({"id": 1})
 ```
 
 ### Common Methods
@@ -301,7 +301,7 @@ for match in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Match().load({"id": "match_id"})
+result = client.Match().load({"id": 1})
 ```
 
 ### Common Methods
@@ -381,7 +381,7 @@ for person in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Person().load({"id": "person_id"})
+result = client.Person().load({"id": 1})
 ```
 
 ### Common Methods
@@ -467,7 +467,7 @@ for team in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Team().load({"id": "team_id"})
+result = client.Team().load({"id": 1})
 ```
 
 ### Common Methods

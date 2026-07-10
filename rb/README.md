@@ -51,7 +51,7 @@ end
 ```ruby
 begin
   # load returns the bare Area record (raises on error).
-  area = client.Area.load({ "id" => "example_id" })
+  area = client.Area.load({ "id" => 1 })
   puts area
 rescue => err
   warn "load failed: #{err}"
@@ -438,7 +438,7 @@ Create an instance: `area = client.Area`
 
 ```ruby
 # load returns the bare Area record (raises on error).
-area = client.Area.load({ "id" => "area_id" })
+area = client.Area.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -552,7 +552,7 @@ Create an instance: `match = client.Match`
 
 ```ruby
 # load returns the bare Match record (raises on error).
-match = client.Match.load({ "id" => "match_id" })
+match = client.Match.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -603,7 +603,7 @@ Create an instance: `person = client.Person`
 
 ```ruby
 # load returns the bare Person record (raises on error).
-person = client.Person.load({ "id" => "person_id" })
+person = client.Person.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -660,7 +660,7 @@ Create an instance: `team = client.Team`
 
 ```ruby
 # load returns the bare Team record (raises on error).
-team = client.Team.load({ "id" => "team_id" })
+team = client.Team.load({ "id" => 1 })
 ```
 
 #### Example: List

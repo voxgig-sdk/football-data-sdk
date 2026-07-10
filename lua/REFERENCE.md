@@ -130,7 +130,7 @@ local results, err = client:Area():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Area():load({ id = "area_id" })
+local result, err = client:Area():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -300,7 +300,7 @@ local results, err = client:Match():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Match():load({ id = "match_id" })
+local result, err = client:Match():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -379,7 +379,7 @@ local results, err = client:Person():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Person():load({ id = "person_id" })
+local result, err = client:Person():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -464,7 +464,7 @@ local results, err = client:Team():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Team():load({ id = "team_id" })
+local result, err = client:Team():load({ id = 1 })
 ```
 
 ### Common Methods

@@ -455,7 +455,7 @@ Create an instance: `area := client.Area(nil)`
 #### Example: Load
 
 ```go
-area, err := client.Area(nil).Load(map[string]any{"id": "area_id"}, nil)
+area, err := client.Area(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -581,7 +581,7 @@ Create an instance: `match := client.Match(nil)`
 #### Example: Load
 
 ```go
-match, err := client.Match(nil).Load(map[string]any{"id": "match_id"}, nil)
+match, err := client.Match(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -638,7 +638,7 @@ Create an instance: `person := client.Person(nil)`
 #### Example: Load
 
 ```go
-person, err := client.Person(nil).Load(map[string]any{"id": "person_id"}, nil)
+person, err := client.Person(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -701,7 +701,7 @@ Create an instance: `team := client.Team(nil)`
 #### Example: Load
 
 ```go
-team, err := client.Team(nil).Load(map[string]any{"id": "team_id"}, nil)
+team, err := client.Team(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
