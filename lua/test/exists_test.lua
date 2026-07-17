@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FootballData SDK exists test
 
 local sdk = require("football-data_sdk")
 
