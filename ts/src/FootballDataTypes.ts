@@ -6,13 +6,13 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Area {
-  child_area?: any[]
-  country_code?: string
+  childAreas?: any[]
+  countryCode?: string
   flag?: string
   id?: number
   name?: string
-  parent_area?: string
-  parent_area_id?: number
+  parentArea?: string
+  parentAreaId?: number
 }
 
 export interface AreaLoadMatch {
@@ -20,47 +20,47 @@ export interface AreaLoadMatch {
 }
 
 export interface AreaListMatch {
-  child_area?: any[]
-  country_code?: string
+  childAreas?: any[]
+  countryCode?: string
   flag?: string
   id?: number
   name?: string
-  parent_area?: string
-  parent_area_id?: number
+  parentArea?: string
+  parentAreaId?: number
 }
 
 export interface Competition {
   address?: string
   area?: Record<string, any>
-  assist?: number
-  away_team?: Record<string, any>
-  club_color?: string
+  assists?: number
+  awayTeam?: Record<string, any>
+  clubColors?: string
   code?: string
   competition?: Record<string, any>
   crest?: string
-  current_season?: Record<string, any>
+  currentSeason?: Record<string, any>
   emblem?: string
   founded?: number
-  goal?: number
+  goals?: number
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_updated?: string
+  lastUpdated?: string
   matchday?: number
   name?: string
-  number_of_available_season?: number
-  penalty?: number
+  numberOfAvailableSeasons?: number
+  penalties?: number
   player?: Record<string, any>
   score?: Record<string, any>
   season?: Record<string, any>
-  short_name?: string
+  shortName?: string
   stage?: string
   status?: string
   table?: any[]
   team?: Record<string, any>
   tla?: string
   type?: string
-  utc_date?: string
+  utcDate?: string
   venue?: string
   website?: string
 }
@@ -72,58 +72,64 @@ export interface CompetitionLoadMatch {
 export interface CompetitionListMatch {
   address?: string
   area?: Record<string, any>
-  assist?: number
-  away_team?: Record<string, any>
-  club_color?: string
+  assists?: number
+  awayTeam?: Record<string, any>
+  clubColors?: string
   code?: string
   competition?: Record<string, any>
   crest?: string
-  current_season?: Record<string, any>
+  currentSeason?: Record<string, any>
   emblem?: string
   founded?: number
-  goal?: number
+  goals?: number
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_updated?: string
+  lastUpdated?: string
   matchday?: number
   name?: string
-  number_of_available_season?: number
-  penalty?: number
+  numberOfAvailableSeasons?: number
+  penalties?: number
   player?: Record<string, any>
   score?: Record<string, any>
   season?: Record<string, any>
-  short_name?: string
+  shortName?: string
   stage?: string
   status?: string
   table?: any[]
   team?: Record<string, any>
   tla?: string
   type?: string
-  utc_date?: string
+  utcDate?: string
   venue?: string
   website?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'match' | 'scorer' | 'standing' | 'team'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Match {
   area?: Record<string, any>
-  away_team?: Record<string, any>
-  booking?: any[]
+  awayTeam?: Record<string, any>
+  bookings?: any[]
   competition?: Record<string, any>
-  goal?: any[]
+  goals?: any[]
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_updated?: string
+  lastUpdated?: string
   matchday?: number
-  odd?: Record<string, any>
-  referee?: any[]
+  odds?: Record<string, any>
+  referees?: any[]
   score?: Record<string, any>
   season?: Record<string, any>
   stage?: string
   status?: string
-  substitution?: any[]
-  utc_date?: string
+  substitutions?: any[]
+  utcDate?: string
   venue?: string
 }
 
@@ -133,36 +139,36 @@ export interface MatchLoadMatch {
 
 export interface MatchListMatch {
   area?: Record<string, any>
-  away_team?: Record<string, any>
-  booking?: any[]
+  awayTeam?: Record<string, any>
+  bookings?: any[]
   competition?: Record<string, any>
-  goal?: any[]
+  goals?: any[]
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_updated?: string
+  lastUpdated?: string
   matchday?: number
-  odd?: Record<string, any>
-  referee?: any[]
+  odds?: Record<string, any>
+  referees?: any[]
   score?: Record<string, any>
   season?: Record<string, any>
   stage?: string
   status?: string
-  substitution?: any[]
-  utc_date?: string
+  substitutions?: any[]
+  utcDate?: string
   venue?: string
 }
 
 export interface Person {
-  away_team?: Record<string, any>
+  awayTeam?: Record<string, any>
   competition?: Record<string, any>
-  date_of_birth?: string
-  first_name?: string
+  dateOfBirth?: string
+  firstName?: string
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_name?: string
-  last_updated?: string
+  lastName?: string
+  lastUpdated?: string
   matchday?: number
   name?: string
   nationality?: string
@@ -170,10 +176,10 @@ export interface Person {
   score?: Record<string, any>
   season?: Record<string, any>
   section?: string
-  shirt_number?: number
+  shirtNumber?: number
   stage?: string
   status?: string
-  utc_date?: string
+  utcDate?: string
 }
 
 export interface PersonLoadMatch {
@@ -182,33 +188,39 @@ export interface PersonLoadMatch {
 
 export interface PersonListMatch {
   id: number
+
+  // Selects a custom action instead of the plain list:
+  //   'match'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Team {
   address?: string
   area?: Record<string, any>
-  away_team?: Record<string, any>
-  club_color?: string
+  awayTeam?: Record<string, any>
+  clubColors?: string
   coach?: Record<string, any>
   competition?: Record<string, any>
   crest?: string
   founded?: number
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_updated?: string
+  lastUpdated?: string
   matchday?: number
   name?: string
-  running_competition?: any[]
+  runningCompetitions?: any[]
   score?: Record<string, any>
   season?: Record<string, any>
-  short_name?: string
+  shortName?: string
   squad?: any[]
   staff?: any[]
   stage?: string
   status?: string
   tla?: string
-  utc_date?: string
+  utcDate?: string
   venue?: string
   website?: string
 }
@@ -220,29 +232,35 @@ export interface TeamLoadMatch {
 export interface TeamListMatch {
   address?: string
   area?: Record<string, any>
-  away_team?: Record<string, any>
-  club_color?: string
+  awayTeam?: Record<string, any>
+  clubColors?: string
   coach?: Record<string, any>
   competition?: Record<string, any>
   crest?: string
   founded?: number
   group?: string
-  home_team?: Record<string, any>
+  homeTeam?: Record<string, any>
   id?: number
-  last_updated?: string
+  lastUpdated?: string
   matchday?: number
   name?: string
-  running_competition?: any[]
+  runningCompetitions?: any[]
   score?: Record<string, any>
   season?: Record<string, any>
-  short_name?: string
+  shortName?: string
   squad?: any[]
   staff?: any[]
   stage?: string
   status?: string
   tla?: string
-  utc_date?: string
+  utcDate?: string
   venue?: string
   website?: string
+
+  // Selects a custom action instead of the plain list:
+  //   'match'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 

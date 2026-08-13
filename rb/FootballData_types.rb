@@ -10,10 +10,10 @@
 
 # Area entity data model.
 #
-# @!attribute [rw] child_area
+# @!attribute [rw] childAreas
 #   @return [Array, nil]
 #
-# @!attribute [rw] country_code
+# @!attribute [rw] countryCode
 #   @return [String, nil]
 #
 # @!attribute [rw] flag
@@ -25,19 +25,19 @@
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] parent_area
+# @!attribute [rw] parentArea
 #   @return [String, nil]
 #
-# @!attribute [rw] parent_area_id
+# @!attribute [rw] parentAreaId
 #   @return [Integer, nil]
 Area = Struct.new(
-  :child_area,
-  :country_code,
+  :childAreas,
+  :countryCode,
   :flag,
   :id,
   :name,
-  :parent_area,
-  :parent_area_id,
+  :parentArea,
+  :parentAreaId,
   keyword_init: true
 )
 
@@ -52,10 +52,10 @@ AreaLoadMatch = Struct.new(
 
 # Request payload for Area#list.
 #
-# @!attribute [rw] child_area
+# @!attribute [rw] childAreas
 #   @return [Array, nil]
 #
-# @!attribute [rw] country_code
+# @!attribute [rw] countryCode
 #   @return [String, nil]
 #
 # @!attribute [rw] flag
@@ -67,19 +67,19 @@ AreaLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] parent_area
+# @!attribute [rw] parentArea
 #   @return [String, nil]
 #
-# @!attribute [rw] parent_area_id
+# @!attribute [rw] parentAreaId
 #   @return [Integer, nil]
 AreaListMatch = Struct.new(
-  :child_area,
-  :country_code,
+  :childAreas,
+  :countryCode,
   :flag,
   :id,
   :name,
-  :parent_area,
-  :parent_area_id,
+  :parentArea,
+  :parentAreaId,
   keyword_init: true
 )
 
@@ -91,13 +91,13 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] assist
+# @!attribute [rw] assists
 #   @return [Integer, nil]
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
-# @!attribute [rw] club_color
+# @!attribute [rw] clubColors
 #   @return [String, nil]
 #
 # @!attribute [rw] code
@@ -109,7 +109,7 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] crest
 #   @return [String, nil]
 #
-# @!attribute [rw] current_season
+# @!attribute [rw] currentSeason
 #   @return [Hash, nil]
 #
 # @!attribute [rw] emblem
@@ -118,19 +118,19 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] founded
 #   @return [Integer, nil]
 #
-# @!attribute [rw] goal
+# @!attribute [rw] goals
 #   @return [Integer, nil]
 #
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
@@ -139,10 +139,10 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] number_of_available_season
+# @!attribute [rw] numberOfAvailableSeasons
 #   @return [Integer, nil]
 #
-# @!attribute [rw] penalty
+# @!attribute [rw] penalties
 #   @return [Integer, nil]
 #
 # @!attribute [rw] player
@@ -154,7 +154,7 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] season
 #   @return [Hash, nil]
 #
-# @!attribute [rw] short_name
+# @!attribute [rw] shortName
 #   @return [String, nil]
 #
 # @!attribute [rw] stage
@@ -175,7 +175,7 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
@@ -186,35 +186,35 @@ AreaListMatch = Struct.new(
 Competition = Struct.new(
   :address,
   :area,
-  :assist,
-  :away_team,
-  :club_color,
+  :assists,
+  :awayTeam,
+  :clubColors,
   :code,
   :competition,
   :crest,
-  :current_season,
+  :currentSeason,
   :emblem,
   :founded,
-  :goal,
+  :goals,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_updated,
+  :lastUpdated,
   :matchday,
   :name,
-  :number_of_available_season,
-  :penalty,
+  :numberOfAvailableSeasons,
+  :penalties,
   :player,
   :score,
   :season,
-  :short_name,
+  :shortName,
   :stage,
   :status,
   :table,
   :team,
   :tla,
   :type,
-  :utc_date,
+  :utcDate,
   :venue,
   :website,
   keyword_init: true
@@ -237,13 +237,13 @@ CompetitionLoadMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] assist
+# @!attribute [rw] assists
 #   @return [Integer, nil]
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
-# @!attribute [rw] club_color
+# @!attribute [rw] clubColors
 #   @return [String, nil]
 #
 # @!attribute [rw] code
@@ -255,7 +255,7 @@ CompetitionLoadMatch = Struct.new(
 # @!attribute [rw] crest
 #   @return [String, nil]
 #
-# @!attribute [rw] current_season
+# @!attribute [rw] currentSeason
 #   @return [Hash, nil]
 #
 # @!attribute [rw] emblem
@@ -264,19 +264,19 @@ CompetitionLoadMatch = Struct.new(
 # @!attribute [rw] founded
 #   @return [Integer, nil]
 #
-# @!attribute [rw] goal
+# @!attribute [rw] goals
 #   @return [Integer, nil]
 #
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
@@ -285,10 +285,10 @@ CompetitionLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] number_of_available_season
+# @!attribute [rw] numberOfAvailableSeasons
 #   @return [Integer, nil]
 #
-# @!attribute [rw] penalty
+# @!attribute [rw] penalties
 #   @return [Integer, nil]
 #
 # @!attribute [rw] player
@@ -300,7 +300,7 @@ CompetitionLoadMatch = Struct.new(
 # @!attribute [rw] season
 #   @return [Hash, nil]
 #
-# @!attribute [rw] short_name
+# @!attribute [rw] shortName
 #   @return [String, nil]
 #
 # @!attribute [rw] stage
@@ -321,7 +321,7 @@ CompetitionLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
@@ -332,35 +332,35 @@ CompetitionLoadMatch = Struct.new(
 CompetitionListMatch = Struct.new(
   :address,
   :area,
-  :assist,
-  :away_team,
-  :club_color,
+  :assists,
+  :awayTeam,
+  :clubColors,
   :code,
   :competition,
   :crest,
-  :current_season,
+  :currentSeason,
   :emblem,
   :founded,
-  :goal,
+  :goals,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_updated,
+  :lastUpdated,
   :matchday,
   :name,
-  :number_of_available_season,
-  :penalty,
+  :numberOfAvailableSeasons,
+  :penalties,
   :player,
   :score,
   :season,
-  :short_name,
+  :shortName,
   :stage,
   :status,
   :table,
   :team,
   :tla,
   :type,
-  :utc_date,
+  :utcDate,
   :venue,
   :website,
   keyword_init: true
@@ -371,37 +371,37 @@ CompetitionListMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
-# @!attribute [rw] booking
+# @!attribute [rw] bookings
 #   @return [Array, nil]
 #
 # @!attribute [rw] competition
 #   @return [Hash, nil]
 #
-# @!attribute [rw] goal
+# @!attribute [rw] goals
 #   @return [Array, nil]
 #
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
 #   @return [Integer, nil]
 #
-# @!attribute [rw] odd
+# @!attribute [rw] odds
 #   @return [Hash, nil]
 #
-# @!attribute [rw] referee
+# @!attribute [rw] referees
 #   @return [Array, nil]
 #
 # @!attribute [rw] score
@@ -416,33 +416,33 @@ CompetitionListMatch = Struct.new(
 # @!attribute [rw] status
 #   @return [String, nil]
 #
-# @!attribute [rw] substitution
+# @!attribute [rw] substitutions
 #   @return [Array, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
 #   @return [String, nil]
 Match = Struct.new(
   :area,
-  :away_team,
-  :booking,
+  :awayTeam,
+  :bookings,
   :competition,
-  :goal,
+  :goals,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_updated,
+  :lastUpdated,
   :matchday,
-  :odd,
-  :referee,
+  :odds,
+  :referees,
   :score,
   :season,
   :stage,
   :status,
-  :substitution,
-  :utc_date,
+  :substitutions,
+  :utcDate,
   :venue,
   keyword_init: true
 )
@@ -461,37 +461,37 @@ MatchLoadMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
-# @!attribute [rw] booking
+# @!attribute [rw] bookings
 #   @return [Array, nil]
 #
 # @!attribute [rw] competition
 #   @return [Hash, nil]
 #
-# @!attribute [rw] goal
+# @!attribute [rw] goals
 #   @return [Array, nil]
 #
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
 #   @return [Integer, nil]
 #
-# @!attribute [rw] odd
+# @!attribute [rw] odds
 #   @return [Hash, nil]
 #
-# @!attribute [rw] referee
+# @!attribute [rw] referees
 #   @return [Array, nil]
 #
 # @!attribute [rw] score
@@ -506,64 +506,64 @@ MatchLoadMatch = Struct.new(
 # @!attribute [rw] status
 #   @return [String, nil]
 #
-# @!attribute [rw] substitution
+# @!attribute [rw] substitutions
 #   @return [Array, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
 #   @return [String, nil]
 MatchListMatch = Struct.new(
   :area,
-  :away_team,
-  :booking,
+  :awayTeam,
+  :bookings,
   :competition,
-  :goal,
+  :goals,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_updated,
+  :lastUpdated,
   :matchday,
-  :odd,
-  :referee,
+  :odds,
+  :referees,
   :score,
   :season,
   :stage,
   :status,
-  :substitution,
-  :utc_date,
+  :substitutions,
+  :utcDate,
   :venue,
   keyword_init: true
 )
 
 # Person entity data model.
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] competition
 #   @return [Hash, nil]
 #
-# @!attribute [rw] date_of_birth
+# @!attribute [rw] dateOfBirth
 #   @return [String, nil]
 #
-# @!attribute [rw] first_name
+# @!attribute [rw] firstName
 #   @return [String, nil]
 #
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_name
+# @!attribute [rw] lastName
 #   @return [String, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
@@ -587,7 +587,7 @@ MatchListMatch = Struct.new(
 # @!attribute [rw] section
 #   @return [String, nil]
 #
-# @!attribute [rw] shirt_number
+# @!attribute [rw] shirtNumber
 #   @return [Integer, nil]
 #
 # @!attribute [rw] stage
@@ -596,18 +596,18 @@ MatchListMatch = Struct.new(
 # @!attribute [rw] status
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 Person = Struct.new(
-  :away_team,
+  :awayTeam,
   :competition,
-  :date_of_birth,
-  :first_name,
+  :dateOfBirth,
+  :firstName,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_name,
-  :last_updated,
+  :lastName,
+  :lastUpdated,
   :matchday,
   :name,
   :nationality,
@@ -615,10 +615,10 @@ Person = Struct.new(
   :score,
   :season,
   :section,
-  :shirt_number,
+  :shirtNumber,
   :stage,
   :status,
-  :utc_date,
+  :utcDate,
   keyword_init: true
 )
 
@@ -648,10 +648,10 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
-# @!attribute [rw] club_color
+# @!attribute [rw] clubColors
 #   @return [String, nil]
 #
 # @!attribute [rw] coach
@@ -669,13 +669,13 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
@@ -684,7 +684,7 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] running_competition
+# @!attribute [rw] runningCompetitions
 #   @return [Array, nil]
 #
 # @!attribute [rw] score
@@ -693,7 +693,7 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] season
 #   @return [Hash, nil]
 #
-# @!attribute [rw] short_name
+# @!attribute [rw] shortName
 #   @return [String, nil]
 #
 # @!attribute [rw] squad
@@ -711,7 +711,7 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] tla
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
@@ -722,28 +722,28 @@ PersonListMatch = Struct.new(
 Team = Struct.new(
   :address,
   :area,
-  :away_team,
-  :club_color,
+  :awayTeam,
+  :clubColors,
   :coach,
   :competition,
   :crest,
   :founded,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_updated,
+  :lastUpdated,
   :matchday,
   :name,
-  :running_competition,
+  :runningCompetitions,
   :score,
   :season,
-  :short_name,
+  :shortName,
   :squad,
   :staff,
   :stage,
   :status,
   :tla,
-  :utc_date,
+  :utcDate,
   :venue,
   :website,
   keyword_init: true
@@ -766,10 +766,10 @@ TeamLoadMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] away_team
+# @!attribute [rw] awayTeam
 #   @return [Hash, nil]
 #
-# @!attribute [rw] club_color
+# @!attribute [rw] clubColors
 #   @return [String, nil]
 #
 # @!attribute [rw] coach
@@ -787,13 +787,13 @@ TeamLoadMatch = Struct.new(
 # @!attribute [rw] group
 #   @return [String, nil]
 #
-# @!attribute [rw] home_team
+# @!attribute [rw] homeTeam
 #   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] last_updated
+# @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
 # @!attribute [rw] matchday
@@ -802,7 +802,7 @@ TeamLoadMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String, nil]
 #
-# @!attribute [rw] running_competition
+# @!attribute [rw] runningCompetitions
 #   @return [Array, nil]
 #
 # @!attribute [rw] score
@@ -811,7 +811,7 @@ TeamLoadMatch = Struct.new(
 # @!attribute [rw] season
 #   @return [Hash, nil]
 #
-# @!attribute [rw] short_name
+# @!attribute [rw] shortName
 #   @return [String, nil]
 #
 # @!attribute [rw] squad
@@ -829,7 +829,7 @@ TeamLoadMatch = Struct.new(
 # @!attribute [rw] tla
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_date
+# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
@@ -840,28 +840,28 @@ TeamLoadMatch = Struct.new(
 TeamListMatch = Struct.new(
   :address,
   :area,
-  :away_team,
-  :club_color,
+  :awayTeam,
+  :clubColors,
   :coach,
   :competition,
   :crest,
   :founded,
   :group,
-  :home_team,
+  :homeTeam,
   :id,
-  :last_updated,
+  :lastUpdated,
   :matchday,
   :name,
-  :running_competition,
+  :runningCompetitions,
   :score,
   :season,
-  :short_name,
+  :shortName,
   :squad,
   :staff,
   :stage,
   :status,
   :tla,
-  :utc_date,
+  :utcDate,
   :venue,
   :website,
   keyword_init: true

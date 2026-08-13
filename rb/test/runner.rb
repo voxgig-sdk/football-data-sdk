@@ -23,8 +23,8 @@ module FootballDataTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FOOTBALLDATA_TEST_LIVE")
-    override = getenv("FOOTBALLDATA_TEST_OVERRIDE")
+    live = getenv("FOOTBALL_DATA_TEST_LIVE")
+    override = getenv("FOOTBALL_DATA_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FootballDataTestRunner
       end
     end
 
-    explain = getenv("FOOTBALLDATA_TEST_EXPLAIN")
-    m["FOOTBALLDATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FOOTBALL_DATA_TEST_EXPLAIN")
+    m["FOOTBALL_DATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

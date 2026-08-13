@@ -33,14 +33,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "child_area",
+						"name": "childAreas",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 0,
 					},
 					map[string]any{
 						"active": true,
-						"name": "country_code",
+						"name": "countryCode",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 1,
@@ -68,14 +68,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "parent_area",
+						"name": "parentArea",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 5,
 					},
 					map[string]any{
 						"active": true,
-						"name": "parent_area_id",
+						"name": "parentAreaId",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 6,
@@ -90,6 +90,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/areas",
 								"parts": []any{
@@ -103,7 +104,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -124,6 +124,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/areas/{id}",
 								"parts": []any{
@@ -142,7 +143,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -167,21 +167,21 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "assist",
+						"name": "assists",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "away_team",
+						"name": "awayTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 3,
 					},
 					map[string]any{
 						"active": true,
-						"name": "club_color",
+						"name": "clubColors",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -209,7 +209,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "current_season",
+						"name": "currentSeason",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 8,
@@ -230,7 +230,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "goal",
+						"name": "goals",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 11,
@@ -244,7 +244,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "home_team",
+						"name": "homeTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 13,
@@ -258,7 +258,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_updated",
+						"name": "lastUpdated",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 15,
@@ -279,14 +279,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "number_of_available_season",
+						"name": "numberOfAvailableSeasons",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 18,
 					},
 					map[string]any{
 						"active": true,
-						"name": "penalty",
+						"name": "penalties",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 19,
@@ -314,7 +314,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "short_name",
+						"name": "shortName",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 23,
@@ -363,7 +363,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "utc_date",
+						"name": "utcDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 30,
@@ -445,6 +445,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/competitions/{id}/matches",
 								"parts": []any{
@@ -502,6 +503,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/competitions/{id}/scorers",
 								"parts": []any{
@@ -555,6 +557,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/competitions/{id}/standings",
 								"parts": []any{
@@ -600,6 +603,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/competitions/{id}/teams",
 								"parts": []any{
@@ -634,6 +638,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/competitions",
 								"parts": []any{
@@ -651,7 +656,6 @@ func MakeConfig() map[string]any {
 								"index$": 4,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -672,6 +676,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/competitions/{id}",
 								"parts": []any{
@@ -690,7 +695,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -708,14 +712,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "away_team",
+						"name": "awayTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 1,
 					},
 					map[string]any{
 						"active": true,
-						"name": "booking",
+						"name": "bookings",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 2,
@@ -729,7 +733,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "goal",
+						"name": "goals",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 4,
@@ -743,7 +747,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "home_team",
+						"name": "homeTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 6,
@@ -757,7 +761,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_updated",
+						"name": "lastUpdated",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 8,
@@ -771,14 +775,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "odd",
+						"name": "odds",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 10,
 					},
 					map[string]any{
 						"active": true,
-						"name": "referee",
+						"name": "referees",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 11,
@@ -813,14 +817,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "substitution",
+						"name": "substitutions",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 16,
 					},
 					map[string]any{
 						"active": true,
-						"name": "utc_date",
+						"name": "utcDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 17,
@@ -877,6 +881,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/matches",
 								"parts": []any{
@@ -897,7 +902,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -918,6 +922,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/matches/{id}",
 								"parts": []any{
@@ -936,7 +941,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -947,7 +951,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "away_team",
+						"name": "awayTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 0,
@@ -961,14 +965,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "date_of_birth",
+						"name": "dateOfBirth",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "first_name",
+						"name": "firstName",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -982,7 +986,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "home_team",
+						"name": "homeTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 5,
@@ -996,14 +1000,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_name",
+						"name": "lastName",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 7,
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_updated",
+						"name": "lastUpdated",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 8,
@@ -1059,7 +1063,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "shirt_number",
+						"name": "shirtNumber",
 						"req": false,
 						"type": "`$INTEGER`",
 						"index$": 16,
@@ -1080,7 +1084,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "utc_date",
+						"name": "utcDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 19,
@@ -1149,6 +1153,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/persons/{id}/matches",
 								"parts": []any{
@@ -1174,7 +1179,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1195,6 +1199,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/persons/{id}",
 								"parts": []any{
@@ -1213,7 +1218,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -1238,14 +1242,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "away_team",
+						"name": "awayTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "club_color",
+						"name": "clubColors",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -1287,7 +1291,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "home_team",
+						"name": "homeTeam",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 9,
@@ -1301,7 +1305,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "last_updated",
+						"name": "lastUpdated",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 11,
@@ -1322,7 +1326,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "running_competition",
+						"name": "runningCompetitions",
 						"req": false,
 						"type": "`$ARRAY`",
 						"index$": 14,
@@ -1343,7 +1347,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "short_name",
+						"name": "shortName",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 17,
@@ -1385,7 +1389,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "utc_date",
+						"name": "utcDate",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 23,
@@ -1475,6 +1479,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/teams/{id}/matches",
 								"parts": []any{
@@ -1522,6 +1527,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/teams",
 								"parts": []any{
@@ -1540,7 +1546,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -1561,6 +1566,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/teams/{id}",
 								"parts": []any{
@@ -1579,7 +1585,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

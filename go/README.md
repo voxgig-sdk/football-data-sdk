@@ -78,12 +78,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-areas, err := client.Area(nil).List(nil, nil)
+matchs, err := client.Match(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = areas
+_ = matchs
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -147,13 +147,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-area, err := client.Area(nil).List(
+match, err := client.Match(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(area) // the returned mock data
+fmt.Println(match) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -278,13 +278,13 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"child_area"` |  |
-| `"country_code"` |  |
+| `"childAreas"` |  |
+| `"countryCode"` |  |
 | `"flag"` |  |
 | `"id"` |  |
 | `"name"` |  |
-| `"parent_area"` |  |
-| `"parent_area_id"` |  |
+| `"parentArea"` |  |
+| `"parentAreaId"` |  |
 
 Operations: List, Load.
 
@@ -296,35 +296,35 @@ API path: `/areas`
 | --- | --- |
 | `"address"` |  |
 | `"area"` |  |
-| `"assist"` |  |
-| `"away_team"` |  |
-| `"club_color"` |  |
+| `"assists"` |  |
+| `"awayTeam"` |  |
+| `"clubColors"` |  |
 | `"code"` |  |
 | `"competition"` |  |
 | `"crest"` |  |
-| `"current_season"` |  |
+| `"currentSeason"` |  |
 | `"emblem"` |  |
 | `"founded"` |  |
-| `"goal"` |  |
+| `"goals"` |  |
 | `"group"` |  |
-| `"home_team"` |  |
+| `"homeTeam"` |  |
 | `"id"` |  |
-| `"last_updated"` |  |
+| `"lastUpdated"` |  |
 | `"matchday"` |  |
 | `"name"` |  |
-| `"number_of_available_season"` |  |
-| `"penalty"` |  |
+| `"numberOfAvailableSeasons"` |  |
+| `"penalties"` |  |
 | `"player"` |  |
 | `"score"` |  |
 | `"season"` |  |
-| `"short_name"` |  |
+| `"shortName"` |  |
 | `"stage"` |  |
 | `"status"` |  |
 | `"table"` |  |
 | `"team"` |  |
 | `"tla"` |  |
 | `"type"` |  |
-| `"utc_date"` |  |
+| `"utcDate"` |  |
 | `"venue"` |  |
 | `"website"` |  |
 
@@ -337,23 +337,23 @@ API path: `/competitions/{id}/matches`
 | Field | Description |
 | --- | --- |
 | `"area"` |  |
-| `"away_team"` |  |
-| `"booking"` |  |
+| `"awayTeam"` |  |
+| `"bookings"` |  |
 | `"competition"` |  |
-| `"goal"` |  |
+| `"goals"` |  |
 | `"group"` |  |
-| `"home_team"` |  |
+| `"homeTeam"` |  |
 | `"id"` |  |
-| `"last_updated"` |  |
+| `"lastUpdated"` |  |
 | `"matchday"` |  |
-| `"odd"` |  |
-| `"referee"` |  |
+| `"odds"` |  |
+| `"referees"` |  |
 | `"score"` |  |
 | `"season"` |  |
 | `"stage"` |  |
 | `"status"` |  |
-| `"substitution"` |  |
-| `"utc_date"` |  |
+| `"substitutions"` |  |
+| `"utcDate"` |  |
 | `"venue"` |  |
 
 Operations: List, Load.
@@ -364,15 +364,15 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `"away_team"` |  |
+| `"awayTeam"` |  |
 | `"competition"` |  |
-| `"date_of_birth"` |  |
-| `"first_name"` |  |
+| `"dateOfBirth"` |  |
+| `"firstName"` |  |
 | `"group"` |  |
-| `"home_team"` |  |
+| `"homeTeam"` |  |
 | `"id"` |  |
-| `"last_name"` |  |
-| `"last_updated"` |  |
+| `"lastName"` |  |
+| `"lastUpdated"` |  |
 | `"matchday"` |  |
 | `"name"` |  |
 | `"nationality"` |  |
@@ -380,10 +380,10 @@ API path: `/matches`
 | `"score"` |  |
 | `"season"` |  |
 | `"section"` |  |
-| `"shirt_number"` |  |
+| `"shirtNumber"` |  |
 | `"stage"` |  |
 | `"status"` |  |
-| `"utc_date"` |  |
+| `"utcDate"` |  |
 
 Operations: List, Load.
 
@@ -395,28 +395,28 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `"address"` |  |
 | `"area"` |  |
-| `"away_team"` |  |
-| `"club_color"` |  |
+| `"awayTeam"` |  |
+| `"clubColors"` |  |
 | `"coach"` |  |
 | `"competition"` |  |
 | `"crest"` |  |
 | `"founded"` |  |
 | `"group"` |  |
-| `"home_team"` |  |
+| `"homeTeam"` |  |
 | `"id"` |  |
-| `"last_updated"` |  |
+| `"lastUpdated"` |  |
 | `"matchday"` |  |
 | `"name"` |  |
-| `"running_competition"` |  |
+| `"runningCompetitions"` |  |
 | `"score"` |  |
 | `"season"` |  |
-| `"short_name"` |  |
+| `"shortName"` |  |
 | `"squad"` |  |
 | `"staff"` |  |
 | `"stage"` |  |
 | `"status"` |  |
 | `"tla"` |  |
-| `"utc_date"` |  |
+| `"utcDate"` |  |
 | `"venue"` |  |
 | `"website"` |  |
 
@@ -444,13 +444,13 @@ Create an instance: `area := client.Area(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | `[]any` |  |
-| `country_code` | `string` |  |
+| `childAreas` | `[]any` |  |
+| `countryCode` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
-| `parent_area` | `string` |  |
-| `parent_area_id` | `int` |  |
+| `parentArea` | `string` |  |
+| `parentAreaId` | `int` |  |
 
 #### Example: Load
 
@@ -490,35 +490,35 @@ Create an instance: `competition := client.Competition(nil)`
 | --- | --- | --- |
 | `address` | `string` |  |
 | `area` | `map[string]any` |  |
-| `assist` | `int` |  |
-| `away_team` | `map[string]any` |  |
-| `club_color` | `string` |  |
+| `assists` | `int` |  |
+| `awayTeam` | `map[string]any` |  |
+| `clubColors` | `string` |  |
 | `code` | `string` |  |
 | `competition` | `map[string]any` |  |
 | `crest` | `string` |  |
-| `current_season` | `map[string]any` |  |
+| `currentSeason` | `map[string]any` |  |
 | `emblem` | `string` |  |
 | `founded` | `int` |  |
-| `goal` | `int` |  |
+| `goals` | `int` |  |
 | `group` | `string` |  |
-| `home_team` | `map[string]any` |  |
+| `homeTeam` | `map[string]any` |  |
 | `id` | `int` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `int` |  |
 | `name` | `string` |  |
-| `number_of_available_season` | `int` |  |
-| `penalty` | `int` |  |
+| `numberOfAvailableSeasons` | `int` |  |
+| `penalties` | `int` |  |
 | `player` | `map[string]any` |  |
 | `score` | `map[string]any` |  |
 | `season` | `map[string]any` |  |
-| `short_name` | `string` |  |
+| `shortName` | `string` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
 | `table` | `[]any` |  |
 | `team` | `map[string]any` |  |
 | `tla` | `string` |  |
 | `type` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 | `website` | `string` |  |
 
@@ -559,23 +559,23 @@ Create an instance: `match := client.Match(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `area` | `map[string]any` |  |
-| `away_team` | `map[string]any` |  |
-| `booking` | `[]any` |  |
+| `awayTeam` | `map[string]any` |  |
+| `bookings` | `[]any` |  |
 | `competition` | `map[string]any` |  |
-| `goal` | `[]any` |  |
+| `goals` | `[]any` |  |
 | `group` | `string` |  |
-| `home_team` | `map[string]any` |  |
+| `homeTeam` | `map[string]any` |  |
 | `id` | `int` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `int` |  |
-| `odd` | `map[string]any` |  |
-| `referee` | `[]any` |  |
+| `odds` | `map[string]any` |  |
+| `referees` | `[]any` |  |
 | `score` | `map[string]any` |  |
 | `season` | `map[string]any` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
-| `substitution` | `[]any` |  |
-| `utc_date` | `string` |  |
+| `substitutions` | `[]any` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 
 #### Example: Load
@@ -614,15 +614,15 @@ Create an instance: `person := client.Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | `map[string]any` |  |
+| `awayTeam` | `map[string]any` |  |
 | `competition` | `map[string]any` |  |
-| `date_of_birth` | `string` |  |
-| `first_name` | `string` |  |
+| `dateOfBirth` | `string` |  |
+| `firstName` | `string` |  |
 | `group` | `string` |  |
-| `home_team` | `map[string]any` |  |
+| `homeTeam` | `map[string]any` |  |
 | `id` | `int` |  |
-| `last_name` | `string` |  |
-| `last_updated` | `string` |  |
+| `lastName` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `int` |  |
 | `name` | `string` |  |
 | `nationality` | `string` |  |
@@ -630,10 +630,10 @@ Create an instance: `person := client.Person(nil)`
 | `score` | `map[string]any` |  |
 | `season` | `map[string]any` |  |
 | `section` | `string` |  |
-| `shirt_number` | `int` |  |
+| `shirtNumber` | `int` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 
 #### Example: Load
 
@@ -673,28 +673,28 @@ Create an instance: `team := client.Team(nil)`
 | --- | --- | --- |
 | `address` | `string` |  |
 | `area` | `map[string]any` |  |
-| `away_team` | `map[string]any` |  |
-| `club_color` | `string` |  |
+| `awayTeam` | `map[string]any` |  |
+| `clubColors` | `string` |  |
 | `coach` | `map[string]any` |  |
 | `competition` | `map[string]any` |  |
 | `crest` | `string` |  |
 | `founded` | `int` |  |
 | `group` | `string` |  |
-| `home_team` | `map[string]any` |  |
+| `homeTeam` | `map[string]any` |  |
 | `id` | `int` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `int` |  |
 | `name` | `string` |  |
-| `running_competition` | `[]any` |  |
+| `runningCompetitions` | `[]any` |  |
 | `score` | `map[string]any` |  |
 | `season` | `map[string]any` |  |
-| `short_name` | `string` |  |
+| `shortName` | `string` |  |
 | `squad` | `[]any` |  |
 | `staff` | `[]any` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
 | `tla` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 | `website` | `string` |  |
 
@@ -792,11 +792,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-area := client.Area(nil)
-area.List(nil, nil)
+match := client.Match(nil)
+match.List(nil, nil)
 
-// area.Data() now returns the area data from the last list
-// area.Match() returns the last match criteria
+// match.Data() now returns the match data from the last list
+// match.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -26,8 +26,8 @@ import {
 describe('CompetitionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FOOTBALLDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FOOTBALLDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FOOTBALL_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FOOTBALL_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FootballDataSDK.test()
@@ -63,13 +63,13 @@ describe('CompetitionEntity', async () => {
     const competition_ref01_ent = client.Competition()
     const competition_ref01_match: any = {}
 
-    const competition_ref01_list = await competition_ref01_ent.list(competition_ref01_match)
+    const competition_ref01_list = (await competition_ref01_ent.list(competition_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const competition_ref01_match_dt0: any = {}
     competition_ref01_match_dt0.id = competition_ref01_data.id
-    const competition_ref01_data_dt0 = await competition_ref01_ent.load(competition_ref01_match_dt0)
+    const competition_ref01_data_dt0 = (await competition_ref01_ent.load(competition_ref01_match_dt0)).data()
     assert(competition_ref01_data_dt0.id === competition_ref01_data.id)
 
 

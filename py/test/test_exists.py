@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# FootballData SDK exists test
 
 import pytest
 from footballdata_sdk import FootballDataSDK

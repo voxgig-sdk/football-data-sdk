@@ -62,7 +62,7 @@ class TeamEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set FOOTBALLDATA_TEST_TEAM_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set FOOTBALL_DATA_TEST_TEAM_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class TeamEntityTest < Minitest::Test
       "id" => team_ref01_data["id"],
     }
     team_ref01_data_dt0_loaded = team_ref01_ent.load(team_ref01_match_dt0, nil)
-    team_ref01_data_dt0_load_result = Helpers.to_map(team_ref01_data_dt0_loaded)
+    team_ref01_data_dt0_load_result = Helpers.to_map(team_ref01_data_dt0_loaded.respond_to?(:data_get) ? team_ref01_data_dt0_loaded.data_get : team_ref01_data_dt0_loaded)
     assert !team_ref01_data_dt0_load_result.nil?
     assert_equal team_ref01_data_dt0_load_result["id"], team_ref01_data["id"]
 
@@ -120,39 +120,39 @@ def team_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["FOOTBALLDATA_TEST_TEAM_ENTID"]
+  entid_env_raw = ENV["FOOTBALL_DATA_TEST_TEAM_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "FOOTBALLDATA_TEST_TEAM_ENTID" => idmap,
-    "FOOTBALLDATA_TEST_LIVE" => "FALSE",
-    "FOOTBALLDATA_TEST_EXPLAIN" => "FALSE",
-    "FOOTBALLDATA_APIKEY" => "NONE",
+    "FOOTBALL_DATA_TEST_TEAM_ENTID" => idmap,
+    "FOOTBALL_DATA_TEST_LIVE" => "FALSE",
+    "FOOTBALL_DATA_TEST_EXPLAIN" => "FALSE",
+    "FOOTBALL_DATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["FOOTBALLDATA_TEST_TEAM_ENTID"])
+    env["FOOTBALL_DATA_TEST_TEAM_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
+  if env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FOOTBALLDATA_APIKEY"],
+        "apikey" => env["FOOTBALL_DATA_APIKEY"],
       },
       extra || {},
     ])
     client = FootballDataSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
+  live = env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["FOOTBALLDATA_TEST_EXPLAIN"] == "TRUE",
+    explain: env["FOOTBALL_DATA_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

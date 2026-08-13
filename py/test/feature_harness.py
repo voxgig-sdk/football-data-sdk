@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import FootballDataControl
-from core.error import FootballDataError
-from core.result import FootballDataResult
-from core.spec import FootballDataSpec
+from footballdata_sdk.config import make_config
+from footballdata_sdk.features import _make_feature
+from footballdata_sdk.core.control import FootballDataControl
+from footballdata_sdk.core.error import FootballDataError
+from footballdata_sdk.core.result import FootballDataResult
+from footballdata_sdk.core.spec import FootballDataSpec
 
 
 # True when this SDK was generated with the named feature.

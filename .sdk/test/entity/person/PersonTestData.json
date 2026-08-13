@@ -2,15 +2,15 @@
   "existing": {
     "person": {
       "PERSON00": {
-        "away_team": {},
+        "awayTeam": {},
         "competition": {},
-        "date_of_birth": "sca",
-        "first_name": "scb",
+        "dateOfBirth": "sca",
+        "firstName": "scb",
         "group": "scc",
-        "home_team": {},
+        "homeTeam": {},
         "id": "PERSON00",
-        "last_name": "scf",
-        "last_updated": "sd0",
+        "lastName": "scf",
+        "lastUpdated": "sd0",
         "matchday": "sd1",
         "name": "sd2",
         "nationality": "sd3",
@@ -18,21 +18,21 @@
         "score": {},
         "season": {},
         "section": "sd7",
-        "shirt_number": "sd8",
+        "shirtNumber": "sd8",
         "stage": "sd9",
         "status": "sda",
-        "utc_date": "sdb"
+        "utcDate": "sdb"
       },
       "PERSON01": {
-        "away_team": {},
+        "awayTeam": {},
         "competition": {},
-        "date_of_birth": "s192",
-        "first_name": "s193",
+        "dateOfBirth": "s192",
+        "firstName": "s193",
         "group": "s194",
-        "home_team": {},
+        "homeTeam": {},
         "id": "PERSON01",
-        "last_name": "s197",
-        "last_updated": "s198",
+        "lastName": "s197",
+        "lastUpdated": "s198",
         "matchday": "s199",
         "name": "s19a",
         "nationality": "s19b",
@@ -40,21 +40,21 @@
         "score": {},
         "season": {},
         "section": "s19f",
-        "shirt_number": "s1a0",
+        "shirtNumber": "s1a0",
         "stage": "s1a1",
         "status": "s1a2",
-        "utc_date": "s1a3"
+        "utcDate": "s1a3"
       },
       "PERSON02": {
-        "away_team": {},
+        "awayTeam": {},
         "competition": {},
-        "date_of_birth": "s25a",
-        "first_name": "s25b",
+        "dateOfBirth": "s25a",
+        "firstName": "s25b",
         "group": "s25c",
-        "home_team": {},
+        "homeTeam": {},
         "id": "PERSON02",
-        "last_name": "s25f",
-        "last_updated": "s260",
+        "lastName": "s25f",
+        "lastUpdated": "s260",
         "matchday": "s261",
         "name": "s262",
         "nationality": "s263",
@@ -62,24 +62,24 @@
         "score": {},
         "season": {},
         "section": "s267",
-        "shirt_number": "s268",
+        "shirtNumber": "s268",
         "stage": "s269",
         "status": "s26a",
-        "utc_date": "s26b"
+        "utcDate": "s26b"
       }
     }
   },
   "new": {
     "person": {
       "person_ref01": {
-        "away_team": {},
+        "awayTeam": {},
         "competition": {},
-        "date_of_birth": "s322",
-        "first_name": "s323",
+        "dateOfBirth": "s322",
+        "firstName": "s323",
         "group": "s324",
-        "home_team": {},
-        "last_name": "s327",
-        "last_updated": "s328",
+        "homeTeam": {},
+        "lastName": "s327",
+        "lastUpdated": "s328",
         "matchday": "s329",
         "name": "s32a",
         "nationality": "s32b",
@@ -87,10 +87,10 @@
         "score": {},
         "season": {},
         "section": "s32f",
-        "shirt_number": "s330",
+        "shirtNumber": "s330",
         "stage": "s331",
         "status": "s332",
-        "utc_date": "s333"
+        "utcDate": "s333"
       }
     }
   }

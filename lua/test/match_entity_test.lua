@@ -70,7 +70,7 @@ describe("MatchEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set FOOTBALLDATA_TEST_MATCH_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set FOOTBALL_DATA_TEST_MATCH_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("MatchEntity", function()
     }
     local match_ref01_data_dt0_loaded, err = match_ref01_ent:load(match_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local match_ref01_data_dt0_load_result = helpers.to_map(match_ref01_data_dt0_loaded)
+    local match_ref01_data_dt0_load_result = helpers.to_map(type(match_ref01_data_dt0_loaded) == 'table' and match_ref01_data_dt0_loaded.data_get and match_ref01_data_dt0_loaded:data_get() or match_ref01_data_dt0_loaded)
     assert.is_not_nil(match_ref01_data_dt0_load_result)
     assert.are.equal(match_ref01_data_dt0_load_result["id"], match_ref01_data["id"])
 
@@ -136,39 +136,39 @@ function match_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("FOOTBALLDATA_TEST_MATCH_ENTID")
+  local entid_env_raw = os.getenv("FOOTBALL_DATA_TEST_MATCH_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["FOOTBALLDATA_TEST_MATCH_ENTID"] = idmap,
-    ["FOOTBALLDATA_TEST_LIVE"] = "FALSE",
-    ["FOOTBALLDATA_TEST_EXPLAIN"] = "FALSE",
-    ["FOOTBALLDATA_APIKEY"] = "NONE",
+    ["FOOTBALL_DATA_TEST_MATCH_ENTID"] = idmap,
+    ["FOOTBALL_DATA_TEST_LIVE"] = "FALSE",
+    ["FOOTBALL_DATA_TEST_EXPLAIN"] = "FALSE",
+    ["FOOTBALL_DATA_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["FOOTBALLDATA_TEST_MATCH_ENTID"])
+    env["FOOTBALL_DATA_TEST_MATCH_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["FOOTBALLDATA_TEST_LIVE"] == "TRUE" then
+  if env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["FOOTBALLDATA_APIKEY"],
+        apikey = env["FOOTBALL_DATA_APIKEY"],
       },
       extra or {},
     })
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
+  local live = env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["FOOTBALLDATA_TEST_EXPLAIN"] == "TRUE",
+    explain = env["FOOTBALL_DATA_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

@@ -37,7 +37,9 @@ const client = new FootballDataSDK({
 
 ### 2. List area records
 
-`list()` resolves to an array of Area objects — iterate it directly:
+`list()` resolves to an array of Area ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const areas = await client.Area().list()
@@ -67,8 +69,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const areas = await client.Area().list()
-  console.log(areas)
+  const matchs = await client.Match().list()
+  console.log(matchs)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -134,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FootballDataSDK.test()
 
-const area = await client.Area().list()
-// area is a bare entity populated with mock response data
-console.log(area)
+const match = await client.Match().list()
+// match is the entity, populated with mock response data
+// — call match.data() for the record itself
+console.log(match)
 ```
 
 You can also use the instance method:
@@ -151,7 +154,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Area()
+const entity = client.Match()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -309,13 +312,13 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `child_area` |  |
-| `country_code` |  |
+| `childAreas` |  |
+| `countryCode` |  |
 | `flag` |  |
 | `id` |  |
 | `name` |  |
-| `parent_area` |  |
-| `parent_area_id` |  |
+| `parentArea` |  |
+| `parentAreaId` |  |
 
 Operations: list, load.
 
@@ -327,35 +330,35 @@ API path: `/areas`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `assist` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `assists` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `code` |  |
 | `competition` |  |
 | `crest` |  |
-| `current_season` |  |
+| `currentSeason` |  |
 | `emblem` |  |
 | `founded` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `number_of_available_season` |  |
-| `penalty` |  |
+| `numberOfAvailableSeasons` |  |
+| `penalties` |  |
 | `player` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `stage` |  |
 | `status` |  |
 | `table` |  |
 | `team` |  |
 | `tla` |  |
 | `type` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -368,23 +371,23 @@ API path: `/competitions/{id}/matches`
 | Field | Description |
 | --- | --- |
 | `area` |  |
-| `away_team` |  |
-| `booking` |  |
+| `awayTeam` |  |
+| `bookings` |  |
 | `competition` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
-| `odd` |  |
-| `referee` |  |
+| `odds` |  |
+| `referees` |  |
 | `score` |  |
 | `season` |  |
 | `stage` |  |
 | `status` |  |
-| `substitution` |  |
-| `utc_date` |  |
+| `substitutions` |  |
+| `utcDate` |  |
 | `venue` |  |
 
 Operations: list, load.
@@ -395,15 +398,15 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `away_team` |  |
+| `awayTeam` |  |
 | `competition` |  |
-| `date_of_birth` |  |
-| `first_name` |  |
+| `dateOfBirth` |  |
+| `firstName` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_name` |  |
-| `last_updated` |  |
+| `lastName` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
 | `nationality` |  |
@@ -411,10 +414,10 @@ API path: `/matches`
 | `score` |  |
 | `season` |  |
 | `section` |  |
-| `shirt_number` |  |
+| `shirtNumber` |  |
 | `stage` |  |
 | `status` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 
 Operations: list, load.
 
@@ -426,28 +429,28 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `coach` |  |
 | `competition` |  |
 | `crest` |  |
 | `founded` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `running_competition` |  |
+| `runningCompetitions` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `squad` |  |
 | `staff` |  |
 | `stage` |  |
 | `status` |  |
 | `tla` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -475,13 +478,13 @@ Create an instance: `const area = client.Area()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | `any[]` |  |
-| `country_code` | `string` |  |
+| `childAreas` | `any[]` |  |
+| `countryCode` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `parent_area` | `string` |  |
-| `parent_area_id` | `number` |  |
+| `parentArea` | `string` |  |
+| `parentAreaId` | `number` |  |
 
 #### Example: Load
 
@@ -513,35 +516,35 @@ Create an instance: `const competition = client.Competition()`
 | --- | --- | --- |
 | `address` | `string` |  |
 | `area` | `Record<string, any>` |  |
-| `assist` | `number` |  |
-| `away_team` | `Record<string, any>` |  |
-| `club_color` | `string` |  |
+| `assists` | `number` |  |
+| `awayTeam` | `Record<string, any>` |  |
+| `clubColors` | `string` |  |
 | `code` | `string` |  |
 | `competition` | `Record<string, any>` |  |
 | `crest` | `string` |  |
-| `current_season` | `Record<string, any>` |  |
+| `currentSeason` | `Record<string, any>` |  |
 | `emblem` | `string` |  |
 | `founded` | `number` |  |
-| `goal` | `number` |  |
+| `goals` | `number` |  |
 | `group` | `string` |  |
-| `home_team` | `Record<string, any>` |  |
+| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
 | `name` | `string` |  |
-| `number_of_available_season` | `number` |  |
-| `penalty` | `number` |  |
+| `numberOfAvailableSeasons` | `number` |  |
+| `penalties` | `number` |  |
 | `player` | `Record<string, any>` |  |
 | `score` | `Record<string, any>` |  |
 | `season` | `Record<string, any>` |  |
-| `short_name` | `string` |  |
+| `shortName` | `string` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
 | `table` | `any[]` |  |
 | `team` | `Record<string, any>` |  |
 | `tla` | `string` |  |
 | `type` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 | `website` | `string` |  |
 
@@ -574,23 +577,23 @@ Create an instance: `const match = client.Match()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `area` | `Record<string, any>` |  |
-| `away_team` | `Record<string, any>` |  |
-| `booking` | `any[]` |  |
+| `awayTeam` | `Record<string, any>` |  |
+| `bookings` | `any[]` |  |
 | `competition` | `Record<string, any>` |  |
-| `goal` | `any[]` |  |
+| `goals` | `any[]` |  |
 | `group` | `string` |  |
-| `home_team` | `Record<string, any>` |  |
+| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
-| `odd` | `Record<string, any>` |  |
-| `referee` | `any[]` |  |
+| `odds` | `Record<string, any>` |  |
+| `referees` | `any[]` |  |
 | `score` | `Record<string, any>` |  |
 | `season` | `Record<string, any>` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
-| `substitution` | `any[]` |  |
-| `utc_date` | `string` |  |
+| `substitutions` | `any[]` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 
 #### Example: Load
@@ -621,15 +624,15 @@ Create an instance: `const person = client.Person()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | `Record<string, any>` |  |
+| `awayTeam` | `Record<string, any>` |  |
 | `competition` | `Record<string, any>` |  |
-| `date_of_birth` | `string` |  |
-| `first_name` | `string` |  |
+| `dateOfBirth` | `string` |  |
+| `firstName` | `string` |  |
 | `group` | `string` |  |
-| `home_team` | `Record<string, any>` |  |
+| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` |  |
-| `last_name` | `string` |  |
-| `last_updated` | `string` |  |
+| `lastName` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
 | `name` | `string` |  |
 | `nationality` | `string` |  |
@@ -637,10 +640,10 @@ Create an instance: `const person = client.Person()`
 | `score` | `Record<string, any>` |  |
 | `season` | `Record<string, any>` |  |
 | `section` | `string` |  |
-| `shirt_number` | `number` |  |
+| `shirtNumber` | `number` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 
 #### Example: Load
 
@@ -651,7 +654,7 @@ const person = await client.Person().load({ id: 1 })
 #### Example: List
 
 ```ts
-const persons = await client.Person().list()
+const persons = await client.Person().list({ id: 1 })
 ```
 
 
@@ -672,28 +675,28 @@ Create an instance: `const team = client.Team()`
 | --- | --- | --- |
 | `address` | `string` |  |
 | `area` | `Record<string, any>` |  |
-| `away_team` | `Record<string, any>` |  |
-| `club_color` | `string` |  |
+| `awayTeam` | `Record<string, any>` |  |
+| `clubColors` | `string` |  |
 | `coach` | `Record<string, any>` |  |
 | `competition` | `Record<string, any>` |  |
 | `crest` | `string` |  |
 | `founded` | `number` |  |
 | `group` | `string` |  |
-| `home_team` | `Record<string, any>` |  |
+| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
 | `name` | `string` |  |
-| `running_competition` | `any[]` |  |
+| `runningCompetitions` | `any[]` |  |
 | `score` | `Record<string, any>` |  |
 | `season` | `Record<string, any>` |  |
-| `short_name` | `string` |  |
+| `shortName` | `string` |  |
 | `squad` | `any[]` |  |
 | `staff` | `any[]` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
 | `tla` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 | `website` | `string` |  |
 
@@ -779,11 +782,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const area = client.Area()
-await area.list()
+const match = client.Match()
+await match.list()
 
-// area.data() now returns the area data from the last `list`
-// area.match() returns the last match criteria
+// match.data() now returns the match data from the last `list`
+// match.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

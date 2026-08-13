@@ -6,17 +6,21 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/football-data-sdk/go/core"
+)
 
 // Area is the typed data model for the area entity.
 type Area struct {
-	ChildArea *[]any `json:"child_area,omitempty"`
-	CountryCode *string `json:"country_code,omitempty"`
+	ChildAreas *[]any `json:"childAreas,omitempty"`
+	CountryCode *string `json:"countryCode,omitempty"`
 	Flag *string `json:"flag,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ParentArea *string `json:"parent_area,omitempty"`
-	ParentAreaId *int `json:"parent_area_id,omitempty"`
+	ParentArea *string `json:"parentArea,omitempty"`
+	ParentAreaId *int `json:"parentAreaId,omitempty"`
 }
 
 // AreaLoadMatch is the typed request payload for Area.LoadTyped.
@@ -26,48 +30,48 @@ type AreaLoadMatch struct {
 
 // AreaListMatch is the typed request payload for Area.ListTyped.
 type AreaListMatch struct {
-	ChildArea *[]any `json:"child_area,omitempty"`
-	CountryCode *string `json:"country_code,omitempty"`
+	ChildAreas *[]any `json:"childAreas,omitempty"`
+	CountryCode *string `json:"countryCode,omitempty"`
 	Flag *string `json:"flag,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ParentArea *string `json:"parent_area,omitempty"`
-	ParentAreaId *int `json:"parent_area_id,omitempty"`
+	ParentArea *string `json:"parentArea,omitempty"`
+	ParentAreaId *int `json:"parentAreaId,omitempty"`
 }
 
 // Competition is the typed data model for the competition entity.
 type Competition struct {
 	Address *string `json:"address,omitempty"`
 	Area *map[string]any `json:"area,omitempty"`
-	Assist *int `json:"assist,omitempty"`
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
-	ClubColor *string `json:"club_color,omitempty"`
+	Assists *int `json:"assists,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
+	ClubColors *string `json:"clubColors,omitempty"`
 	Code *string `json:"code,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
 	Crest *string `json:"crest,omitempty"`
-	CurrentSeason *map[string]any `json:"current_season,omitempty"`
+	CurrentSeason *map[string]any `json:"currentSeason,omitempty"`
 	Emblem *string `json:"emblem,omitempty"`
 	Founded *int `json:"founded,omitempty"`
-	Goal *int `json:"goal,omitempty"`
+	Goals *int `json:"goals,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NumberOfAvailableSeason *int `json:"number_of_available_season,omitempty"`
-	Penalty *int `json:"penalty,omitempty"`
+	NumberOfAvailableSeasons *int `json:"numberOfAvailableSeasons,omitempty"`
+	Penalties *int `json:"penalties,omitempty"`
 	Player *map[string]any `json:"player,omitempty"`
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"short_name,omitempty"`
+	ShortName *string `json:"shortName,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Table *[]any `json:"table,omitempty"`
 	Team *map[string]any `json:"team,omitempty"`
 	Tla *string `json:"tla,omitempty"`
 	Type *string `json:"type,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -81,35 +85,35 @@ type CompetitionLoadMatch struct {
 type CompetitionListMatch struct {
 	Address *string `json:"address,omitempty"`
 	Area *map[string]any `json:"area,omitempty"`
-	Assist *int `json:"assist,omitempty"`
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
-	ClubColor *string `json:"club_color,omitempty"`
+	Assists *int `json:"assists,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
+	ClubColors *string `json:"clubColors,omitempty"`
 	Code *string `json:"code,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
 	Crest *string `json:"crest,omitempty"`
-	CurrentSeason *map[string]any `json:"current_season,omitempty"`
+	CurrentSeason *map[string]any `json:"currentSeason,omitempty"`
 	Emblem *string `json:"emblem,omitempty"`
 	Founded *int `json:"founded,omitempty"`
-	Goal *int `json:"goal,omitempty"`
+	Goals *int `json:"goals,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
-	NumberOfAvailableSeason *int `json:"number_of_available_season,omitempty"`
-	Penalty *int `json:"penalty,omitempty"`
+	NumberOfAvailableSeasons *int `json:"numberOfAvailableSeasons,omitempty"`
+	Penalties *int `json:"penalties,omitempty"`
 	Player *map[string]any `json:"player,omitempty"`
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"short_name,omitempty"`
+	ShortName *string `json:"shortName,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Table *[]any `json:"table,omitempty"`
 	Team *map[string]any `json:"team,omitempty"`
 	Tla *string `json:"tla,omitempty"`
 	Type *string `json:"type,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -117,23 +121,23 @@ type CompetitionListMatch struct {
 // Match is the typed data model for the match entity.
 type Match struct {
 	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
-	Booking *[]any `json:"booking,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
+	Bookings *[]any `json:"bookings,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
-	Goal *[]any `json:"goal,omitempty"`
+	Goals *[]any `json:"goals,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
-	Odd *map[string]any `json:"odd,omitempty"`
-	Referee *[]any `json:"referee,omitempty"`
+	Odds *map[string]any `json:"odds,omitempty"`
+	Referees *[]any `json:"referees,omitempty"`
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Substitution *[]any `json:"substitution,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	Substitutions *[]any `json:"substitutions,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 }
 
@@ -145,37 +149,37 @@ type MatchLoadMatch struct {
 // MatchListMatch is the typed request payload for Match.ListTyped.
 type MatchListMatch struct {
 	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
-	Booking *[]any `json:"booking,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
+	Bookings *[]any `json:"bookings,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
-	Goal *[]any `json:"goal,omitempty"`
+	Goals *[]any `json:"goals,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
-	Odd *map[string]any `json:"odd,omitempty"`
-	Referee *[]any `json:"referee,omitempty"`
+	Odds *map[string]any `json:"odds,omitempty"`
+	Referees *[]any `json:"referees,omitempty"`
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Substitution *[]any `json:"substitution,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	Substitutions *[]any `json:"substitutions,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 }
 
 // Person is the typed data model for the person entity.
 type Person struct {
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
-	DateOfBirth *string `json:"date_of_birth,omitempty"`
-	FirstName *string `json:"first_name,omitempty"`
+	DateOfBirth *string `json:"dateOfBirth,omitempty"`
+	FirstName *string `json:"firstName,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastName *string `json:"last_name,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastName *string `json:"lastName,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Nationality *string `json:"nationality,omitempty"`
@@ -183,10 +187,10 @@ type Person struct {
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
 	Section *string `json:"section,omitempty"`
-	ShirtNumber *int `json:"shirt_number,omitempty"`
+	ShirtNumber *int `json:"shirtNumber,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 }
 
 // PersonLoadMatch is the typed request payload for Person.LoadTyped.
@@ -203,28 +207,28 @@ type PersonListMatch struct {
 type Team struct {
 	Address *string `json:"address,omitempty"`
 	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
-	ClubColor *string `json:"club_color,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
+	ClubColors *string `json:"clubColors,omitempty"`
 	Coach *map[string]any `json:"coach,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
 	Crest *string `json:"crest,omitempty"`
 	Founded *int `json:"founded,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
-	RunningCompetition *[]any `json:"running_competition,omitempty"`
+	RunningCompetitions *[]any `json:"runningCompetitions,omitempty"`
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"short_name,omitempty"`
+	ShortName *string `json:"shortName,omitempty"`
 	Squad *[]any `json:"squad,omitempty"`
 	Staff *[]any `json:"staff,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Tla *string `json:"tla,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -238,28 +242,28 @@ type TeamLoadMatch struct {
 type TeamListMatch struct {
 	Address *string `json:"address,omitempty"`
 	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"away_team,omitempty"`
-	ClubColor *string `json:"club_color,omitempty"`
+	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
+	ClubColors *string `json:"clubColors,omitempty"`
 	Coach *map[string]any `json:"coach,omitempty"`
 	Competition *map[string]any `json:"competition,omitempty"`
 	Crest *string `json:"crest,omitempty"`
 	Founded *int `json:"founded,omitempty"`
 	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"home_team,omitempty"`
+	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"last_updated,omitempty"`
+	LastUpdated *string `json:"lastUpdated,omitempty"`
 	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
-	RunningCompetition *[]any `json:"running_competition,omitempty"`
+	RunningCompetitions *[]any `json:"runningCompetitions,omitempty"`
 	Score *map[string]any `json:"score,omitempty"`
 	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"short_name,omitempty"`
+	ShortName *string `json:"shortName,omitempty"`
 	Squad *[]any `json:"squad,omitempty"`
 	Staff *[]any `json:"staff,omitempty"`
 	Stage *string `json:"stage,omitempty"`
 	Status *string `json:"status,omitempty"`
 	Tla *string `json:"tla,omitempty"`
-	UtcDate *string `json:"utc_date,omitempty"`
+	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -276,12 +280,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -293,12 +311,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

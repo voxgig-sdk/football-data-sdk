@@ -19,11 +19,15 @@ import {
 describe('MatchDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FOOTBALLDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FOOTBALLDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FOOTBALL_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FOOTBALL_DATA_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new FootballDataSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,19 +138,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'FOOTBALLDATA_TEST_MATCH_ENTID': {},
-    'FOOTBALLDATA_TEST_LIVE': 'FALSE',
-    'FOOTBALLDATA_APIKEY': 'NONE',
+    'FOOTBALL_DATA_TEST_MATCH_ENTID': {},
+    'FOOTBALL_DATA_TEST_LIVE': 'FALSE',
+    'FOOTBALL_DATA_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.FOOTBALLDATA_TEST_LIVE
+  const live = 'TRUE' === env.FOOTBALL_DATA_TEST_LIVE
 
   if (live) {
     const client = new FootballDataSDK({
-      apikey: env.FOOTBALLDATA_APIKEY,
+      apikey: env.FOOTBALL_DATA_APIKEY,
     })
 
-    let idmap: any = env['FOOTBALLDATA_TEST_MATCH_ENTID']
+    let idmap: any = env['FOOTBALL_DATA_TEST_MATCH_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

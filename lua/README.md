@@ -45,7 +45,7 @@ local areas, err = client:Area():list()
 if err then error(err) end
 
 for _, item in ipairs(areas) do
-  print(item["id"], item["country_code"])
+  print(item["id"], item["countryCode"])
 end
 ```
 
@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local areas, err = client:Area():list()
+local matchs, err = client:Match():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Area():list()
+local result, err = client:Match():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -249,13 +249,13 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `child_area` |  |
-| `country_code` |  |
+| `childAreas` |  |
+| `countryCode` |  |
 | `flag` |  |
 | `id` |  |
 | `name` |  |
-| `parent_area` |  |
-| `parent_area_id` |  |
+| `parentArea` |  |
+| `parentAreaId` |  |
 
 Operations: List, Load.
 
@@ -267,35 +267,35 @@ API path: `/areas`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `assist` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `assists` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `code` |  |
 | `competition` |  |
 | `crest` |  |
-| `current_season` |  |
+| `currentSeason` |  |
 | `emblem` |  |
 | `founded` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `number_of_available_season` |  |
-| `penalty` |  |
+| `numberOfAvailableSeasons` |  |
+| `penalties` |  |
 | `player` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `stage` |  |
 | `status` |  |
 | `table` |  |
 | `team` |  |
 | `tla` |  |
 | `type` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -308,23 +308,23 @@ API path: `/competitions/{id}/matches`
 | Field | Description |
 | --- | --- |
 | `area` |  |
-| `away_team` |  |
-| `booking` |  |
+| `awayTeam` |  |
+| `bookings` |  |
 | `competition` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
-| `odd` |  |
-| `referee` |  |
+| `odds` |  |
+| `referees` |  |
 | `score` |  |
 | `season` |  |
 | `stage` |  |
 | `status` |  |
-| `substitution` |  |
-| `utc_date` |  |
+| `substitutions` |  |
+| `utcDate` |  |
 | `venue` |  |
 
 Operations: List, Load.
@@ -335,15 +335,15 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `away_team` |  |
+| `awayTeam` |  |
 | `competition` |  |
-| `date_of_birth` |  |
-| `first_name` |  |
+| `dateOfBirth` |  |
+| `firstName` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_name` |  |
-| `last_updated` |  |
+| `lastName` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
 | `nationality` |  |
@@ -351,10 +351,10 @@ API path: `/matches`
 | `score` |  |
 | `season` |  |
 | `section` |  |
-| `shirt_number` |  |
+| `shirtNumber` |  |
 | `stage` |  |
 | `status` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 
 Operations: List, Load.
 
@@ -366,28 +366,28 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `coach` |  |
 | `competition` |  |
 | `crest` |  |
 | `founded` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `running_competition` |  |
+| `runningCompetitions` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `squad` |  |
 | `staff` |  |
 | `stage` |  |
 | `status` |  |
 | `tla` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -415,13 +415,13 @@ Create an instance: `local area = client:Area(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | `table` |  |
-| `country_code` | `string` |  |
+| `childAreas` | `table` |  |
+| `countryCode` | `string` |  |
 | `flag` | `string` |  |
 | `id` | `number` |  |
 | `name` | `string` |  |
-| `parent_area` | `string` |  |
-| `parent_area_id` | `number` |  |
+| `parentArea` | `string` |  |
+| `parentAreaId` | `number` |  |
 
 #### Example: Load
 
@@ -453,35 +453,35 @@ Create an instance: `local competition = client:Competition(nil)`
 | --- | --- | --- |
 | `address` | `string` |  |
 | `area` | `table` |  |
-| `assist` | `number` |  |
-| `away_team` | `table` |  |
-| `club_color` | `string` |  |
+| `assists` | `number` |  |
+| `awayTeam` | `table` |  |
+| `clubColors` | `string` |  |
 | `code` | `string` |  |
 | `competition` | `table` |  |
 | `crest` | `string` |  |
-| `current_season` | `table` |  |
+| `currentSeason` | `table` |  |
 | `emblem` | `string` |  |
 | `founded` | `number` |  |
-| `goal` | `number` |  |
+| `goals` | `number` |  |
 | `group` | `string` |  |
-| `home_team` | `table` |  |
+| `homeTeam` | `table` |  |
 | `id` | `number` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
 | `name` | `string` |  |
-| `number_of_available_season` | `number` |  |
-| `penalty` | `number` |  |
+| `numberOfAvailableSeasons` | `number` |  |
+| `penalties` | `number` |  |
 | `player` | `table` |  |
 | `score` | `table` |  |
 | `season` | `table` |  |
-| `short_name` | `string` |  |
+| `shortName` | `string` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
 | `table` | `table` |  |
 | `team` | `table` |  |
 | `tla` | `string` |  |
 | `type` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 | `website` | `string` |  |
 
@@ -514,23 +514,23 @@ Create an instance: `local match = client:Match(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `area` | `table` |  |
-| `away_team` | `table` |  |
-| `booking` | `table` |  |
+| `awayTeam` | `table` |  |
+| `bookings` | `table` |  |
 | `competition` | `table` |  |
-| `goal` | `table` |  |
+| `goals` | `table` |  |
 | `group` | `string` |  |
-| `home_team` | `table` |  |
+| `homeTeam` | `table` |  |
 | `id` | `number` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
-| `odd` | `table` |  |
-| `referee` | `table` |  |
+| `odds` | `table` |  |
+| `referees` | `table` |  |
 | `score` | `table` |  |
 | `season` | `table` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
-| `substitution` | `table` |  |
-| `utc_date` | `string` |  |
+| `substitutions` | `table` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 
 #### Example: Load
@@ -561,15 +561,15 @@ Create an instance: `local person = client:Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | `table` |  |
+| `awayTeam` | `table` |  |
 | `competition` | `table` |  |
-| `date_of_birth` | `string` |  |
-| `first_name` | `string` |  |
+| `dateOfBirth` | `string` |  |
+| `firstName` | `string` |  |
 | `group` | `string` |  |
-| `home_team` | `table` |  |
+| `homeTeam` | `table` |  |
 | `id` | `number` |  |
-| `last_name` | `string` |  |
-| `last_updated` | `string` |  |
+| `lastName` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
 | `name` | `string` |  |
 | `nationality` | `string` |  |
@@ -577,10 +577,10 @@ Create an instance: `local person = client:Person(nil)`
 | `score` | `table` |  |
 | `season` | `table` |  |
 | `section` | `string` |  |
-| `shirt_number` | `number` |  |
+| `shirtNumber` | `number` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 
 #### Example: Load
 
@@ -612,28 +612,28 @@ Create an instance: `local team = client:Team(nil)`
 | --- | --- | --- |
 | `address` | `string` |  |
 | `area` | `table` |  |
-| `away_team` | `table` |  |
-| `club_color` | `string` |  |
+| `awayTeam` | `table` |  |
+| `clubColors` | `string` |  |
 | `coach` | `table` |  |
 | `competition` | `table` |  |
 | `crest` | `string` |  |
 | `founded` | `number` |  |
 | `group` | `string` |  |
-| `home_team` | `table` |  |
+| `homeTeam` | `table` |  |
 | `id` | `number` |  |
-| `last_updated` | `string` |  |
+| `lastUpdated` | `string` |  |
 | `matchday` | `number` |  |
 | `name` | `string` |  |
-| `running_competition` | `table` |  |
+| `runningCompetitions` | `table` |  |
 | `score` | `table` |  |
 | `season` | `table` |  |
-| `short_name` | `string` |  |
+| `shortName` | `string` |  |
 | `squad` | `table` |  |
 | `staff` | `table` |  |
 | `stage` | `string` |  |
 | `status` | `string` |  |
 | `tla` | `string` |  |
-| `utc_date` | `string` |  |
+| `utcDate` | `string` |  |
 | `venue` | `string` |  |
 | `website` | `string` |  |
 
@@ -726,11 +726,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local area = client:Area()
-area:list()
+local match = client:Match()
+match:list()
 
--- area:data_get() now returns the area data from the last list
--- area:match_get() returns the last match criteria
+-- match:data_get() now returns the match data from the last list
+-- match:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

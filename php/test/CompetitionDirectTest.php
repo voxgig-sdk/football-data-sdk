@@ -135,16 +135,16 @@ function competition_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "FOOTBALLDATA_TEST_COMPETITION_ENTID" => [],
-        "FOOTBALLDATA_TEST_LIVE" => "FALSE",
-        "FOOTBALLDATA_APIKEY" => "NONE",
+        "FOOTBALL_DATA_TEST_COMPETITION_ENTID" => [],
+        "FOOTBALL_DATA_TEST_LIVE" => "FALSE",
+        "FOOTBALL_DATA_APIKEY" => "NONE",
     ]);
 
-    $live = $env["FOOTBALLDATA_TEST_LIVE"] === "TRUE";
+    $live = $env["FOOTBALL_DATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["FOOTBALLDATA_APIKEY"],
+            "apikey" => $env["FOOTBALL_DATA_APIKEY"],
         ];
         $client = new FootballDataSDK($merged_opts);
         return [

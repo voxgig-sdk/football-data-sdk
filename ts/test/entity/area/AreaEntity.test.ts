@@ -26,8 +26,8 @@ import {
 describe('AreaEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FOOTBALLDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FOOTBALLDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FOOTBALL_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FOOTBALL_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FootballDataSDK.test()
@@ -63,13 +63,13 @@ describe('AreaEntity', async () => {
     const area_ref01_ent = client.Area()
     const area_ref01_match: any = {}
 
-    const area_ref01_list = await area_ref01_ent.list(area_ref01_match)
+    const area_ref01_list = (await area_ref01_ent.list(area_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const area_ref01_match_dt0: any = {}
     area_ref01_match_dt0.id = area_ref01_data.id
-    const area_ref01_data_dt0 = await area_ref01_ent.load(area_ref01_match_dt0)
+    const area_ref01_data_dt0 = (await area_ref01_ent.load(area_ref01_match_dt0)).data()
     assert(area_ref01_data_dt0.id === area_ref01_data.id)
 
 

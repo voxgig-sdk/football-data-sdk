@@ -165,13 +165,13 @@ const area = client.Area()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | `any[]` | No |  |
-| `country_code` | `string` | No |  |
+| `childAreas` | `any[]` | No |  |
+| `countryCode` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `parent_area` | `string` | No |  |
-| `parent_area_id` | `number` | No |  |
+| `parentArea` | `string` | No |  |
+| `parentAreaId` | `number` | No |  |
 
 ### Operations
 
@@ -231,37 +231,60 @@ const competition = client.Competition()
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `Record<string, any>` | No |  |
-| `assist` | `number` | No |  |
-| `away_team` | `Record<string, any>` | No |  |
-| `club_color` | `string` | No |  |
+| `assists` | `number` | No |  |
+| `awayTeam` | `Record<string, any>` | No |  |
+| `clubColors` | `string` | No |  |
 | `code` | `string` | No |  |
 | `competition` | `Record<string, any>` | No |  |
 | `crest` | `string` | No |  |
-| `current_season` | `Record<string, any>` | No |  |
+| `currentSeason` | `Record<string, any>` | No |  |
 | `emblem` | `string` | No |  |
 | `founded` | `number` | No |  |
-| `goal` | `number` | No |  |
+| `goals` | `number` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `Record<string, any>` | No |  |
+| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
 | `name` | `string` | No |  |
-| `number_of_available_season` | `number` | No |  |
-| `penalty` | `number` | No |  |
+| `numberOfAvailableSeasons` | `number` | No |  |
+| `penalties` | `number` | No |  |
 | `player` | `Record<string, any>` | No |  |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `table` | `any[]` | No |  |
 | `team` | `Record<string, any>` | No |  |
 | `tla` | `string` | No |  |
 | `type` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `match` | `/competitions/{id}/matches` | `client.Competition().list({ $action: 'match', ... })` |
+| `scorer` | `/competitions/{id}/scorers` | `client.Competition().list({ $action: 'scorer', ... })` |
+| `standing` | `/competitions/{id}/standings` | `client.Competition().list({ $action: 'standing', ... })` |
+| `team` | `/competitions/{id}/teams` | `client.Competition().list({ $action: 'team', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Competition record — check the API definition for its shape.
+
+```ts
+const result = await client.Competition().list({
+  $action: 'match',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -320,23 +343,23 @@ const match = client.Match()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `area` | `Record<string, any>` | No |  |
-| `away_team` | `Record<string, any>` | No |  |
-| `booking` | `any[]` | No |  |
+| `awayTeam` | `Record<string, any>` | No |  |
+| `bookings` | `any[]` | No |  |
 | `competition` | `Record<string, any>` | No |  |
-| `goal` | `any[]` | No |  |
+| `goals` | `any[]` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `Record<string, any>` | No |  |
+| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
-| `odd` | `Record<string, any>` | No |  |
-| `referee` | `any[]` | No |  |
+| `odds` | `Record<string, any>` | No |  |
+| `referees` | `any[]` | No |  |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `substitution` | `any[]` | No |  |
-| `utc_date` | `string` | No |  |
+| `substitutions` | `any[]` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 
 ### Operations
@@ -395,15 +418,15 @@ const person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | `Record<string, any>` | No |  |
+| `awayTeam` | `Record<string, any>` | No |  |
 | `competition` | `Record<string, any>` | No |  |
-| `date_of_birth` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `dateOfBirth` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `Record<string, any>` | No |  |
+| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No |  |
-| `last_name` | `string` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastName` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
 | `name` | `string` | No |  |
 | `nationality` | `string` | No |  |
@@ -411,10 +434,30 @@ const person = client.Person()
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
 | `section` | `string` | No |  |
-| `shirt_number` | `number` | No |  |
+| `shirtNumber` | `number` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `match` | `/persons/{id}/matches` | `client.Person().list({ $action: 'match', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Person record — check the API definition for its shape.
+
+```ts
+const result = await client.Person().list({
+  $action: 'match',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 
@@ -423,7 +466,7 @@ const person = client.Person()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Person().list()
+const results = await client.Person().list({ id: 1 })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -474,30 +517,50 @@ const team = client.Team()
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `Record<string, any>` | No |  |
-| `away_team` | `Record<string, any>` | No |  |
-| `club_color` | `string` | No |  |
+| `awayTeam` | `Record<string, any>` | No |  |
+| `clubColors` | `string` | No |  |
 | `coach` | `Record<string, any>` | No |  |
 | `competition` | `Record<string, any>` | No |  |
 | `crest` | `string` | No |  |
 | `founded` | `number` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `Record<string, any>` | No |  |
+| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
 | `name` | `string` | No |  |
-| `running_competition` | `any[]` | No |  |
+| `runningCompetitions` | `any[]` | No |  |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `squad` | `any[]` | No |  |
 | `staff` | `any[]` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `tla` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `match` | `/teams/{id}/matches` | `client.Team().list({ $action: 'match', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Team record — check the API definition for its shape.
+
+```ts
+const result = await client.Team().list({
+  $action: 'match',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 

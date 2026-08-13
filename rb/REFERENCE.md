@@ -110,13 +110,13 @@ area = client.Area
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | `Array` | No |  |
-| `country_code` | `String` | No |  |
+| `childAreas` | `Array` | No |  |
+| `countryCode` | `String` | No |  |
 | `flag` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `parent_area` | `String` | No |  |
-| `parent_area_id` | `Integer` | No |  |
+| `parentArea` | `String` | No |  |
+| `parentAreaId` | `Integer` | No |  |
 
 ### Operations
 
@@ -178,35 +178,35 @@ competition = client.Competition
 | --- | --- | --- | --- |
 | `address` | `String` | No |  |
 | `area` | `Hash` | No |  |
-| `assist` | `Integer` | No |  |
-| `away_team` | `Hash` | No |  |
-| `club_color` | `String` | No |  |
+| `assists` | `Integer` | No |  |
+| `awayTeam` | `Hash` | No |  |
+| `clubColors` | `String` | No |  |
 | `code` | `String` | No |  |
 | `competition` | `Hash` | No |  |
 | `crest` | `String` | No |  |
-| `current_season` | `Hash` | No |  |
+| `currentSeason` | `Hash` | No |  |
 | `emblem` | `String` | No |  |
 | `founded` | `Integer` | No |  |
-| `goal` | `Integer` | No |  |
+| `goals` | `Integer` | No |  |
 | `group` | `String` | No |  |
-| `home_team` | `Hash` | No |  |
+| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
-| `last_updated` | `String` | No |  |
+| `lastUpdated` | `String` | No |  |
 | `matchday` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `number_of_available_season` | `Integer` | No |  |
-| `penalty` | `Integer` | No |  |
+| `numberOfAvailableSeasons` | `Integer` | No |  |
+| `penalties` | `Integer` | No |  |
 | `player` | `Hash` | No |  |
 | `score` | `Hash` | No |  |
 | `season` | `Hash` | No |  |
-| `short_name` | `String` | No |  |
+| `shortName` | `String` | No |  |
 | `stage` | `String` | No |  |
 | `status` | `String` | No |  |
 | `table` | `Array` | No |  |
 | `team` | `Hash` | No |  |
 | `tla` | `String` | No |  |
 | `type` | `String` | No |  |
-| `utc_date` | `String` | No |  |
+| `utcDate` | `String` | No |  |
 | `venue` | `String` | No |  |
 | `website` | `String` | No |  |
 
@@ -269,23 +269,23 @@ match = client.Match
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `area` | `Hash` | No |  |
-| `away_team` | `Hash` | No |  |
-| `booking` | `Array` | No |  |
+| `awayTeam` | `Hash` | No |  |
+| `bookings` | `Array` | No |  |
 | `competition` | `Hash` | No |  |
-| `goal` | `Array` | No |  |
+| `goals` | `Array` | No |  |
 | `group` | `String` | No |  |
-| `home_team` | `Hash` | No |  |
+| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
-| `last_updated` | `String` | No |  |
+| `lastUpdated` | `String` | No |  |
 | `matchday` | `Integer` | No |  |
-| `odd` | `Hash` | No |  |
-| `referee` | `Array` | No |  |
+| `odds` | `Hash` | No |  |
+| `referees` | `Array` | No |  |
 | `score` | `Hash` | No |  |
 | `season` | `Hash` | No |  |
 | `stage` | `String` | No |  |
 | `status` | `String` | No |  |
-| `substitution` | `Array` | No |  |
-| `utc_date` | `String` | No |  |
+| `substitutions` | `Array` | No |  |
+| `utcDate` | `String` | No |  |
 | `venue` | `String` | No |  |
 
 ### Operations
@@ -346,15 +346,15 @@ person = client.Person
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | `Hash` | No |  |
+| `awayTeam` | `Hash` | No |  |
 | `competition` | `Hash` | No |  |
-| `date_of_birth` | `String` | No |  |
-| `first_name` | `String` | No |  |
+| `dateOfBirth` | `String` | No |  |
+| `firstName` | `String` | No |  |
 | `group` | `String` | No |  |
-| `home_team` | `Hash` | No |  |
+| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
-| `last_name` | `String` | No |  |
-| `last_updated` | `String` | No |  |
+| `lastName` | `String` | No |  |
+| `lastUpdated` | `String` | No |  |
 | `matchday` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `nationality` | `String` | No |  |
@@ -362,10 +362,10 @@ person = client.Person
 | `score` | `Hash` | No |  |
 | `season` | `Hash` | No |  |
 | `section` | `String` | No |  |
-| `shirt_number` | `Integer` | No |  |
+| `shirtNumber` | `Integer` | No |  |
 | `stage` | `String` | No |  |
 | `status` | `String` | No |  |
-| `utc_date` | `String` | No |  |
+| `utcDate` | `String` | No |  |
 
 ### Operations
 
@@ -427,28 +427,28 @@ team = client.Team
 | --- | --- | --- | --- |
 | `address` | `String` | No |  |
 | `area` | `Hash` | No |  |
-| `away_team` | `Hash` | No |  |
-| `club_color` | `String` | No |  |
+| `awayTeam` | `Hash` | No |  |
+| `clubColors` | `String` | No |  |
 | `coach` | `Hash` | No |  |
 | `competition` | `Hash` | No |  |
 | `crest` | `String` | No |  |
 | `founded` | `Integer` | No |  |
 | `group` | `String` | No |  |
-| `home_team` | `Hash` | No |  |
+| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No |  |
-| `last_updated` | `String` | No |  |
+| `lastUpdated` | `String` | No |  |
 | `matchday` | `Integer` | No |  |
 | `name` | `String` | No |  |
-| `running_competition` | `Array` | No |  |
+| `runningCompetitions` | `Array` | No |  |
 | `score` | `Hash` | No |  |
 | `season` | `Hash` | No |  |
-| `short_name` | `String` | No |  |
+| `shortName` | `String` | No |  |
 | `squad` | `Array` | No |  |
 | `staff` | `Array` | No |  |
 | `stage` | `String` | No |  |
 | `status` | `String` | No |  |
 | `tla` | `String` | No |  |
-| `utc_date` | `String` | No |  |
+| `utcDate` | `String` | No |  |
 | `venue` | `String` | No |  |
 | `website` | `String` | No |  |
 

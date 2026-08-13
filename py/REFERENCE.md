@@ -104,13 +104,13 @@ area = client.Area()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | `list` | No |  |
-| `country_code` | `str` | No |  |
+| `childAreas` | `list` | No |  |
+| `countryCode` | `str` | No |  |
 | `flag` | `str` | No |  |
 | `id` | `int` | No |  |
 | `name` | `str` | No |  |
-| `parent_area` | `str` | No |  |
-| `parent_area_id` | `int` | No |  |
+| `parentArea` | `str` | No |  |
+| `parentAreaId` | `int` | No |  |
 
 ### Operations
 
@@ -173,35 +173,35 @@ competition = client.Competition()
 | --- | --- | --- | --- |
 | `address` | `str` | No |  |
 | `area` | `dict` | No |  |
-| `assist` | `int` | No |  |
-| `away_team` | `dict` | No |  |
-| `club_color` | `str` | No |  |
+| `assists` | `int` | No |  |
+| `awayTeam` | `dict` | No |  |
+| `clubColors` | `str` | No |  |
 | `code` | `str` | No |  |
 | `competition` | `dict` | No |  |
 | `crest` | `str` | No |  |
-| `current_season` | `dict` | No |  |
+| `currentSeason` | `dict` | No |  |
 | `emblem` | `str` | No |  |
 | `founded` | `int` | No |  |
-| `goal` | `int` | No |  |
+| `goals` | `int` | No |  |
 | `group` | `str` | No |  |
-| `home_team` | `dict` | No |  |
+| `homeTeam` | `dict` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `str` | No |  |
+| `lastUpdated` | `str` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `str` | No |  |
-| `number_of_available_season` | `int` | No |  |
-| `penalty` | `int` | No |  |
+| `numberOfAvailableSeasons` | `int` | No |  |
+| `penalties` | `int` | No |  |
 | `player` | `dict` | No |  |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
-| `short_name` | `str` | No |  |
+| `shortName` | `str` | No |  |
 | `stage` | `str` | No |  |
 | `status` | `str` | No |  |
 | `table` | `list` | No |  |
 | `team` | `dict` | No |  |
 | `tla` | `str` | No |  |
 | `type` | `str` | No |  |
-| `utc_date` | `str` | No |  |
+| `utcDate` | `str` | No |  |
 | `venue` | `str` | No |  |
 | `website` | `str` | No |  |
 
@@ -265,23 +265,23 @@ match = client.Match()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `area` | `dict` | No |  |
-| `away_team` | `dict` | No |  |
-| `booking` | `list` | No |  |
+| `awayTeam` | `dict` | No |  |
+| `bookings` | `list` | No |  |
 | `competition` | `dict` | No |  |
-| `goal` | `list` | No |  |
+| `goals` | `list` | No |  |
 | `group` | `str` | No |  |
-| `home_team` | `dict` | No |  |
+| `homeTeam` | `dict` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `str` | No |  |
+| `lastUpdated` | `str` | No |  |
 | `matchday` | `int` | No |  |
-| `odd` | `dict` | No |  |
-| `referee` | `list` | No |  |
+| `odds` | `dict` | No |  |
+| `referees` | `list` | No |  |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
 | `stage` | `str` | No |  |
 | `status` | `str` | No |  |
-| `substitution` | `list` | No |  |
-| `utc_date` | `str` | No |  |
+| `substitutions` | `list` | No |  |
+| `utcDate` | `str` | No |  |
 | `venue` | `str` | No |  |
 
 ### Operations
@@ -343,15 +343,15 @@ person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | `dict` | No |  |
+| `awayTeam` | `dict` | No |  |
 | `competition` | `dict` | No |  |
-| `date_of_birth` | `str` | No |  |
-| `first_name` | `str` | No |  |
+| `dateOfBirth` | `str` | No |  |
+| `firstName` | `str` | No |  |
 | `group` | `str` | No |  |
-| `home_team` | `dict` | No |  |
+| `homeTeam` | `dict` | No |  |
 | `id` | `int` | No |  |
-| `last_name` | `str` | No |  |
-| `last_updated` | `str` | No |  |
+| `lastName` | `str` | No |  |
+| `lastUpdated` | `str` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `str` | No |  |
 | `nationality` | `str` | No |  |
@@ -359,10 +359,10 @@ person = client.Person()
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
 | `section` | `str` | No |  |
-| `shirt_number` | `int` | No |  |
+| `shirtNumber` | `int` | No |  |
 | `stage` | `str` | No |  |
 | `status` | `str` | No |  |
-| `utc_date` | `str` | No |  |
+| `utcDate` | `str` | No |  |
 
 ### Operations
 
@@ -371,7 +371,7 @@ person = client.Person()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Person().list()
+results = client.Person().list({"id": 1})
 for person in results:
     print(person)
 ```
@@ -425,28 +425,28 @@ team = client.Team()
 | --- | --- | --- | --- |
 | `address` | `str` | No |  |
 | `area` | `dict` | No |  |
-| `away_team` | `dict` | No |  |
-| `club_color` | `str` | No |  |
+| `awayTeam` | `dict` | No |  |
+| `clubColors` | `str` | No |  |
 | `coach` | `dict` | No |  |
 | `competition` | `dict` | No |  |
 | `crest` | `str` | No |  |
 | `founded` | `int` | No |  |
 | `group` | `str` | No |  |
-| `home_team` | `dict` | No |  |
+| `homeTeam` | `dict` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `str` | No |  |
+| `lastUpdated` | `str` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `str` | No |  |
-| `running_competition` | `list` | No |  |
+| `runningCompetitions` | `list` | No |  |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
-| `short_name` | `str` | No |  |
+| `shortName` | `str` | No |  |
 | `squad` | `list` | No |  |
 | `staff` | `list` | No |  |
 | `stage` | `str` | No |  |
 | `status` | `str` | No |  |
 | `tla` | `str` | No |  |
-| `utc_date` | `str` | No |  |
+| `utcDate` | `str` | No |  |
 | `venue` | `str` | No |  |
 | `website` | `str` | No |  |
 

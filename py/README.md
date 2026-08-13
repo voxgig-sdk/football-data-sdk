@@ -55,7 +55,7 @@ except Exception as err:
 
 ### 3. Load an area
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -72,8 +72,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    areas = client.Area().list()
-    print(areas)
+    matchs = client.Match().list()
+    print(matchs)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -139,9 +139,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FootballDataSDK.test()
 
-# Entity ops return the bare record and raise on error.
-area = client.Area().list()
-# area contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+match = client.Match().list()
+# match contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -242,7 +243,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -264,13 +265,13 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `child_area` |  |
-| `country_code` |  |
+| `childAreas` |  |
+| `countryCode` |  |
 | `flag` |  |
 | `id` |  |
 | `name` |  |
-| `parent_area` |  |
-| `parent_area_id` |  |
+| `parentArea` |  |
+| `parentAreaId` |  |
 
 Operations: List, Load.
 
@@ -282,35 +283,35 @@ API path: `/areas`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `assist` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `assists` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `code` |  |
 | `competition` |  |
 | `crest` |  |
-| `current_season` |  |
+| `currentSeason` |  |
 | `emblem` |  |
 | `founded` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `number_of_available_season` |  |
-| `penalty` |  |
+| `numberOfAvailableSeasons` |  |
+| `penalties` |  |
 | `player` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `stage` |  |
 | `status` |  |
 | `table` |  |
 | `team` |  |
 | `tla` |  |
 | `type` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -323,23 +324,23 @@ API path: `/competitions/{id}/matches`
 | Field | Description |
 | --- | --- |
 | `area` |  |
-| `away_team` |  |
-| `booking` |  |
+| `awayTeam` |  |
+| `bookings` |  |
 | `competition` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
-| `odd` |  |
-| `referee` |  |
+| `odds` |  |
+| `referees` |  |
 | `score` |  |
 | `season` |  |
 | `stage` |  |
 | `status` |  |
-| `substitution` |  |
-| `utc_date` |  |
+| `substitutions` |  |
+| `utcDate` |  |
 | `venue` |  |
 
 Operations: List, Load.
@@ -350,15 +351,15 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `away_team` |  |
+| `awayTeam` |  |
 | `competition` |  |
-| `date_of_birth` |  |
-| `first_name` |  |
+| `dateOfBirth` |  |
+| `firstName` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_name` |  |
-| `last_updated` |  |
+| `lastName` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
 | `nationality` |  |
@@ -366,10 +367,10 @@ API path: `/matches`
 | `score` |  |
 | `season` |  |
 | `section` |  |
-| `shirt_number` |  |
+| `shirtNumber` |  |
 | `stage` |  |
 | `status` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 
 Operations: List, Load.
 
@@ -381,28 +382,28 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `coach` |  |
 | `competition` |  |
 | `crest` |  |
 | `founded` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `running_competition` |  |
+| `runningCompetitions` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `squad` |  |
 | `staff` |  |
 | `stage` |  |
 | `status` |  |
 | `tla` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -430,13 +431,13 @@ Create an instance: `area = client.Area()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | `list` |  |
-| `country_code` | `str` |  |
+| `childAreas` | `list` |  |
+| `countryCode` | `str` |  |
 | `flag` | `str` |  |
 | `id` | `int` |  |
 | `name` | `str` |  |
-| `parent_area` | `str` |  |
-| `parent_area_id` | `int` |  |
+| `parentArea` | `str` |  |
+| `parentAreaId` | `int` |  |
 
 #### Example: Load
 
@@ -468,35 +469,35 @@ Create an instance: `competition = client.Competition()`
 | --- | --- | --- |
 | `address` | `str` |  |
 | `area` | `dict` |  |
-| `assist` | `int` |  |
-| `away_team` | `dict` |  |
-| `club_color` | `str` |  |
+| `assists` | `int` |  |
+| `awayTeam` | `dict` |  |
+| `clubColors` | `str` |  |
 | `code` | `str` |  |
 | `competition` | `dict` |  |
 | `crest` | `str` |  |
-| `current_season` | `dict` |  |
+| `currentSeason` | `dict` |  |
 | `emblem` | `str` |  |
 | `founded` | `int` |  |
-| `goal` | `int` |  |
+| `goals` | `int` |  |
 | `group` | `str` |  |
-| `home_team` | `dict` |  |
+| `homeTeam` | `dict` |  |
 | `id` | `int` |  |
-| `last_updated` | `str` |  |
+| `lastUpdated` | `str` |  |
 | `matchday` | `int` |  |
 | `name` | `str` |  |
-| `number_of_available_season` | `int` |  |
-| `penalty` | `int` |  |
+| `numberOfAvailableSeasons` | `int` |  |
+| `penalties` | `int` |  |
 | `player` | `dict` |  |
 | `score` | `dict` |  |
 | `season` | `dict` |  |
-| `short_name` | `str` |  |
+| `shortName` | `str` |  |
 | `stage` | `str` |  |
 | `status` | `str` |  |
 | `table` | `list` |  |
 | `team` | `dict` |  |
 | `tla` | `str` |  |
 | `type` | `str` |  |
-| `utc_date` | `str` |  |
+| `utcDate` | `str` |  |
 | `venue` | `str` |  |
 | `website` | `str` |  |
 
@@ -529,23 +530,23 @@ Create an instance: `match = client.Match()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `area` | `dict` |  |
-| `away_team` | `dict` |  |
-| `booking` | `list` |  |
+| `awayTeam` | `dict` |  |
+| `bookings` | `list` |  |
 | `competition` | `dict` |  |
-| `goal` | `list` |  |
+| `goals` | `list` |  |
 | `group` | `str` |  |
-| `home_team` | `dict` |  |
+| `homeTeam` | `dict` |  |
 | `id` | `int` |  |
-| `last_updated` | `str` |  |
+| `lastUpdated` | `str` |  |
 | `matchday` | `int` |  |
-| `odd` | `dict` |  |
-| `referee` | `list` |  |
+| `odds` | `dict` |  |
+| `referees` | `list` |  |
 | `score` | `dict` |  |
 | `season` | `dict` |  |
 | `stage` | `str` |  |
 | `status` | `str` |  |
-| `substitution` | `list` |  |
-| `utc_date` | `str` |  |
+| `substitutions` | `list` |  |
+| `utcDate` | `str` |  |
 | `venue` | `str` |  |
 
 #### Example: Load
@@ -576,15 +577,15 @@ Create an instance: `person = client.Person()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | `dict` |  |
+| `awayTeam` | `dict` |  |
 | `competition` | `dict` |  |
-| `date_of_birth` | `str` |  |
-| `first_name` | `str` |  |
+| `dateOfBirth` | `str` |  |
+| `firstName` | `str` |  |
 | `group` | `str` |  |
-| `home_team` | `dict` |  |
+| `homeTeam` | `dict` |  |
 | `id` | `int` |  |
-| `last_name` | `str` |  |
-| `last_updated` | `str` |  |
+| `lastName` | `str` |  |
+| `lastUpdated` | `str` |  |
 | `matchday` | `int` |  |
 | `name` | `str` |  |
 | `nationality` | `str` |  |
@@ -592,10 +593,10 @@ Create an instance: `person = client.Person()`
 | `score` | `dict` |  |
 | `season` | `dict` |  |
 | `section` | `str` |  |
-| `shirt_number` | `int` |  |
+| `shirtNumber` | `int` |  |
 | `stage` | `str` |  |
 | `status` | `str` |  |
-| `utc_date` | `str` |  |
+| `utcDate` | `str` |  |
 
 #### Example: Load
 
@@ -606,7 +607,7 @@ person = client.Person().load({"id": 1})
 #### Example: List
 
 ```python
-persons = client.Person().list()
+persons = client.Person().list({"id": 1})
 ```
 
 
@@ -627,28 +628,28 @@ Create an instance: `team = client.Team()`
 | --- | --- | --- |
 | `address` | `str` |  |
 | `area` | `dict` |  |
-| `away_team` | `dict` |  |
-| `club_color` | `str` |  |
+| `awayTeam` | `dict` |  |
+| `clubColors` | `str` |  |
 | `coach` | `dict` |  |
 | `competition` | `dict` |  |
 | `crest` | `str` |  |
 | `founded` | `int` |  |
 | `group` | `str` |  |
-| `home_team` | `dict` |  |
+| `homeTeam` | `dict` |  |
 | `id` | `int` |  |
-| `last_updated` | `str` |  |
+| `lastUpdated` | `str` |  |
 | `matchday` | `int` |  |
 | `name` | `str` |  |
-| `running_competition` | `list` |  |
+| `runningCompetitions` | `list` |  |
 | `score` | `dict` |  |
 | `season` | `dict` |  |
-| `short_name` | `str` |  |
+| `shortName` | `str` |  |
 | `squad` | `list` |  |
 | `staff` | `list` |  |
 | `stage` | `str` |  |
 | `status` | `str` |  |
 | `tla` | `str` |  |
-| `utc_date` | `str` |  |
+| `utcDate` | `str` |  |
 | `venue` | `str` |  |
 | `website` | `str` |  |
 
@@ -740,11 +741,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-area = client.Area()
-area.list()
+match = client.Match()
+match.list()
 
-# area.data_get() now returns the area data from the last list
-# area.match_get() returns the last match criteria
+# match.data_get() now returns the match data from the last list
+# match.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

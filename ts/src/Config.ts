@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FootballData',
   }
 
 
@@ -72,14 +72,14 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "child_area",
+          "name": "childAreas",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "country_code",
+          "name": "countryCode",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
@@ -107,14 +107,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "parent_area",
+          "name": "parentArea",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "parent_area_id",
+          "name": "parentAreaId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
@@ -129,6 +129,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/areas",
               "parts": [
@@ -163,6 +164,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/areas/{id}",
               "parts": [
@@ -206,21 +208,21 @@ class Config {
         },
         {
           "active": true,
-          "name": "assist",
+          "name": "assists",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "away_team",
+          "name": "awayTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "club_color",
+          "name": "clubColors",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
@@ -248,7 +250,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "current_season",
+          "name": "currentSeason",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 8
@@ -269,7 +271,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "goal",
+          "name": "goals",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 11
@@ -283,7 +285,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "home_team",
+          "name": "homeTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 13
@@ -297,7 +299,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "last_updated",
+          "name": "lastUpdated",
           "req": false,
           "type": "`$STRING`",
           "index$": 15
@@ -318,14 +320,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "number_of_available_season",
+          "name": "numberOfAvailableSeasons",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 18
         },
         {
           "active": true,
-          "name": "penalty",
+          "name": "penalties",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 19
@@ -353,7 +355,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "short_name",
+          "name": "shortName",
           "req": false,
           "type": "`$STRING`",
           "index$": 23
@@ -402,7 +404,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "utc_date",
+          "name": "utcDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 30
@@ -484,6 +486,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/matches",
               "parts": [
@@ -541,6 +544,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/scorers",
               "parts": [
@@ -594,6 +598,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/standings",
               "parts": [
@@ -639,6 +644,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/teams",
               "parts": [
@@ -673,6 +679,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/competitions",
               "parts": [
@@ -711,6 +718,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}",
               "parts": [
@@ -747,14 +755,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "away_team",
+          "name": "awayTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "booking",
+          "name": "bookings",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 2
@@ -768,7 +776,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "goal",
+          "name": "goals",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 4
@@ -782,7 +790,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "home_team",
+          "name": "homeTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 6
@@ -796,7 +804,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "last_updated",
+          "name": "lastUpdated",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
@@ -810,14 +818,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "odd",
+          "name": "odds",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "referee",
+          "name": "referees",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 11
@@ -852,14 +860,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "substitution",
+          "name": "substitutions",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 16
         },
         {
           "active": true,
-          "name": "utc_date",
+          "name": "utcDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 17
@@ -916,6 +924,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/matches",
               "parts": [
@@ -957,6 +966,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/matches/{id}",
               "parts": [
@@ -986,7 +996,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "away_team",
+          "name": "awayTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 0
@@ -1000,14 +1010,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "date_of_birth",
+          "name": "dateOfBirth",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "first_name",
+          "name": "firstName",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -1021,7 +1031,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "home_team",
+          "name": "homeTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 5
@@ -1035,14 +1045,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "last_name",
+          "name": "lastName",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "last_updated",
+          "name": "lastUpdated",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
@@ -1098,7 +1108,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "shirt_number",
+          "name": "shirtNumber",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 16
@@ -1119,7 +1129,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "utc_date",
+          "name": "utcDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 19
@@ -1188,6 +1198,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/persons/{id}/matches",
               "parts": [
@@ -1234,6 +1245,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/persons/{id}",
               "parts": [
@@ -1277,14 +1289,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "away_team",
+          "name": "awayTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "club_color",
+          "name": "clubColors",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -1326,7 +1338,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "home_team",
+          "name": "homeTeam",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 9
@@ -1340,7 +1352,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "last_updated",
+          "name": "lastUpdated",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
@@ -1361,7 +1373,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "running_competition",
+          "name": "runningCompetitions",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 14
@@ -1382,7 +1394,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "short_name",
+          "name": "shortName",
           "req": false,
           "type": "`$STRING`",
           "index$": 17
@@ -1424,7 +1436,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "utc_date",
+          "name": "utcDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 23
@@ -1514,6 +1526,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/teams/{id}/matches",
               "parts": [
@@ -1561,6 +1574,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/teams",
               "parts": [
@@ -1600,6 +1614,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/teams/{id}",
               "parts": [

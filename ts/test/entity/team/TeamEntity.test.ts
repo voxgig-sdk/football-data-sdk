@@ -26,8 +26,8 @@ import {
 describe('TeamEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FOOTBALLDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FOOTBALLDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FOOTBALL_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FOOTBALL_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FootballDataSDK.test()
@@ -63,13 +63,13 @@ describe('TeamEntity', async () => {
     const team_ref01_ent = client.Team()
     const team_ref01_match: any = {}
 
-    const team_ref01_list = await team_ref01_ent.list(team_ref01_match)
+    const team_ref01_list = (await team_ref01_ent.list(team_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const team_ref01_match_dt0: any = {}
     team_ref01_match_dt0.id = team_ref01_data.id
-    const team_ref01_data_dt0 = await team_ref01_ent.load(team_ref01_match_dt0)
+    const team_ref01_data_dt0 = (await team_ref01_ent.load(team_ref01_match_dt0)).data()
     assert(team_ref01_data_dt0.id === team_ref01_data.id)
 
 

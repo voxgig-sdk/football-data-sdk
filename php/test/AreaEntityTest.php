@@ -72,7 +72,7 @@ class AreaEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set FOOTBALLDATA_TEST_AREA_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set FOOTBALL_DATA_TEST_AREA_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -97,7 +97,7 @@ class AreaEntityTest extends TestCase
             "id" => $area_ref01_data["id"],
         ];
         $area_ref01_data_dt0_loaded = $area_ref01_ent->load($area_ref01_match_dt0, null);
-        $area_ref01_data_dt0_load_result = Helpers::to_map($area_ref01_data_dt0_loaded);
+        $area_ref01_data_dt0_load_result = Helpers::to_map(is_object($area_ref01_data_dt0_loaded) && method_exists($area_ref01_data_dt0_loaded, 'data_get') ? $area_ref01_data_dt0_loaded->data_get() : $area_ref01_data_dt0_loaded);
         $this->assertNotNull($area_ref01_data_dt0_load_result);
         $this->assertEquals($area_ref01_data_dt0_load_result["id"], $area_ref01_data["id"]);
 
@@ -126,39 +126,39 @@ function area_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("FOOTBALLDATA_TEST_AREA_ENTID");
+    $entid_env_raw = getenv("FOOTBALL_DATA_TEST_AREA_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "FOOTBALLDATA_TEST_AREA_ENTID" => $idmap,
-        "FOOTBALLDATA_TEST_LIVE" => "FALSE",
-        "FOOTBALLDATA_TEST_EXPLAIN" => "FALSE",
-        "FOOTBALLDATA_APIKEY" => "NONE",
+        "FOOTBALL_DATA_TEST_AREA_ENTID" => $idmap,
+        "FOOTBALL_DATA_TEST_LIVE" => "FALSE",
+        "FOOTBALL_DATA_TEST_EXPLAIN" => "FALSE",
+        "FOOTBALL_DATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["FOOTBALLDATA_TEST_AREA_ENTID"]);
+        $env["FOOTBALL_DATA_TEST_AREA_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["FOOTBALLDATA_TEST_LIVE"] === "TRUE") {
+    if ($env["FOOTBALL_DATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FOOTBALLDATA_APIKEY"],
+                "apikey" => $env["FOOTBALL_DATA_APIKEY"],
             ],
             $extra ?? [],
         ]);
         $client = new FootballDataSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["FOOTBALLDATA_TEST_LIVE"] === "TRUE";
+    $live = $env["FOOTBALL_DATA_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["FOOTBALLDATA_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["FOOTBALL_DATA_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

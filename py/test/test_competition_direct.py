@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from footballdata_sdk.utility.voxgig_struct import voxgig_struct as vs
 from footballdata_sdk import FootballDataSDK
-from core import helpers
+from footballdata_sdk.core import helpers
 from test import runner
 
 
@@ -117,16 +117,16 @@ def _competition_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FOOTBALLDATA_TEST_COMPETITION_ENTID": {},
-        "FOOTBALLDATA_TEST_LIVE": "FALSE",
-        "FOOTBALLDATA_APIKEY": "NONE",
+        "FOOTBALL_DATA_TEST_COMPETITION_ENTID": {},
+        "FOOTBALL_DATA_TEST_LIVE": "FALSE",
+        "FOOTBALL_DATA_APIKEY": "NONE",
     })
 
-    live = env.get("FOOTBALLDATA_TEST_LIVE") == "TRUE"
+    live = env.get("FOOTBALL_DATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("FOOTBALLDATA_APIKEY"),
+            "apikey": env.get("FOOTBALL_DATA_APIKEY"),
         }
         client = FootballDataSDK(merged_opts)
         return {

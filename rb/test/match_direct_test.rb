@@ -114,16 +114,16 @@ def match_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "FOOTBALLDATA_TEST_MATCH_ENTID" => {},
-    "FOOTBALLDATA_TEST_LIVE" => "FALSE",
-    "FOOTBALLDATA_APIKEY" => "NONE",
+    "FOOTBALL_DATA_TEST_MATCH_ENTID" => {},
+    "FOOTBALL_DATA_TEST_LIVE" => "FALSE",
+    "FOOTBALL_DATA_APIKEY" => "NONE",
   })
 
-  live = env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
+  live = env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["FOOTBALLDATA_APIKEY"],
+      "apikey" => env["FOOTBALL_DATA_APIKEY"],
     }
     client = FootballDataSDK.new(merged_opts)
     return {

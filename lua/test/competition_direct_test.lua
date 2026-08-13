@@ -129,16 +129,16 @@ function competition_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FOOTBALLDATA_TEST_COMPETITION_ENTID"] = {},
-    ["FOOTBALLDATA_TEST_LIVE"] = "FALSE",
-    ["FOOTBALLDATA_APIKEY"] = "NONE",
+    ["FOOTBALL_DATA_TEST_COMPETITION_ENTID"] = {},
+    ["FOOTBALL_DATA_TEST_LIVE"] = "FALSE",
+    ["FOOTBALL_DATA_APIKEY"] = "NONE",
   })
 
-  local live = env["FOOTBALLDATA_TEST_LIVE"] == "TRUE"
+  local live = env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["FOOTBALLDATA_APIKEY"],
+      apikey = env["FOOTBALL_DATA_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

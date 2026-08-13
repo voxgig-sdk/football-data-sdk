@@ -6,12 +6,12 @@ main: kit: entity: area: {
 
   fields: [
     {
-      name: "child_area"
+      name: "childAreas"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "country_code"
+      name: "countryCode"
       req: false
       type: "`$STRING`"
     }
@@ -31,12 +31,12 @@ main: kit: entity: area: {
       type: "`$STRING`"
     }
     {
-      name: "parent_area"
+      name: "parentArea"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "parent_area_id"
+      name: "parentAreaId"
       req: false
       type: "`$INTEGER`"
     }

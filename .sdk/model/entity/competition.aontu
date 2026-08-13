@@ -16,17 +16,17 @@ main: kit: entity: competition: {
       type: "`$OBJECT`"
     }
     {
-      name: "assist"
+      name: "assists"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "away_team"
+      name: "awayTeam"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "club_color"
+      name: "clubColors"
       req: false
       type: "`$STRING`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: competition: {
       type: "`$STRING`"
     }
     {
-      name: "current_season"
+      name: "currentSeason"
       req: false
       type: "`$OBJECT`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: competition: {
       type: "`$INTEGER`"
     }
     {
-      name: "goal"
+      name: "goals"
       req: false
       type: "`$INTEGER`"
     }
@@ -71,7 +71,7 @@ main: kit: entity: competition: {
       type: "`$STRING`"
     }
     {
-      name: "home_team"
+      name: "homeTeam"
       req: false
       type: "`$OBJECT`"
     }
@@ -81,7 +81,7 @@ main: kit: entity: competition: {
       type: "`$INTEGER`"
     }
     {
-      name: "last_updated"
+      name: "lastUpdated"
       req: false
       type: "`$STRING`"
     }
@@ -96,12 +96,12 @@ main: kit: entity: competition: {
       type: "`$STRING`"
     }
     {
-      name: "number_of_available_season"
+      name: "numberOfAvailableSeasons"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "penalty"
+      name: "penalties"
       req: false
       type: "`$INTEGER`"
     }
@@ -121,7 +121,7 @@ main: kit: entity: competition: {
       type: "`$OBJECT`"
     }
     {
-      name: "short_name"
+      name: "shortName"
       req: false
       type: "`$STRING`"
     }
@@ -156,7 +156,7 @@ main: kit: entity: competition: {
       type: "`$STRING`"
     }
     {
-      name: "utc_date"
+      name: "utcDate"
       req: false
       type: "`$STRING`"
     }

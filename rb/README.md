@@ -39,7 +39,7 @@ begin
   # list returns an Array of Area records — iterate directly.
   areas = client.Area.list
   areas.each do |item|
-    puts "#{item["id"]} #{item["child_area"]}"
+    puts "#{item["id"]} #{item["childAreas"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -50,7 +50,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Area record (raises on error).
+  # load returns the ENTITY — call data_get for the Area record (raises on error).
   area = client.Area.load({ "id" => 1 })
   puts area
 rescue => err
@@ -65,7 +65,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  areas = client.Area.list()
+  matchs = client.Match.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -133,12 +133,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = FootballDataSDK.test({
-  "entity" => { "area" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "match" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
-area = client.Area.list()
-puts area
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+match = client.Match.list()
+puts match
 ```
 
 ### Use a custom fetch function
@@ -260,13 +261,13 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `child_area` |  |
-| `country_code` |  |
+| `childAreas` |  |
+| `countryCode` |  |
 | `flag` |  |
 | `id` |  |
 | `name` |  |
-| `parent_area` |  |
-| `parent_area_id` |  |
+| `parentArea` |  |
+| `parentAreaId` |  |
 
 Operations: List, Load.
 
@@ -278,35 +279,35 @@ API path: `/areas`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `assist` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `assists` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `code` |  |
 | `competition` |  |
 | `crest` |  |
-| `current_season` |  |
+| `currentSeason` |  |
 | `emblem` |  |
 | `founded` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `number_of_available_season` |  |
-| `penalty` |  |
+| `numberOfAvailableSeasons` |  |
+| `penalties` |  |
 | `player` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `stage` |  |
 | `status` |  |
 | `table` |  |
 | `team` |  |
 | `tla` |  |
 | `type` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -319,23 +320,23 @@ API path: `/competitions/{id}/matches`
 | Field | Description |
 | --- | --- |
 | `area` |  |
-| `away_team` |  |
-| `booking` |  |
+| `awayTeam` |  |
+| `bookings` |  |
 | `competition` |  |
-| `goal` |  |
+| `goals` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
-| `odd` |  |
-| `referee` |  |
+| `odds` |  |
+| `referees` |  |
 | `score` |  |
 | `season` |  |
 | `stage` |  |
 | `status` |  |
-| `substitution` |  |
-| `utc_date` |  |
+| `substitutions` |  |
+| `utcDate` |  |
 | `venue` |  |
 
 Operations: List, Load.
@@ -346,15 +347,15 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `away_team` |  |
+| `awayTeam` |  |
 | `competition` |  |
-| `date_of_birth` |  |
-| `first_name` |  |
+| `dateOfBirth` |  |
+| `firstName` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_name` |  |
-| `last_updated` |  |
+| `lastName` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
 | `nationality` |  |
@@ -362,10 +363,10 @@ API path: `/matches`
 | `score` |  |
 | `season` |  |
 | `section` |  |
-| `shirt_number` |  |
+| `shirtNumber` |  |
 | `stage` |  |
 | `status` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 
 Operations: List, Load.
 
@@ -377,28 +378,28 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` |  |
 | `area` |  |
-| `away_team` |  |
-| `club_color` |  |
+| `awayTeam` |  |
+| `clubColors` |  |
 | `coach` |  |
 | `competition` |  |
 | `crest` |  |
 | `founded` |  |
 | `group` |  |
-| `home_team` |  |
+| `homeTeam` |  |
 | `id` |  |
-| `last_updated` |  |
+| `lastUpdated` |  |
 | `matchday` |  |
 | `name` |  |
-| `running_competition` |  |
+| `runningCompetitions` |  |
 | `score` |  |
 | `season` |  |
-| `short_name` |  |
+| `shortName` |  |
 | `squad` |  |
 | `staff` |  |
 | `stage` |  |
 | `status` |  |
 | `tla` |  |
-| `utc_date` |  |
+| `utcDate` |  |
 | `venue` |  |
 | `website` |  |
 
@@ -426,18 +427,18 @@ Create an instance: `area = client.Area`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `child_area` | `Array` |  |
-| `country_code` | `String` |  |
+| `childAreas` | `Array` |  |
+| `countryCode` | `String` |  |
 | `flag` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
-| `parent_area` | `String` |  |
-| `parent_area_id` | `Integer` |  |
+| `parentArea` | `String` |  |
+| `parentAreaId` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Area record (raises on error).
+# load returns the ENTITY — call data_get for the Area record (raises on error).
 area = client.Area.load({ "id" => 1 })
 ```
 
@@ -466,42 +467,42 @@ Create an instance: `competition = client.Competition`
 | --- | --- | --- |
 | `address` | `String` |  |
 | `area` | `Hash` |  |
-| `assist` | `Integer` |  |
-| `away_team` | `Hash` |  |
-| `club_color` | `String` |  |
+| `assists` | `Integer` |  |
+| `awayTeam` | `Hash` |  |
+| `clubColors` | `String` |  |
 | `code` | `String` |  |
 | `competition` | `Hash` |  |
 | `crest` | `String` |  |
-| `current_season` | `Hash` |  |
+| `currentSeason` | `Hash` |  |
 | `emblem` | `String` |  |
 | `founded` | `Integer` |  |
-| `goal` | `Integer` |  |
+| `goals` | `Integer` |  |
 | `group` | `String` |  |
-| `home_team` | `Hash` |  |
+| `homeTeam` | `Hash` |  |
 | `id` | `Integer` |  |
-| `last_updated` | `String` |  |
+| `lastUpdated` | `String` |  |
 | `matchday` | `Integer` |  |
 | `name` | `String` |  |
-| `number_of_available_season` | `Integer` |  |
-| `penalty` | `Integer` |  |
+| `numberOfAvailableSeasons` | `Integer` |  |
+| `penalties` | `Integer` |  |
 | `player` | `Hash` |  |
 | `score` | `Hash` |  |
 | `season` | `Hash` |  |
-| `short_name` | `String` |  |
+| `shortName` | `String` |  |
 | `stage` | `String` |  |
 | `status` | `String` |  |
 | `table` | `Array` |  |
 | `team` | `Hash` |  |
 | `tla` | `String` |  |
 | `type` | `String` |  |
-| `utc_date` | `String` |  |
+| `utcDate` | `String` |  |
 | `venue` | `String` |  |
 | `website` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Competition record (raises on error).
+# load returns the ENTITY — call data_get for the Competition record (raises on error).
 competition = client.Competition.load({ "id" => "competition_id" })
 ```
 
@@ -529,29 +530,29 @@ Create an instance: `match = client.Match`
 | Field | Type | Description |
 | --- | --- | --- |
 | `area` | `Hash` |  |
-| `away_team` | `Hash` |  |
-| `booking` | `Array` |  |
+| `awayTeam` | `Hash` |  |
+| `bookings` | `Array` |  |
 | `competition` | `Hash` |  |
-| `goal` | `Array` |  |
+| `goals` | `Array` |  |
 | `group` | `String` |  |
-| `home_team` | `Hash` |  |
+| `homeTeam` | `Hash` |  |
 | `id` | `Integer` |  |
-| `last_updated` | `String` |  |
+| `lastUpdated` | `String` |  |
 | `matchday` | `Integer` |  |
-| `odd` | `Hash` |  |
-| `referee` | `Array` |  |
+| `odds` | `Hash` |  |
+| `referees` | `Array` |  |
 | `score` | `Hash` |  |
 | `season` | `Hash` |  |
 | `stage` | `String` |  |
 | `status` | `String` |  |
-| `substitution` | `Array` |  |
-| `utc_date` | `String` |  |
+| `substitutions` | `Array` |  |
+| `utcDate` | `String` |  |
 | `venue` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Match record (raises on error).
+# load returns the ENTITY — call data_get for the Match record (raises on error).
 match = client.Match.load({ "id" => 1 })
 ```
 
@@ -578,15 +579,15 @@ Create an instance: `person = client.Person`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `away_team` | `Hash` |  |
+| `awayTeam` | `Hash` |  |
 | `competition` | `Hash` |  |
-| `date_of_birth` | `String` |  |
-| `first_name` | `String` |  |
+| `dateOfBirth` | `String` |  |
+| `firstName` | `String` |  |
 | `group` | `String` |  |
-| `home_team` | `Hash` |  |
+| `homeTeam` | `Hash` |  |
 | `id` | `Integer` |  |
-| `last_name` | `String` |  |
-| `last_updated` | `String` |  |
+| `lastName` | `String` |  |
+| `lastUpdated` | `String` |  |
 | `matchday` | `Integer` |  |
 | `name` | `String` |  |
 | `nationality` | `String` |  |
@@ -594,15 +595,15 @@ Create an instance: `person = client.Person`
 | `score` | `Hash` |  |
 | `season` | `Hash` |  |
 | `section` | `String` |  |
-| `shirt_number` | `Integer` |  |
+| `shirtNumber` | `Integer` |  |
 | `stage` | `String` |  |
 | `status` | `String` |  |
-| `utc_date` | `String` |  |
+| `utcDate` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Person record (raises on error).
+# load returns the ENTITY — call data_get for the Person record (raises on error).
 person = client.Person.load({ "id" => 1 })
 ```
 
@@ -631,35 +632,35 @@ Create an instance: `team = client.Team`
 | --- | --- | --- |
 | `address` | `String` |  |
 | `area` | `Hash` |  |
-| `away_team` | `Hash` |  |
-| `club_color` | `String` |  |
+| `awayTeam` | `Hash` |  |
+| `clubColors` | `String` |  |
 | `coach` | `Hash` |  |
 | `competition` | `Hash` |  |
 | `crest` | `String` |  |
 | `founded` | `Integer` |  |
 | `group` | `String` |  |
-| `home_team` | `Hash` |  |
+| `homeTeam` | `Hash` |  |
 | `id` | `Integer` |  |
-| `last_updated` | `String` |  |
+| `lastUpdated` | `String` |  |
 | `matchday` | `Integer` |  |
 | `name` | `String` |  |
-| `running_competition` | `Array` |  |
+| `runningCompetitions` | `Array` |  |
 | `score` | `Hash` |  |
 | `season` | `Hash` |  |
-| `short_name` | `String` |  |
+| `shortName` | `String` |  |
 | `squad` | `Array` |  |
 | `staff` | `Array` |  |
 | `stage` | `String` |  |
 | `status` | `String` |  |
 | `tla` | `String` |  |
-| `utc_date` | `String` |  |
+| `utcDate` | `String` |  |
 | `venue` | `String` |  |
 | `website` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Team record (raises on error).
+# load returns the ENTITY — call data_get for the Team record (raises on error).
 team = client.Team.load({ "id" => 1 })
 ```
 
@@ -747,11 +748,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-area = client.Area
-area.list()
+match = client.Match
+match.list()
 
-# area.data_get now returns the area data from the last list
-# area.match_get returns the last match criteria
+# match.data_get now returns the match data from the last list
+# match.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

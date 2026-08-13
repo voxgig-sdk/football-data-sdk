@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FootballDataUtility.registrar = ->(u) {
   u.prepare_params = FootballDataUtilities::PrepareParams
   u.prepare_path = FootballDataUtilities::PreparePath
   u.prepare_query = FootballDataUtilities::PrepareQuery
+  u.graphql_body = FootballDataUtilities::GraphqlBody
+  u.graphql_errors = FootballDataUtilities::GraphqlErrors
   u.result_basic = FootballDataUtilities::ResultBasic
   u.result_body = FootballDataUtilities::ResultBody
   u.result_headers = FootballDataUtilities::ResultHeaders

@@ -6,7 +6,7 @@ main: kit: entity: person: {
 
   fields: [
     {
-      name: "away_team"
+      name: "awayTeam"
       req: false
       type: "`$OBJECT`"
     }
@@ -16,12 +16,12 @@ main: kit: entity: person: {
       type: "`$OBJECT`"
     }
     {
-      name: "date_of_birth"
+      name: "dateOfBirth"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "first_name"
+      name: "firstName"
       req: false
       type: "`$STRING`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "home_team"
+      name: "homeTeam"
       req: false
       type: "`$OBJECT`"
     }
@@ -41,12 +41,12 @@ main: kit: entity: person: {
       type: "`$INTEGER`"
     }
     {
-      name: "last_name"
+      name: "lastName"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "last_updated"
+      name: "lastUpdated"
       req: false
       type: "`$STRING`"
     }
@@ -86,7 +86,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "shirt_number"
+      name: "shirtNumber"
       req: false
       type: "`$INTEGER`"
     }
@@ -101,7 +101,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "utc_date"
+      name: "utcDate"
       req: false
       type: "`$STRING`"
     }

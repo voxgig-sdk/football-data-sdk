@@ -107,13 +107,13 @@ local area = client:Area(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | `table` | No |  |
-| `country_code` | `string` | No |  |
+| `childAreas` | `table` | No |  |
+| `countryCode` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
-| `parent_area` | `string` | No |  |
-| `parent_area_id` | `number` | No |  |
+| `parentArea` | `string` | No |  |
+| `parentAreaId` | `number` | No |  |
 
 ### Operations
 
@@ -175,35 +175,35 @@ local competition = client:Competition(nil)
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `table` | No |  |
-| `assist` | `number` | No |  |
-| `away_team` | `table` | No |  |
-| `club_color` | `string` | No |  |
+| `assists` | `number` | No |  |
+| `awayTeam` | `table` | No |  |
+| `clubColors` | `string` | No |  |
 | `code` | `string` | No |  |
 | `competition` | `table` | No |  |
 | `crest` | `string` | No |  |
-| `current_season` | `table` | No |  |
+| `currentSeason` | `table` | No |  |
 | `emblem` | `string` | No |  |
 | `founded` | `number` | No |  |
-| `goal` | `number` | No |  |
+| `goals` | `number` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `table` | No |  |
+| `homeTeam` | `table` | No |  |
 | `id` | `number` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
 | `name` | `string` | No |  |
-| `number_of_available_season` | `number` | No |  |
-| `penalty` | `number` | No |  |
+| `numberOfAvailableSeasons` | `number` | No |  |
+| `penalties` | `number` | No |  |
 | `player` | `table` | No |  |
 | `score` | `table` | No |  |
 | `season` | `table` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `table` | `table` | No |  |
 | `team` | `table` | No |  |
 | `tla` | `string` | No |  |
 | `type` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
 
@@ -266,23 +266,23 @@ local match = client:Match(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `area` | `table` | No |  |
-| `away_team` | `table` | No |  |
-| `booking` | `table` | No |  |
+| `awayTeam` | `table` | No |  |
+| `bookings` | `table` | No |  |
 | `competition` | `table` | No |  |
-| `goal` | `table` | No |  |
+| `goals` | `table` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `table` | No |  |
+| `homeTeam` | `table` | No |  |
 | `id` | `number` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
-| `odd` | `table` | No |  |
-| `referee` | `table` | No |  |
+| `odds` | `table` | No |  |
+| `referees` | `table` | No |  |
 | `score` | `table` | No |  |
 | `season` | `table` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `substitution` | `table` | No |  |
-| `utc_date` | `string` | No |  |
+| `substitutions` | `table` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 
 ### Operations
@@ -343,15 +343,15 @@ local person = client:Person(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | `table` | No |  |
+| `awayTeam` | `table` | No |  |
 | `competition` | `table` | No |  |
-| `date_of_birth` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `dateOfBirth` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `table` | No |  |
+| `homeTeam` | `table` | No |  |
 | `id` | `number` | No |  |
-| `last_name` | `string` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastName` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
 | `name` | `string` | No |  |
 | `nationality` | `string` | No |  |
@@ -359,10 +359,10 @@ local person = client:Person(nil)
 | `score` | `table` | No |  |
 | `season` | `table` | No |  |
 | `section` | `string` | No |  |
-| `shirt_number` | `number` | No |  |
+| `shirtNumber` | `number` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 
 ### Operations
 
@@ -424,28 +424,28 @@ local team = client:Team(nil)
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `table` | No |  |
-| `away_team` | `table` | No |  |
-| `club_color` | `string` | No |  |
+| `awayTeam` | `table` | No |  |
+| `clubColors` | `string` | No |  |
 | `coach` | `table` | No |  |
 | `competition` | `table` | No |  |
 | `crest` | `string` | No |  |
 | `founded` | `number` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `table` | No |  |
+| `homeTeam` | `table` | No |  |
 | `id` | `number` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `number` | No |  |
 | `name` | `string` | No |  |
-| `running_competition` | `table` | No |  |
+| `runningCompetitions` | `table` | No |  |
 | `score` | `table` | No |  |
 | `season` | `table` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `squad` | `table` | No |  |
 | `staff` | `table` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `tla` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
 

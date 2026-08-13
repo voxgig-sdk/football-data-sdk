@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = FootballDataSDK.test()
-const areas = await client.Area().list()
-// areas is an array of bare Area records populated with mock data
-console.log(areas)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = FootballDataSDK.test({
+  entity: {
+    match: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const matchs = await client.Match().list()
+// matchs is an array of Match entities, populated with mock data
+// — call matchs[0].data() for the record itself
+console.log(matchs)
 ```
 
 ### Python
 
 ```python
 client = FootballDataSDK.test()
-areas = client.Area().list()
-print(areas)
+matchs = client.Match().list()
+print(matchs)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(areas)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = FootballDataSDK::test([
-    "entity" => ["area" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["match" => ["test01" => ["id" => "test01"]]],
 ]);
-$areas = $client->Area()->list();
+$matchs = $client->Match()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Area(nil).List(
+result, err := client.Match(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Area(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = FootballDataSDK.test({
-  "entity" => { "area" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "match" => { "test01" => { "id" => "test01" } } },
 })
-areas = client.Area.list()
+matchs = client.Match.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Area():list()
+local results, err = client:Match():list()
 ```
 
 ## Packages
@@ -112,7 +121,7 @@ const client = new FootballDataSDK({
   apikey: process.env.FOOTBALL_DATA_APIKEY,
 })
 
-// List all areas (returns Area[])
+// List all areas (returns AreaEntity[] — .data() for the record)
 const areas = await client.Area().list()
 for (const area of areas) {
   console.log(area)
@@ -158,10 +167,10 @@ The API exposes 5 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Area** | The Area entity (list, load). | `/areas` |
-| **Competition** | The Competition entity (list, load). | `/competitions/{id}/matches` |
+| **Competition** | The Competition entity (list, load). | `/competitions` |
 | **Match** | The Match entity (list, load). | `/matches` |
 | **Person** | The Person entity (list, load). | `/persons/{id}/matches` |
-| **Team** | The Team entity (list, load). | `/teams/{id}/matches` |
+| **Team** | The Team entity (list, load). | `/teams` |
 
 The operations available across these entities are **load**, **list** — see each entity's
 own list above for exactly which it supports.
@@ -202,7 +211,7 @@ $client = new FootballDataSDK([
 $areas = $client->Area()->list();
 print_r($areas);
 
-// Load a specific area (returns the bare record; throws on error)
+// Load a specific area (returns the ENTITY; call data_get() for the record; throws on error)
 $area = $client->Area()->load(["id" => 1]);
 print_r($area);
 ```
@@ -237,7 +246,7 @@ client = FootballDataSDK.new({
 areas = client.Area.list
 puts areas
 
-# Load a specific area (returns the bare record; raises on error)
+# Load a specific area (returns the ENTITY; call data_get for the record)
 area = client.Area.load({ "id" => 1 })
 puts area
 ```
@@ -376,6 +385,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.football-data.org](https://www.football-data.org)
 

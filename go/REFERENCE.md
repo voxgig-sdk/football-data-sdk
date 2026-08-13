@@ -115,13 +115,13 @@ fmt.Println(area.GetName()) // "area"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | `[]any` | No |  |
-| `country_code` | `string` | No |  |
+| `childAreas` | `[]any` | No |  |
+| `countryCode` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `parent_area` | `string` | No |  |
-| `parent_area_id` | `int` | No |  |
+| `parentArea` | `string` | No |  |
+| `parentAreaId` | `int` | No |  |
 
 ### Operations
 
@@ -186,35 +186,35 @@ fmt.Println(competition.GetName()) // "competition"
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `map[string]any` | No |  |
-| `assist` | `int` | No |  |
-| `away_team` | `map[string]any` | No |  |
-| `club_color` | `string` | No |  |
+| `assists` | `int` | No |  |
+| `awayTeam` | `map[string]any` | No |  |
+| `clubColors` | `string` | No |  |
 | `code` | `string` | No |  |
 | `competition` | `map[string]any` | No |  |
 | `crest` | `string` | No |  |
-| `current_season` | `map[string]any` | No |  |
+| `currentSeason` | `map[string]any` | No |  |
 | `emblem` | `string` | No |  |
 | `founded` | `int` | No |  |
-| `goal` | `int` | No |  |
+| `goals` | `int` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `map[string]any` | No |  |
+| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `string` | No |  |
-| `number_of_available_season` | `int` | No |  |
-| `penalty` | `int` | No |  |
+| `numberOfAvailableSeasons` | `int` | No |  |
+| `penalties` | `int` | No |  |
 | `player` | `map[string]any` | No |  |
 | `score` | `map[string]any` | No |  |
 | `season` | `map[string]any` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `table` | `[]any` | No |  |
 | `team` | `map[string]any` | No |  |
 | `tla` | `string` | No |  |
 | `type` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
 
@@ -280,23 +280,23 @@ fmt.Println(match.GetName()) // "match"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `area` | `map[string]any` | No |  |
-| `away_team` | `map[string]any` | No |  |
-| `booking` | `[]any` | No |  |
+| `awayTeam` | `map[string]any` | No |  |
+| `bookings` | `[]any` | No |  |
 | `competition` | `map[string]any` | No |  |
-| `goal` | `[]any` | No |  |
+| `goals` | `[]any` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `map[string]any` | No |  |
+| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
-| `odd` | `map[string]any` | No |  |
-| `referee` | `[]any` | No |  |
+| `odds` | `map[string]any` | No |  |
+| `referees` | `[]any` | No |  |
 | `score` | `map[string]any` | No |  |
 | `season` | `map[string]any` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `substitution` | `[]any` | No |  |
-| `utc_date` | `string` | No |  |
+| `substitutions` | `[]any` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 
 ### Operations
@@ -360,15 +360,15 @@ fmt.Println(person.GetName()) // "person"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | `map[string]any` | No |  |
+| `awayTeam` | `map[string]any` | No |  |
 | `competition` | `map[string]any` | No |  |
-| `date_of_birth` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `dateOfBirth` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `map[string]any` | No |  |
+| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
-| `last_name` | `string` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastName` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `string` | No |  |
 | `nationality` | `string` | No |  |
@@ -376,10 +376,10 @@ fmt.Println(person.GetName()) // "person"
 | `score` | `map[string]any` | No |  |
 | `season` | `map[string]any` | No |  |
 | `section` | `string` | No |  |
-| `shirt_number` | `int` | No |  |
+| `shirtNumber` | `int` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 
 ### Operations
 
@@ -444,28 +444,28 @@ fmt.Println(team.GetName()) // "team"
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `map[string]any` | No |  |
-| `away_team` | `map[string]any` | No |  |
-| `club_color` | `string` | No |  |
+| `awayTeam` | `map[string]any` | No |  |
+| `clubColors` | `string` | No |  |
 | `coach` | `map[string]any` | No |  |
 | `competition` | `map[string]any` | No |  |
 | `crest` | `string` | No |  |
 | `founded` | `int` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `map[string]any` | No |  |
+| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `string` | No |  |
-| `running_competition` | `[]any` | No |  |
+| `runningCompetitions` | `[]any` | No |  |
 | `score` | `map[string]any` | No |  |
 | `season` | `map[string]any` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `squad` | `[]any` | No |  |
 | `staff` | `[]any` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `tla` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
 

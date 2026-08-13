@@ -16,12 +16,12 @@ main: kit: entity: team: {
       type: "`$OBJECT`"
     }
     {
-      name: "away_team"
+      name: "awayTeam"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "club_color"
+      name: "clubColors"
       req: false
       type: "`$STRING`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: team: {
       type: "`$STRING`"
     }
     {
-      name: "home_team"
+      name: "homeTeam"
       req: false
       type: "`$OBJECT`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: team: {
       type: "`$INTEGER`"
     }
     {
-      name: "last_updated"
+      name: "lastUpdated"
       req: false
       type: "`$STRING`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: team: {
       type: "`$STRING`"
     }
     {
-      name: "running_competition"
+      name: "runningCompetitions"
       req: false
       type: "`$ARRAY`"
     }
@@ -91,7 +91,7 @@ main: kit: entity: team: {
       type: "`$OBJECT`"
     }
     {
-      name: "short_name"
+      name: "shortName"
       req: false
       type: "`$STRING`"
     }
@@ -121,7 +121,7 @@ main: kit: entity: team: {
       type: "`$STRING`"
     }
     {
-      name: "utc_date"
+      name: "utcDate"
       req: false
       type: "`$STRING`"
     }

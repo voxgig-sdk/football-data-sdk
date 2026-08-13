@@ -109,13 +109,13 @@ $area = $client->Area();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `child_area` | `array` | No |  |
-| `country_code` | `string` | No |  |
+| `childAreas` | `array` | No |  |
+| `countryCode` | `string` | No |  |
 | `flag` | `string` | No |  |
 | `id` | `int` | No |  |
 | `name` | `string` | No |  |
-| `parent_area` | `string` | No |  |
-| `parent_area_id` | `int` | No |  |
+| `parentArea` | `string` | No |  |
+| `parentAreaId` | `int` | No |  |
 
 ### Operations
 
@@ -177,35 +177,35 @@ $competition = $client->Competition();
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `array` | No |  |
-| `assist` | `int` | No |  |
-| `away_team` | `array` | No |  |
-| `club_color` | `string` | No |  |
+| `assists` | `int` | No |  |
+| `awayTeam` | `array` | No |  |
+| `clubColors` | `string` | No |  |
 | `code` | `string` | No |  |
 | `competition` | `array` | No |  |
 | `crest` | `string` | No |  |
-| `current_season` | `array` | No |  |
+| `currentSeason` | `array` | No |  |
 | `emblem` | `string` | No |  |
 | `founded` | `int` | No |  |
-| `goal` | `int` | No |  |
+| `goals` | `int` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `array` | No |  |
+| `homeTeam` | `array` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `string` | No |  |
-| `number_of_available_season` | `int` | No |  |
-| `penalty` | `int` | No |  |
+| `numberOfAvailableSeasons` | `int` | No |  |
+| `penalties` | `int` | No |  |
 | `player` | `array` | No |  |
 | `score` | `array` | No |  |
 | `season` | `array` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `table` | `array` | No |  |
 | `team` | `array` | No |  |
 | `tla` | `string` | No |  |
 | `type` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
 
@@ -268,23 +268,23 @@ $match = $client->Match();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `area` | `array` | No |  |
-| `away_team` | `array` | No |  |
-| `booking` | `array` | No |  |
+| `awayTeam` | `array` | No |  |
+| `bookings` | `array` | No |  |
 | `competition` | `array` | No |  |
-| `goal` | `array` | No |  |
+| `goals` | `array` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `array` | No |  |
+| `homeTeam` | `array` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
-| `odd` | `array` | No |  |
-| `referee` | `array` | No |  |
+| `odds` | `array` | No |  |
+| `referees` | `array` | No |  |
 | `score` | `array` | No |  |
 | `season` | `array` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `substitution` | `array` | No |  |
-| `utc_date` | `string` | No |  |
+| `substitutions` | `array` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 
 ### Operations
@@ -345,15 +345,15 @@ $person = $client->Person();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `away_team` | `array` | No |  |
+| `awayTeam` | `array` | No |  |
 | `competition` | `array` | No |  |
-| `date_of_birth` | `string` | No |  |
-| `first_name` | `string` | No |  |
+| `dateOfBirth` | `string` | No |  |
+| `firstName` | `string` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `array` | No |  |
+| `homeTeam` | `array` | No |  |
 | `id` | `int` | No |  |
-| `last_name` | `string` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastName` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `string` | No |  |
 | `nationality` | `string` | No |  |
@@ -361,10 +361,10 @@ $person = $client->Person();
 | `score` | `array` | No |  |
 | `season` | `array` | No |  |
 | `section` | `string` | No |  |
-| `shirt_number` | `int` | No |  |
+| `shirtNumber` | `int` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 
 ### Operations
 
@@ -426,28 +426,28 @@ $team = $client->Team();
 | --- | --- | --- | --- |
 | `address` | `string` | No |  |
 | `area` | `array` | No |  |
-| `away_team` | `array` | No |  |
-| `club_color` | `string` | No |  |
+| `awayTeam` | `array` | No |  |
+| `clubColors` | `string` | No |  |
 | `coach` | `array` | No |  |
 | `competition` | `array` | No |  |
 | `crest` | `string` | No |  |
 | `founded` | `int` | No |  |
 | `group` | `string` | No |  |
-| `home_team` | `array` | No |  |
+| `homeTeam` | `array` | No |  |
 | `id` | `int` | No |  |
-| `last_updated` | `string` | No |  |
+| `lastUpdated` | `string` | No |  |
 | `matchday` | `int` | No |  |
 | `name` | `string` | No |  |
-| `running_competition` | `array` | No |  |
+| `runningCompetitions` | `array` | No |  |
 | `score` | `array` | No |  |
 | `season` | `array` | No |  |
-| `short_name` | `string` | No |  |
+| `shortName` | `string` | No |  |
 | `squad` | `array` | No |  |
 | `staff` | `array` | No |  |
 | `stage` | `string` | No |  |
 | `status` | `string` | No |  |
 | `tla` | `string` | No |  |
-| `utc_date` | `string` | No |  |
+| `utcDate` | `string` | No |  |
 | `venue` | `string` | No |  |
 | `website` | `string` | No |  |
 

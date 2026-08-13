@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import FootballDataSDK
-from core.error import FootballDataError
-from core.result import FootballDataResult
-from core.response import FootballDataResponse
-from core.spec import FootballDataSpec
-from feature.base_feature import FootballDataBaseFeature
+from projectname_sdk.core.error import FootballDataError
+from projectname_sdk.core.result import FootballDataResult
+from projectname_sdk.core.response import FootballDataResponse
+from projectname_sdk.core.spec import FootballDataSpec
+from projectname_sdk.feature.base_feature import FootballDataBaseFeature
 
 
 def _client():
