@@ -40,7 +40,7 @@ class FootballDataSDK
         $utility = new FootballDataUtility();
         $this->_utility = $utility;
 
-        $config = FootballDataConfig::make_config();
+        $config = FootballDataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

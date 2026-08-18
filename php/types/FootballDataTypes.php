@@ -125,7 +125,7 @@ class CompetitionListMatch
 }
 
 /** Match entity data model. */
-class Match
+class MatchType
 {
     public ?array $area = null;
     public ?array $awayTeam = null;

@@ -28,7 +28,7 @@ class FootballDataSDK
     utility = FootballDataUtility.new
     @_utility = utility
 
-    config = FootballDataConfig.make_config
+    config = FootballDataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
