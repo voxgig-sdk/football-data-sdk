@@ -1,0 +1,112 @@
+# Entity: area
+
+main: kit: entity: area: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "childAreas"
+      req: false
+      short: "List of child areas"
+      type: "`$ARRAY`"
+    }
+    {
+      name: "countryCode"
+      req: false
+      short: "ISO country code"
+      type: "`$STRING`"
+    }
+    {
+      name: "flag"
+      req: false
+      short: "URL to the area's flag image"
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      short: "Unique identifier for the area"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the area"
+      type: "`$STRING`"
+    }
+    {
+      name: "parentArea"
+      req: false
+      short: "Name of the parent area"
+      type: "`$STRING`"
+    }
+    {
+      name: "parentAreaId"
+      req: false
+      short: "ID of the parent area"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "area"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/areas"
+          parts: [
+            "areas"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/areas/{id}"
+          parts: [
+            "areas"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

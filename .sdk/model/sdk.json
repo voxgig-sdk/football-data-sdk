@@ -36,42 +36,49 @@
               "active": true,
               "name": "childAreas",
               "req": false,
+              "short": "List of child areas",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "countryCode",
               "req": false,
+              "short": "ISO country code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "flag",
               "req": false,
+              "short": "URL to the area's flag image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the area",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the area",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "parentArea",
               "req": false,
+              "short": "Name of the parent area",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "parentAreaId",
               "req": false,
+              "short": "ID of the parent area",
               "type": "`$INTEGER`"
             }
           ],
@@ -154,6 +161,7 @@
               "active": true,
               "name": "address",
               "req": false,
+              "short": "Team address",
               "type": "`$STRING`"
             },
             {
@@ -166,6 +174,7 @@
               "active": true,
               "name": "assists",
               "req": false,
+              "short": "Number of assists",
               "type": "`$INTEGER`"
             },
             {
@@ -178,12 +187,14 @@
               "active": true,
               "name": "clubColors",
               "req": false,
+              "short": "Team colors",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "code",
               "req": false,
+              "short": "Short code for the competition",
               "type": "`$STRING`"
             },
             {
@@ -196,6 +207,7 @@
               "active": true,
               "name": "crest",
               "req": false,
+              "short": "URL to the team's crest image",
               "type": "`$STRING`"
             },
             {
@@ -208,24 +220,28 @@
               "active": true,
               "name": "emblem",
               "req": false,
+              "short": "URL to the competition's emblem",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "founded",
               "req": false,
+              "short": "Year the team was founded",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "goals",
               "req": false,
+              "short": "Number of goals scored",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "group",
               "req": false,
+              "short": "Group identifier",
               "type": "`$STRING`"
             },
             {
@@ -238,36 +254,42 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the competition",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "lastUpdated",
               "req": false,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "matchday",
               "req": false,
+              "short": "Matchday number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the competition",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "numberOfAvailableSeasons",
               "req": false,
+              "short": "Number of seasons available",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "penalties",
               "req": false,
+              "short": "Number of penalty goals",
               "type": "`$INTEGER`"
             },
             {
@@ -292,18 +314,21 @@
               "active": true,
               "name": "shortName",
               "req": false,
+              "short": "Short name of the team",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "stage",
               "req": false,
+              "short": "Match stage",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Match status",
               "type": "`$STRING`"
             },
             {
@@ -322,30 +347,35 @@
               "active": true,
               "name": "tla",
               "req": false,
+              "short": "Three-letter abbreviation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Type of competition (LEAGUE, CUP, etc.)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "utcDate",
               "req": false,
+              "short": "Match date and time in UTC",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "venue",
               "req": false,
+              "short": "Home stadium name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "website",
               "req": false,
+              "short": "Team website URL",
               "type": "`$STRING`"
             }
           ],
@@ -704,6 +734,7 @@
               "active": true,
               "name": "group",
               "req": false,
+              "short": "Group identifier",
               "type": "`$STRING`"
             },
             {
@@ -716,24 +747,28 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the match",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "lastUpdated",
               "req": false,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "matchday",
               "req": false,
+              "short": "Matchday number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "odds",
               "req": false,
+              "short": "Match odds",
               "type": "`$OBJECT`"
             },
             {
@@ -758,12 +793,14 @@
               "active": true,
               "name": "stage",
               "req": false,
+              "short": "Match stage",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Match status",
               "type": "`$STRING`"
             },
             {
@@ -776,12 +813,14 @@
               "active": true,
               "name": "utcDate",
               "req": false,
+              "short": "Match date and time in UTC",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "venue",
               "req": false,
+              "short": "Stadium name",
               "type": "`$STRING`"
             }
           ],
@@ -918,18 +957,21 @@
               "active": true,
               "name": "dateOfBirth",
               "req": false,
+              "short": "Date of birth",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "firstName",
               "req": false,
+              "short": "First name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "group",
               "req": false,
+              "short": "Group identifier",
               "type": "`$STRING`"
             },
             {
@@ -942,42 +984,49 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the person",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "lastName",
               "req": false,
+              "short": "Last name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lastUpdated",
               "req": false,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "matchday",
               "req": false,
+              "short": "Matchday number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Full name of the person",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "nationality",
               "req": false,
+              "short": "Nationality",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "position",
               "req": false,
+              "short": "Playing position",
               "type": "`$STRING`"
             },
             {
@@ -996,30 +1045,35 @@
               "active": true,
               "name": "section",
               "req": false,
+              "short": "Section (e.g., Offence, Defence, Midfield, Goalkeeper)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "shirtNumber",
               "req": false,
+              "short": "Shirt number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "stage",
               "req": false,
+              "short": "Match stage",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Match status",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "utcDate",
               "req": false,
+              "short": "Match date and time in UTC",
               "type": "`$STRING`"
             }
           ],
@@ -1167,6 +1221,7 @@
               "active": true,
               "name": "address",
               "req": false,
+              "short": "Team address",
               "type": "`$STRING`"
             },
             {
@@ -1185,6 +1240,7 @@
               "active": true,
               "name": "clubColors",
               "req": false,
+              "short": "Team colors",
               "type": "`$STRING`"
             },
             {
@@ -1203,18 +1259,21 @@
               "active": true,
               "name": "crest",
               "req": false,
+              "short": "URL to the team's crest image",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "founded",
               "req": false,
+              "short": "Year the team was founded",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "group",
               "req": false,
+              "short": "Group identifier",
               "type": "`$STRING`"
             },
             {
@@ -1227,30 +1286,35 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the team",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "lastUpdated",
               "req": false,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "matchday",
               "req": false,
+              "short": "Matchday number",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the team",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "runningCompetitions",
               "req": false,
+              "short": "Competitions the team is currently participating in",
               "type": "`$ARRAY`"
             },
             {
@@ -1269,54 +1333,63 @@
               "active": true,
               "name": "shortName",
               "req": false,
+              "short": "Short name of the team",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "squad",
               "req": false,
+              "short": "Team squad members",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "staff",
               "req": false,
+              "short": "Team staff members",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "stage",
               "req": false,
+              "short": "Match stage",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Match status",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tla",
               "req": false,
+              "short": "Three-letter abbreviation",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "utcDate",
               "req": false,
+              "short": "Match date and time in UTC",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "venue",
               "req": false,
+              "short": "Home stadium name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "website",
               "req": false,
+              "short": "Team website URL",
               "type": "`$STRING`"
             }
           ],

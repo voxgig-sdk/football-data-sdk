@@ -104,13 +104,13 @@ area = client.Area()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `childAreas` | `list` | No |  |
-| `countryCode` | `str` | No |  |
-| `flag` | `str` | No |  |
-| `id` | `int` | No |  |
-| `name` | `str` | No |  |
-| `parentArea` | `str` | No |  |
-| `parentAreaId` | `int` | No |  |
+| `childAreas` | `list` | No | List of child areas |
+| `countryCode` | `str` | No | ISO country code |
+| `flag` | `str` | No | URL to the area's flag image |
+| `id` | `int` | No | Unique identifier for the area |
+| `name` | `str` | No | Name of the area |
+| `parentArea` | `str` | No | Name of the parent area |
+| `parentAreaId` | `int` | No | ID of the parent area |
 
 ### Operations
 
@@ -171,39 +171,39 @@ competition = client.Competition()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `str` | No |  |
+| `address` | `str` | No | Team address |
 | `area` | `dict` | No |  |
-| `assists` | `int` | No |  |
+| `assists` | `int` | No | Number of assists |
 | `awayTeam` | `dict` | No |  |
-| `clubColors` | `str` | No |  |
-| `code` | `str` | No |  |
+| `clubColors` | `str` | No | Team colors |
+| `code` | `str` | No | Short code for the competition |
 | `competition` | `dict` | No |  |
-| `crest` | `str` | No |  |
+| `crest` | `str` | No | URL to the team's crest image |
 | `currentSeason` | `dict` | No |  |
-| `emblem` | `str` | No |  |
-| `founded` | `int` | No |  |
-| `goals` | `int` | No |  |
-| `group` | `str` | No |  |
+| `emblem` | `str` | No | URL to the competition's emblem |
+| `founded` | `int` | No | Year the team was founded |
+| `goals` | `int` | No | Number of goals scored |
+| `group` | `str` | No | Group identifier |
 | `homeTeam` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `lastUpdated` | `str` | No |  |
-| `matchday` | `int` | No |  |
-| `name` | `str` | No |  |
-| `numberOfAvailableSeasons` | `int` | No |  |
-| `penalties` | `int` | No |  |
+| `id` | `int` | No | Unique identifier for the competition |
+| `lastUpdated` | `str` | No | Last update timestamp |
+| `matchday` | `int` | No | Matchday number |
+| `name` | `str` | No | Name of the competition |
+| `numberOfAvailableSeasons` | `int` | No | Number of seasons available |
+| `penalties` | `int` | No | Number of penalty goals |
 | `player` | `dict` | No |  |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
-| `shortName` | `str` | No |  |
-| `stage` | `str` | No |  |
-| `status` | `str` | No |  |
+| `shortName` | `str` | No | Short name of the team |
+| `stage` | `str` | No | Match stage |
+| `status` | `str` | No | Match status |
 | `table` | `list` | No |  |
 | `team` | `dict` | No |  |
-| `tla` | `str` | No |  |
-| `type` | `str` | No |  |
-| `utcDate` | `str` | No |  |
-| `venue` | `str` | No |  |
-| `website` | `str` | No |  |
+| `tla` | `str` | No | Three-letter abbreviation |
+| `type` | `str` | No | Type of competition (LEAGUE, CUP, etc.) |
+| `utcDate` | `str` | No | Match date and time in UTC |
+| `venue` | `str` | No | Home stadium name |
+| `website` | `str` | No | Team website URL |
 
 ### Operations
 
@@ -269,20 +269,20 @@ match = client.Match()
 | `bookings` | `list` | No |  |
 | `competition` | `dict` | No |  |
 | `goals` | `list` | No |  |
-| `group` | `str` | No |  |
+| `group` | `str` | No | Group identifier |
 | `homeTeam` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `lastUpdated` | `str` | No |  |
-| `matchday` | `int` | No |  |
-| `odds` | `dict` | No |  |
+| `id` | `int` | No | Unique identifier for the match |
+| `lastUpdated` | `str` | No | Last update timestamp |
+| `matchday` | `int` | No | Matchday number |
+| `odds` | `dict` | No | Match odds |
 | `referees` | `list` | No |  |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
-| `stage` | `str` | No |  |
-| `status` | `str` | No |  |
+| `stage` | `str` | No | Match stage |
+| `status` | `str` | No | Match status |
 | `substitutions` | `list` | No |  |
-| `utcDate` | `str` | No |  |
-| `venue` | `str` | No |  |
+| `utcDate` | `str` | No | Match date and time in UTC |
+| `venue` | `str` | No | Stadium name |
 
 ### Operations
 
@@ -345,24 +345,24 @@ person = client.Person()
 | --- | --- | --- | --- |
 | `awayTeam` | `dict` | No |  |
 | `competition` | `dict` | No |  |
-| `dateOfBirth` | `str` | No |  |
-| `firstName` | `str` | No |  |
-| `group` | `str` | No |  |
+| `dateOfBirth` | `str` | No | Date of birth |
+| `firstName` | `str` | No | First name |
+| `group` | `str` | No | Group identifier |
 | `homeTeam` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `lastName` | `str` | No |  |
-| `lastUpdated` | `str` | No |  |
-| `matchday` | `int` | No |  |
-| `name` | `str` | No |  |
-| `nationality` | `str` | No |  |
-| `position` | `str` | No |  |
+| `id` | `int` | No | Unique identifier for the person |
+| `lastName` | `str` | No | Last name |
+| `lastUpdated` | `str` | No | Last update timestamp |
+| `matchday` | `int` | No | Matchday number |
+| `name` | `str` | No | Full name of the person |
+| `nationality` | `str` | No | Nationality |
+| `position` | `str` | No | Playing position |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
-| `section` | `str` | No |  |
-| `shirtNumber` | `int` | No |  |
-| `stage` | `str` | No |  |
-| `status` | `str` | No |  |
-| `utcDate` | `str` | No |  |
+| `section` | `str` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
+| `shirtNumber` | `int` | No | Shirt number |
+| `stage` | `str` | No | Match stage |
+| `status` | `str` | No | Match status |
+| `utcDate` | `str` | No | Match date and time in UTC |
 
 ### Operations
 
@@ -423,32 +423,32 @@ team = client.Team()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `str` | No |  |
+| `address` | `str` | No | Team address |
 | `area` | `dict` | No |  |
 | `awayTeam` | `dict` | No |  |
-| `clubColors` | `str` | No |  |
+| `clubColors` | `str` | No | Team colors |
 | `coach` | `dict` | No |  |
 | `competition` | `dict` | No |  |
-| `crest` | `str` | No |  |
-| `founded` | `int` | No |  |
-| `group` | `str` | No |  |
+| `crest` | `str` | No | URL to the team's crest image |
+| `founded` | `int` | No | Year the team was founded |
+| `group` | `str` | No | Group identifier |
 | `homeTeam` | `dict` | No |  |
-| `id` | `int` | No |  |
-| `lastUpdated` | `str` | No |  |
-| `matchday` | `int` | No |  |
-| `name` | `str` | No |  |
-| `runningCompetitions` | `list` | No |  |
+| `id` | `int` | No | Unique identifier for the team |
+| `lastUpdated` | `str` | No | Last update timestamp |
+| `matchday` | `int` | No | Matchday number |
+| `name` | `str` | No | Name of the team |
+| `runningCompetitions` | `list` | No | Competitions the team is currently participating in |
 | `score` | `dict` | No |  |
 | `season` | `dict` | No |  |
-| `shortName` | `str` | No |  |
-| `squad` | `list` | No |  |
-| `staff` | `list` | No |  |
-| `stage` | `str` | No |  |
-| `status` | `str` | No |  |
-| `tla` | `str` | No |  |
-| `utcDate` | `str` | No |  |
-| `venue` | `str` | No |  |
-| `website` | `str` | No |  |
+| `shortName` | `str` | No | Short name of the team |
+| `squad` | `list` | No | Team squad members |
+| `staff` | `list` | No | Team staff members |
+| `stage` | `str` | No | Match stage |
+| `status` | `str` | No | Match status |
+| `tla` | `str` | No | Three-letter abbreviation |
+| `utcDate` | `str` | No | Match date and time in UTC |
+| `venue` | `str` | No | Home stadium name |
+| `website` | `str` | No | Team website URL |
 
 ### Operations
 

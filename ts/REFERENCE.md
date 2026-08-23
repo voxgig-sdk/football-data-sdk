@@ -165,13 +165,13 @@ const area = client.Area()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `childAreas` | `any[]` | No |  |
-| `countryCode` | `string` | No |  |
-| `flag` | `string` | No |  |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `parentArea` | `string` | No |  |
-| `parentAreaId` | `number` | No |  |
+| `childAreas` | `any[]` | No | List of child areas |
+| `countryCode` | `string` | No | ISO country code |
+| `flag` | `string` | No | URL to the area's flag image |
+| `id` | `number` | No | Unique identifier for the area |
+| `name` | `string` | No | Name of the area |
+| `parentArea` | `string` | No | Name of the parent area |
+| `parentAreaId` | `number` | No | ID of the parent area |
 
 ### Operations
 
@@ -229,39 +229,39 @@ const competition = client.Competition()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `string` | No |  |
+| `address` | `string` | No | Team address |
 | `area` | `Record<string, any>` | No |  |
-| `assists` | `number` | No |  |
+| `assists` | `number` | No | Number of assists |
 | `awayTeam` | `Record<string, any>` | No |  |
-| `clubColors` | `string` | No |  |
-| `code` | `string` | No |  |
+| `clubColors` | `string` | No | Team colors |
+| `code` | `string` | No | Short code for the competition |
 | `competition` | `Record<string, any>` | No |  |
-| `crest` | `string` | No |  |
+| `crest` | `string` | No | URL to the team's crest image |
 | `currentSeason` | `Record<string, any>` | No |  |
-| `emblem` | `string` | No |  |
-| `founded` | `number` | No |  |
-| `goals` | `number` | No |  |
-| `group` | `string` | No |  |
+| `emblem` | `string` | No | URL to the competition's emblem |
+| `founded` | `number` | No | Year the team was founded |
+| `goals` | `number` | No | Number of goals scored |
+| `group` | `string` | No | Group identifier |
 | `homeTeam` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `lastUpdated` | `string` | No |  |
-| `matchday` | `number` | No |  |
-| `name` | `string` | No |  |
-| `numberOfAvailableSeasons` | `number` | No |  |
-| `penalties` | `number` | No |  |
+| `id` | `number` | No | Unique identifier for the competition |
+| `lastUpdated` | `string` | No | Last update timestamp |
+| `matchday` | `number` | No | Matchday number |
+| `name` | `string` | No | Name of the competition |
+| `numberOfAvailableSeasons` | `number` | No | Number of seasons available |
+| `penalties` | `number` | No | Number of penalty goals |
 | `player` | `Record<string, any>` | No |  |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
-| `shortName` | `string` | No |  |
-| `stage` | `string` | No |  |
-| `status` | `string` | No |  |
+| `shortName` | `string` | No | Short name of the team |
+| `stage` | `string` | No | Match stage |
+| `status` | `string` | No | Match status |
 | `table` | `any[]` | No |  |
 | `team` | `Record<string, any>` | No |  |
-| `tla` | `string` | No |  |
-| `type` | `string` | No |  |
-| `utcDate` | `string` | No |  |
-| `venue` | `string` | No |  |
-| `website` | `string` | No |  |
+| `tla` | `string` | No | Three-letter abbreviation |
+| `type` | `string` | No | Type of competition (LEAGUE, CUP, etc.) |
+| `utcDate` | `string` | No | Match date and time in UTC |
+| `venue` | `string` | No | Home stadium name |
+| `website` | `string` | No | Team website URL |
 
 ### Actions
 
@@ -347,20 +347,20 @@ const match = client.Match()
 | `bookings` | `any[]` | No |  |
 | `competition` | `Record<string, any>` | No |  |
 | `goals` | `any[]` | No |  |
-| `group` | `string` | No |  |
+| `group` | `string` | No | Group identifier |
 | `homeTeam` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `lastUpdated` | `string` | No |  |
-| `matchday` | `number` | No |  |
-| `odds` | `Record<string, any>` | No |  |
+| `id` | `number` | No | Unique identifier for the match |
+| `lastUpdated` | `string` | No | Last update timestamp |
+| `matchday` | `number` | No | Matchday number |
+| `odds` | `Record<string, any>` | No | Match odds |
 | `referees` | `any[]` | No |  |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
-| `stage` | `string` | No |  |
-| `status` | `string` | No |  |
+| `stage` | `string` | No | Match stage |
+| `status` | `string` | No | Match status |
 | `substitutions` | `any[]` | No |  |
-| `utcDate` | `string` | No |  |
-| `venue` | `string` | No |  |
+| `utcDate` | `string` | No | Match date and time in UTC |
+| `venue` | `string` | No | Stadium name |
 
 ### Operations
 
@@ -420,24 +420,24 @@ const person = client.Person()
 | --- | --- | --- | --- |
 | `awayTeam` | `Record<string, any>` | No |  |
 | `competition` | `Record<string, any>` | No |  |
-| `dateOfBirth` | `string` | No |  |
-| `firstName` | `string` | No |  |
-| `group` | `string` | No |  |
+| `dateOfBirth` | `string` | No | Date of birth |
+| `firstName` | `string` | No | First name |
+| `group` | `string` | No | Group identifier |
 | `homeTeam` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `lastName` | `string` | No |  |
-| `lastUpdated` | `string` | No |  |
-| `matchday` | `number` | No |  |
-| `name` | `string` | No |  |
-| `nationality` | `string` | No |  |
-| `position` | `string` | No |  |
+| `id` | `number` | No | Unique identifier for the person |
+| `lastName` | `string` | No | Last name |
+| `lastUpdated` | `string` | No | Last update timestamp |
+| `matchday` | `number` | No | Matchday number |
+| `name` | `string` | No | Full name of the person |
+| `nationality` | `string` | No | Nationality |
+| `position` | `string` | No | Playing position |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
-| `section` | `string` | No |  |
-| `shirtNumber` | `number` | No |  |
-| `stage` | `string` | No |  |
-| `status` | `string` | No |  |
-| `utcDate` | `string` | No |  |
+| `section` | `string` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
+| `shirtNumber` | `number` | No | Shirt number |
+| `stage` | `string` | No | Match stage |
+| `status` | `string` | No | Match status |
+| `utcDate` | `string` | No | Match date and time in UTC |
 
 ### Actions
 
@@ -515,32 +515,32 @@ const team = client.Team()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `string` | No |  |
+| `address` | `string` | No | Team address |
 | `area` | `Record<string, any>` | No |  |
 | `awayTeam` | `Record<string, any>` | No |  |
-| `clubColors` | `string` | No |  |
+| `clubColors` | `string` | No | Team colors |
 | `coach` | `Record<string, any>` | No |  |
 | `competition` | `Record<string, any>` | No |  |
-| `crest` | `string` | No |  |
-| `founded` | `number` | No |  |
-| `group` | `string` | No |  |
+| `crest` | `string` | No | URL to the team's crest image |
+| `founded` | `number` | No | Year the team was founded |
+| `group` | `string` | No | Group identifier |
 | `homeTeam` | `Record<string, any>` | No |  |
-| `id` | `number` | No |  |
-| `lastUpdated` | `string` | No |  |
-| `matchday` | `number` | No |  |
-| `name` | `string` | No |  |
-| `runningCompetitions` | `any[]` | No |  |
+| `id` | `number` | No | Unique identifier for the team |
+| `lastUpdated` | `string` | No | Last update timestamp |
+| `matchday` | `number` | No | Matchday number |
+| `name` | `string` | No | Name of the team |
+| `runningCompetitions` | `any[]` | No | Competitions the team is currently participating in |
 | `score` | `Record<string, any>` | No |  |
 | `season` | `Record<string, any>` | No |  |
-| `shortName` | `string` | No |  |
-| `squad` | `any[]` | No |  |
-| `staff` | `any[]` | No |  |
-| `stage` | `string` | No |  |
-| `status` | `string` | No |  |
-| `tla` | `string` | No |  |
-| `utcDate` | `string` | No |  |
-| `venue` | `string` | No |  |
-| `website` | `string` | No |  |
+| `shortName` | `string` | No | Short name of the team |
+| `squad` | `any[]` | No | Team squad members |
+| `staff` | `any[]` | No | Team staff members |
+| `stage` | `string` | No | Match stage |
+| `status` | `string` | No | Match status |
+| `tla` | `string` | No | Three-letter abbreviation |
+| `utcDate` | `string` | No | Match date and time in UTC |
+| `venue` | `string` | No | Home stadium name |
+| `website` | `string` | No | Team website URL |
 
 ### Actions
 

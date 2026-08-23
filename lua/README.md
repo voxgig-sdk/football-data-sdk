@@ -249,13 +249,13 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `childAreas` |  |
-| `countryCode` |  |
-| `flag` |  |
-| `id` |  |
-| `name` |  |
-| `parentArea` |  |
-| `parentAreaId` |  |
+| `childAreas` | List of child areas |
+| `countryCode` | ISO country code |
+| `flag` | URL to the area's flag image |
+| `id` | Unique identifier for the area |
+| `name` | Name of the area |
+| `parentArea` | Name of the parent area |
+| `parentAreaId` | ID of the parent area |
 
 Operations: List, Load.
 
@@ -265,39 +265,39 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
+| `address` | Team address |
 | `area` |  |
-| `assists` |  |
+| `assists` | Number of assists |
 | `awayTeam` |  |
-| `clubColors` |  |
-| `code` |  |
+| `clubColors` | Team colors |
+| `code` | Short code for the competition |
 | `competition` |  |
-| `crest` |  |
+| `crest` | URL to the team's crest image |
 | `currentSeason` |  |
-| `emblem` |  |
-| `founded` |  |
-| `goals` |  |
-| `group` |  |
+| `emblem` | URL to the competition's emblem |
+| `founded` | Year the team was founded |
+| `goals` | Number of goals scored |
+| `group` | Group identifier |
 | `homeTeam` |  |
-| `id` |  |
-| `lastUpdated` |  |
-| `matchday` |  |
-| `name` |  |
-| `numberOfAvailableSeasons` |  |
-| `penalties` |  |
+| `id` | Unique identifier for the competition |
+| `lastUpdated` | Last update timestamp |
+| `matchday` | Matchday number |
+| `name` | Name of the competition |
+| `numberOfAvailableSeasons` | Number of seasons available |
+| `penalties` | Number of penalty goals |
 | `player` |  |
 | `score` |  |
 | `season` |  |
-| `shortName` |  |
-| `stage` |  |
-| `status` |  |
+| `shortName` | Short name of the team |
+| `stage` | Match stage |
+| `status` | Match status |
 | `table` |  |
 | `team` |  |
-| `tla` |  |
-| `type` |  |
-| `utcDate` |  |
-| `venue` |  |
-| `website` |  |
+| `tla` | Three-letter abbreviation |
+| `type` | Type of competition (LEAGUE, CUP, etc.) |
+| `utcDate` | Match date and time in UTC |
+| `venue` | Home stadium name |
+| `website` | Team website URL |
 
 Operations: List, Load.
 
@@ -312,20 +312,20 @@ API path: `/competitions/{id}/matches`
 | `bookings` |  |
 | `competition` |  |
 | `goals` |  |
-| `group` |  |
+| `group` | Group identifier |
 | `homeTeam` |  |
-| `id` |  |
-| `lastUpdated` |  |
-| `matchday` |  |
-| `odds` |  |
+| `id` | Unique identifier for the match |
+| `lastUpdated` | Last update timestamp |
+| `matchday` | Matchday number |
+| `odds` | Match odds |
 | `referees` |  |
 | `score` |  |
 | `season` |  |
-| `stage` |  |
-| `status` |  |
+| `stage` | Match stage |
+| `status` | Match status |
 | `substitutions` |  |
-| `utcDate` |  |
-| `venue` |  |
+| `utcDate` | Match date and time in UTC |
+| `venue` | Stadium name |
 
 Operations: List, Load.
 
@@ -337,24 +337,24 @@ API path: `/matches`
 | --- | --- |
 | `awayTeam` |  |
 | `competition` |  |
-| `dateOfBirth` |  |
-| `firstName` |  |
-| `group` |  |
+| `dateOfBirth` | Date of birth |
+| `firstName` | First name |
+| `group` | Group identifier |
 | `homeTeam` |  |
-| `id` |  |
-| `lastName` |  |
-| `lastUpdated` |  |
-| `matchday` |  |
-| `name` |  |
-| `nationality` |  |
-| `position` |  |
+| `id` | Unique identifier for the person |
+| `lastName` | Last name |
+| `lastUpdated` | Last update timestamp |
+| `matchday` | Matchday number |
+| `name` | Full name of the person |
+| `nationality` | Nationality |
+| `position` | Playing position |
 | `score` |  |
 | `season` |  |
-| `section` |  |
-| `shirtNumber` |  |
-| `stage` |  |
-| `status` |  |
-| `utcDate` |  |
+| `section` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
+| `shirtNumber` | Shirt number |
+| `stage` | Match stage |
+| `status` | Match status |
+| `utcDate` | Match date and time in UTC |
 
 Operations: List, Load.
 
@@ -364,32 +364,32 @@ API path: `/persons/{id}/matches`
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
+| `address` | Team address |
 | `area` |  |
 | `awayTeam` |  |
-| `clubColors` |  |
+| `clubColors` | Team colors |
 | `coach` |  |
 | `competition` |  |
-| `crest` |  |
-| `founded` |  |
-| `group` |  |
+| `crest` | URL to the team's crest image |
+| `founded` | Year the team was founded |
+| `group` | Group identifier |
 | `homeTeam` |  |
-| `id` |  |
-| `lastUpdated` |  |
-| `matchday` |  |
-| `name` |  |
-| `runningCompetitions` |  |
+| `id` | Unique identifier for the team |
+| `lastUpdated` | Last update timestamp |
+| `matchday` | Matchday number |
+| `name` | Name of the team |
+| `runningCompetitions` | Competitions the team is currently participating in |
 | `score` |  |
 | `season` |  |
-| `shortName` |  |
-| `squad` |  |
-| `staff` |  |
-| `stage` |  |
-| `status` |  |
-| `tla` |  |
-| `utcDate` |  |
-| `venue` |  |
-| `website` |  |
+| `shortName` | Short name of the team |
+| `squad` | Team squad members |
+| `staff` | Team staff members |
+| `stage` | Match stage |
+| `status` | Match status |
+| `tla` | Three-letter abbreviation |
+| `utcDate` | Match date and time in UTC |
+| `venue` | Home stadium name |
+| `website` | Team website URL |
 
 Operations: List, Load.
 
@@ -415,13 +415,13 @@ Create an instance: `local area = client:Area(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `childAreas` | `table` |  |
-| `countryCode` | `string` |  |
-| `flag` | `string` |  |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `parentArea` | `string` |  |
-| `parentAreaId` | `number` |  |
+| `childAreas` | `table` | List of child areas |
+| `countryCode` | `string` | ISO country code |
+| `flag` | `string` | URL to the area's flag image |
+| `id` | `number` | Unique identifier for the area |
+| `name` | `string` | Name of the area |
+| `parentArea` | `string` | Name of the parent area |
+| `parentAreaId` | `number` | ID of the parent area |
 
 #### Example: Load
 
@@ -451,39 +451,39 @@ Create an instance: `local competition = client:Competition(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `string` |  |
+| `address` | `string` | Team address |
 | `area` | `table` |  |
-| `assists` | `number` |  |
+| `assists` | `number` | Number of assists |
 | `awayTeam` | `table` |  |
-| `clubColors` | `string` |  |
-| `code` | `string` |  |
+| `clubColors` | `string` | Team colors |
+| `code` | `string` | Short code for the competition |
 | `competition` | `table` |  |
-| `crest` | `string` |  |
+| `crest` | `string` | URL to the team's crest image |
 | `currentSeason` | `table` |  |
-| `emblem` | `string` |  |
-| `founded` | `number` |  |
-| `goals` | `number` |  |
-| `group` | `string` |  |
+| `emblem` | `string` | URL to the competition's emblem |
+| `founded` | `number` | Year the team was founded |
+| `goals` | `number` | Number of goals scored |
+| `group` | `string` | Group identifier |
 | `homeTeam` | `table` |  |
-| `id` | `number` |  |
-| `lastUpdated` | `string` |  |
-| `matchday` | `number` |  |
-| `name` | `string` |  |
-| `numberOfAvailableSeasons` | `number` |  |
-| `penalties` | `number` |  |
+| `id` | `number` | Unique identifier for the competition |
+| `lastUpdated` | `string` | Last update timestamp |
+| `matchday` | `number` | Matchday number |
+| `name` | `string` | Name of the competition |
+| `numberOfAvailableSeasons` | `number` | Number of seasons available |
+| `penalties` | `number` | Number of penalty goals |
 | `player` | `table` |  |
 | `score` | `table` |  |
 | `season` | `table` |  |
-| `shortName` | `string` |  |
-| `stage` | `string` |  |
-| `status` | `string` |  |
+| `shortName` | `string` | Short name of the team |
+| `stage` | `string` | Match stage |
+| `status` | `string` | Match status |
 | `table` | `table` |  |
 | `team` | `table` |  |
-| `tla` | `string` |  |
-| `type` | `string` |  |
-| `utcDate` | `string` |  |
-| `venue` | `string` |  |
-| `website` | `string` |  |
+| `tla` | `string` | Three-letter abbreviation |
+| `type` | `string` | Type of competition (LEAGUE, CUP, etc.) |
+| `utcDate` | `string` | Match date and time in UTC |
+| `venue` | `string` | Home stadium name |
+| `website` | `string` | Team website URL |
 
 #### Example: Load
 
@@ -518,20 +518,20 @@ Create an instance: `local match = client:Match(nil)`
 | `bookings` | `table` |  |
 | `competition` | `table` |  |
 | `goals` | `table` |  |
-| `group` | `string` |  |
+| `group` | `string` | Group identifier |
 | `homeTeam` | `table` |  |
-| `id` | `number` |  |
-| `lastUpdated` | `string` |  |
-| `matchday` | `number` |  |
-| `odds` | `table` |  |
+| `id` | `number` | Unique identifier for the match |
+| `lastUpdated` | `string` | Last update timestamp |
+| `matchday` | `number` | Matchday number |
+| `odds` | `table` | Match odds |
 | `referees` | `table` |  |
 | `score` | `table` |  |
 | `season` | `table` |  |
-| `stage` | `string` |  |
-| `status` | `string` |  |
+| `stage` | `string` | Match stage |
+| `status` | `string` | Match status |
 | `substitutions` | `table` |  |
-| `utcDate` | `string` |  |
-| `venue` | `string` |  |
+| `utcDate` | `string` | Match date and time in UTC |
+| `venue` | `string` | Stadium name |
 
 #### Example: Load
 
@@ -563,24 +563,24 @@ Create an instance: `local person = client:Person(nil)`
 | --- | --- | --- |
 | `awayTeam` | `table` |  |
 | `competition` | `table` |  |
-| `dateOfBirth` | `string` |  |
-| `firstName` | `string` |  |
-| `group` | `string` |  |
+| `dateOfBirth` | `string` | Date of birth |
+| `firstName` | `string` | First name |
+| `group` | `string` | Group identifier |
 | `homeTeam` | `table` |  |
-| `id` | `number` |  |
-| `lastName` | `string` |  |
-| `lastUpdated` | `string` |  |
-| `matchday` | `number` |  |
-| `name` | `string` |  |
-| `nationality` | `string` |  |
-| `position` | `string` |  |
+| `id` | `number` | Unique identifier for the person |
+| `lastName` | `string` | Last name |
+| `lastUpdated` | `string` | Last update timestamp |
+| `matchday` | `number` | Matchday number |
+| `name` | `string` | Full name of the person |
+| `nationality` | `string` | Nationality |
+| `position` | `string` | Playing position |
 | `score` | `table` |  |
 | `season` | `table` |  |
-| `section` | `string` |  |
-| `shirtNumber` | `number` |  |
-| `stage` | `string` |  |
-| `status` | `string` |  |
-| `utcDate` | `string` |  |
+| `section` | `string` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
+| `shirtNumber` | `number` | Shirt number |
+| `stage` | `string` | Match stage |
+| `status` | `string` | Match status |
+| `utcDate` | `string` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -610,32 +610,32 @@ Create an instance: `local team = client:Team(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `string` |  |
+| `address` | `string` | Team address |
 | `area` | `table` |  |
 | `awayTeam` | `table` |  |
-| `clubColors` | `string` |  |
+| `clubColors` | `string` | Team colors |
 | `coach` | `table` |  |
 | `competition` | `table` |  |
-| `crest` | `string` |  |
-| `founded` | `number` |  |
-| `group` | `string` |  |
+| `crest` | `string` | URL to the team's crest image |
+| `founded` | `number` | Year the team was founded |
+| `group` | `string` | Group identifier |
 | `homeTeam` | `table` |  |
-| `id` | `number` |  |
-| `lastUpdated` | `string` |  |
-| `matchday` | `number` |  |
-| `name` | `string` |  |
-| `runningCompetitions` | `table` |  |
+| `id` | `number` | Unique identifier for the team |
+| `lastUpdated` | `string` | Last update timestamp |
+| `matchday` | `number` | Matchday number |
+| `name` | `string` | Name of the team |
+| `runningCompetitions` | `table` | Competitions the team is currently participating in |
 | `score` | `table` |  |
 | `season` | `table` |  |
-| `shortName` | `string` |  |
-| `squad` | `table` |  |
-| `staff` | `table` |  |
-| `stage` | `string` |  |
-| `status` | `string` |  |
-| `tla` | `string` |  |
-| `utcDate` | `string` |  |
-| `venue` | `string` |  |
-| `website` | `string` |  |
+| `shortName` | `string` | Short name of the team |
+| `squad` | `table` | Team squad members |
+| `staff` | `table` | Team staff members |
+| `stage` | `string` | Match stage |
+| `status` | `string` | Match status |
+| `tla` | `string` | Three-letter abbreviation |
+| `utcDate` | `string` | Match date and time in UTC |
+| `venue` | `string` | Home stadium name |
+| `website` | `string` | Team website URL |
 
 #### Example: Load
 

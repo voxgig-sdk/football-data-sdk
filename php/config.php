@@ -33,6 +33,9 @@ class FootballDataConfig
         return [
             "main" => [
                 "name" => "FootballData",
+                "slug" => "football-data",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -62,30 +65,37 @@ class FootballDataConfig
           'fields' => [
             [
               'name' => 'childAreas',
+              'short' => 'List of child areas',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'countryCode',
+              'short' => 'ISO country code',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'flag',
+              'short' => 'URL to the area\'s flag image',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'id',
+              'short' => 'Unique identifier for the area',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'name',
+              'short' => 'Name of the area',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'parentArea',
+              'short' => 'Name of the parent area',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'parentAreaId',
+              'short' => 'ID of the parent area',
               'type' => '`$INTEGER`',
             ],
           ],
@@ -155,6 +165,7 @@ class FootballDataConfig
           'fields' => [
             [
               'name' => 'address',
+              'short' => 'Team address',
               'type' => '`$STRING`',
             ],
             [
@@ -163,6 +174,7 @@ class FootballDataConfig
             ],
             [
               'name' => 'assists',
+              'short' => 'Number of assists',
               'type' => '`$INTEGER`',
             ],
             [
@@ -171,10 +183,12 @@ class FootballDataConfig
             ],
             [
               'name' => 'clubColors',
+              'short' => 'Team colors',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'code',
+              'short' => 'Short code for the competition',
               'type' => '`$STRING`',
             ],
             [
@@ -183,6 +197,7 @@ class FootballDataConfig
             ],
             [
               'name' => 'crest',
+              'short' => 'URL to the team\'s crest image',
               'type' => '`$STRING`',
             ],
             [
@@ -191,18 +206,22 @@ class FootballDataConfig
             ],
             [
               'name' => 'emblem',
+              'short' => 'URL to the competition\'s emblem',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'founded',
+              'short' => 'Year the team was founded',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'goals',
+              'short' => 'Number of goals scored',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'group',
+              'short' => 'Group identifier',
               'type' => '`$STRING`',
             ],
             [
@@ -211,26 +230,32 @@ class FootballDataConfig
             ],
             [
               'name' => 'id',
+              'short' => 'Unique identifier for the competition',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'lastUpdated',
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'matchday',
+              'short' => 'Matchday number',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'name',
+              'short' => 'Name of the competition',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'numberOfAvailableSeasons',
+              'short' => 'Number of seasons available',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'penalties',
+              'short' => 'Number of penalty goals',
               'type' => '`$INTEGER`',
             ],
             [
@@ -247,14 +272,17 @@ class FootballDataConfig
             ],
             [
               'name' => 'shortName',
+              'short' => 'Short name of the team',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'stage',
+              'short' => 'Match stage',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => 'Match status',
               'type' => '`$STRING`',
             ],
             [
@@ -267,22 +295,27 @@ class FootballDataConfig
             ],
             [
               'name' => 'tla',
+              'short' => 'Three-letter abbreviation',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'type',
+              'short' => 'Type of competition (LEAGUE, CUP, etc.)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'utcDate',
+              'short' => 'Match date and time in UTC',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'venue',
+              'short' => 'Home stadium name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'website',
+              'short' => 'Team website URL',
               'type' => '`$STRING`',
             ],
           ],
@@ -588,6 +621,7 @@ class FootballDataConfig
             ],
             [
               'name' => 'group',
+              'short' => 'Group identifier',
               'type' => '`$STRING`',
             ],
             [
@@ -596,18 +630,22 @@ class FootballDataConfig
             ],
             [
               'name' => 'id',
+              'short' => 'Unique identifier for the match',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'lastUpdated',
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'matchday',
+              'short' => 'Matchday number',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'odds',
+              'short' => 'Match odds',
               'type' => '`$OBJECT`',
             ],
             [
@@ -624,10 +662,12 @@ class FootballDataConfig
             ],
             [
               'name' => 'stage',
+              'short' => 'Match stage',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => 'Match status',
               'type' => '`$STRING`',
             ],
             [
@@ -636,10 +676,12 @@ class FootballDataConfig
             ],
             [
               'name' => 'utcDate',
+              'short' => 'Match date and time in UTC',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'venue',
+              'short' => 'Stadium name',
               'type' => '`$STRING`',
             ],
           ],
@@ -751,14 +793,17 @@ class FootballDataConfig
             ],
             [
               'name' => 'dateOfBirth',
+              'short' => 'Date of birth',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'firstName',
+              'short' => 'First name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'group',
+              'short' => 'Group identifier',
               'type' => '`$STRING`',
             ],
             [
@@ -767,30 +812,37 @@ class FootballDataConfig
             ],
             [
               'name' => 'id',
+              'short' => 'Unique identifier for the person',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'lastName',
+              'short' => 'Last name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'lastUpdated',
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'matchday',
+              'short' => 'Matchday number',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'name',
+              'short' => 'Full name of the person',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'nationality',
+              'short' => 'Nationality',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'position',
+              'short' => 'Playing position',
               'type' => '`$STRING`',
             ],
             [
@@ -803,22 +855,27 @@ class FootballDataConfig
             ],
             [
               'name' => 'section',
+              'short' => 'Section (e.g., Offence, Defence, Midfield, Goalkeeper)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'shirtNumber',
+              'short' => 'Shirt number',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'stage',
+              'short' => 'Match stage',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => 'Match status',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'utcDate',
+              'short' => 'Match date and time in UTC',
               'type' => '`$STRING`',
             ],
           ],
@@ -942,6 +999,7 @@ class FootballDataConfig
           'fields' => [
             [
               'name' => 'address',
+              'short' => 'Team address',
               'type' => '`$STRING`',
             ],
             [
@@ -954,6 +1012,7 @@ class FootballDataConfig
             ],
             [
               'name' => 'clubColors',
+              'short' => 'Team colors',
               'type' => '`$STRING`',
             ],
             [
@@ -966,14 +1025,17 @@ class FootballDataConfig
             ],
             [
               'name' => 'crest',
+              'short' => 'URL to the team\'s crest image',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'founded',
+              'short' => 'Year the team was founded',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'group',
+              'short' => 'Group identifier',
               'type' => '`$STRING`',
             ],
             [
@@ -982,22 +1044,27 @@ class FootballDataConfig
             ],
             [
               'name' => 'id',
+              'short' => 'Unique identifier for the team',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'lastUpdated',
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'matchday',
+              'short' => 'Matchday number',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'name',
+              'short' => 'Name of the team',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'runningCompetitions',
+              'short' => 'Competitions the team is currently participating in',
               'type' => '`$ARRAY`',
             ],
             [
@@ -1010,38 +1077,47 @@ class FootballDataConfig
             ],
             [
               'name' => 'shortName',
+              'short' => 'Short name of the team',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'squad',
+              'short' => 'Team squad members',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'staff',
+              'short' => 'Team staff members',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'stage',
+              'short' => 'Match stage',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => 'Match status',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'tla',
+              'short' => 'Three-letter abbreviation',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'utcDate',
+              'short' => 'Match date and time in UTC',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'venue',
+              'short' => 'Home stadium name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'website',
+              'short' => 'Team website URL',
               'type' => '`$STRING`',
             ],
           ],
