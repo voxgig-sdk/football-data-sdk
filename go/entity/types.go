@@ -83,39 +83,7 @@ type CompetitionLoadMatch struct {
 
 // CompetitionListMatch is the typed request payload for Competition.ListTyped.
 type CompetitionListMatch struct {
-	Address *string `json:"address,omitempty"`
-	Area *map[string]any `json:"area,omitempty"`
-	Assists *int `json:"assists,omitempty"`
-	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
-	ClubColors *string `json:"clubColors,omitempty"`
-	Code *string `json:"code,omitempty"`
-	Competition *map[string]any `json:"competition,omitempty"`
-	Crest *string `json:"crest,omitempty"`
-	CurrentSeason *map[string]any `json:"currentSeason,omitempty"`
-	Emblem *string `json:"emblem,omitempty"`
-	Founded *int `json:"founded,omitempty"`
-	Goals *int `json:"goals,omitempty"`
-	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"lastUpdated,omitempty"`
-	Matchday *int `json:"matchday,omitempty"`
-	Name *string `json:"name,omitempty"`
-	NumberOfAvailableSeasons *int `json:"numberOfAvailableSeasons,omitempty"`
-	Penalties *int `json:"penalties,omitempty"`
-	Player *map[string]any `json:"player,omitempty"`
-	Score *map[string]any `json:"score,omitempty"`
-	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"shortName,omitempty"`
-	Stage *string `json:"stage,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Table *[]any `json:"table,omitempty"`
-	Team *map[string]any `json:"team,omitempty"`
-	Tla *string `json:"tla,omitempty"`
-	Type *string `json:"type,omitempty"`
-	UtcDate *string `json:"utcDate,omitempty"`
-	Venue *string `json:"venue,omitempty"`
-	Website *string `json:"website,omitempty"`
+	Area *string `json:"area,omitempty"`
 }
 
 // Match is the typed data model for the match entity.
@@ -148,25 +116,10 @@ type MatchLoadMatch struct {
 
 // MatchListMatch is the typed request payload for Match.ListTyped.
 type MatchListMatch struct {
-	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
-	Bookings *[]any `json:"bookings,omitempty"`
-	Competition *map[string]any `json:"competition,omitempty"`
-	Goals *[]any `json:"goals,omitempty"`
-	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"lastUpdated,omitempty"`
-	Matchday *int `json:"matchday,omitempty"`
-	Odds *map[string]any `json:"odds,omitempty"`
-	Referees *[]any `json:"referees,omitempty"`
-	Score *map[string]any `json:"score,omitempty"`
-	Season *map[string]any `json:"season,omitempty"`
-	Stage *string `json:"stage,omitempty"`
+	Competition *string `json:"competition,omitempty"`
+	DateFrom *string `json:"date_from,omitempty"`
+	DateTo *string `json:"date_to,omitempty"`
 	Status *string `json:"status,omitempty"`
-	Substitutions *[]any `json:"substitutions,omitempty"`
-	UtcDate *string `json:"utcDate,omitempty"`
-	Venue *string `json:"venue,omitempty"`
 }
 
 // Person is the typed data model for the person entity.
@@ -201,6 +154,11 @@ type PersonLoadMatch struct {
 // PersonListMatch is the typed request payload for Person.ListTyped.
 type PersonListMatch struct {
 	Id int `json:"id"`
+	Competition *string `json:"competition,omitempty"`
+	DateFrom *string `json:"date_from,omitempty"`
+	DateTo *string `json:"date_to,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Status *string `json:"status,omitempty"`
 }
 
 // Team is the typed data model for the team entity.
@@ -240,32 +198,8 @@ type TeamLoadMatch struct {
 
 // TeamListMatch is the typed request payload for Team.ListTyped.
 type TeamListMatch struct {
-	Address *string `json:"address,omitempty"`
-	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
-	ClubColors *string `json:"clubColors,omitempty"`
-	Coach *map[string]any `json:"coach,omitempty"`
-	Competition *map[string]any `json:"competition,omitempty"`
-	Crest *string `json:"crest,omitempty"`
-	Founded *int `json:"founded,omitempty"`
-	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
-	Id *int `json:"id,omitempty"`
-	LastUpdated *string `json:"lastUpdated,omitempty"`
-	Matchday *int `json:"matchday,omitempty"`
-	Name *string `json:"name,omitempty"`
-	RunningCompetitions *[]any `json:"runningCompetitions,omitempty"`
-	Score *map[string]any `json:"score,omitempty"`
-	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"shortName,omitempty"`
-	Squad *[]any `json:"squad,omitempty"`
-	Staff *[]any `json:"staff,omitempty"`
-	Stage *string `json:"stage,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Tla *string `json:"tla,omitempty"`
-	UtcDate *string `json:"utcDate,omitempty"`
-	Venue *string `json:"venue,omitempty"`
-	Website *string `json:"website,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

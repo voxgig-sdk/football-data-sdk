@@ -66,39 +66,7 @@
 ---@field id string
 
 ---@class CompetitionListMatch
----@field address? string
----@field area? table
----@field assists? number
----@field awayTeam? table
----@field clubColors? string
----@field code? string
----@field competition? table
----@field crest? string
----@field currentSeason? table
----@field emblem? string
----@field founded? number
----@field goals? number
----@field group? string
----@field homeTeam? table
----@field id? number
----@field lastUpdated? string
----@field matchday? number
----@field name? string
----@field numberOfAvailableSeasons? number
----@field penalties? number
----@field player? table
----@field score? table
----@field season? table
----@field shortName? string
----@field stage? string
----@field status? string
----@field table? table
----@field team? table
----@field tla? string
----@field type? string
----@field utcDate? string
----@field venue? string
----@field website? string
+---@field area? string
 
 ---@class Match
 ---@field area? table
@@ -125,25 +93,10 @@
 ---@field id number
 
 ---@class MatchListMatch
----@field area? table
----@field awayTeam? table
----@field bookings? table
----@field competition? table
----@field goals? table
----@field group? string
----@field homeTeam? table
----@field id? number
----@field lastUpdated? string
----@field matchday? number
----@field odds? table
----@field referees? table
----@field score? table
----@field season? table
----@field stage? string
+---@field competition? string
+---@field date_from? string
+---@field date_to? string
 ---@field status? string
----@field substitutions? table
----@field utcDate? string
----@field venue? string
 
 ---@class Person
 ---@field awayTeam? table
@@ -172,6 +125,11 @@
 
 ---@class PersonListMatch
 ---@field id number
+---@field competition? string
+---@field date_from? string
+---@field date_to? string
+---@field limit? number
+---@field status? string
 
 ---@class Team
 ---@field address? string
@@ -205,32 +163,8 @@
 ---@field id number
 
 ---@class TeamListMatch
----@field address? string
----@field area? table
----@field awayTeam? table
----@field clubColors? string
----@field coach? table
----@field competition? table
----@field crest? string
----@field founded? number
----@field group? string
----@field homeTeam? table
----@field id? number
----@field lastUpdated? string
----@field matchday? number
----@field name? string
----@field runningCompetitions? table
----@field score? table
----@field season? table
----@field shortName? string
----@field squad? table
----@field staff? table
----@field stage? string
----@field status? string
----@field tla? string
----@field utcDate? string
----@field venue? string
----@field website? string
+---@field limit? number
+---@field offset? number
 
 local M = {}
 

@@ -89,39 +89,7 @@ class CompetitionLoadMatch
 /** Request payload for Competition#list. */
 class CompetitionListMatch
 {
-    public ?string $address = null;
-    public ?array $area = null;
-    public ?int $assists = null;
-    public ?array $awayTeam = null;
-    public ?string $clubColors = null;
-    public ?string $code = null;
-    public ?array $competition = null;
-    public ?string $crest = null;
-    public ?array $currentSeason = null;
-    public ?string $emblem = null;
-    public ?int $founded = null;
-    public ?int $goals = null;
-    public ?string $group = null;
-    public ?array $homeTeam = null;
-    public ?int $id = null;
-    public ?string $lastUpdated = null;
-    public ?int $matchday = null;
-    public ?string $name = null;
-    public ?int $numberOfAvailableSeasons = null;
-    public ?int $penalties = null;
-    public ?array $player = null;
-    public ?array $score = null;
-    public ?array $season = null;
-    public ?string $shortName = null;
-    public ?string $stage = null;
-    public ?string $status = null;
-    public ?array $table = null;
-    public ?array $team = null;
-    public ?string $tla = null;
-    public ?string $type = null;
-    public ?string $utcDate = null;
-    public ?string $venue = null;
-    public ?string $website = null;
+    public ?string $area = null;
 }
 
 /** Match entity data model. */
@@ -157,25 +125,10 @@ class MatchLoadMatch
 /** Request payload for Match#list. */
 class MatchListMatch
 {
-    public ?array $area = null;
-    public ?array $awayTeam = null;
-    public ?array $bookings = null;
-    public ?array $competition = null;
-    public ?array $goals = null;
-    public ?string $group = null;
-    public ?array $homeTeam = null;
-    public ?int $id = null;
-    public ?string $lastUpdated = null;
-    public ?int $matchday = null;
-    public ?array $odds = null;
-    public ?array $referees = null;
-    public ?array $score = null;
-    public ?array $season = null;
-    public ?string $stage = null;
+    public ?string $competition = null;
+    public ?string $date_from = null;
+    public ?string $date_to = null;
     public ?string $status = null;
-    public ?array $substitutions = null;
-    public ?string $utcDate = null;
-    public ?string $venue = null;
 }
 
 /** Person entity data model. */
@@ -213,6 +166,11 @@ class PersonLoadMatch
 class PersonListMatch
 {
     public int $id;
+    public ?string $competition = null;
+    public ?string $date_from = null;
+    public ?string $date_to = null;
+    public ?int $limit = null;
+    public ?string $status = null;
 }
 
 /** Team entity data model. */
@@ -255,31 +213,7 @@ class TeamLoadMatch
 /** Request payload for Team#list. */
 class TeamListMatch
 {
-    public ?string $address = null;
-    public ?array $area = null;
-    public ?array $awayTeam = null;
-    public ?string $clubColors = null;
-    public ?array $coach = null;
-    public ?array $competition = null;
-    public ?string $crest = null;
-    public ?int $founded = null;
-    public ?string $group = null;
-    public ?array $homeTeam = null;
-    public ?int $id = null;
-    public ?string $lastUpdated = null;
-    public ?int $matchday = null;
-    public ?string $name = null;
-    public ?array $runningCompetitions = null;
-    public ?array $score = null;
-    public ?array $season = null;
-    public ?string $shortName = null;
-    public ?array $squad = null;
-    public ?array $staff = null;
-    public ?string $stage = null;
-    public ?string $status = null;
-    public ?string $tla = null;
-    public ?string $utcDate = null;
-    public ?string $venue = null;
-    public ?string $website = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
 }
 

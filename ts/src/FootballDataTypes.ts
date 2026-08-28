@@ -70,39 +70,7 @@ export interface CompetitionLoadMatch {
 }
 
 export interface CompetitionListMatch {
-  address?: string
-  area?: Record<string, any>
-  assists?: number
-  awayTeam?: Record<string, any>
-  clubColors?: string
-  code?: string
-  competition?: Record<string, any>
-  crest?: string
-  currentSeason?: Record<string, any>
-  emblem?: string
-  founded?: number
-  goals?: number
-  group?: string
-  homeTeam?: Record<string, any>
-  id?: number
-  lastUpdated?: string
-  matchday?: number
-  name?: string
-  numberOfAvailableSeasons?: number
-  penalties?: number
-  player?: Record<string, any>
-  score?: Record<string, any>
-  season?: Record<string, any>
-  shortName?: string
-  stage?: string
-  status?: string
-  table?: any[]
-  team?: Record<string, any>
-  tla?: string
-  type?: string
-  utcDate?: string
-  venue?: string
-  website?: string
+  area?: string
 
   // Selects a custom action instead of the plain list:
   //   'match' | 'scorer' | 'standing' | 'team'
@@ -138,25 +106,10 @@ export interface MatchLoadMatch {
 }
 
 export interface MatchListMatch {
-  area?: Record<string, any>
-  awayTeam?: Record<string, any>
-  bookings?: any[]
-  competition?: Record<string, any>
-  goals?: any[]
-  group?: string
-  homeTeam?: Record<string, any>
-  id?: number
-  lastUpdated?: string
-  matchday?: number
-  odds?: Record<string, any>
-  referees?: any[]
-  score?: Record<string, any>
-  season?: Record<string, any>
-  stage?: string
+  competition?: string
+  date_from?: string
+  date_to?: string
   status?: string
-  substitutions?: any[]
-  utcDate?: string
-  venue?: string
 }
 
 export interface Person {
@@ -188,6 +141,11 @@ export interface PersonLoadMatch {
 
 export interface PersonListMatch {
   id: number
+  competition?: string
+  date_from?: string
+  date_to?: string
+  limit?: number
+  status?: string
 
   // Selects a custom action instead of the plain list:
   //   'match'
@@ -230,32 +188,8 @@ export interface TeamLoadMatch {
 }
 
 export interface TeamListMatch {
-  address?: string
-  area?: Record<string, any>
-  awayTeam?: Record<string, any>
-  clubColors?: string
-  coach?: Record<string, any>
-  competition?: Record<string, any>
-  crest?: string
-  founded?: number
-  group?: string
-  homeTeam?: Record<string, any>
-  id?: number
-  lastUpdated?: string
-  matchday?: number
-  name?: string
-  runningCompetitions?: any[]
-  score?: Record<string, any>
-  season?: Record<string, any>
-  shortName?: string
-  squad?: any[]
-  staff?: any[]
-  stage?: string
-  status?: string
-  tla?: string
-  utcDate?: string
-  venue?: string
-  website?: string
+  limit?: number
+  offset?: number
 
   // Selects a custom action instead of the plain list:
   //   'match'
