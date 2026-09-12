@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -118,6 +129,10 @@ class Config {
           "type": "`$INTEGER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "area",
       "op": {
         "list": {
@@ -129,14 +144,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/areas",
-              "parts": [
-                "areas"
+              "segments": [
+                {
+                  "lit": "areas"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "areas"
+              ]
             }
           ]
         },
@@ -159,9 +179,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/areas/{id}",
-              "parts": [
-                "areas",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "areas"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -171,7 +195,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "areas",
+                "{id}"
+              ]
             }
           ]
         }
@@ -253,6 +281,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "lastUpdated",
           "short": "Last update timestamp",
           "type": "`$STRING`"
@@ -323,6 +352,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "utcDate",
           "short": "Match date and time in UTC",
           "type": "`$STRING`"
@@ -338,6 +368,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "competition",
       "op": {
         "list": {
@@ -391,10 +425,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/matches",
-              "parts": [
-                "competitions",
-                "{id}",
-                "matches"
+              "segments": [
+                {
+                  "lit": "competitions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "matches"
+                }
               ],
               "select": {
                 "$action": "match",
@@ -410,7 +450,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.competition`"
-              }
+              },
+              "parts": [
+                "competitions",
+                "{id}",
+                "matches"
+              ]
             },
             {
               "args": {
@@ -442,10 +487,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/scorers",
-              "parts": [
-                "competitions",
-                "{id}",
-                "scorers"
+              "segments": [
+                {
+                  "lit": "competitions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "scorers"
+                }
               ],
               "select": {
                 "$action": "scorer",
@@ -458,7 +509,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.competition`"
-              }
+              },
+              "parts": [
+                "competitions",
+                "{id}",
+                "scorers"
+              ]
             },
             {
               "args": {
@@ -489,10 +545,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/standings",
-              "parts": [
-                "competitions",
-                "{id}",
-                "standings"
+              "segments": [
+                {
+                  "lit": "competitions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "standings"
+                }
               ],
               "select": {
                 "$action": "standing",
@@ -505,7 +567,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.competition`"
-              }
+              },
+              "parts": [
+                "competitions",
+                "{id}",
+                "standings"
+              ]
             },
             {
               "args": {
@@ -530,10 +597,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}/teams",
-              "parts": [
-                "competitions",
-                "{id}",
-                "teams"
+              "segments": [
+                {
+                  "lit": "competitions"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "teams"
+                }
               ],
               "select": {
                 "$action": "team",
@@ -545,7 +618,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.competition`"
-              }
+              },
+              "parts": [
+                "competitions",
+                "{id}",
+                "teams"
+              ]
             },
             {
               "args": {
@@ -561,8 +639,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/competitions",
-              "parts": [
-                "competitions"
+              "segments": [
+                {
+                  "lit": "competitions"
+                }
               ],
               "select": {
                 "exist": [
@@ -572,7 +652,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "competitions"
+              ]
             }
           ]
         },
@@ -595,9 +678,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/competitions/{id}",
-              "parts": [
-                "competitions",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "competitions"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -607,7 +694,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "competitions",
+                "{id}"
+              ]
             }
           ]
         }
@@ -653,6 +744,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "lastUpdated",
           "short": "Last update timestamp",
           "type": "`$STRING`"
@@ -694,6 +786,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "date-time",
           "name": "utcDate",
           "short": "Match date and time in UTC",
           "type": "`$STRING`"
@@ -704,6 +797,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "match",
       "op": {
         "list": {
@@ -742,8 +839,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/matches",
-              "parts": [
-                "matches"
+              "segments": [
+                {
+                  "lit": "matches"
+                }
               ],
               "select": {
                 "exist": [
@@ -756,7 +855,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "matches"
+              ]
             }
           ]
         },
@@ -779,9 +881,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/matches/{id}",
-              "parts": [
-                "matches",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "matches"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -791,7 +897,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "matches",
+                "{id}"
+              ]
             }
           ]
         }
@@ -811,6 +921,7 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "date",
           "name": "dateOfBirth",
           "short": "Date of birth",
           "type": "`$STRING`"
@@ -840,6 +951,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "lastUpdated",
           "short": "Last update timestamp",
           "type": "`$STRING`"
@@ -893,11 +1005,16 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "utcDate",
           "short": "Match date and time in UTC",
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "person",
       "op": {
         "list": {
@@ -951,10 +1068,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/persons/{id}/matches",
-              "parts": [
-                "persons",
-                "{id}",
-                "matches"
+              "segments": [
+                {
+                  "lit": "persons"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "matches"
+                }
               ],
               "select": {
                 "$action": "match",
@@ -970,7 +1093,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.person`"
-              }
+              },
+              "parts": [
+                "persons",
+                "{id}",
+                "matches"
+              ]
             }
           ]
         },
@@ -993,9 +1121,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/persons/{id}",
-              "parts": [
-                "persons",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "persons"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -1005,7 +1137,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "persons",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1067,6 +1203,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "date-time",
           "name": "lastUpdated",
           "short": "Last update timestamp",
           "type": "`$STRING`"
@@ -1125,6 +1262,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "utcDate",
           "short": "Match date and time in UTC",
           "type": "`$STRING`"
@@ -1140,6 +1278,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "team",
       "op": {
         "list": {
@@ -1199,10 +1341,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/teams/{id}/matches",
-              "parts": [
-                "teams",
-                "{id}",
-                "matches"
+              "segments": [
+                {
+                  "lit": "teams"
+                },
+                {
+                  "var": "id"
+                },
+                {
+                  "lit": "matches"
+                }
               ],
               "select": {
                 "$action": "match",
@@ -1219,7 +1367,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "teams",
+                "{id}",
+                "matches"
+              ]
             },
             {
               "args": {
@@ -1241,8 +1394,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/teams",
-              "parts": [
-                "teams"
+              "segments": [
+                {
+                  "lit": "teams"
+                }
               ],
               "select": {
                 "exist": [
@@ -1253,7 +1408,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "teams"
+              ]
             }
           ]
         },
@@ -1276,9 +1434,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/teams/{id}",
-              "parts": [
-                "teams",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "teams"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -1288,7 +1450,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "teams",
+                "{id}"
+              ]
             }
           ]
         }
@@ -1304,6 +1470,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

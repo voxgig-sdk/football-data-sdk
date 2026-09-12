@@ -48,6 +48,7 @@ main: kit: entity: match: {
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "lastUpdated"
       req: false
       short: "Last update timestamp"
@@ -98,6 +99,7 @@ main: kit: entity: match: {
       type: "`$ARRAY`"
     }
     {
+      format: "date-time"
       name: "utcDate"
       req: false
       short: "Match date and time in UTC"
@@ -156,8 +158,10 @@ main: kit: entity: match: {
           }
           method: "GET"
           orig: "/matches"
-          parts: [
-            "matches"
+          segments: [
+            {
+              lit: "matches"
+            }
           ]
           select: {
             exist: [
@@ -191,9 +195,13 @@ main: kit: entity: match: {
           }
           method: "GET"
           orig: "/matches/{id}"
-          parts: [
-            "matches"
-            "{id}"
+          segments: [
+            {
+              lit: "matches"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

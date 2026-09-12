@@ -123,15 +123,17 @@ function match_direct_setup($mockres)
     $env = Runner::env_override([
         "FOOTBALL_DATA_TEST_MATCH_ENTID" => [],
         "FOOTBALL_DATA_TEST_LIVE" => "FALSE",
-        "FOOTBALL_DATA_APIKEY" => "NONE",
+        "FOOTBALL_DATA_APIKEY" => "",
     ]);
 
     $live = $env["FOOTBALL_DATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["FOOTBALL_DATA_APIKEY"],
-        ];
+        ]);
         $client = new FootballDataSDK($merged_opts);
         return [
             "client" => $client,

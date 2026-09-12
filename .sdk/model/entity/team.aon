@@ -67,6 +67,7 @@ main: kit: entity: team: {
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "lastUpdated"
       req: false
       short: "Last update timestamp"
@@ -137,6 +138,7 @@ main: kit: entity: team: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "utcDate"
       req: false
       short: "Match date and time in UTC"
@@ -224,10 +226,16 @@ main: kit: entity: team: {
           }
           method: "GET"
           orig: "/teams/{id}/matches"
-          parts: [
-            "teams"
-            "{id}"
-            "matches"
+          segments: [
+            {
+              lit: "teams"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "matches"
+            }
           ]
           select: {
             "$action": "match"
@@ -267,8 +275,10 @@ main: kit: entity: team: {
           }
           method: "GET"
           orig: "/teams"
-          parts: [
-            "teams"
+          segments: [
+            {
+              lit: "teams"
+            }
           ]
           select: {
             exist: [
@@ -300,9 +310,13 @@ main: kit: entity: team: {
           }
           method: "GET"
           orig: "/teams/{id}"
-          parts: [
-            "teams"
-            "{id}"
+          segments: [
+            {
+              lit: "teams"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

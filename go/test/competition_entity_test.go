@@ -98,7 +98,7 @@ func TestCompetitionEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		competitionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.competition", setup.data)))
+		competitionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.competition")))
 		var competitionRef01Data map[string]any
 		if len(competitionRef01DataRaw) > 0 {
 			competitionRef01Data = core.ToMapAny(competitionRef01DataRaw[0][1])
@@ -163,7 +163,7 @@ func competitionBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"competition01", "competition02", "competition03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -183,7 +183,7 @@ func competitionBasicSetup(extra map[string]any) *entityTestSetup {
 		"FOOTBALL_DATA_TEST_COMPETITION_ENTID": idmap,
 		"FOOTBALL_DATA_TEST_LIVE":      "FALSE",
 		"FOOTBALL_DATA_TEST_EXPLAIN":   "FALSE",
-		"FOOTBALL_DATA_APIKEY":         "NONE",
+		"FOOTBALL_DATA_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["FOOTBALL_DATA_TEST_COMPETITION_ENTID"])
@@ -192,11 +192,23 @@ func competitionBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["FOOTBALL_DATA_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["FOOTBALL_DATA_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewFootballDataSDK(core.ToMapAny(mergedOpts))
 	}

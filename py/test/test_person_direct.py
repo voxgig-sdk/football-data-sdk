@@ -119,15 +119,18 @@ def _person_direct_setup(mockres):
     env = runner.env_override({
         "FOOTBALL_DATA_TEST_PERSON_ENTID": {},
         "FOOTBALL_DATA_TEST_LIVE": "FALSE",
-        "FOOTBALL_DATA_APIKEY": "NONE",
+        "FOOTBALL_DATA_APIKEY": "",
     })
 
     live = env.get("FOOTBALL_DATA_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("FOOTBALL_DATA_APIKEY"),
-        }
+        })
         client = FootballDataSDK(merged_opts)
         return {
             "client": client,

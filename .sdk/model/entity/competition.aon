@@ -91,6 +91,7 @@ main: kit: entity: competition: {
       type: "`$INTEGER`"
     }
     {
+      format: "date-time"
       name: "lastUpdated"
       req: false
       short: "Last update timestamp"
@@ -176,6 +177,7 @@ main: kit: entity: competition: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "utcDate"
       req: false
       short: "Match date and time in UTC"
@@ -256,10 +258,16 @@ main: kit: entity: competition: {
           }
           method: "GET"
           orig: "/competitions/{id}/matches"
-          parts: [
-            "competitions"
-            "{id}"
-            "matches"
+          segments: [
+            {
+              lit: "competitions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "matches"
+            }
           ]
           select: {
             "$action": "match"
@@ -308,10 +316,16 @@ main: kit: entity: competition: {
           }
           method: "GET"
           orig: "/competitions/{id}/scorers"
-          parts: [
-            "competitions"
-            "{id}"
-            "scorers"
+          segments: [
+            {
+              lit: "competitions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "scorers"
+            }
           ]
           select: {
             "$action": "scorer"
@@ -356,10 +370,16 @@ main: kit: entity: competition: {
           }
           method: "GET"
           orig: "/competitions/{id}/standings"
-          parts: [
-            "competitions"
-            "{id}"
-            "standings"
+          segments: [
+            {
+              lit: "competitions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "standings"
+            }
           ]
           select: {
             "$action": "standing"
@@ -397,10 +417,16 @@ main: kit: entity: competition: {
           }
           method: "GET"
           orig: "/competitions/{id}/teams"
-          parts: [
-            "competitions"
-            "{id}"
-            "teams"
+          segments: [
+            {
+              lit: "competitions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "teams"
+            }
           ]
           select: {
             "$action": "team"
@@ -428,8 +454,10 @@ main: kit: entity: competition: {
           }
           method: "GET"
           orig: "/competitions"
-          parts: [
-            "competitions"
+          segments: [
+            {
+              lit: "competitions"
+            }
           ]
           select: {
             exist: [
@@ -460,9 +488,13 @@ main: kit: entity: competition: {
           }
           method: "GET"
           orig: "/competitions/{id}"
-          parts: [
-            "competitions"
-            "{id}"
+          segments: [
+            {
+              lit: "competitions"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

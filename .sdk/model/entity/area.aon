@@ -62,8 +62,10 @@ main: kit: entity: area: {
         {
           method: "GET"
           orig: "/areas"
-          parts: [
-            "areas"
+          segments: [
+            {
+              lit: "areas"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -89,9 +91,13 @@ main: kit: entity: area: {
           }
           method: "GET"
           orig: "/areas/{id}"
-          parts: [
-            "areas"
-            "{id}"
+          segments: [
+            {
+              lit: "areas"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

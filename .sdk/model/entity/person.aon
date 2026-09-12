@@ -16,6 +16,7 @@ main: kit: entity: person: {
       type: "`$OBJECT`"
     }
     {
+      format: "date"
       name: "dateOfBirth"
       req: false
       short: "Date of birth"
@@ -51,6 +52,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "lastUpdated"
       req: false
       short: "Last update timestamp"
@@ -115,6 +117,7 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "utcDate"
       req: false
       short: "Match date and time in UTC"
@@ -183,10 +186,16 @@ main: kit: entity: person: {
           }
           method: "GET"
           orig: "/persons/{id}/matches"
-          parts: [
-            "persons"
-            "{id}"
-            "matches"
+          segments: [
+            {
+              lit: "persons"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "matches"
+            }
           ]
           select: {
             "$action": "match"
@@ -223,9 +232,13 @@ main: kit: entity: person: {
           }
           method: "GET"
           orig: "/persons/{id}"
-          parts: [
-            "persons"
-            "{id}"
+          segments: [
+            {
+              lit: "persons"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
