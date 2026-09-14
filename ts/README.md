@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FootballDataSDK } from '@voxgig-sdk/football-data'
+import { FootballDataSDK } from '@voxgig-sdk/football-data-sdk'
 
 const client = new FootballDataSDK({
   apikey: process.env.FOOTBALL_DATA_APIKEY,
@@ -795,7 +795,7 @@ football-data/
 Import the SDK from the package root:
 
 ```ts
-import { FootballDataSDK } from '@voxgig-sdk/football-data'
+import { FootballDataSDK } from '@voxgig-sdk/football-data-sdk'
 ```
 
 ### Entity state

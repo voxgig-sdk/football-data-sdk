@@ -105,7 +105,7 @@ local results, err = client:Match():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/football-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
 | Python | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
 | PHP | `voxgig-sdk/football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/football-data-sdk/go` | `go get github.com/voxgig-sdk/football-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Match():list()
 ### TypeScript
 
 ```ts
-import { FootballDataSDK } from '@voxgig-sdk/football-data'
+import { FootballDataSDK } from '@voxgig-sdk/football-data-sdk'
 
 const client = new FootballDataSDK({
   apikey: process.env.FOOTBALL_DATA_APIKEY,
