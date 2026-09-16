@@ -11,14 +11,14 @@
         "id": "PERSON00",
         "lastName": "scf",
         "lastUpdated": "sd0",
-        "matchday": "sd1",
+        "matchday": 209,
         "name": "sd2",
         "nationality": "sd3",
         "position": "sd4",
         "score": {},
         "season": {},
         "section": "sd7",
-        "shirtNumber": "sd8",
+        "shirtNumber": 216,
         "stage": "sd9",
         "status": "sda",
         "utcDate": "sdb"
@@ -33,14 +33,14 @@
         "id": "PERSON01",
         "lastName": "s197",
         "lastUpdated": "s198",
-        "matchday": "s199",
+        "matchday": 409,
         "name": "s19a",
         "nationality": "s19b",
         "position": "s19c",
         "score": {},
         "season": {},
         "section": "s19f",
-        "shirtNumber": "s1a0",
+        "shirtNumber": 416,
         "stage": "s1a1",
         "status": "s1a2",
         "utcDate": "s1a3"
@@ -55,14 +55,14 @@
         "id": "PERSON02",
         "lastName": "s25f",
         "lastUpdated": "s260",
-        "matchday": "s261",
+        "matchday": 609,
         "name": "s262",
         "nationality": "s263",
         "position": "s264",
         "score": {},
         "season": {},
         "section": "s267",
-        "shirtNumber": "s268",
+        "shirtNumber": 616,
         "stage": "s269",
         "status": "s26a",
         "utcDate": "s26b"
@@ -80,17 +80,463 @@
         "homeTeam": {},
         "lastName": "s327",
         "lastUpdated": "s328",
-        "matchday": "s329",
+        "matchday": 809,
         "name": "s32a",
         "nationality": "s32b",
         "position": "s32c",
         "score": {},
         "season": {},
         "section": "s32f",
-        "shirtNumber": "s330",
+        "shirtNumber": 816,
         "stage": "s331",
         "status": "s332",
         "utcDate": "s333"
+      }
+    }
+  },
+  "requests": {
+    "GET /persons/{id}/matches": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPersonMatches",
+        "parameters": [
+          {
+            "description": "The ID of the person",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter by competition IDs (comma-separated)",
+            "in": "query",
+            "name": "competitions",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by match status",
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter matches from this date (YYYY-MM-DD)",
+            "in": "query",
+            "name": "dateFrom",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter matches until this date (YYYY-MM-DD)",
+            "in": "query",
+            "name": "dateTo",
+            "schema": {
+              "format": "date",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Limit the number of matches returned",
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "filters": {
+                      "type": "object"
+                    },
+                    "matches": {
+                      "items": {
+                        "properties": {
+                          "awayTeam": {
+                            "properties": {
+                              "crest": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "shortName": {
+                                "type": "string"
+                              },
+                              "tla": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "competition": {
+                            "properties": {
+                              "code": {
+                                "type": "string"
+                              },
+                              "emblem": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "group": {
+                            "description": "Group identifier",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "homeTeam": {
+                            "properties": {
+                              "crest": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "shortName": {
+                                "type": "string"
+                              },
+                              "tla": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "id": {
+                            "description": "Unique identifier for the match",
+                            "type": "integer"
+                          },
+                          "lastUpdated": {
+                            "description": "Last update timestamp",
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "matchday": {
+                            "description": "Matchday number",
+                            "nullable": true,
+                            "type": "integer"
+                          },
+                          "score": {
+                            "properties": {
+                              "duration": {
+                                "enum": [
+                                  "REGULAR",
+                                  "EXTRA_TIME",
+                                  "PENALTY_SHOOTOUT"
+                                ],
+                                "type": "string"
+                              },
+                              "fullTime": {
+                                "properties": {
+                                  "away": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                  },
+                                  "home": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "halfTime": {
+                                "properties": {
+                                  "away": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                  },
+                                  "home": {
+                                    "nullable": true,
+                                    "type": "integer"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "winner": {
+                                "enum": [
+                                  "HOME_TEAM",
+                                  "AWAY_TEAM",
+                                  "DRAW"
+                                ],
+                                "nullable": true,
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "season": {
+                            "properties": {
+                              "currentMatchday": {
+                                "type": "integer"
+                              },
+                              "endDate": {
+                                "format": "date",
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "integer"
+                              },
+                              "startDate": {
+                                "format": "date",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "stage": {
+                            "description": "Match stage",
+                            "type": "string"
+                          },
+                          "status": {
+                            "description": "Match status",
+                            "enum": [
+                              "SCHEDULED",
+                              "LIVE",
+                              "IN_PLAY",
+                              "PAUSED",
+                              "FINISHED",
+                              "POSTPONED",
+                              "SUSPENDED",
+                              "CANCELLED"
+                            ],
+                            "type": "string"
+                          },
+                          "utcDate": {
+                            "description": "Match date and time in UTC",
+                            "format": "date-time",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "person": {
+                      "properties": {
+                        "dateOfBirth": {
+                          "description": "Date of birth",
+                          "format": "date",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "firstName": {
+                          "description": "First name",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "Unique identifier for the person",
+                          "type": "integer"
+                        },
+                        "lastName": {
+                          "description": "Last name",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "lastUpdated": {
+                          "description": "Last update timestamp",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Full name of the person",
+                          "type": "string"
+                        },
+                        "nationality": {
+                          "description": "Nationality",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "position": {
+                          "description": "Playing position",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "section": {
+                          "description": "Section (e.g., Offence, Defence, Midfield, Goalkeeper)",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "shirtNumber": {
+                          "description": "Shirt number",
+                          "nullable": true,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "resultSet": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with matches"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Person not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Obtain from https://www.football-data.org",
+            "in": "header",
+            "name": "X-Auth-Token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
+      }
+    },
+    "GET /persons/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPersonById",
+        "parameters": [
+          {
+            "description": "The ID of the person",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "dateOfBirth": {
+                      "description": "Date of birth",
+                      "format": "date",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "firstName": {
+                      "description": "First name",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the person",
+                      "type": "integer"
+                    },
+                    "lastName": {
+                      "description": "Last name",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "lastUpdated": {
+                      "description": "Last update timestamp",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Full name of the person",
+                      "type": "string"
+                    },
+                    "nationality": {
+                      "description": "Nationality",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "position": {
+                      "description": "Playing position",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "section": {
+                      "description": "Section (e.g., Offence, Defence, Midfield, Goalkeeper)",
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "shirtNumber": {
+                      "description": "Shirt number",
+                      "nullable": true,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with person details"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Person not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Obtain from https://www.football-data.org",
+            "in": "header",
+            "name": "X-Auth-Token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
       }
     }
   }

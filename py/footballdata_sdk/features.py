@@ -1,12 +1,18 @@
 # FootballData SDK feature factory
 
 from footballdata_sdk.feature.base_feature import FootballDataBaseFeature
+from footballdata_sdk.feature.ratelimit_feature import FootballDataRatelimitFeature
+from footballdata_sdk.feature.retry_feature import FootballDataRetryFeature
 from footballdata_sdk.feature.test_feature import FootballDataTestFeature
+from footballdata_sdk.feature.timeout_feature import FootballDataTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: FootballDataBaseFeature(),
+    "ratelimit": lambda: FootballDataRatelimitFeature(),
+    "retry": lambda: FootballDataRetryFeature(),
     "test": lambda: FootballDataTestFeature(),
+    "timeout": lambda: FootballDataTimeoutFeature(),
 }
 
 

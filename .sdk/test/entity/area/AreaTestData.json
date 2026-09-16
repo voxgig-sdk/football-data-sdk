@@ -8,7 +8,7 @@
         "id": "AREA00",
         "name": "s4a",
         "parentArea": "s4b",
-        "parentAreaId": "s4c"
+        "parentAreaId": 76
       },
       "AREA01": {
         "childAreas": [],
@@ -17,7 +17,7 @@
         "id": "AREA01",
         "name": "s90",
         "parentArea": "s91",
-        "parentAreaId": "s92"
+        "parentAreaId": 146
       },
       "AREA02": {
         "childAreas": [],
@@ -26,7 +26,7 @@
         "id": "AREA02",
         "name": "sd6",
         "parentArea": "sd7",
-        "parentAreaId": "sd8"
+        "parentAreaId": 216
       }
     }
   },
@@ -38,7 +38,230 @@
         "flag": "s11a",
         "name": "s11c",
         "parentArea": "s11d",
-        "parentAreaId": "s11e"
+        "parentAreaId": 286
+      }
+    }
+  },
+  "requests": {
+    "GET /areas": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAreas",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "areas": {
+                      "items": {
+                        "properties": {
+                          "countryCode": {
+                            "description": "ISO country code",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "flag": {
+                            "description": "URL to the area's flag image",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "Unique identifier for the area",
+                            "type": "integer"
+                          },
+                          "name": {
+                            "description": "Name of the area",
+                            "type": "string"
+                          },
+                          "parentArea": {
+                            "description": "Name of the parent area",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "parentAreaId": {
+                            "description": "ID of the parent area",
+                            "nullable": true,
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "count": {
+                      "description": "Total number of areas",
+                      "type": "integer"
+                    },
+                    "filters": {
+                      "description": "Applied filters",
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with list of areas"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Obtain from https://www.football-data.org",
+            "in": "header",
+            "name": "X-Auth-Token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
+      }
+    },
+    "GET /areas/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAreaById",
+        "parameters": [
+          {
+            "description": "The ID of the area to retrieve",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "countryCode": {
+                          "description": "ISO country code",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "flag": {
+                          "description": "URL to the area's flag image",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "Unique identifier for the area",
+                          "type": "integer"
+                        },
+                        "name": {
+                          "description": "Name of the area",
+                          "type": "string"
+                        },
+                        "parentArea": {
+                          "description": "Name of the parent area",
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "parentAreaId": {
+                          "description": "ID of the parent area",
+                          "nullable": true,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "childAreas": {
+                          "description": "List of child areas",
+                          "items": {
+                            "properties": {
+                              "countryCode": {
+                                "description": "ISO country code",
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "flag": {
+                                "description": "URL to the area's flag image",
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "id": {
+                                "description": "Unique identifier for the area",
+                                "type": "integer"
+                              },
+                              "name": {
+                                "description": "Name of the area",
+                                "type": "string"
+                              },
+                              "parentArea": {
+                                "description": "Name of the parent area",
+                                "nullable": true,
+                                "type": "string"
+                              },
+                              "parentAreaId": {
+                                "description": "ID of the parent area",
+                                "nullable": true,
+                                "type": "integer"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Successful response with area details"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "403": {
+            "description": "Forbidden - Invalid API key"
+          },
+          "404": {
+            "description": "Area not found"
+          },
+          "429": {
+            "description": "Too many requests"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "ApiKeyAuth": {
+            "description": "API key for authentication. Obtain from https://www.football-data.org",
+            "in": "header",
+            "name": "X-Auth-Token",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "definition"
       }
     }
   }

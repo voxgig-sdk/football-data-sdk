@@ -4,7 +4,10 @@ declare(strict_types=1);
 // FootballData SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class FootballDataFeatures
@@ -14,8 +17,14 @@ class FootballDataFeatures
         switch ($name) {
             case "base":
                 return new FootballDataBaseFeature();
+            case "ratelimit":
+                return new FootballDataRatelimitFeature();
+            case "retry":
+                return new FootballDataRetryFeature();
             case "test":
                 return new FootballDataTestFeature();
+            case "timeout":
+                return new FootballDataTimeoutFeature();
             default:
                 return new FootballDataBaseFeature();
         }
@@ -31,7 +40,10 @@ class FootballDataFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;
