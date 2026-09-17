@@ -6,16 +6,6 @@ main: kit: entity: person: {
 
   fields: [
     {
-      name: "awayTeam"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "competition"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
       format: "date"
       name: "dateOfBirth"
       req: false
@@ -27,17 +17,6 @@ main: kit: entity: person: {
       req: false
       short: "First name"
       type: "`$STRING`"
-    }
-    {
-      name: "group"
-      req: false
-      short: "Group identifier"
-      type: "`$STRING`"
-    }
-    {
-      name: "homeTeam"
-      req: false
-      type: "`$OBJECT`"
     }
     {
       name: "id"
@@ -59,12 +38,6 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "matchday"
-      req: false
-      short: "Matchday number"
-      type: "`$INTEGER`"
-    }
-    {
       name: "name"
       req: false
       short: "Full name of the person"
@@ -83,16 +56,6 @@ main: kit: entity: person: {
       type: "`$STRING`"
     }
     {
-      name: "score"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "season"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
       name: "section"
       req: false
       short: "Section (e.g., Offence, Defence, Midfield, Goalkeeper)"
@@ -103,25 +66,6 @@ main: kit: entity: person: {
       req: false
       short: "Shirt number"
       type: "`$INTEGER`"
-    }
-    {
-      name: "stage"
-      req: false
-      short: "Match stage"
-      type: "`$STRING`"
-    }
-    {
-      name: "status"
-      req: false
-      short: "Match status"
-      type: "`$STRING`"
-    }
-    {
-      format: "date-time"
-      name: "utcDate"
-      req: false
-      short: "Match date and time in UTC"
-      type: "`$STRING`"
     }
   ]
 

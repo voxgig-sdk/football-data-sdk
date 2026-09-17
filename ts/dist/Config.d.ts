@@ -67,6 +67,7 @@ declare class Config {
         base: string;
         auth: {
             prefix: string;
+            name: string;
         };
         headers: {
             "content-type": string;
@@ -152,13 +153,13 @@ declare class Config {
         competition: {
             fields: ({
                 name: string;
-                short: string;
                 type: string;
+                short?: undefined;
                 format?: undefined;
             } | {
                 name: string;
+                short: string;
                 type: string;
-                short?: undefined;
                 format?: undefined;
             } | {
                 format: string;
@@ -373,11 +374,6 @@ declare class Config {
         };
         person: {
             fields: ({
-                name: string;
-                type: string;
-                format?: undefined;
-                short?: undefined;
-            } | {
                 format: string;
                 name: string;
                 short: string;

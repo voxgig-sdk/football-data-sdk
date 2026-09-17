@@ -173,39 +173,15 @@ local competition = client:Competition(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `string` | No | Team address |
 | `area` | `table` | No |  |
-| `assists` | `number` | No | Number of assists |
-| `awayTeam` | `table` | No |  |
-| `clubColors` | `string` | No | Team colors |
 | `code` | `string` | No | Short code for the competition |
-| `competition` | `table` | No |  |
-| `crest` | `string` | No | URL to the team's crest image |
 | `currentSeason` | `table` | No |  |
 | `emblem` | `string` | No | URL to the competition's emblem |
-| `founded` | `number` | No | Year the team was founded |
-| `goals` | `number` | No | Number of goals scored |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `table` | No |  |
 | `id` | `number` | No | Unique identifier for the competition |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `number` | No | Matchday number |
 | `name` | `string` | No | Name of the competition |
 | `numberOfAvailableSeasons` | `number` | No | Number of seasons available |
-| `penalties` | `number` | No | Number of penalty goals |
-| `player` | `table` | No |  |
-| `score` | `table` | No |  |
-| `season` | `table` | No |  |
-| `shortName` | `string` | No | Short name of the team |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `table` | `table` | No |  |
-| `team` | `table` | No |  |
-| `tla` | `string` | No | Three-letter abbreviation |
 | `type` | `string` | No | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | No | Match date and time in UTC |
-| `venue` | `string` | No | Home stadium name |
-| `website` | `string` | No | Team website URL |
 
 ### Operations
 
@@ -343,26 +319,16 @@ local person = client:Person(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `awayTeam` | `table` | No |  |
-| `competition` | `table` | No |  |
 | `dateOfBirth` | `string` | No | Date of birth |
 | `firstName` | `string` | No | First name |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `table` | No |  |
 | `id` | `number` | No | Unique identifier for the person |
 | `lastName` | `string` | No | Last name |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `number` | No | Matchday number |
 | `name` | `string` | No | Full name of the person |
 | `nationality` | `string` | No | Nationality |
 | `position` | `string` | No | Playing position |
-| `score` | `table` | No |  |
-| `season` | `table` | No |  |
 | `section` | `string` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `number` | No | Shirt number |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `utcDate` | `string` | No | Match date and time in UTC |
 
 ### Operations
 
@@ -424,28 +390,18 @@ local team = client:Team(nil)
 | --- | --- | --- | --- |
 | `address` | `string` | No | Team address |
 | `area` | `table` | No |  |
-| `awayTeam` | `table` | No |  |
 | `clubColors` | `string` | No | Team colors |
 | `coach` | `table` | No |  |
-| `competition` | `table` | No |  |
 | `crest` | `string` | No | URL to the team's crest image |
 | `founded` | `number` | No | Year the team was founded |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `table` | No |  |
 | `id` | `number` | No | Unique identifier for the team |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `number` | No | Matchday number |
 | `name` | `string` | No | Name of the team |
 | `runningCompetitions` | `table` | No | Competitions the team is currently participating in |
-| `score` | `table` | No |  |
-| `season` | `table` | No |  |
 | `shortName` | `string` | No | Short name of the team |
 | `squad` | `table` | No | Team squad members |
 | `staff` | `table` | No | Team staff members |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
 | `tla` | `string` | No | Three-letter abbreviation |
-| `utcDate` | `string` | No | Match date and time in UTC |
 | `venue` | `string` | No | Home stadium name |
 | `website` | `string` | No | Team website URL |
 

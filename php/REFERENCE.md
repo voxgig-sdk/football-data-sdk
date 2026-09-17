@@ -175,39 +175,15 @@ $competition = $client->Competition();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `string` | No | Team address |
 | `area` | `array` | No |  |
-| `assists` | `int` | No | Number of assists |
-| `awayTeam` | `array` | No |  |
-| `clubColors` | `string` | No | Team colors |
 | `code` | `string` | No | Short code for the competition |
-| `competition` | `array` | No |  |
-| `crest` | `string` | No | URL to the team's crest image |
 | `currentSeason` | `array` | No |  |
 | `emblem` | `string` | No | URL to the competition's emblem |
-| `founded` | `int` | No | Year the team was founded |
-| `goals` | `int` | No | Number of goals scored |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `array` | No |  |
 | `id` | `int` | No | Unique identifier for the competition |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `int` | No | Matchday number |
 | `name` | `string` | No | Name of the competition |
 | `numberOfAvailableSeasons` | `int` | No | Number of seasons available |
-| `penalties` | `int` | No | Number of penalty goals |
-| `player` | `array` | No |  |
-| `score` | `array` | No |  |
-| `season` | `array` | No |  |
-| `shortName` | `string` | No | Short name of the team |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `table` | `array` | No |  |
-| `team` | `array` | No |  |
-| `tla` | `string` | No | Three-letter abbreviation |
 | `type` | `string` | No | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | No | Match date and time in UTC |
-| `venue` | `string` | No | Home stadium name |
-| `website` | `string` | No | Team website URL |
 
 ### Operations
 
@@ -345,26 +321,16 @@ $person = $client->Person();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `awayTeam` | `array` | No |  |
-| `competition` | `array` | No |  |
 | `dateOfBirth` | `string` | No | Date of birth |
 | `firstName` | `string` | No | First name |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `array` | No |  |
 | `id` | `int` | No | Unique identifier for the person |
 | `lastName` | `string` | No | Last name |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `int` | No | Matchday number |
 | `name` | `string` | No | Full name of the person |
 | `nationality` | `string` | No | Nationality |
 | `position` | `string` | No | Playing position |
-| `score` | `array` | No |  |
-| `season` | `array` | No |  |
 | `section` | `string` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `int` | No | Shirt number |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `utcDate` | `string` | No | Match date and time in UTC |
 
 ### Operations
 
@@ -426,28 +392,18 @@ $team = $client->Team();
 | --- | --- | --- | --- |
 | `address` | `string` | No | Team address |
 | `area` | `array` | No |  |
-| `awayTeam` | `array` | No |  |
 | `clubColors` | `string` | No | Team colors |
 | `coach` | `array` | No |  |
-| `competition` | `array` | No |  |
 | `crest` | `string` | No | URL to the team's crest image |
 | `founded` | `int` | No | Year the team was founded |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `array` | No |  |
 | `id` | `int` | No | Unique identifier for the team |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `int` | No | Matchday number |
 | `name` | `string` | No | Name of the team |
 | `runningCompetitions` | `array` | No | Competitions the team is currently participating in |
-| `score` | `array` | No |  |
-| `season` | `array` | No |  |
 | `shortName` | `string` | No | Short name of the team |
 | `squad` | `array` | No | Team squad members |
 | `staff` | `array` | No | Team staff members |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
 | `tla` | `string` | No | Three-letter abbreviation |
-| `utcDate` | `string` | No | Match date and time in UTC |
 | `venue` | `string` | No | Home stadium name |
 | `website` | `string` | No | Team website URL |
 

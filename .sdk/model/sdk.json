@@ -24,71 +24,6 @@
         "repr": "auto"
       },
       "contributor": {},
-      "doc": {
-        "active": true,
-        "assets": {
-          "path": ".sdk/doc/assets"
-        },
-        "brand": {
-          "label": "",
-          "notice": "",
-          "shortNotice": "",
-          "url": ""
-        },
-        "ci": {
-          "active": true,
-          "branch": "main"
-        },
-        "content": {
-          "path": ".sdk/doc/content"
-        },
-        "edition": {
-          "summary": {
-            "active": true,
-            "base": "node_modules/@voxgig/docgen/project/.sdk",
-            "brand": {},
-            "filter": {
-              "entities": [],
-              "features": [],
-              "targets": []
-            },
-            "kind": "summary",
-            "name": "summary",
-            "origname": "",
-            "output": {
-              "path": "SUMMARY.md"
-            },
-            "package": "@voxgig/docgen",
-            "site": {
-              "active": true
-            },
-            "style": {},
-            "title": ""
-          }
-        },
-        "qa": {
-          "vocabulary": []
-        },
-        "style": {
-          "color": {
-            "accent": "#00c6d8",
-            "background": "#f5f5f9",
-            "darkBackground": "#0f1117",
-            "darkText": "#e6edf3",
-            "primary": "#e70042",
-            "text": "#0a0a0a"
-          },
-          "font": "Nunito, system-ui, sans-serif",
-          "fontFile": "",
-          "headingFont": "Nunito, system-ui, sans-serif",
-          "headingFontFile": "",
-          "logo": "",
-          "mode": "light",
-          "mono": "ui-monospace, monospace",
-          "monoFile": ""
-        },
-        "target": {}
-      },
       "entity": {
         "area": {
           "active": true,
@@ -241,55 +176,15 @@
           "fields": [
             {
               "active": true,
-              "name": "address",
-              "req": false,
-              "short": "Team address",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
               "name": "area",
               "req": false,
               "type": "`$OBJECT`"
             },
             {
               "active": true,
-              "name": "assists",
-              "req": false,
-              "short": "Number of assists",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "awayTeam",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "clubColors",
-              "req": false,
-              "short": "Team colors",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
               "name": "code",
               "req": false,
               "short": "Short code for the competition",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "competition",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "crest",
-              "req": false,
-              "short": "URL to the team's crest image",
               "type": "`$STRING`"
             },
             {
@@ -304,33 +199,6 @@
               "req": false,
               "short": "URL to the competition's emblem",
               "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "founded",
-              "req": false,
-              "short": "Year the team was founded",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "goals",
-              "req": false,
-              "short": "Number of goals scored",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "group",
-              "req": false,
-              "short": "Group identifier",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "homeTeam",
-              "req": false,
-              "type": "`$OBJECT`"
             },
             {
               "active": true,
@@ -349,13 +217,6 @@
             },
             {
               "active": true,
-              "name": "matchday",
-              "req": false,
-              "short": "Matchday number",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
               "name": "name",
               "req": false,
               "short": "Name of the competition",
@@ -370,96 +231,9 @@
             },
             {
               "active": true,
-              "name": "penalties",
-              "req": false,
-              "short": "Number of penalty goals",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "player",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "score",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "season",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "shortName",
-              "req": false,
-              "short": "Short name of the team",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "stage",
-              "req": false,
-              "short": "Match stage",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "short": "Match status",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "table",
-              "req": false,
-              "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "team",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "tla",
-              "req": false,
-              "short": "Three-letter abbreviation",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
               "name": "type",
               "req": false,
               "short": "Type of competition (LEAGUE, CUP, etc.)",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "utcDate",
-              "req": false,
-              "short": "Match date and time in UTC",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "venue",
-              "req": false,
-              "short": "Home stadium name",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "website",
-              "req": false,
-              "short": "Team website URL",
               "type": "`$STRING`"
             }
           ],
@@ -1113,18 +887,6 @@
           "fields": [
             {
               "active": true,
-              "name": "awayTeam",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "competition",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
               "format": "date",
               "name": "dateOfBirth",
               "req": false,
@@ -1137,19 +899,6 @@
               "req": false,
               "short": "First name",
               "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "group",
-              "req": false,
-              "short": "Group identifier",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "homeTeam",
-              "req": false,
-              "type": "`$OBJECT`"
             },
             {
               "active": true,
@@ -1175,13 +924,6 @@
             },
             {
               "active": true,
-              "name": "matchday",
-              "req": false,
-              "short": "Matchday number",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
               "name": "name",
               "req": false,
               "short": "Full name of the person",
@@ -1203,18 +945,6 @@
             },
             {
               "active": true,
-              "name": "score",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "season",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
               "name": "section",
               "req": false,
               "short": "Section (e.g., Offence, Defence, Midfield, Goalkeeper)",
@@ -1226,28 +956,6 @@
               "req": false,
               "short": "Shirt number",
               "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
-              "name": "stage",
-              "req": false,
-              "short": "Match stage",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "short": "Match status",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "utcDate",
-              "req": false,
-              "short": "Match date and time in UTC",
-              "type": "`$STRING`"
             }
           ],
           "id": {
@@ -1427,12 +1135,6 @@
             },
             {
               "active": true,
-              "name": "awayTeam",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
               "name": "clubColors",
               "req": false,
               "short": "Team colors",
@@ -1441,12 +1143,6 @@
             {
               "active": true,
               "name": "coach",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "competition",
               "req": false,
               "type": "`$OBJECT`"
             },
@@ -1466,19 +1162,6 @@
             },
             {
               "active": true,
-              "name": "group",
-              "req": false,
-              "short": "Group identifier",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "homeTeam",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
               "name": "id",
               "req": false,
               "short": "Unique identifier for the team",
@@ -1494,13 +1177,6 @@
             },
             {
               "active": true,
-              "name": "matchday",
-              "req": false,
-              "short": "Matchday number",
-              "type": "`$INTEGER`"
-            },
-            {
-              "active": true,
               "name": "name",
               "req": false,
               "short": "Name of the team",
@@ -1512,18 +1188,6 @@
               "req": false,
               "short": "Competitions the team is currently participating in",
               "type": "`$ARRAY`"
-            },
-            {
-              "active": true,
-              "name": "score",
-              "req": false,
-              "type": "`$OBJECT`"
-            },
-            {
-              "active": true,
-              "name": "season",
-              "req": false,
-              "type": "`$OBJECT`"
             },
             {
               "active": true,
@@ -1548,31 +1212,9 @@
             },
             {
               "active": true,
-              "name": "stage",
-              "req": false,
-              "short": "Match stage",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "name": "status",
-              "req": false,
-              "short": "Match status",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
               "name": "tla",
               "req": false,
               "short": "Three-letter abbreviation",
-              "type": "`$STRING`"
-            },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "utcDate",
-              "req": false,
-              "short": "Match date and time in UTC",
               "type": "`$STRING`"
             },
             {
@@ -2485,6 +2127,8 @@
         "apikey": "",
         "auth": {
           "basic": false,
+          "in": "",
+          "name": "",
           "prefix": ""
         },
         "base": "http://localhost:8000",
@@ -2559,6 +2203,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2785,6 +2430,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2850,6 +2496,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2921,6 +2568,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2997,6 +2645,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {

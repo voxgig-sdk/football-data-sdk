@@ -6,48 +6,14 @@ main: kit: entity: competition: {
 
   fields: [
     {
-      name: "address"
-      req: false
-      short: "Team address"
-      type: "`$STRING`"
-    }
-    {
       name: "area"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "assists"
-      req: false
-      short: "Number of assists"
-      type: "`$INTEGER`"
-    }
-    {
-      name: "awayTeam"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "clubColors"
-      req: false
-      short: "Team colors"
-      type: "`$STRING`"
-    }
-    {
       name: "code"
       req: false
       short: "Short code for the competition"
-      type: "`$STRING`"
-    }
-    {
-      name: "competition"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "crest"
-      req: false
-      short: "URL to the team's crest image"
       type: "`$STRING`"
     }
     {
@@ -60,29 +26,6 @@ main: kit: entity: competition: {
       req: false
       short: "URL to the competition's emblem"
       type: "`$STRING`"
-    }
-    {
-      name: "founded"
-      req: false
-      short: "Year the team was founded"
-      type: "`$INTEGER`"
-    }
-    {
-      name: "goals"
-      req: false
-      short: "Number of goals scored"
-      type: "`$INTEGER`"
-    }
-    {
-      name: "group"
-      req: false
-      short: "Group identifier"
-      type: "`$STRING`"
-    }
-    {
-      name: "homeTeam"
-      req: false
-      type: "`$OBJECT`"
     }
     {
       name: "id"
@@ -98,12 +41,6 @@ main: kit: entity: competition: {
       type: "`$STRING`"
     }
     {
-      name: "matchday"
-      req: false
-      short: "Matchday number"
-      type: "`$INTEGER`"
-    }
-    {
       name: "name"
       req: false
       short: "Name of the competition"
@@ -116,83 +53,9 @@ main: kit: entity: competition: {
       type: "`$INTEGER`"
     }
     {
-      name: "penalties"
-      req: false
-      short: "Number of penalty goals"
-      type: "`$INTEGER`"
-    }
-    {
-      name: "player"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "score"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "season"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "shortName"
-      req: false
-      short: "Short name of the team"
-      type: "`$STRING`"
-    }
-    {
-      name: "stage"
-      req: false
-      short: "Match stage"
-      type: "`$STRING`"
-    }
-    {
-      name: "status"
-      req: false
-      short: "Match status"
-      type: "`$STRING`"
-    }
-    {
-      name: "table"
-      req: false
-      type: "`$ARRAY`"
-    }
-    {
-      name: "team"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "tla"
-      req: false
-      short: "Three-letter abbreviation"
-      type: "`$STRING`"
-    }
-    {
       name: "type"
       req: false
       short: "Type of competition (LEAGUE, CUP, etc.)"
-      type: "`$STRING`"
-    }
-    {
-      format: "date-time"
-      name: "utcDate"
-      req: false
-      short: "Match date and time in UTC"
-      type: "`$STRING`"
-    }
-    {
-      name: "venue"
-      req: false
-      short: "Home stadium name"
-      type: "`$STRING`"
-    }
-    {
-      name: "website"
-      req: false
-      short: "Team website URL"
       type: "`$STRING`"
     }
   ]

@@ -184,39 +184,15 @@ fmt.Println(competition.GetName()) // "competition"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `string` | No | Team address |
 | `area` | `map[string]any` | No |  |
-| `assists` | `int` | No | Number of assists |
-| `awayTeam` | `map[string]any` | No |  |
-| `clubColors` | `string` | No | Team colors |
 | `code` | `string` | No | Short code for the competition |
-| `competition` | `map[string]any` | No |  |
-| `crest` | `string` | No | URL to the team's crest image |
 | `currentSeason` | `map[string]any` | No |  |
 | `emblem` | `string` | No | URL to the competition's emblem |
-| `founded` | `int` | No | Year the team was founded |
-| `goals` | `int` | No | Number of goals scored |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No | Unique identifier for the competition |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `int` | No | Matchday number |
 | `name` | `string` | No | Name of the competition |
 | `numberOfAvailableSeasons` | `int` | No | Number of seasons available |
-| `penalties` | `int` | No | Number of penalty goals |
-| `player` | `map[string]any` | No |  |
-| `score` | `map[string]any` | No |  |
-| `season` | `map[string]any` | No |  |
-| `shortName` | `string` | No | Short name of the team |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `table` | `[]any` | No |  |
-| `team` | `map[string]any` | No |  |
-| `tla` | `string` | No | Three-letter abbreviation |
 | `type` | `string` | No | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | No | Match date and time in UTC |
-| `venue` | `string` | No | Home stadium name |
-| `website` | `string` | No | Team website URL |
 
 ### Operations
 
@@ -360,26 +336,16 @@ fmt.Println(person.GetName()) // "person"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `awayTeam` | `map[string]any` | No |  |
-| `competition` | `map[string]any` | No |  |
 | `dateOfBirth` | `string` | No | Date of birth |
 | `firstName` | `string` | No | First name |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No | Unique identifier for the person |
 | `lastName` | `string` | No | Last name |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `int` | No | Matchday number |
 | `name` | `string` | No | Full name of the person |
 | `nationality` | `string` | No | Nationality |
 | `position` | `string` | No | Playing position |
-| `score` | `map[string]any` | No |  |
-| `season` | `map[string]any` | No |  |
 | `section` | `string` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `int` | No | Shirt number |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `utcDate` | `string` | No | Match date and time in UTC |
 
 ### Operations
 
@@ -444,28 +410,18 @@ fmt.Println(team.GetName()) // "team"
 | --- | --- | --- | --- |
 | `address` | `string` | No | Team address |
 | `area` | `map[string]any` | No |  |
-| `awayTeam` | `map[string]any` | No |  |
 | `clubColors` | `string` | No | Team colors |
 | `coach` | `map[string]any` | No |  |
-| `competition` | `map[string]any` | No |  |
 | `crest` | `string` | No | URL to the team's crest image |
 | `founded` | `int` | No | Year the team was founded |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `map[string]any` | No |  |
 | `id` | `int` | No | Unique identifier for the team |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `int` | No | Matchday number |
 | `name` | `string` | No | Name of the team |
 | `runningCompetitions` | `[]any` | No | Competitions the team is currently participating in |
-| `score` | `map[string]any` | No |  |
-| `season` | `map[string]any` | No |  |
 | `shortName` | `string` | No | Short name of the team |
 | `squad` | `[]any` | No | Team squad members |
 | `staff` | `[]any` | No | Team staff members |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
 | `tla` | `string` | No | Three-letter abbreviation |
-| `utcDate` | `string` | No | Match date and time in UTC |
 | `venue` | `string` | No | Home stadium name |
 | `website` | `string` | No | Team website URL |
 

@@ -46,23 +46,23 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = FootballDataSDK.test({
   entity: {
-    match: {
+    person: {
       test01: { id: 'test01' },
     },
   },
 })
-const matchs = await client.Match().list()
-// matchs is an array of Match entities, populated with mock data
-// — call matchs[0].data() for the record itself
-console.log(matchs)
+const persons = await client.Person().list()
+// persons is an array of Person entities, populated with mock data
+// — call persons[0].data() for the record itself
+console.log(persons)
 ```
 
 ### Python
 
 ```python
 client = FootballDataSDK.test()
-matchs = client.Match().list()
-print(matchs)
+persons = client.Person().list()
+print(persons)
 ```
 
 ### PHP
@@ -70,16 +70,16 @@ print(matchs)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = FootballDataSDK::test([
-    "entity" => ["match" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["person" => ["test01" => ["id" => "test01"]]],
 ]);
-$matchs = $client->Match()->list();
+$persons = $client->Person()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Match(nil).List(
+result, err := client.Person(nil).List(
     nil, nil,
 )
 ```
@@ -89,28 +89,28 @@ result, err := client.Match(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = FootballDataSDK.test({
-  "entity" => { "match" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "person" => { "test01" => { "id" => "test01" } } },
 })
-matchs = client.Match.list()
+persons = client.Person.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Match():list()
+local results, err = client:Person():list()
 ```
 
 ## Packages
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/football-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
-| Python | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
-| PHP | `voxgig-sdk/football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/football-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/tags) |
+| Python | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/tags) |
+| PHP | `voxgig-sdk/football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/football-data-sdk/go` | `go get github.com/voxgig-sdk/football-data-sdk/go@latest` |
-| Ruby | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
-| Lua | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/releases) |
+| Ruby | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/tags) |
+| Lua | `voxgig-sdk-football-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/football-data-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/football-data-sdk/go-cli` | `go install github.com/voxgig-sdk/football-data-sdk/go-cli/cmd/football-data@latest` |
 | Go MCP server | `github.com/voxgig-sdk/football-data-sdk/go-mcp` | `go get github.com/voxgig-sdk/football-data-sdk/go-mcp@latest` |
 

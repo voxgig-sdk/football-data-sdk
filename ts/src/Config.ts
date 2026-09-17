@@ -123,6 +123,7 @@ class Config {
 
     auth: {
       prefix: '',
+      name: 'X-Auth-Token',
     },
 
     headers: {
@@ -131,21 +132,21 @@ class Config {
 
     entity: {
       
-      area: {
-      },
-
-      competition: {
-      },
-
-      match: {
-      },
-
-      person: {
-      },
-
-      team: {
-      },
-
+        area: {
+        },
+  
+        competition: {
+        },
+  
+        match: {
+        },
+  
+        person: {
+        },
+  
+        team: {
+        },
+  
     }
   }
 
@@ -271,40 +272,12 @@ class Config {
     "competition": {
       "fields": [
         {
-          "name": "address",
-          "short": "Team address",
-          "type": "`$STRING`"
-        },
-        {
           "name": "area",
           "type": "`$OBJECT`"
         },
         {
-          "name": "assists",
-          "short": "Number of assists",
-          "type": "`$INTEGER`"
-        },
-        {
-          "name": "awayTeam",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "clubColors",
-          "short": "Team colors",
-          "type": "`$STRING`"
-        },
-        {
           "name": "code",
           "short": "Short code for the competition",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "competition",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "crest",
-          "short": "URL to the team's crest image",
           "type": "`$STRING`"
         },
         {
@@ -315,25 +288,6 @@ class Config {
           "name": "emblem",
           "short": "URL to the competition's emblem",
           "type": "`$STRING`"
-        },
-        {
-          "name": "founded",
-          "short": "Year the team was founded",
-          "type": "`$INTEGER`"
-        },
-        {
-          "name": "goals",
-          "short": "Number of goals scored",
-          "type": "`$INTEGER`"
-        },
-        {
-          "name": "group",
-          "short": "Group identifier",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "homeTeam",
-          "type": "`$OBJECT`"
         },
         {
           "name": "id",
@@ -347,11 +301,6 @@ class Config {
           "type": "`$STRING`"
         },
         {
-          "name": "matchday",
-          "short": "Matchday number",
-          "type": "`$INTEGER`"
-        },
-        {
           "name": "name",
           "short": "Name of the competition",
           "type": "`$STRING`"
@@ -362,69 +311,8 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
-          "name": "penalties",
-          "short": "Number of penalty goals",
-          "type": "`$INTEGER`"
-        },
-        {
-          "name": "player",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "score",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "season",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "shortName",
-          "short": "Short name of the team",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "stage",
-          "short": "Match stage",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "status",
-          "short": "Match status",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "table",
-          "type": "`$ARRAY`"
-        },
-        {
-          "name": "team",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "tla",
-          "short": "Three-letter abbreviation",
-          "type": "`$STRING`"
-        },
-        {
           "name": "type",
           "short": "Type of competition (LEAGUE, CUP, etc.)",
-          "type": "`$STRING`"
-        },
-        {
-          "format": "date-time",
-          "name": "utcDate",
-          "short": "Match date and time in UTC",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "venue",
-          "short": "Home stadium name",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "website",
-          "short": "Team website URL",
           "type": "`$STRING`"
         }
       ],
@@ -973,14 +861,6 @@ class Config {
     "person": {
       "fields": [
         {
-          "name": "awayTeam",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "competition",
-          "type": "`$OBJECT`"
-        },
-        {
           "format": "date",
           "name": "dateOfBirth",
           "short": "Date of birth",
@@ -990,15 +870,6 @@ class Config {
           "name": "firstName",
           "short": "First name",
           "type": "`$STRING`"
-        },
-        {
-          "name": "group",
-          "short": "Group identifier",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "homeTeam",
-          "type": "`$OBJECT`"
         },
         {
           "name": "id",
@@ -1017,11 +888,6 @@ class Config {
           "type": "`$STRING`"
         },
         {
-          "name": "matchday",
-          "short": "Matchday number",
-          "type": "`$INTEGER`"
-        },
-        {
           "name": "name",
           "short": "Full name of the person",
           "type": "`$STRING`"
@@ -1037,14 +903,6 @@ class Config {
           "type": "`$STRING`"
         },
         {
-          "name": "score",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "season",
-          "type": "`$OBJECT`"
-        },
-        {
           "name": "section",
           "short": "Section (e.g., Offence, Defence, Midfield, Goalkeeper)",
           "type": "`$STRING`"
@@ -1053,22 +911,6 @@ class Config {
           "name": "shirtNumber",
           "short": "Shirt number",
           "type": "`$INTEGER`"
-        },
-        {
-          "name": "stage",
-          "short": "Match stage",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "status",
-          "short": "Match status",
-          "type": "`$STRING`"
-        },
-        {
-          "format": "date-time",
-          "name": "utcDate",
-          "short": "Match date and time in UTC",
-          "type": "`$STRING`"
         }
       ],
       "id": {
@@ -1222,20 +1064,12 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
-          "name": "awayTeam",
-          "type": "`$OBJECT`"
-        },
-        {
           "name": "clubColors",
           "short": "Team colors",
           "type": "`$STRING`"
         },
         {
           "name": "coach",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "competition",
           "type": "`$OBJECT`"
         },
         {
@@ -1249,15 +1083,6 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
-          "name": "group",
-          "short": "Group identifier",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "homeTeam",
-          "type": "`$OBJECT`"
-        },
-        {
           "name": "id",
           "short": "Unique identifier for the team",
           "type": "`$INTEGER`"
@@ -1269,11 +1094,6 @@ class Config {
           "type": "`$STRING`"
         },
         {
-          "name": "matchday",
-          "short": "Matchday number",
-          "type": "`$INTEGER`"
-        },
-        {
           "name": "name",
           "short": "Name of the team",
           "type": "`$STRING`"
@@ -1282,14 +1102,6 @@ class Config {
           "name": "runningCompetitions",
           "short": "Competitions the team is currently participating in",
           "type": "`$ARRAY`"
-        },
-        {
-          "name": "score",
-          "type": "`$OBJECT`"
-        },
-        {
-          "name": "season",
-          "type": "`$OBJECT`"
         },
         {
           "name": "shortName",
@@ -1307,24 +1119,8 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
-          "name": "stage",
-          "short": "Match stage",
-          "type": "`$STRING`"
-        },
-        {
-          "name": "status",
-          "short": "Match status",
-          "type": "`$STRING`"
-        },
-        {
           "name": "tla",
           "short": "Three-letter abbreviation",
-          "type": "`$STRING`"
-        },
-        {
-          "format": "date-time",
-          "name": "utcDate",
-          "short": "Match date and time in UTC",
           "type": "`$STRING`"
         },
         {

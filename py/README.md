@@ -72,8 +72,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    matchs = client.Match().list()
-    print(matchs)
+    persons = client.Person().list()
+    print(persons)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -141,8 +141,8 @@ client = FootballDataSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-match = client.Match().list()
-# match contains the mock response record
+person = client.Person().list()
+# person contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -281,39 +281,15 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `address` | Team address |
 | `area` |  |
-| `assists` | Number of assists |
-| `awayTeam` |  |
-| `clubColors` | Team colors |
 | `code` | Short code for the competition |
-| `competition` |  |
-| `crest` | URL to the team's crest image |
 | `currentSeason` |  |
 | `emblem` | URL to the competition's emblem |
-| `founded` | Year the team was founded |
-| `goals` | Number of goals scored |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the competition |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the competition |
 | `numberOfAvailableSeasons` | Number of seasons available |
-| `penalties` | Number of penalty goals |
-| `player` |  |
-| `score` |  |
-| `season` |  |
-| `shortName` | Short name of the team |
-| `stage` | Match stage |
-| `status` | Match status |
-| `table` |  |
-| `team` |  |
-| `tla` | Three-letter abbreviation |
 | `type` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | Match date and time in UTC |
-| `venue` | Home stadium name |
-| `website` | Team website URL |
 
 Operations: List, Load.
 
@@ -351,26 +327,16 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `awayTeam` |  |
-| `competition` |  |
 | `dateOfBirth` | Date of birth |
 | `firstName` | First name |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the person |
 | `lastName` | Last name |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Full name of the person |
 | `nationality` | Nationality |
 | `position` | Playing position |
-| `score` |  |
-| `season` |  |
 | `section` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | Shirt number |
-| `stage` | Match stage |
-| `status` | Match status |
-| `utcDate` | Match date and time in UTC |
 
 Operations: List, Load.
 
@@ -382,28 +348,18 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` | Team address |
 | `area` |  |
-| `awayTeam` |  |
 | `clubColors` | Team colors |
 | `coach` |  |
-| `competition` |  |
 | `crest` | URL to the team's crest image |
 | `founded` | Year the team was founded |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the team |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the team |
 | `runningCompetitions` | Competitions the team is currently participating in |
-| `score` |  |
-| `season` |  |
 | `shortName` | Short name of the team |
 | `squad` | Team squad members |
 | `staff` | Team staff members |
-| `stage` | Match stage |
-| `status` | Match status |
 | `tla` | Three-letter abbreviation |
-| `utcDate` | Match date and time in UTC |
 | `venue` | Home stadium name |
 | `website` | Team website URL |
 
@@ -467,39 +423,15 @@ Create an instance: `competition = client.Competition()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `str` | Team address |
 | `area` | `dict` |  |
-| `assists` | `int` | Number of assists |
-| `awayTeam` | `dict` |  |
-| `clubColors` | `str` | Team colors |
 | `code` | `str` | Short code for the competition |
-| `competition` | `dict` |  |
-| `crest` | `str` | URL to the team's crest image |
 | `currentSeason` | `dict` |  |
 | `emblem` | `str` | URL to the competition's emblem |
-| `founded` | `int` | Year the team was founded |
-| `goals` | `int` | Number of goals scored |
-| `group` | `str` | Group identifier |
-| `homeTeam` | `dict` |  |
 | `id` | `int` | Unique identifier for the competition |
 | `lastUpdated` | `str` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `str` | Name of the competition |
 | `numberOfAvailableSeasons` | `int` | Number of seasons available |
-| `penalties` | `int` | Number of penalty goals |
-| `player` | `dict` |  |
-| `score` | `dict` |  |
-| `season` | `dict` |  |
-| `shortName` | `str` | Short name of the team |
-| `stage` | `str` | Match stage |
-| `status` | `str` | Match status |
-| `table` | `list` |  |
-| `team` | `dict` |  |
-| `tla` | `str` | Three-letter abbreviation |
 | `type` | `str` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `str` | Match date and time in UTC |
-| `venue` | `str` | Home stadium name |
-| `website` | `str` | Team website URL |
 
 #### Example: Load
 
@@ -577,26 +509,16 @@ Create an instance: `person = client.Person()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `awayTeam` | `dict` |  |
-| `competition` | `dict` |  |
 | `dateOfBirth` | `str` | Date of birth |
 | `firstName` | `str` | First name |
-| `group` | `str` | Group identifier |
-| `homeTeam` | `dict` |  |
 | `id` | `int` | Unique identifier for the person |
 | `lastName` | `str` | Last name |
 | `lastUpdated` | `str` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `str` | Full name of the person |
 | `nationality` | `str` | Nationality |
 | `position` | `str` | Playing position |
-| `score` | `dict` |  |
-| `season` | `dict` |  |
 | `section` | `str` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `int` | Shirt number |
-| `stage` | `str` | Match stage |
-| `status` | `str` | Match status |
-| `utcDate` | `str` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -628,28 +550,18 @@ Create an instance: `team = client.Team()`
 | --- | --- | --- |
 | `address` | `str` | Team address |
 | `area` | `dict` |  |
-| `awayTeam` | `dict` |  |
 | `clubColors` | `str` | Team colors |
 | `coach` | `dict` |  |
-| `competition` | `dict` |  |
 | `crest` | `str` | URL to the team's crest image |
 | `founded` | `int` | Year the team was founded |
-| `group` | `str` | Group identifier |
-| `homeTeam` | `dict` |  |
 | `id` | `int` | Unique identifier for the team |
 | `lastUpdated` | `str` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `str` | Name of the team |
 | `runningCompetitions` | `list` | Competitions the team is currently participating in |
-| `score` | `dict` |  |
-| `season` | `dict` |  |
 | `shortName` | `str` | Short name of the team |
 | `squad` | `list` | Team squad members |
 | `staff` | `list` | Team staff members |
-| `stage` | `str` | Match stage |
-| `status` | `str` | Match status |
 | `tla` | `str` | Three-letter abbreviation |
-| `utcDate` | `str` | Match date and time in UTC |
 | `venue` | `str` | Home stadium name |
 | `website` | `str` | Team website URL |
 
@@ -808,6 +720,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── footballdata_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations
@@ -825,11 +738,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-match = client.Match()
-match.list()
+person = client.Person()
+person.list()
 
-# match.data_get() now returns the match data from the last list
-# match.match_get() returns the last match criteria
+# person.data_get() now returns the person data from the last list
+# person.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

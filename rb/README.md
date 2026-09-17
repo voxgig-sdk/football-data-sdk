@@ -65,7 +65,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  matchs = client.Match.list()
+  persons = client.Person.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -133,13 +133,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
 client = FootballDataSDK.test({
-  "entity" => { "match" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "person" => { "test01" => { "id" => "test01" } } },
 })
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-match = client.Match.list()
-puts match
+person = client.Person.list()
+puts person
 ```
 
 ### Use a custom fetch function
@@ -277,39 +277,15 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `address` | Team address |
 | `area` |  |
-| `assists` | Number of assists |
-| `awayTeam` |  |
-| `clubColors` | Team colors |
 | `code` | Short code for the competition |
-| `competition` |  |
-| `crest` | URL to the team's crest image |
 | `currentSeason` |  |
 | `emblem` | URL to the competition's emblem |
-| `founded` | Year the team was founded |
-| `goals` | Number of goals scored |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the competition |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the competition |
 | `numberOfAvailableSeasons` | Number of seasons available |
-| `penalties` | Number of penalty goals |
-| `player` |  |
-| `score` |  |
-| `season` |  |
-| `shortName` | Short name of the team |
-| `stage` | Match stage |
-| `status` | Match status |
-| `table` |  |
-| `team` |  |
-| `tla` | Three-letter abbreviation |
 | `type` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | Match date and time in UTC |
-| `venue` | Home stadium name |
-| `website` | Team website URL |
 
 Operations: List, Load.
 
@@ -347,26 +323,16 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `awayTeam` |  |
-| `competition` |  |
 | `dateOfBirth` | Date of birth |
 | `firstName` | First name |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the person |
 | `lastName` | Last name |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Full name of the person |
 | `nationality` | Nationality |
 | `position` | Playing position |
-| `score` |  |
-| `season` |  |
 | `section` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | Shirt number |
-| `stage` | Match stage |
-| `status` | Match status |
-| `utcDate` | Match date and time in UTC |
 
 Operations: List, Load.
 
@@ -378,28 +344,18 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` | Team address |
 | `area` |  |
-| `awayTeam` |  |
 | `clubColors` | Team colors |
 | `coach` |  |
-| `competition` |  |
 | `crest` | URL to the team's crest image |
 | `founded` | Year the team was founded |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the team |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the team |
 | `runningCompetitions` | Competitions the team is currently participating in |
-| `score` |  |
-| `season` |  |
 | `shortName` | Short name of the team |
 | `squad` | Team squad members |
 | `staff` | Team staff members |
-| `stage` | Match stage |
-| `status` | Match status |
 | `tla` | Three-letter abbreviation |
-| `utcDate` | Match date and time in UTC |
 | `venue` | Home stadium name |
 | `website` | Team website URL |
 
@@ -465,39 +421,15 @@ Create an instance: `competition = client.Competition`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `String` | Team address |
 | `area` | `Hash` |  |
-| `assists` | `Integer` | Number of assists |
-| `awayTeam` | `Hash` |  |
-| `clubColors` | `String` | Team colors |
 | `code` | `String` | Short code for the competition |
-| `competition` | `Hash` |  |
-| `crest` | `String` | URL to the team's crest image |
 | `currentSeason` | `Hash` |  |
 | `emblem` | `String` | URL to the competition's emblem |
-| `founded` | `Integer` | Year the team was founded |
-| `goals` | `Integer` | Number of goals scored |
-| `group` | `String` | Group identifier |
-| `homeTeam` | `Hash` |  |
 | `id` | `Integer` | Unique identifier for the competition |
 | `lastUpdated` | `String` | Last update timestamp |
-| `matchday` | `Integer` | Matchday number |
 | `name` | `String` | Name of the competition |
 | `numberOfAvailableSeasons` | `Integer` | Number of seasons available |
-| `penalties` | `Integer` | Number of penalty goals |
-| `player` | `Hash` |  |
-| `score` | `Hash` |  |
-| `season` | `Hash` |  |
-| `shortName` | `String` | Short name of the team |
-| `stage` | `String` | Match stage |
-| `status` | `String` | Match status |
-| `table` | `Array` |  |
-| `team` | `Hash` |  |
-| `tla` | `String` | Three-letter abbreviation |
 | `type` | `String` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `String` | Match date and time in UTC |
-| `venue` | `String` | Home stadium name |
-| `website` | `String` | Team website URL |
 
 #### Example: Load
 
@@ -579,26 +511,16 @@ Create an instance: `person = client.Person`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `awayTeam` | `Hash` |  |
-| `competition` | `Hash` |  |
 | `dateOfBirth` | `String` | Date of birth |
 | `firstName` | `String` | First name |
-| `group` | `String` | Group identifier |
-| `homeTeam` | `Hash` |  |
 | `id` | `Integer` | Unique identifier for the person |
 | `lastName` | `String` | Last name |
 | `lastUpdated` | `String` | Last update timestamp |
-| `matchday` | `Integer` | Matchday number |
 | `name` | `String` | Full name of the person |
 | `nationality` | `String` | Nationality |
 | `position` | `String` | Playing position |
-| `score` | `Hash` |  |
-| `season` | `Hash` |  |
 | `section` | `String` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `Integer` | Shirt number |
-| `stage` | `String` | Match stage |
-| `status` | `String` | Match status |
-| `utcDate` | `String` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -632,28 +554,18 @@ Create an instance: `team = client.Team`
 | --- | --- | --- |
 | `address` | `String` | Team address |
 | `area` | `Hash` |  |
-| `awayTeam` | `Hash` |  |
 | `clubColors` | `String` | Team colors |
 | `coach` | `Hash` |  |
-| `competition` | `Hash` |  |
 | `crest` | `String` | URL to the team's crest image |
 | `founded` | `Integer` | Year the team was founded |
-| `group` | `String` | Group identifier |
-| `homeTeam` | `Hash` |  |
 | `id` | `Integer` | Unique identifier for the team |
 | `lastUpdated` | `String` | Last update timestamp |
-| `matchday` | `Integer` | Matchday number |
 | `name` | `String` | Name of the team |
 | `runningCompetitions` | `Array` | Competitions the team is currently participating in |
-| `score` | `Hash` |  |
-| `season` | `Hash` |  |
 | `shortName` | `String` | Short name of the team |
 | `squad` | `Array` | Team squad members |
 | `staff` | `Array` | Team staff members |
-| `stage` | `String` | Match stage |
-| `status` | `String` | Match status |
 | `tla` | `String` | Three-letter abbreviation |
-| `utcDate` | `String` | Match date and time in UTC |
 | `venue` | `String` | Home stadium name |
 | `website` | `String` | Team website URL |
 
@@ -814,6 +726,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── FootballData_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations
@@ -832,11 +745,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-match = client.Match
-match.list()
+person = client.Person
+person.list()
 
-# match.data_get now returns the match data from the last list
-# match.match_get returns the last match criteria
+# person.data_get now returns the person data from the last list
+# person.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

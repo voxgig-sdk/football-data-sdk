@@ -68,7 +68,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $matchs = $client->Match()->list();
+    $persons = $client->Person()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -140,13 +140,13 @@ data via the `entity` option so offline calls resolve without a live server:
 
 ```php
 $client = FootballDataSDK::test([
-    "entity" => ["match" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["person" => ["test01" => ["id" => "test01"]]],
 ]);
 
 // list() returns entity instances (throws on error);
 // call data_get() for the mock record.
-$match = $client->Match()->list();
-print_r(array_map(fn($item) => $item->data_get(), $match));
+$person = $client->Person()->list();
+print_r(array_map(fn($item) => $item->data_get(), $person));
 ```
 
 ### Use a custom fetch function
@@ -288,39 +288,15 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `address` | Team address |
 | `area` |  |
-| `assists` | Number of assists |
-| `awayTeam` |  |
-| `clubColors` | Team colors |
 | `code` | Short code for the competition |
-| `competition` |  |
-| `crest` | URL to the team's crest image |
 | `currentSeason` |  |
 | `emblem` | URL to the competition's emblem |
-| `founded` | Year the team was founded |
-| `goals` | Number of goals scored |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the competition |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the competition |
 | `numberOfAvailableSeasons` | Number of seasons available |
-| `penalties` | Number of penalty goals |
-| `player` |  |
-| `score` |  |
-| `season` |  |
-| `shortName` | Short name of the team |
-| `stage` | Match stage |
-| `status` | Match status |
-| `table` |  |
-| `team` |  |
-| `tla` | Three-letter abbreviation |
 | `type` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | Match date and time in UTC |
-| `venue` | Home stadium name |
-| `website` | Team website URL |
 
 Operations: List, Load.
 
@@ -358,26 +334,16 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `awayTeam` |  |
-| `competition` |  |
 | `dateOfBirth` | Date of birth |
 | `firstName` | First name |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the person |
 | `lastName` | Last name |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Full name of the person |
 | `nationality` | Nationality |
 | `position` | Playing position |
-| `score` |  |
-| `season` |  |
 | `section` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | Shirt number |
-| `stage` | Match stage |
-| `status` | Match status |
-| `utcDate` | Match date and time in UTC |
 
 Operations: List, Load.
 
@@ -389,28 +355,18 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` | Team address |
 | `area` |  |
-| `awayTeam` |  |
 | `clubColors` | Team colors |
 | `coach` |  |
-| `competition` |  |
 | `crest` | URL to the team's crest image |
 | `founded` | Year the team was founded |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the team |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the team |
 | `runningCompetitions` | Competitions the team is currently participating in |
-| `score` |  |
-| `season` |  |
 | `shortName` | Short name of the team |
 | `squad` | Team squad members |
 | `staff` | Team staff members |
-| `stage` | Match stage |
-| `status` | Match status |
 | `tla` | Three-letter abbreviation |
-| `utcDate` | Match date and time in UTC |
 | `venue` | Home stadium name |
 | `website` | Team website URL |
 
@@ -476,39 +432,15 @@ Create an instance: `$competition = $client->Competition();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `string` | Team address |
 | `area` | `array` |  |
-| `assists` | `int` | Number of assists |
-| `awayTeam` | `array` |  |
-| `clubColors` | `string` | Team colors |
 | `code` | `string` | Short code for the competition |
-| `competition` | `array` |  |
-| `crest` | `string` | URL to the team's crest image |
 | `currentSeason` | `array` |  |
 | `emblem` | `string` | URL to the competition's emblem |
-| `founded` | `int` | Year the team was founded |
-| `goals` | `int` | Number of goals scored |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `array` |  |
 | `id` | `int` | Unique identifier for the competition |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `string` | Name of the competition |
 | `numberOfAvailableSeasons` | `int` | Number of seasons available |
-| `penalties` | `int` | Number of penalty goals |
-| `player` | `array` |  |
-| `score` | `array` |  |
-| `season` | `array` |  |
-| `shortName` | `string` | Short name of the team |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `table` | `array` |  |
-| `team` | `array` |  |
-| `tla` | `string` | Three-letter abbreviation |
 | `type` | `string` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | Match date and time in UTC |
-| `venue` | `string` | Home stadium name |
-| `website` | `string` | Team website URL |
 
 #### Example: Load
 
@@ -590,26 +522,16 @@ Create an instance: `$person = $client->Person();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `awayTeam` | `array` |  |
-| `competition` | `array` |  |
 | `dateOfBirth` | `string` | Date of birth |
 | `firstName` | `string` | First name |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `array` |  |
 | `id` | `int` | Unique identifier for the person |
 | `lastName` | `string` | Last name |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `string` | Full name of the person |
 | `nationality` | `string` | Nationality |
 | `position` | `string` | Playing position |
-| `score` | `array` |  |
-| `season` | `array` |  |
 | `section` | `string` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `int` | Shirt number |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `utcDate` | `string` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -643,28 +565,18 @@ Create an instance: `$team = $client->Team();`
 | --- | --- | --- |
 | `address` | `string` | Team address |
 | `area` | `array` |  |
-| `awayTeam` | `array` |  |
 | `clubColors` | `string` | Team colors |
 | `coach` | `array` |  |
-| `competition` | `array` |  |
 | `crest` | `string` | URL to the team's crest image |
 | `founded` | `int` | Year the team was founded |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `array` |  |
 | `id` | `int` | Unique identifier for the team |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `string` | Name of the team |
 | `runningCompetitions` | `array` | Competitions the team is currently participating in |
-| `score` | `array` |  |
-| `season` | `array` |  |
 | `shortName` | `string` | Short name of the team |
 | `squad` | `array` | Team squad members |
 | `staff` | `array` | Team staff members |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
 | `tla` | `string` | Three-letter abbreviation |
-| `utcDate` | `string` | Match date and time in UTC |
 | `venue` | `string` | Home stadium name |
 | `website` | `string` | Team website URL |
 
@@ -825,6 +737,7 @@ Use `Helpers::to_map()` to safely validate that a value is an array.
 php/
 ├── footballdata_sdk.php          -- Main SDK class
 ├── config.php                     -- Configuration
+├── schema.php                     -- Generated option + entity specs
 ├── features.php                   -- Feature factory
 ├── core/                          -- Core types and context
 ├── entity/                        -- Entity implementations
@@ -843,11 +756,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$match = $client->Match();
-$match->list();
+$person = $client->Person();
+$person->list();
 
-// $match->data_get() now returns the match data from the last list
-// $match->match_get() returns the last match criteria
+// $person->data_get() now returns the person data from the last list
+// $person->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

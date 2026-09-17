@@ -176,39 +176,15 @@ competition = client.Competition
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `String` | No | Team address |
 | `area` | `Hash` | No |  |
-| `assists` | `Integer` | No | Number of assists |
-| `awayTeam` | `Hash` | No |  |
-| `clubColors` | `String` | No | Team colors |
 | `code` | `String` | No | Short code for the competition |
-| `competition` | `Hash` | No |  |
-| `crest` | `String` | No | URL to the team's crest image |
 | `currentSeason` | `Hash` | No |  |
 | `emblem` | `String` | No | URL to the competition's emblem |
-| `founded` | `Integer` | No | Year the team was founded |
-| `goals` | `Integer` | No | Number of goals scored |
-| `group` | `String` | No | Group identifier |
-| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No | Unique identifier for the competition |
 | `lastUpdated` | `String` | No | Last update timestamp |
-| `matchday` | `Integer` | No | Matchday number |
 | `name` | `String` | No | Name of the competition |
 | `numberOfAvailableSeasons` | `Integer` | No | Number of seasons available |
-| `penalties` | `Integer` | No | Number of penalty goals |
-| `player` | `Hash` | No |  |
-| `score` | `Hash` | No |  |
-| `season` | `Hash` | No |  |
-| `shortName` | `String` | No | Short name of the team |
-| `stage` | `String` | No | Match stage |
-| `status` | `String` | No | Match status |
-| `table` | `Array` | No |  |
-| `team` | `Hash` | No |  |
-| `tla` | `String` | No | Three-letter abbreviation |
 | `type` | `String` | No | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `String` | No | Match date and time in UTC |
-| `venue` | `String` | No | Home stadium name |
-| `website` | `String` | No | Team website URL |
 
 ### Operations
 
@@ -346,26 +322,16 @@ person = client.Person
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `awayTeam` | `Hash` | No |  |
-| `competition` | `Hash` | No |  |
 | `dateOfBirth` | `String` | No | Date of birth |
 | `firstName` | `String` | No | First name |
-| `group` | `String` | No | Group identifier |
-| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No | Unique identifier for the person |
 | `lastName` | `String` | No | Last name |
 | `lastUpdated` | `String` | No | Last update timestamp |
-| `matchday` | `Integer` | No | Matchday number |
 | `name` | `String` | No | Full name of the person |
 | `nationality` | `String` | No | Nationality |
 | `position` | `String` | No | Playing position |
-| `score` | `Hash` | No |  |
-| `season` | `Hash` | No |  |
 | `section` | `String` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `Integer` | No | Shirt number |
-| `stage` | `String` | No | Match stage |
-| `status` | `String` | No | Match status |
-| `utcDate` | `String` | No | Match date and time in UTC |
 
 ### Operations
 
@@ -427,28 +393,18 @@ team = client.Team
 | --- | --- | --- | --- |
 | `address` | `String` | No | Team address |
 | `area` | `Hash` | No |  |
-| `awayTeam` | `Hash` | No |  |
 | `clubColors` | `String` | No | Team colors |
 | `coach` | `Hash` | No |  |
-| `competition` | `Hash` | No |  |
 | `crest` | `String` | No | URL to the team's crest image |
 | `founded` | `Integer` | No | Year the team was founded |
-| `group` | `String` | No | Group identifier |
-| `homeTeam` | `Hash` | No |  |
 | `id` | `Integer` | No | Unique identifier for the team |
 | `lastUpdated` | `String` | No | Last update timestamp |
-| `matchday` | `Integer` | No | Matchday number |
 | `name` | `String` | No | Name of the team |
 | `runningCompetitions` | `Array` | No | Competitions the team is currently participating in |
-| `score` | `Hash` | No |  |
-| `season` | `Hash` | No |  |
 | `shortName` | `String` | No | Short name of the team |
 | `squad` | `Array` | No | Team squad members |
 | `staff` | `Array` | No | Team staff members |
-| `stage` | `String` | No | Match stage |
-| `status` | `String` | No | Match status |
 | `tla` | `String` | No | Three-letter abbreviation |
-| `utcDate` | `String` | No | Match date and time in UTC |
 | `venue` | `String` | No | Home stadium name |
 | `website` | `String` | No | Team website URL |
 

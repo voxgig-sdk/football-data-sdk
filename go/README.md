@@ -78,12 +78,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-matchs, err := client.Match(nil).List(nil, nil)
+persons, err := client.Person(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = matchs
+_ = persons
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -147,13 +147,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-match, err := client.Match(nil).List(
+person, err := client.Person(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(match) // the returned mock data
+fmt.Println(person) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -294,39 +294,15 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `"address"` | Team address |
 | `"area"` |  |
-| `"assists"` | Number of assists |
-| `"awayTeam"` |  |
-| `"clubColors"` | Team colors |
 | `"code"` | Short code for the competition |
-| `"competition"` |  |
-| `"crest"` | URL to the team's crest image |
 | `"currentSeason"` |  |
 | `"emblem"` | URL to the competition's emblem |
-| `"founded"` | Year the team was founded |
-| `"goals"` | Number of goals scored |
-| `"group"` | Group identifier |
-| `"homeTeam"` |  |
 | `"id"` | Unique identifier for the competition |
 | `"lastUpdated"` | Last update timestamp |
-| `"matchday"` | Matchday number |
 | `"name"` | Name of the competition |
 | `"numberOfAvailableSeasons"` | Number of seasons available |
-| `"penalties"` | Number of penalty goals |
-| `"player"` |  |
-| `"score"` |  |
-| `"season"` |  |
-| `"shortName"` | Short name of the team |
-| `"stage"` | Match stage |
-| `"status"` | Match status |
-| `"table"` |  |
-| `"team"` |  |
-| `"tla"` | Three-letter abbreviation |
 | `"type"` | Type of competition (LEAGUE, CUP, etc.) |
-| `"utcDate"` | Match date and time in UTC |
-| `"venue"` | Home stadium name |
-| `"website"` | Team website URL |
 
 Operations: List, Load.
 
@@ -364,26 +340,16 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `"awayTeam"` |  |
-| `"competition"` |  |
 | `"dateOfBirth"` | Date of birth |
 | `"firstName"` | First name |
-| `"group"` | Group identifier |
-| `"homeTeam"` |  |
 | `"id"` | Unique identifier for the person |
 | `"lastName"` | Last name |
 | `"lastUpdated"` | Last update timestamp |
-| `"matchday"` | Matchday number |
 | `"name"` | Full name of the person |
 | `"nationality"` | Nationality |
 | `"position"` | Playing position |
-| `"score"` |  |
-| `"season"` |  |
 | `"section"` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `"shirtNumber"` | Shirt number |
-| `"stage"` | Match stage |
-| `"status"` | Match status |
-| `"utcDate"` | Match date and time in UTC |
 
 Operations: List, Load.
 
@@ -395,28 +361,18 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `"address"` | Team address |
 | `"area"` |  |
-| `"awayTeam"` |  |
 | `"clubColors"` | Team colors |
 | `"coach"` |  |
-| `"competition"` |  |
 | `"crest"` | URL to the team's crest image |
 | `"founded"` | Year the team was founded |
-| `"group"` | Group identifier |
-| `"homeTeam"` |  |
 | `"id"` | Unique identifier for the team |
 | `"lastUpdated"` | Last update timestamp |
-| `"matchday"` | Matchday number |
 | `"name"` | Name of the team |
 | `"runningCompetitions"` | Competitions the team is currently participating in |
-| `"score"` |  |
-| `"season"` |  |
 | `"shortName"` | Short name of the team |
 | `"squad"` | Team squad members |
 | `"staff"` | Team staff members |
-| `"stage"` | Match stage |
-| `"status"` | Match status |
 | `"tla"` | Three-letter abbreviation |
-| `"utcDate"` | Match date and time in UTC |
 | `"venue"` | Home stadium name |
 | `"website"` | Team website URL |
 
@@ -488,39 +444,15 @@ Create an instance: `competition := client.Competition(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `string` | Team address |
 | `area` | `map[string]any` |  |
-| `assists` | `int` | Number of assists |
-| `awayTeam` | `map[string]any` |  |
-| `clubColors` | `string` | Team colors |
 | `code` | `string` | Short code for the competition |
-| `competition` | `map[string]any` |  |
-| `crest` | `string` | URL to the team's crest image |
 | `currentSeason` | `map[string]any` |  |
 | `emblem` | `string` | URL to the competition's emblem |
-| `founded` | `int` | Year the team was founded |
-| `goals` | `int` | Number of goals scored |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `map[string]any` |  |
 | `id` | `int` | Unique identifier for the competition |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `string` | Name of the competition |
 | `numberOfAvailableSeasons` | `int` | Number of seasons available |
-| `penalties` | `int` | Number of penalty goals |
-| `player` | `map[string]any` |  |
-| `score` | `map[string]any` |  |
-| `season` | `map[string]any` |  |
-| `shortName` | `string` | Short name of the team |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `table` | `[]any` |  |
-| `team` | `map[string]any` |  |
-| `tla` | `string` | Three-letter abbreviation |
 | `type` | `string` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | Match date and time in UTC |
-| `venue` | `string` | Home stadium name |
-| `website` | `string` | Team website URL |
 
 #### Example: Load
 
@@ -614,26 +546,16 @@ Create an instance: `person := client.Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `awayTeam` | `map[string]any` |  |
-| `competition` | `map[string]any` |  |
 | `dateOfBirth` | `string` | Date of birth |
 | `firstName` | `string` | First name |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `map[string]any` |  |
 | `id` | `int` | Unique identifier for the person |
 | `lastName` | `string` | Last name |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `string` | Full name of the person |
 | `nationality` | `string` | Nationality |
 | `position` | `string` | Playing position |
-| `score` | `map[string]any` |  |
-| `season` | `map[string]any` |  |
 | `section` | `string` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `int` | Shirt number |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `utcDate` | `string` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -673,28 +595,18 @@ Create an instance: `team := client.Team(nil)`
 | --- | --- | --- |
 | `address` | `string` | Team address |
 | `area` | `map[string]any` |  |
-| `awayTeam` | `map[string]any` |  |
 | `clubColors` | `string` | Team colors |
 | `coach` | `map[string]any` |  |
-| `competition` | `map[string]any` |  |
 | `crest` | `string` | URL to the team's crest image |
 | `founded` | `int` | Year the team was founded |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `map[string]any` |  |
 | `id` | `int` | Unique identifier for the team |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `int` | Matchday number |
 | `name` | `string` | Name of the team |
 | `runningCompetitions` | `[]any` | Competitions the team is currently participating in |
-| `score` | `map[string]any` |  |
-| `season` | `map[string]any` |  |
 | `shortName` | `string` | Short name of the team |
 | `squad` | `[]any` | Team squad members |
 | `staff` | `[]any` | Team staff members |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
 | `tla` | `string` | Three-letter abbreviation |
-| `utcDate` | `string` | Match date and time in UTC |
 | `venue` | `string` | Home stadium name |
 | `website` | `string` | Team website URL |
 
@@ -876,11 +788,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-match := client.Match(nil)
-match.List(nil, nil)
+person := client.Person(nil)
+person.List(nil, nil)
 
-// match.Data() now returns the match data from the last list
-// match.Match() returns the last match criteria
+// person.Data() now returns the person data from the last list
+// person.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

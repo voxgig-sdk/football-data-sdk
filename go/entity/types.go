@@ -41,39 +41,15 @@ type AreaListMatch struct {
 
 // Competition is the typed data model for the competition entity.
 type Competition struct {
-	Address *string `json:"address,omitempty"`
 	Area *map[string]any `json:"area,omitempty"`
-	Assists *int `json:"assists,omitempty"`
-	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
-	ClubColors *string `json:"clubColors,omitempty"`
 	Code *string `json:"code,omitempty"`
-	Competition *map[string]any `json:"competition,omitempty"`
-	Crest *string `json:"crest,omitempty"`
 	CurrentSeason *map[string]any `json:"currentSeason,omitempty"`
 	Emblem *string `json:"emblem,omitempty"`
-	Founded *int `json:"founded,omitempty"`
-	Goals *int `json:"goals,omitempty"`
-	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
 	LastUpdated *string `json:"lastUpdated,omitempty"`
-	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
 	NumberOfAvailableSeasons *int `json:"numberOfAvailableSeasons,omitempty"`
-	Penalties *int `json:"penalties,omitempty"`
-	Player *map[string]any `json:"player,omitempty"`
-	Score *map[string]any `json:"score,omitempty"`
-	Season *map[string]any `json:"season,omitempty"`
-	ShortName *string `json:"shortName,omitempty"`
-	Stage *string `json:"stage,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Table *[]any `json:"table,omitempty"`
-	Team *map[string]any `json:"team,omitempty"`
-	Tla *string `json:"tla,omitempty"`
 	Type *string `json:"type,omitempty"`
-	UtcDate *string `json:"utcDate,omitempty"`
-	Venue *string `json:"venue,omitempty"`
-	Website *string `json:"website,omitempty"`
 }
 
 // CompetitionLoadMatch is the typed request payload for Competition.LoadTyped.
@@ -124,26 +100,16 @@ type MatchListMatch struct {
 
 // Person is the typed data model for the person entity.
 type Person struct {
-	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
-	Competition *map[string]any `json:"competition,omitempty"`
 	DateOfBirth *string `json:"dateOfBirth,omitempty"`
 	FirstName *string `json:"firstName,omitempty"`
-	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
 	LastName *string `json:"lastName,omitempty"`
 	LastUpdated *string `json:"lastUpdated,omitempty"`
-	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Nationality *string `json:"nationality,omitempty"`
 	Position *string `json:"position,omitempty"`
-	Score *map[string]any `json:"score,omitempty"`
-	Season *map[string]any `json:"season,omitempty"`
 	Section *string `json:"section,omitempty"`
 	ShirtNumber *int `json:"shirtNumber,omitempty"`
-	Stage *string `json:"stage,omitempty"`
-	Status *string `json:"status,omitempty"`
-	UtcDate *string `json:"utcDate,omitempty"`
 }
 
 // PersonLoadMatch is the typed request payload for Person.LoadTyped.
@@ -165,28 +131,18 @@ type PersonListMatch struct {
 type Team struct {
 	Address *string `json:"address,omitempty"`
 	Area *map[string]any `json:"area,omitempty"`
-	AwayTeam *map[string]any `json:"awayTeam,omitempty"`
 	ClubColors *string `json:"clubColors,omitempty"`
 	Coach *map[string]any `json:"coach,omitempty"`
-	Competition *map[string]any `json:"competition,omitempty"`
 	Crest *string `json:"crest,omitempty"`
 	Founded *int `json:"founded,omitempty"`
-	Group *string `json:"group,omitempty"`
-	HomeTeam *map[string]any `json:"homeTeam,omitempty"`
 	Id *int `json:"id,omitempty"`
 	LastUpdated *string `json:"lastUpdated,omitempty"`
-	Matchday *int `json:"matchday,omitempty"`
 	Name *string `json:"name,omitempty"`
 	RunningCompetitions *[]any `json:"runningCompetitions,omitempty"`
-	Score *map[string]any `json:"score,omitempty"`
-	Season *map[string]any `json:"season,omitempty"`
 	ShortName *string `json:"shortName,omitempty"`
 	Squad *[]any `json:"squad,omitempty"`
 	Staff *[]any `json:"staff,omitempty"`
-	Stage *string `json:"stage,omitempty"`
-	Status *string `json:"status,omitempty"`
 	Tla *string `json:"tla,omitempty"`
-	UtcDate *string `json:"utcDate,omitempty"`
 	Venue *string `json:"venue,omitempty"`
 	Website *string `json:"website,omitempty"`
 }

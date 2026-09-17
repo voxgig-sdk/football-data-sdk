@@ -17,11 +17,6 @@ main: kit: entity: team: {
       type: "`$OBJECT`"
     }
     {
-      name: "awayTeam"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
       name: "clubColors"
       req: false
       short: "Team colors"
@@ -29,11 +24,6 @@ main: kit: entity: team: {
     }
     {
       name: "coach"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "competition"
       req: false
       type: "`$OBJECT`"
     }
@@ -50,17 +40,6 @@ main: kit: entity: team: {
       type: "`$INTEGER`"
     }
     {
-      name: "group"
-      req: false
-      short: "Group identifier"
-      type: "`$STRING`"
-    }
-    {
-      name: "homeTeam"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
       name: "id"
       req: false
       short: "Unique identifier for the team"
@@ -74,12 +53,6 @@ main: kit: entity: team: {
       type: "`$STRING`"
     }
     {
-      name: "matchday"
-      req: false
-      short: "Matchday number"
-      type: "`$INTEGER`"
-    }
-    {
       name: "name"
       req: false
       short: "Name of the team"
@@ -90,16 +63,6 @@ main: kit: entity: team: {
       req: false
       short: "Competitions the team is currently participating in"
       type: "`$ARRAY`"
-    }
-    {
-      name: "score"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "season"
-      req: false
-      type: "`$OBJECT`"
     }
     {
       name: "shortName"
@@ -120,28 +83,9 @@ main: kit: entity: team: {
       type: "`$ARRAY`"
     }
     {
-      name: "stage"
-      req: false
-      short: "Match stage"
-      type: "`$STRING`"
-    }
-    {
-      name: "status"
-      req: false
-      short: "Match status"
-      type: "`$STRING`"
-    }
-    {
       name: "tla"
       req: false
       short: "Three-letter abbreviation"
-      type: "`$STRING`"
-    }
-    {
-      format: "date-time"
-      name: "utcDate"
-      req: false
-      short: "Match date and time in UTC"
       type: "`$STRING`"
     }
     {

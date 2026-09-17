@@ -64,7 +64,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local matchs, err = client:Match():list()
+local persons, err = client:Person():list()
 if err then error(err) end
 ```
 
@@ -122,7 +122,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Match():list()
+local result, err = client:Person():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -265,39 +265,15 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `address` | Team address |
 | `area` |  |
-| `assists` | Number of assists |
-| `awayTeam` |  |
-| `clubColors` | Team colors |
 | `code` | Short code for the competition |
-| `competition` |  |
-| `crest` | URL to the team's crest image |
 | `currentSeason` |  |
 | `emblem` | URL to the competition's emblem |
-| `founded` | Year the team was founded |
-| `goals` | Number of goals scored |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the competition |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the competition |
 | `numberOfAvailableSeasons` | Number of seasons available |
-| `penalties` | Number of penalty goals |
-| `player` |  |
-| `score` |  |
-| `season` |  |
-| `shortName` | Short name of the team |
-| `stage` | Match stage |
-| `status` | Match status |
-| `table` |  |
-| `team` |  |
-| `tla` | Three-letter abbreviation |
 | `type` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | Match date and time in UTC |
-| `venue` | Home stadium name |
-| `website` | Team website URL |
 
 Operations: List, Load.
 
@@ -335,26 +311,16 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `awayTeam` |  |
-| `competition` |  |
 | `dateOfBirth` | Date of birth |
 | `firstName` | First name |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the person |
 | `lastName` | Last name |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Full name of the person |
 | `nationality` | Nationality |
 | `position` | Playing position |
-| `score` |  |
-| `season` |  |
 | `section` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | Shirt number |
-| `stage` | Match stage |
-| `status` | Match status |
-| `utcDate` | Match date and time in UTC |
 
 Operations: List, Load.
 
@@ -366,28 +332,18 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` | Team address |
 | `area` |  |
-| `awayTeam` |  |
 | `clubColors` | Team colors |
 | `coach` |  |
-| `competition` |  |
 | `crest` | URL to the team's crest image |
 | `founded` | Year the team was founded |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the team |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the team |
 | `runningCompetitions` | Competitions the team is currently participating in |
-| `score` |  |
-| `season` |  |
 | `shortName` | Short name of the team |
 | `squad` | Team squad members |
 | `staff` | Team staff members |
-| `stage` | Match stage |
-| `status` | Match status |
 | `tla` | Three-letter abbreviation |
-| `utcDate` | Match date and time in UTC |
 | `venue` | Home stadium name |
 | `website` | Team website URL |
 
@@ -451,39 +407,15 @@ Create an instance: `local competition = client:Competition(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `string` | Team address |
 | `area` | `table` |  |
-| `assists` | `number` | Number of assists |
-| `awayTeam` | `table` |  |
-| `clubColors` | `string` | Team colors |
 | `code` | `string` | Short code for the competition |
-| `competition` | `table` |  |
-| `crest` | `string` | URL to the team's crest image |
 | `currentSeason` | `table` |  |
 | `emblem` | `string` | URL to the competition's emblem |
-| `founded` | `number` | Year the team was founded |
-| `goals` | `number` | Number of goals scored |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `table` |  |
 | `id` | `number` | Unique identifier for the competition |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `number` | Matchday number |
 | `name` | `string` | Name of the competition |
 | `numberOfAvailableSeasons` | `number` | Number of seasons available |
-| `penalties` | `number` | Number of penalty goals |
-| `player` | `table` |  |
-| `score` | `table` |  |
-| `season` | `table` |  |
-| `shortName` | `string` | Short name of the team |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `table` | `table` |  |
-| `team` | `table` |  |
-| `tla` | `string` | Three-letter abbreviation |
 | `type` | `string` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | Match date and time in UTC |
-| `venue` | `string` | Home stadium name |
-| `website` | `string` | Team website URL |
 
 #### Example: Load
 
@@ -561,26 +493,16 @@ Create an instance: `local person = client:Person(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `awayTeam` | `table` |  |
-| `competition` | `table` |  |
 | `dateOfBirth` | `string` | Date of birth |
 | `firstName` | `string` | First name |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `table` |  |
 | `id` | `number` | Unique identifier for the person |
 | `lastName` | `string` | Last name |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `number` | Matchday number |
 | `name` | `string` | Full name of the person |
 | `nationality` | `string` | Nationality |
 | `position` | `string` | Playing position |
-| `score` | `table` |  |
-| `season` | `table` |  |
 | `section` | `string` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `number` | Shirt number |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `utcDate` | `string` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -612,28 +534,18 @@ Create an instance: `local team = client:Team(nil)`
 | --- | --- | --- |
 | `address` | `string` | Team address |
 | `area` | `table` |  |
-| `awayTeam` | `table` |  |
 | `clubColors` | `string` | Team colors |
 | `coach` | `table` |  |
-| `competition` | `table` |  |
 | `crest` | `string` | URL to the team's crest image |
 | `founded` | `number` | Year the team was founded |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `table` |  |
 | `id` | `number` | Unique identifier for the team |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `number` | Matchday number |
 | `name` | `string` | Name of the team |
 | `runningCompetitions` | `table` | Competitions the team is currently participating in |
-| `score` | `table` |  |
-| `season` | `table` |  |
 | `shortName` | `string` | Short name of the team |
 | `squad` | `table` | Team squad members |
 | `staff` | `table` | Team staff members |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
 | `tla` | `string` | Three-letter abbreviation |
-| `utcDate` | `string` | Match date and time in UTC |
 | `venue` | `string` | Home stadium name |
 | `website` | `string` | Team website URL |
 
@@ -792,6 +704,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── football-data_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations
@@ -810,11 +723,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local match = client:Match()
-match:list()
+local person = client:Person()
+person:list()
 
--- match:data_get() now returns the match data from the last list
--- match:match_get() returns the last match criteria
+-- person:data_get() now returns the person data from the last list
+-- person:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

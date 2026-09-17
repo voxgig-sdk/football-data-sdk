@@ -69,8 +69,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const matchs = await client.Match().list()
-  console.log(matchs)
+  const persons = await client.Person().list()
+  console.log(persons)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -136,10 +136,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FootballDataSDK.test()
 
-const match = await client.Match().list()
-// match is the entity, populated with mock response data
-// — call match.data() for the record itself
-console.log(match)
+const person = await client.Person().list()
+// person is the entity, populated with mock response data
+// — call person.data() for the record itself
+console.log(person)
 ```
 
 You can also use the instance method:
@@ -154,7 +154,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Match()
+const entity = client.Person()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -333,39 +333,15 @@ API path: `/areas`
 
 | Field | Description |
 | --- | --- |
-| `address` | Team address |
 | `area` |  |
-| `assists` | Number of assists |
-| `awayTeam` |  |
-| `clubColors` | Team colors |
 | `code` | Short code for the competition |
-| `competition` |  |
-| `crest` | URL to the team's crest image |
 | `currentSeason` |  |
 | `emblem` | URL to the competition's emblem |
-| `founded` | Year the team was founded |
-| `goals` | Number of goals scored |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the competition |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the competition |
 | `numberOfAvailableSeasons` | Number of seasons available |
-| `penalties` | Number of penalty goals |
-| `player` |  |
-| `score` |  |
-| `season` |  |
-| `shortName` | Short name of the team |
-| `stage` | Match stage |
-| `status` | Match status |
-| `table` |  |
-| `team` |  |
-| `tla` | Three-letter abbreviation |
 | `type` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | Match date and time in UTC |
-| `venue` | Home stadium name |
-| `website` | Team website URL |
 
 Operations: list, load.
 
@@ -403,26 +379,16 @@ API path: `/matches`
 
 | Field | Description |
 | --- | --- |
-| `awayTeam` |  |
-| `competition` |  |
 | `dateOfBirth` | Date of birth |
 | `firstName` | First name |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the person |
 | `lastName` | Last name |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Full name of the person |
 | `nationality` | Nationality |
 | `position` | Playing position |
-| `score` |  |
-| `season` |  |
 | `section` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | Shirt number |
-| `stage` | Match stage |
-| `status` | Match status |
-| `utcDate` | Match date and time in UTC |
 
 Operations: list, load.
 
@@ -434,28 +400,18 @@ API path: `/persons/{id}/matches`
 | --- | --- |
 | `address` | Team address |
 | `area` |  |
-| `awayTeam` |  |
 | `clubColors` | Team colors |
 | `coach` |  |
-| `competition` |  |
 | `crest` | URL to the team's crest image |
 | `founded` | Year the team was founded |
-| `group` | Group identifier |
-| `homeTeam` |  |
 | `id` | Unique identifier for the team |
 | `lastUpdated` | Last update timestamp |
-| `matchday` | Matchday number |
 | `name` | Name of the team |
 | `runningCompetitions` | Competitions the team is currently participating in |
-| `score` |  |
-| `season` |  |
 | `shortName` | Short name of the team |
 | `squad` | Team squad members |
 | `staff` | Team staff members |
-| `stage` | Match stage |
-| `status` | Match status |
 | `tla` | Three-letter abbreviation |
-| `utcDate` | Match date and time in UTC |
 | `venue` | Home stadium name |
 | `website` | Team website URL |
 
@@ -519,39 +475,15 @@ Create an instance: `const competition = client.Competition()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `string` | Team address |
 | `area` | `Record<string, any>` |  |
-| `assists` | `number` | Number of assists |
-| `awayTeam` | `Record<string, any>` |  |
-| `clubColors` | `string` | Team colors |
 | `code` | `string` | Short code for the competition |
-| `competition` | `Record<string, any>` |  |
-| `crest` | `string` | URL to the team's crest image |
 | `currentSeason` | `Record<string, any>` |  |
 | `emblem` | `string` | URL to the competition's emblem |
-| `founded` | `number` | Year the team was founded |
-| `goals` | `number` | Number of goals scored |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` | Unique identifier for the competition |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `number` | Matchday number |
 | `name` | `string` | Name of the competition |
 | `numberOfAvailableSeasons` | `number` | Number of seasons available |
-| `penalties` | `number` | Number of penalty goals |
-| `player` | `Record<string, any>` |  |
-| `score` | `Record<string, any>` |  |
-| `season` | `Record<string, any>` |  |
-| `shortName` | `string` | Short name of the team |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `table` | `any[]` |  |
-| `team` | `Record<string, any>` |  |
-| `tla` | `string` | Three-letter abbreviation |
 | `type` | `string` | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | Match date and time in UTC |
-| `venue` | `string` | Home stadium name |
-| `website` | `string` | Team website URL |
 
 #### Example: Load
 
@@ -629,26 +561,16 @@ Create an instance: `const person = client.Person()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `awayTeam` | `Record<string, any>` |  |
-| `competition` | `Record<string, any>` |  |
 | `dateOfBirth` | `string` | Date of birth |
 | `firstName` | `string` | First name |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` | Unique identifier for the person |
 | `lastName` | `string` | Last name |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `number` | Matchday number |
 | `name` | `string` | Full name of the person |
 | `nationality` | `string` | Nationality |
 | `position` | `string` | Playing position |
-| `score` | `Record<string, any>` |  |
-| `season` | `Record<string, any>` |  |
 | `section` | `string` | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `number` | Shirt number |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
-| `utcDate` | `string` | Match date and time in UTC |
 
 #### Example: Load
 
@@ -680,28 +602,18 @@ Create an instance: `const team = client.Team()`
 | --- | --- | --- |
 | `address` | `string` | Team address |
 | `area` | `Record<string, any>` |  |
-| `awayTeam` | `Record<string, any>` |  |
 | `clubColors` | `string` | Team colors |
 | `coach` | `Record<string, any>` |  |
-| `competition` | `Record<string, any>` |  |
 | `crest` | `string` | URL to the team's crest image |
 | `founded` | `number` | Year the team was founded |
-| `group` | `string` | Group identifier |
-| `homeTeam` | `Record<string, any>` |  |
 | `id` | `number` | Unique identifier for the team |
 | `lastUpdated` | `string` | Last update timestamp |
-| `matchday` | `number` | Matchday number |
 | `name` | `string` | Name of the team |
 | `runningCompetitions` | `any[]` | Competitions the team is currently participating in |
-| `score` | `Record<string, any>` |  |
-| `season` | `Record<string, any>` |  |
 | `shortName` | `string` | Short name of the team |
 | `squad` | `any[]` | Team squad members |
 | `staff` | `any[]` | Team staff members |
-| `stage` | `string` | Match stage |
-| `status` | `string` | Match status |
 | `tla` | `string` | Three-letter abbreviation |
-| `utcDate` | `string` | Match date and time in UTC |
 | `venue` | `string` | Home stadium name |
 | `website` | `string` | Team website URL |
 
@@ -871,11 +783,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const match = client.Match()
-await match.list()
+const person = client.Person()
+await person.list()
 
-// match.data() now returns the match data from the last `list`
-// match.match() returns the last match criteria
+// person.data() now returns the person data from the last `list`
+// person.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

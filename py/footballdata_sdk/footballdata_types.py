@@ -41,39 +41,15 @@ class AreaListMatch(TypedDict, total=False):
 
 
 class Competition(TypedDict, total=False):
-    address: str
     area: dict
-    assists: int
-    awayTeam: dict
-    clubColors: str
     code: str
-    competition: dict
-    crest: str
     currentSeason: dict
     emblem: str
-    founded: int
-    goals: int
-    group: str
-    homeTeam: dict
     id: int
     lastUpdated: str
-    matchday: int
     name: str
     numberOfAvailableSeasons: int
-    penalties: int
-    player: dict
-    score: dict
-    season: dict
-    shortName: str
-    stage: str
-    status: str
-    table: list
-    team: dict
-    tla: str
     type: str
-    utcDate: str
-    venue: str
-    website: str
 
 
 class CompetitionLoadMatch(TypedDict):
@@ -118,26 +94,16 @@ class MatchListMatch(TypedDict, total=False):
 
 
 class Person(TypedDict, total=False):
-    awayTeam: dict
-    competition: dict
     dateOfBirth: str
     firstName: str
-    group: str
-    homeTeam: dict
     id: int
     lastName: str
     lastUpdated: str
-    matchday: int
     name: str
     nationality: str
     position: str
-    score: dict
-    season: dict
     section: str
     shirtNumber: int
-    stage: str
-    status: str
-    utcDate: str
 
 
 class PersonLoadMatch(TypedDict):
@@ -159,28 +125,18 @@ class PersonListMatch(PersonListMatchRequired, total=False):
 class Team(TypedDict, total=False):
     address: str
     area: dict
-    awayTeam: dict
     clubColors: str
     coach: dict
-    competition: dict
     crest: str
     founded: int
-    group: str
-    homeTeam: dict
     id: int
     lastUpdated: str
-    matchday: int
     name: str
     runningCompetitions: list
-    score: dict
-    season: dict
     shortName: str
     squad: list
     staff: list
-    stage: str
-    status: str
     tla: str
-    utcDate: str
     venue: str
     website: str
 

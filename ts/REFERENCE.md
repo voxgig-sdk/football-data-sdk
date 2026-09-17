@@ -229,39 +229,15 @@ const competition = client.Competition()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `string` | No | Team address |
 | `area` | `Record<string, any>` | No |  |
-| `assists` | `number` | No | Number of assists |
-| `awayTeam` | `Record<string, any>` | No |  |
-| `clubColors` | `string` | No | Team colors |
 | `code` | `string` | No | Short code for the competition |
-| `competition` | `Record<string, any>` | No |  |
-| `crest` | `string` | No | URL to the team's crest image |
 | `currentSeason` | `Record<string, any>` | No |  |
 | `emblem` | `string` | No | URL to the competition's emblem |
-| `founded` | `number` | No | Year the team was founded |
-| `goals` | `number` | No | Number of goals scored |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No | Unique identifier for the competition |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `number` | No | Matchday number |
 | `name` | `string` | No | Name of the competition |
 | `numberOfAvailableSeasons` | `number` | No | Number of seasons available |
-| `penalties` | `number` | No | Number of penalty goals |
-| `player` | `Record<string, any>` | No |  |
-| `score` | `Record<string, any>` | No |  |
-| `season` | `Record<string, any>` | No |  |
-| `shortName` | `string` | No | Short name of the team |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `table` | `any[]` | No |  |
-| `team` | `Record<string, any>` | No |  |
-| `tla` | `string` | No | Three-letter abbreviation |
 | `type` | `string` | No | Type of competition (LEAGUE, CUP, etc.) |
-| `utcDate` | `string` | No | Match date and time in UTC |
-| `venue` | `string` | No | Home stadium name |
-| `website` | `string` | No | Team website URL |
 
 ### Actions
 
@@ -418,26 +394,16 @@ const person = client.Person()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `awayTeam` | `Record<string, any>` | No |  |
-| `competition` | `Record<string, any>` | No |  |
 | `dateOfBirth` | `string` | No | Date of birth |
 | `firstName` | `string` | No | First name |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No | Unique identifier for the person |
 | `lastName` | `string` | No | Last name |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `number` | No | Matchday number |
 | `name` | `string` | No | Full name of the person |
 | `nationality` | `string` | No | Nationality |
 | `position` | `string` | No | Playing position |
-| `score` | `Record<string, any>` | No |  |
-| `season` | `Record<string, any>` | No |  |
 | `section` | `string` | No | Section (e.g., Offence, Defence, Midfield, Goalkeeper) |
 | `shirtNumber` | `number` | No | Shirt number |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
-| `utcDate` | `string` | No | Match date and time in UTC |
 
 ### Actions
 
@@ -517,28 +483,18 @@ const team = client.Team()
 | --- | --- | --- | --- |
 | `address` | `string` | No | Team address |
 | `area` | `Record<string, any>` | No |  |
-| `awayTeam` | `Record<string, any>` | No |  |
 | `clubColors` | `string` | No | Team colors |
 | `coach` | `Record<string, any>` | No |  |
-| `competition` | `Record<string, any>` | No |  |
 | `crest` | `string` | No | URL to the team's crest image |
 | `founded` | `number` | No | Year the team was founded |
-| `group` | `string` | No | Group identifier |
-| `homeTeam` | `Record<string, any>` | No |  |
 | `id` | `number` | No | Unique identifier for the team |
 | `lastUpdated` | `string` | No | Last update timestamp |
-| `matchday` | `number` | No | Matchday number |
 | `name` | `string` | No | Name of the team |
 | `runningCompetitions` | `any[]` | No | Competitions the team is currently participating in |
-| `score` | `Record<string, any>` | No |  |
-| `season` | `Record<string, any>` | No |  |
 | `shortName` | `string` | No | Short name of the team |
 | `squad` | `any[]` | No | Team squad members |
 | `staff` | `any[]` | No | Team staff members |
-| `stage` | `string` | No | Match stage |
-| `status` | `string` | No | Match status |
 | `tla` | `string` | No | Three-letter abbreviation |
-| `utcDate` | `string` | No | Match date and time in UTC |
 | `venue` | `string` | No | Home stadium name |
 | `website` | `string` | No | Team website URL |
 

@@ -85,28 +85,10 @@ AreaListMatch = Struct.new(
 
 # Competition entity data model.
 #
-# @!attribute [rw] address
-#   @return [String, nil]
-#
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] assists
-#   @return [Integer, nil]
-#
-# @!attribute [rw] awayTeam
-#   @return [Hash, nil]
-#
-# @!attribute [rw] clubColors
-#   @return [String, nil]
-#
 # @!attribute [rw] code
-#   @return [String, nil]
-#
-# @!attribute [rw] competition
-#   @return [Hash, nil]
-#
-# @!attribute [rw] crest
 #   @return [String, nil]
 #
 # @!attribute [rw] currentSeason
@@ -115,26 +97,11 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] emblem
 #   @return [String, nil]
 #
-# @!attribute [rw] founded
-#   @return [Integer, nil]
-#
-# @!attribute [rw] goals
-#   @return [Integer, nil]
-#
-# @!attribute [rw] group
-#   @return [String, nil]
-#
-# @!attribute [rw] homeTeam
-#   @return [Hash, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
 # @!attribute [rw] lastUpdated
 #   @return [String, nil]
-#
-# @!attribute [rw] matchday
-#   @return [Integer, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
@@ -142,81 +109,18 @@ AreaListMatch = Struct.new(
 # @!attribute [rw] numberOfAvailableSeasons
 #   @return [Integer, nil]
 #
-# @!attribute [rw] penalties
-#   @return [Integer, nil]
-#
-# @!attribute [rw] player
-#   @return [Hash, nil]
-#
-# @!attribute [rw] score
-#   @return [Hash, nil]
-#
-# @!attribute [rw] season
-#   @return [Hash, nil]
-#
-# @!attribute [rw] shortName
-#   @return [String, nil]
-#
-# @!attribute [rw] stage
-#   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] table
-#   @return [Array, nil]
-#
-# @!attribute [rw] team
-#   @return [Hash, nil]
-#
-# @!attribute [rw] tla
-#   @return [String, nil]
-#
 # @!attribute [rw] type
 #   @return [String, nil]
-#
-# @!attribute [rw] utcDate
-#   @return [String, nil]
-#
-# @!attribute [rw] venue
-#   @return [String, nil]
-#
-# @!attribute [rw] website
-#   @return [String, nil]
 Competition = Struct.new(
-  :address,
   :area,
-  :assists,
-  :awayTeam,
-  :clubColors,
   :code,
-  :competition,
-  :crest,
   :currentSeason,
   :emblem,
-  :founded,
-  :goals,
-  :group,
-  :homeTeam,
   :id,
   :lastUpdated,
-  :matchday,
   :name,
   :numberOfAvailableSeasons,
-  :penalties,
-  :player,
-  :score,
-  :season,
-  :shortName,
-  :stage,
-  :status,
-  :table,
-  :team,
-  :tla,
   :type,
-  :utcDate,
-  :venue,
-  :website,
   keyword_init: true
 )
 
@@ -351,23 +255,11 @@ MatchListMatch = Struct.new(
 
 # Person entity data model.
 #
-# @!attribute [rw] awayTeam
-#   @return [Hash, nil]
-#
-# @!attribute [rw] competition
-#   @return [Hash, nil]
-#
 # @!attribute [rw] dateOfBirth
 #   @return [String, nil]
 #
 # @!attribute [rw] firstName
 #   @return [String, nil]
-#
-# @!attribute [rw] group
-#   @return [String, nil]
-#
-# @!attribute [rw] homeTeam
-#   @return [Hash, nil]
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]
@@ -378,9 +270,6 @@ MatchListMatch = Struct.new(
 # @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
-# @!attribute [rw] matchday
-#   @return [Integer, nil]
-#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -390,47 +279,22 @@ MatchListMatch = Struct.new(
 # @!attribute [rw] position
 #   @return [String, nil]
 #
-# @!attribute [rw] score
-#   @return [Hash, nil]
-#
-# @!attribute [rw] season
-#   @return [Hash, nil]
-#
 # @!attribute [rw] section
 #   @return [String, nil]
 #
 # @!attribute [rw] shirtNumber
 #   @return [Integer, nil]
-#
-# @!attribute [rw] stage
-#   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
-# @!attribute [rw] utcDate
-#   @return [String, nil]
 Person = Struct.new(
-  :awayTeam,
-  :competition,
   :dateOfBirth,
   :firstName,
-  :group,
-  :homeTeam,
   :id,
   :lastName,
   :lastUpdated,
-  :matchday,
   :name,
   :nationality,
   :position,
-  :score,
-  :season,
   :section,
   :shirtNumber,
-  :stage,
-  :status,
-  :utcDate,
   keyword_init: true
 )
 
@@ -480,16 +344,10 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] area
 #   @return [Hash, nil]
 #
-# @!attribute [rw] awayTeam
-#   @return [Hash, nil]
-#
 # @!attribute [rw] clubColors
 #   @return [String, nil]
 #
 # @!attribute [rw] coach
-#   @return [Hash, nil]
-#
-# @!attribute [rw] competition
 #   @return [Hash, nil]
 #
 # @!attribute [rw] crest
@@ -498,32 +356,17 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] founded
 #   @return [Integer, nil]
 #
-# @!attribute [rw] group
-#   @return [String, nil]
-#
-# @!attribute [rw] homeTeam
-#   @return [Hash, nil]
-#
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
 # @!attribute [rw] lastUpdated
 #   @return [String, nil]
 #
-# @!attribute [rw] matchday
-#   @return [Integer, nil]
-#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
 # @!attribute [rw] runningCompetitions
 #   @return [Array, nil]
-#
-# @!attribute [rw] score
-#   @return [Hash, nil]
-#
-# @!attribute [rw] season
-#   @return [Hash, nil]
 #
 # @!attribute [rw] shortName
 #   @return [String, nil]
@@ -534,16 +377,7 @@ PersonListMatch = Struct.new(
 # @!attribute [rw] staff
 #   @return [Array, nil]
 #
-# @!attribute [rw] stage
-#   @return [String, nil]
-#
-# @!attribute [rw] status
-#   @return [String, nil]
-#
 # @!attribute [rw] tla
-#   @return [String, nil]
-#
-# @!attribute [rw] utcDate
 #   @return [String, nil]
 #
 # @!attribute [rw] venue
@@ -554,28 +388,18 @@ PersonListMatch = Struct.new(
 Team = Struct.new(
   :address,
   :area,
-  :awayTeam,
   :clubColors,
   :coach,
-  :competition,
   :crest,
   :founded,
-  :group,
-  :homeTeam,
   :id,
   :lastUpdated,
-  :matchday,
   :name,
   :runningCompetitions,
-  :score,
-  :season,
   :shortName,
   :squad,
   :staff,
-  :stage,
-  :status,
   :tla,
-  :utcDate,
   :venue,
   :website,
   keyword_init: true
